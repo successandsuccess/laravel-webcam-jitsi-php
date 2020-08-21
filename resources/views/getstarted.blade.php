@@ -61,7 +61,7 @@
                     <div class="col-md-2 col-sm-12">
                     </div>
                     <div class="col-md-4 col-sm-12 mobile-response-center">
-                        <select class="btn text-center mobile-margin-r-50 h-55 width-80 background-green color-w" style="font-size: larger; text-align:center; text-align-last: center;" data-style="btn-primary">
+                        <select name="provider" id="provider" class="btn text-center mobile-margin-r-50 h-55 width-80 background-green color-w" style="font-size: larger; text-align:center; text-align-last: center;" data-style="btn-primary">
                           <option value="0">Select Provider...</option>
                           <option value="1">Dr.Johns</option>
                           <option value="2">Dr.Wang</option>
@@ -69,11 +69,11 @@
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-12 text-right mobile-response-center mobile-mt-20">
-                        <select class="btn text-center h-55 width-80 background-green color-w" style="font-size: larger; text-align:center; text-align-last: center;" data-style="btn-primary">
+                        <select name="time" id="time" class="btn text-center h-55 width-80 background-green color-w" style="font-size: larger; text-align:center; text-align-last: center;" data-style="btn-primary">
                         <option value="0">Select Time...</option>
-                        <option value="1">Dr.Johns</option>
-                        <option value="2">Dr.Wang</option>
-                        <option value="3">Mr.Smith.CA</option>
+                        <option value="1">1:45pm</option>
+                        <option value="2">2:00pm</option>
+                        <option value="3">3:00pm</option>
                       </select>
                     </div>
                     <div class="col-md-2 col-sm-12">
@@ -84,7 +84,7 @@
                     <div class="col-md-2 col-sm-12">
                     </div>
                     <div class="col-md-4 col-sm-12 mobile-response-center">
-                        <a href="https://video.patientconnect.io/"><button class="btn btn-primary text-center mobile-margin-r-50 h-55 background-green width-80"><b class="font-s-18">Consultation/Visit ></b></button></a>
+                        <button class="btn btn-primary text-center mobile-margin-r-50 h-55 background-green width-80" id="consultation"><b class="font-s-18">Consultation/Visit ></b></button>
                     </div>
                     <div class="col-md-4 col-sm-12 text-right mobile-response-center mobile-mt-20">
                         <a href="{{ route('individual') }}"><button class="btn btn-primary text-center h-55 background-green width-80"><b class="font-s-18">Self-Directed Visit ></b></button></a>
@@ -98,4 +98,22 @@
 
     </main>
     <!-- End #main -->
+@endsection
+
+@section('javascript')
+<script>
+    console.log("JavaScript Running now!");
+    $('#consultation').click(function () {
+        console.log('Consultation Clicked');
+        console.log($('#provider').val());
+        console.log($('#time').val());
+        var provider = $('#provider').val();
+        var time = $('#time').val();
+        if (provider == 0 || time == 0) {
+            window.alert('Please choose the Provider and the time you want.');
+        } else {
+            window.location = '/waiting?provider='+provider+'&time='+time;
+        }
+    });
+</script>
 @endsection
