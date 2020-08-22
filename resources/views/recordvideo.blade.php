@@ -67,7 +67,7 @@
                     <div class="row mt-50">
                         <div class="col-md-4"></div>
                         <div class="col-md-4 text-center">
-                            <a href="#"><button class="btn btn-primary h-55 background-green width-80"><b class="font-s-18">Record Video Session</b></button></a>
+                            <a href="{{ route('streamrecord') }}"><button class="btn btn-primary h-55 background-green width-80"><b class="font-s-18">Record Video Session</b></button></a>
                             <!-- <button class="btn btn-primary h-55 background-green width-80" data-toggle="modal" data-target="#demo-modal-3">
                               <b class="font-s-18">Record Video Session</b>
                             </button> -->

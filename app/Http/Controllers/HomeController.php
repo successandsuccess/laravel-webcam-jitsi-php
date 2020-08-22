@@ -158,4 +158,9 @@ class HomeController extends Controller
         return view('waiting', compact('provider', 'time', 'jitsimeet', 'providerId', 'timeId'));
     }
 
+    public function streamrecord()
+    {
+        return view('streamrecord');
+    }
+
 }
