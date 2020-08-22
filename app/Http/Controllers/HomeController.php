@@ -152,7 +152,7 @@ class HomeController extends Controller
                 'time' => $todayDateTime,
             ];
 
-            \Mail::to('henry@patientconnct.io')->send(new \App\Mail\MeetNotifyMail($details));
+            \Mail::to('success.maple@gmail.com')->send(new \App\Mail\MeetNotifyMail($details));
         }
 
         return view('waiting', compact('provider', 'time', 'jitsimeet', 'providerId', 'timeId'));
