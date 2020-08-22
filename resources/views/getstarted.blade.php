@@ -61,20 +61,45 @@
                     <div class="col-md-2 col-sm-12">
                     </div>
                     <div class="col-md-4 col-sm-12 mobile-response-center">
-                        <select name="provider" id="provider" class="btn text-center mobile-margin-r-50 h-55 width-80 background-green color-w" style="font-size: larger; text-align:center; text-align-last: center;" data-style="btn-primary">
-                          <option value="0">Select Provider...</option>
-                          <option value="1">Dr.Johns</option>
-                          <option value="2">Dr.Wang</option>
-                          <option value="3">Mr.Smith.CA</option>
-                        </select>
+                        @if (isset($providerId) && $providerId != 0)
+                            <select name="provider" id="provider" class="btn text-center mobile-margin-r-50 h-55 width-80 background-green color-w" style="font-size: larger; text-align:center; text-align-last: center;" data-style="btn-primary">
+                            @foreach($providers as $index => $provider)
+                                @if($index == $providerId)
+                                <option value="<?php echo $index; ?>" selected><?php echo $provider; ?></option>
+                                @else
+                                <option value="<?php echo $index; ?>"><?php echo $provider; ?></option>
+                                @endif
+                            @endforeach
+                            </select>
+                        @else
+                            <select name="provider" id="provider" class="btn text-center mobile-margin-r-50 h-55 width-80 background-green color-w" style="font-size: larger; text-align:center; text-align-last: center;" data-style="btn-primary">
+                                <option value="0">Select Provider...</option>
+                                <option value="1">Dr.Johns</option>
+                                <option value="2">Dr.Wang</option>
+                                <option value="3">Mr.Smith.CA</option>
+                            </select>
+                        @endif
                     </div>
                     <div class="col-md-4 col-sm-12 text-right mobile-response-center mobile-mt-20">
+                        @if( isset($timeId) && $timeId != 0 )
                         <select name="time" id="time" class="btn text-center h-55 width-80 background-green color-w" style="font-size: larger; text-align:center; text-align-last: center;" data-style="btn-primary">
-                        <option value="0">Select Time...</option>
-                        <option value="1">1:45pm</option>
-                        <option value="2">2:00pm</option>
-                        <option value="3">3:00pm</option>
-                      </select>
+                            @foreach($times as $index => $time)
+                                @if( $index == $timeId )
+                                    <option value="<?php echo $index; ?>" selected><?php echo $time;?></option>
+                                @else
+                                    <option value="<?php echo $index; ?>"><?php echo $time;?></option>
+                                @endif
+                            @endforeach
+                        </select>
+                        @else
+                        <select name="time" id="time" class="btn text-center h-55 width-80 background-green color-w" style="font-size: larger; text-align:center; text-align-last: center;" data-style="btn-primary">
+                            <option value="0">Select Time...</option>
+                            <option value="1">1:45pm</option>
+                            <option value="2">2:00pm</option>
+                            <option value="3">3:00pm</option>
+                        </select>
+                        @endif
+                        
                     </div>
                     <div class="col-md-2 col-sm-12">
                     </div>

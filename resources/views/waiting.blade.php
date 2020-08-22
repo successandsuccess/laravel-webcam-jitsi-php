@@ -75,7 +75,7 @@
                             <div class="col-md-6">
                             </div>
                             <div class="col-md-6 text-right-mobile">
-                                <a href="{{ route('getstarted') }}"><button class="btn btn-primary  h-55 background-green width-80"><b class="font-s-18">Go Back ></b></button></a>
+                                <a href="{{ route('getstarted', ['provider' => $providerId, 'time' => $timeId]) }}"><button class="btn btn-primary  h-55 background-green width-80"><b class="font-s-18">Go Back ></b></button></a>
                             </div>
                         </div>
 

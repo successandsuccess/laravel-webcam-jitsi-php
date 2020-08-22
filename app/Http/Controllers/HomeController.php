@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Uuid;
+use App\User;
+use App\Meetings;
+use Auth;
+use DateTime;
+
 
 class HomeController extends Controller
 {
@@ -27,9 +32,30 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function getstarted()
+    public function getstarted(Request $request)
     {
-        return view('getstarted');
+        $providers = [
+            'Select Provider...',
+            'Dr.Johns',
+            'Dr.Wang',
+            'Mr.Smith.CA'
+        ];
+
+        $times = [
+            'Select Time...',
+            '1:45pm',
+            '2:00pm',
+            '3:00pm',
+        ];
+
+        if ($request->input('provider') && $request->input('provider') != '') {
+            $providerId = $request->input('provider');
+            $timeId = $request->input('time');
+        } else {
+            $providerId = 0;
+            $timeId = 0;
+        }
+        return view('getstarted', compact('providerId', 'timeId', 'providers', 'times'));
     }
 
     public function individual()
@@ -53,24 +79,66 @@ class HomeController extends Controller
         $timeId = $request->input('time');
 
         $providers = [
+            'Select Provider...',
             'Dr.Johns',
             'Dr.Wang',
             'Mr.Smith.CA'
         ];
         $times = [
+            'Select Time...',
             '1:45pm',
             '2:00pm',
             '3:00pm'
         ];
 
-        $provider = $providers[$providerId-1];
-        $time = $times[$timeId-1];
+        // This is for Real Database datetime.
+        $databaseTimes = [
+            'Select Time...',
+            '13:45:00',
+            '14:00:00',
+            '15:00:00',
+        ];
 
-        // make jitsi meet
-        $uuid = Uuid::generate()->string;
-        $jitsimeet = 'https://meet.jit.si/'. $uuid;
+        $provider = $providers[$providerId];
+        $time = $times[$timeId];
+        $databaseTime = $databaseTimes[$timeId]; // This is for Real Database datetime.
 
-        return view('waiting', compact('provider', 'time', 'jitsimeet'));
+        // Get current user
+        $user = Auth::user();
+        // Get Current Date
+        $todayDate = date("Y-m-d");
+        $todayDateTime = $todayDate." ".$databaseTime;
+
+        // Get the meet info if meet already is booked.
+        $prevMeeting = Meetings::where('userId' ,$user->id)
+                                ->where('time', $todayDateTime)
+                                ->where('provider', $provider)
+                                ->first();
+        
+        if( $prevMeeting != null ) //when already existed meeting.
+        {
+            // get already existed jitsi meet
+            $jitsimeet = $prevMeeting->meetUrl;
+        }
+        else // New meeting for new time and new provider
+        {
+
+            // make New jitsi meet
+            $uuid = Uuid::generate()->string;
+            $jitsimeet = 'https://meet.jit.si/'. $uuid;
+            
+            $meeting = new Meetings;
+            $meeting->provider = $provider;
+            $meeting->time = $todayDateTime;
+            $meeting->meetUrl = $jitsimeet;
+            $meeting->userId = $user->id;
+            $meeting->save();
+        }
+
+
+        
+
+        return view('waiting', compact('provider', 'time', 'jitsimeet', 'providerId', 'timeId'));
     }
 
 }
