@@ -53,7 +53,7 @@
                     record: {
                         audio: true,
                         video: true,
-                        maxLength: 10,
+                        maxLength: 2000,
                         debug: true
                     }
                 }
