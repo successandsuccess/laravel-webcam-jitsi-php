@@ -34,6 +34,7 @@ class HomeController extends Controller
 
     public function getstarted(Request $request)
     {
+        // provider list
         $providers = [
             'Select Provider...',
             'Dr.Johns',
@@ -41,6 +42,7 @@ class HomeController extends Controller
             'Mr.Smith.CA'
         ];
 
+         // available time list
         $times = [
             'Select Time...',
             '1:45pm',
@@ -48,6 +50,7 @@ class HomeController extends Controller
             '3:00pm',
         ];
 
+        // check if provider and time info existed
         if ($request->input('provider') && $request->input('provider') != '') {
             $providerId = $request->input('provider');
             $timeId = $request->input('time');
@@ -55,6 +58,7 @@ class HomeController extends Controller
             $providerId = 0;
             $timeId = 0;
         }
+
         return view('getstarted', compact('providerId', 'timeId', 'providers', 'times'));
     }
 
@@ -75,15 +79,18 @@ class HomeController extends Controller
 
     public function waiting(Request $request)
     {
+        // get provider and time param from request
         $providerId = $request->input('provider');
         $timeId = $request->input('time');
 
+        // provider list
         $providers = [
             'Select Provider...',
             'Dr.Johns',
             'Dr.Wang',
             'Mr.Smith.CA'
         ];
+        // available time list
         $times = [
             'Select Time...',
             '1:45pm',
@@ -122,21 +129,31 @@ class HomeController extends Controller
         }
         else // New meeting for new time and new provider
         {
-
             // make New jitsi meet
             $uuid = Uuid::generate()->string;
             $jitsimeet = 'https://meet.jit.si/'. $uuid;
             
+            // save New meet record
             $meeting = new Meetings;
             $meeting->provider = $provider;
             $meeting->time = $todayDateTime;
             $meeting->meetUrl = $jitsimeet;
             $meeting->userId = $user->id;
             $meeting->save();
+
+            // Send Notify email to Provider
+            $details = [
+                'name' => $user->name,
+                'email' => $user->email,
+                'lname' => $user->lname,
+                'phone' => $user->phone,
+                'city' => $user->city,
+                'meetUrl' => $jitsimeet,
+                'time' => $todayDateTime,
+            ];
+
+            \Mail::to('henry@patientconnct.io')->send(new \App\Mail\MeetNotifyMail($details));
         }
-
-
-        
 
         return view('waiting', compact('provider', 'time', 'jitsimeet', 'providerId', 'timeId'));
     }
