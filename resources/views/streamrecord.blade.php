@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Audio/Video Example - Record Plugin for Video.js</title>
+    <title>Live Stream of Self-Exercise Recording page</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link href="{{ asset('video/video-js.min.css') }}" rel="stylesheet">
     <link href="{{ asset('video/videojs.record.css') }}" rel="stylesheet">
@@ -16,6 +17,7 @@
     <script src="{{ asset('video/videojs.record.js') }}"></script>
 
     <script src="{{ asset('video/browser-workarounds.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <style>
         /* change player background color */
@@ -64,10 +66,10 @@
 
             var player = videojs('myVideo', options, function() {
                 // print version information at startup
-                var msg = 'Using video.js ' + videojs.VERSION +
-                    ' with videojs-record ' + videojs.getPluginVersion('record') +
-                    ' and recordrtc ' + RecordRTC.version;
-                videojs.log(msg);
+                // var msg = 'Using video.js ' + videojs.VERSION +
+                //     ' with videojs-record ' + videojs.getPluginVersion('record') +
+                //     ' and recordrtc ' + RecordRTC.version;
+                // videojs.log(msg);
             });
 
             // error handling
@@ -89,11 +91,57 @@
                 // the blob object contains the recorded data that
                 // can be downloaded by the user, stored on server etc.
                 console.log('finished recording: ', player.recordedData);
-                console.log(player.recordedData);
                 downloadButton.href = URL.createObjectURL(player.recordedData);
                 downloadButton.download = "RecordedVideo.webm";
-                window.alert('success in Record');
+                window.alert('Success in Record!');
+
+                // upload recorded data
+                upload(player.recordedData);
             });
+
+            // upload function definition
+            function upload(blob) {
+                // this upload handler is served using webpack-dev-server for
+                // this example, see build-config/fragments/dev.js
+                var serverUrl = '/upload';
+                var formData = new FormData();
+              
+                formData.append('file', blob, blob.name);
+
+                console.log('upload recording ' + blob.name + ' to ' + serverUrl);
+
+                console.log('Form DATA')
+                for (var key of formData.entries()) {
+                        console.log(key[0] + ', ' + key[1]);
+                    }
+                // start upload
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                
+                $.ajax({
+                    url: "{{ url('/upload') }}",
+                    type: 'POST',              
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(result)
+                    {
+                        if( result == 'Success' ) {
+                            console.log('Save Db and Upload to Server has been Succeed!');
+                        }
+                        else {
+                            console.log('Error Occured In upload, Retry or Check Network');
+                        }
+                    },
+                    error: function(data)
+                    {
+                        console.log('error',data);
+                    }
+                });
+            }
         }
         
     </script>

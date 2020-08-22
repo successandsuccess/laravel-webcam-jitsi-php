@@ -24,3 +24,4 @@ Route::get('/demonstrate', 'HomeController@demonstrate')->name('demonstrate');
 Route::get('/recordvideo', 'HomeController@recordvideo')->name('recordvideo');
 Route::get('/waiting', 'HomeController@waiting')->name('waiting');
 Route::get('/streamrecord', 'HomeController@streamrecord')->name('streamrecord');
+Route::post('/upload', 'HomeController@upload')->name('upload');

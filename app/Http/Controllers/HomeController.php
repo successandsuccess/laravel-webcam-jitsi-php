@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Uuid;
 use App\User;
 use App\Meetings;
+use App\VideoUploads;
 use Auth;
 use DateTime;
 
@@ -161,6 +162,27 @@ class HomeController extends Controller
     public function streamrecord()
     {
         return view('streamrecord');
+    }
+
+    public function upload(Request $request)
+    {
+        header('Access-Control-Allow-Origin: *');
+        
+        if ( 0 < $_FILES['file']['error'] ) {
+            echo 'Error: ' . $_FILES['file']['error'] . '<br>';
+        }
+        else {
+            move_uploaded_file($_FILES['file']['tmp_name'], public_path('uploads') . '/' . $_FILES['file']['name']);
+            $target_path = $_SERVER['DOCUMENT_ROOT'] . "/uploads/" . $_FILES['file']['name'];
+    
+            $videoUpload = new VideoUploads;
+            $videoUpload->videoUrl = $target_path;
+            $videoUpload->userId = Auth::user()->id;
+            $videoUpload->save();
+
+            echo 'Success';
+
+        }
     }
 
 }
