@@ -25,17 +25,59 @@
         #myVideo {
             background-color: #9ab87a;
         }
+        .custom {
+            color: black;
+            padding:100px;
+            padding-top: 250px;
+            display: block;
+        }
+        .partial {
+            font-size: 26px;
+            font-weight: 100;
+            padding: 20px;
+            margin: auto;
+        }
+        .container{
+            display: flex;
+            background: green;
+            margin-bottom: 10px;
+        }
+        .video-field{
+            display: block;
+            width: 400px;
+            margin:auto;
+        }
+        .vjs-control-bar { 
+            font-size: 160% !important; 
+        }
+
+        @media only screen and (min-width: 1760px) {
+            .custom {
+                color: black;
+                padding:100px;
+                padding-top: 250px;
+                padding-left: 150px;
+                display: block;
+            }
+        }
     </style>
 </head>
 
 <body>
-
+<div class="container">
     <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
+    <div class="video-field">
+        <iframe width="358" height="167" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="358" height="167" src="https://www.youtube.com/embed/mTFxY_HS8OM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="358" height="167" src="https://www.youtube.com/embed/XLLBYnVtMcE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+    
 
     <a id="downloadButton" class="button">
-        Download
+        <button>Download</button>
     </a>
-    <a href="{{ route('recordvideo') }}">Go Back</a>
+    <a href="{{ route('recordvideo') }}"><button>Go Back</button></a>
 
     <script>
         window.onload = () => {
@@ -71,6 +113,14 @@
                 //     ' and recordrtc ' + RecordRTC.version;
                 // videojs.log(msg);
             });
+
+            // inti screen with custom introductions.
+            $('#myVideo').append(
+                '<div class="custom">' +
+                '<h1 class="partial">1)&nbsp;&nbsp;&nbsp;  Click camera and<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; microphone icon<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to start camera</h1>' +
+                '<h1 class="partial">2)&nbsp;&nbsp;&nbsp;  Make Sure you are<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in view of Camera</h1>' +
+                '<h1 class="partial">3)&nbsp;&nbsp;&nbsp;  Press "record" to<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin recording</h1>' +
+                '</div>');
 
             // error handling
             player.on('deviceError', function() {
