@@ -43,7 +43,7 @@
                     <div class="col-md-2">
                     </div>
                     <div class="col-md-8">
-                        <div class="text-center mt-50">
+                        <div class="text-center mt-10">
                             <p class="mb-0 font-19">Welcome!</p>
                             <p class="font-19">Select which type of session you'd like to do today.</p>
                         </div>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
 
-                <div class="row mt-50">
+                <div class="row margin-t-10">
                     <div class="col-md-2 col-sm-12">
                     </div>
                     <div class="col-md-4 col-sm-12 mobile-response-center">
@@ -124,7 +124,7 @@
 
 
                                 <div class="mt-54">
-                                    <a href="{{ route('individual') }}"><button class="btn btn-primary text-center h-55 background-green width-80"><b class="font-s-18">Self-Directed Visit ></b></button></a>
+                                    <a href="{{ route('individual') }}"><button class="btn btn-primary text-center h-55 background-green w-100"><b class="font-s-18">Start Session</b></button></a>
                                 </div>
                             </div>
                         </div>
@@ -134,18 +134,25 @@
                     </div>
                 </div>
 
-                <!-- <div class="row mt-50">
-                    <div class="col-md-2 col-sm-12">
+                <div class="row mt-50">
+                    <div class="col-md-3 col-sm-12">
                     </div>
-                    <div class="col-md-4 col-sm-12 mobile-response-center">
-                        <button class="btn btn-primary text-center mobile-margin-r-50 h-55 background-green width-80" id="consultation"><b class="font-s-18">Consultation/Visit ></b></button>
+                    <div class="col-md-6 col-sm-12 text-center">
+                        <p class="color-w font-12"> 
+                            We realize that health is a priority to so many right now. We want to ensure our doctors and clinical team are available to help you with accesssing your
+                            chiroprator wherever you're at.
+                            Our expert team is here to help you reduce stress on your body so you can keep your health "in check" and continue to do all the things you do each day!
+                        </p>
+
+                        <p class="color-w font-12">
+                            At Chiro One, our clinical care team remains dedicated to providing exceptional healthcare to our patients. These Telehealth sessions are a great supplement to your 
+                            already existing in-office chiropratic appointments.
+                        </p>
+                       
                     </div>
-                    <div class="col-md-4 col-sm-12 text-right mobile-response-center mobile-mt-20">
-                        <a href="{{ route('individual') }}"><button class="btn btn-primary text-center h-55 background-green width-80"><b class="font-s-18">Self-Directed Visit ></b></button></a>
+                    <div class="col-md-3 col-sm-12">
                     </div>
-                    <div class="col-md-2 col-sm-12">
-                    </div>
-                </div> -->
+                </div>
             </div>
         </section>
         <!-- End Blog Grid-->

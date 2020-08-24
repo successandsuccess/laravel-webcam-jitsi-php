@@ -217,7 +217,13 @@ img.image-w-mobile {
 .custom-card {
     background: none;
     padding: 20px;
-    border: 2px solid rgb(171 209 95)
+    border: 2px solid rgb(171 209 95);
+}
+
+.custom-card-other {
+    background: none;
+    padding: 20px;
+    border: 2px solid rgb(100 122 56);
 }
 
 .mt-54 {
@@ -226,6 +232,18 @@ img.image-w-mobile {
 
 .font-19 {
     font-size: 19px;
+}
+
+.font-12 {
+    font-size: 12px;
+}
+
+.margin-t-10 {
+    margin-top: 10px;
+}
+
+.margin-t-13 {
+    margin-top: 13px;
 }
 
 @media (max-height: 800px) {
