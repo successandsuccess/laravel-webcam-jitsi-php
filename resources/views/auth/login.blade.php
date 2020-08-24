@@ -34,7 +34,7 @@
 
                                     <div class="row">
                                         <div class="col-md-12 mb-20">
-                                            <h1 class="text-center color-b special-font">Welcome!</h1>
+                                            <h1 class="text-center special-font">Welcome!</h1>
                                         </div>
                                         <div class="col-md-6 mb-2 padding-r-5">
                                             <div class="form-group">
