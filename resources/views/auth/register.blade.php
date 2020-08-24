@@ -9,7 +9,7 @@
                     <a class="navbar-brand text-brand" href="{{ route('index') }}"><img src="assets/img/chiroonelogo.svg" alt="logo" id="chiroonelogo"></a>
                 </div>
                 <div class="col-md-8">
-                    <h1 class="color-b text-center special-font">Patient Intake Form</h1>
+                    <h1 class="text-center special-font">Patient Intake Form</h1>
                 </div>
                 <div class="col-md-2 text-center m-auto">
                           <!-- Right Side Of Navbar -->
@@ -60,7 +60,7 @@
 
                                         <!--single form panel-->
                                         <div class="multisteps-form__panel p-4 rounded bg-white js-active" data-animation="scaleIn">
-                                            <div class="multisteps-form__title">
+                                            <div class="multisteps-form__title d-none">
                                                 <input type="radio" id="male" name="gender" value="1" checked>
                                                 <label for="male">Mr.</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <input type="radio" id="female" name="gender" value="0">
@@ -147,7 +147,7 @@
                                                 </div>
 
                                                 <div class="button-row d-flex mt-4">
-                                                    <button class="btn btn-primary ml-auto js-btn-next" type="submit" title="Next">Register</button>
+                                                    <button class="btn btn-primary ml-auto js-btn-next" type="submit" title="Next">Sign Up</button>
                                                 </div>
                                             </div>
                                         </div>

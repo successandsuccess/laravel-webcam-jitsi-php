@@ -9,33 +9,9 @@
                     <a class="navbar-brand text-brand" href="{{ route('index') }}"><img src="assets/img/chiroonelogo.svg" alt="logo" id="chiroonelogo"></a>
                 </div>
                 <div class="col-md-8">
-                    <h1 class="color-b text-center special-font">Login or Register for Telehealth</h1>
+                    <h1 class="text-center special-font">Login or Register for Telehealth</h1>
                 </div>
                 <div class="col-md-2 text-center m-auto">
-                          <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                                <div>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                        @endguest
-                    </ul>
-       
                 </div>
             </div>
 
@@ -84,8 +60,11 @@
                                             
                                             </div>
                                         </div>
+                                        <div class="col-md-12 mb-10">
+                                            <button type="submit" class="btn btn-primary w-100 h-45">Sign In</button>
+                                        </div>
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary w-100 h-45">Sign In Now</button>
+                                            <a href="{{ route('register') }}"><button type="button" class="btn btn-primary w-100 h-45">Sign Up</button></a>
                                         </div>
                                     </div>
                                 </form>

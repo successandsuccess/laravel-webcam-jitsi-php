@@ -202,6 +202,32 @@ img.image-w-mobile {
     margin-top: 50px;
 }
 
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.background-white {
+    background-color: white;
+}
+
+.color-b {
+    color: black;
+}
+
+.custom-card {
+    background: none;
+    padding: 20px;
+    border: 2px solid rgb(171 209 95)
+}
+
+.mt-54 {
+    margin-top: 54px;
+}
+
+.font-19 {
+    font-size: 19px;
+}
+
 @media (max-height: 800px) {
     img.image-w-mobile {
         width: 70%;

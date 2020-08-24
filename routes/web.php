@@ -13,11 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('index');
+// Route::get('/', 'HomeController@index')->name('index');
+Route::get('/', function() {
+    return redirect('/getstarted');
+})->name('index');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function () {
+    return redirect('/getstarted');
+})->name('home');
 Route::get('/getstarted', 'HomeController@getstarted')->name('getstarted');
 Route::get('/individual', 'HomeController@individual')->name('individual');
 Route::get('/demonstrate', 'HomeController@demonstrate')->name('demonstrate');
