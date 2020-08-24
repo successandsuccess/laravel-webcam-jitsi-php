@@ -1,6 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .image-w-mobile{
+        width: 80%;
+    }
+    .mt-50-mobile {
+        margin-top: 50px;
+    }
+    @media (max-height: 800px) {
+        .image-w-mobile {
+            width: 70%;
+        }
+        .mt-50-mobile {
+            margin-top: 10px;
+        }
+    }
+</style>
 <main id="main">
         <!-- ======= Intro Single ======= -->
         <section class="header-section mb-20">
