@@ -36,21 +36,51 @@
             font-weight: 100;
             padding: 20px;
             margin: auto;
+            color: gainsboro;
         }
         .container{
             display: flex;
-            background: green;
+            background: #4e4e4e;
             margin-bottom: 10px;
         }
         .video-field{
             display: block;
-            width: 400px;
+            width: 540px;
             margin:auto;
         }
         .vjs-control-bar { 
             font-size: 160% !important; 
         }
+        .instruction{
+            width:540px;
+            margin: auto;
+        }
+        .c-stream {
+            width: 70%;
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
 
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            vertical-align: middle;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: .25rem;
+        }
+        .mt-50 {
+            margin-top: 50px;
+        }
+        .d-block {
+            display: block;
+        }
+        .text-center {
+            text-align: center;
+        }
         @media only screen and (min-width: 1760px) {
             .custom {
                 color: black;
@@ -65,6 +95,20 @@
 
 <body>
 <div class="container">
+    <div class="instruction">
+            <div class="custom-instruction">
+                <h1 class="partial">1)&nbsp;&nbsp;&nbsp;  Click camera and microphone icon to start camera</h1>
+                <h1 class="partial">2)&nbsp;&nbsp;&nbsp;  Make Sure you are in view of Camera</h1>
+                <h1 class="partial">3)&nbsp;&nbsp;&nbsp;  Press "record" to begin recording</h1>
+                <div class="mt-50 d-block text-center">
+                    <a id="downloadButton" class="button">
+                        <button class="c-stream" style="margin-bottom: 20px;">Download</button>
+                    </a>
+                    <a href="{{ route('recordvideo') }}"><button class="c-stream">Go Back</button></a>
+                </div>
+                
+            </div>
+    </div>
     <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
     <div class="video-field">
         <iframe width="358" height="167" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -73,12 +117,6 @@
     </div>
 </div>
     
-
-    <a id="downloadButton" class="button">
-        <button>Download</button>
-    </a>
-    <a href="{{ route('recordvideo') }}"><button>Go Back</button></a>
-
     <script>
         window.onload = () => {
             var screenWidth = screen.width;
@@ -115,12 +153,12 @@
             });
 
             // inti screen with custom introductions.
-            $('#myVideo').append(
-                '<div class="custom">' +
-                '<h1 class="partial">1)&nbsp;&nbsp;&nbsp;  Click camera and<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; microphone icon<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to start camera</h1>' +
-                '<h1 class="partial">2)&nbsp;&nbsp;&nbsp;  Make Sure you are<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in view of Camera</h1>' +
-                '<h1 class="partial">3)&nbsp;&nbsp;&nbsp;  Press "record" to<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin recording</h1>' +
-                '</div>');
+            // $('#myVideo').append(
+            //     '<div class="custom">' +
+            //     '<h1 class="partial">1)&nbsp;&nbsp;&nbsp;  Click camera and<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; microphone icon<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to start camera</h1>' +
+            //     '<h1 class="partial">2)&nbsp;&nbsp;&nbsp;  Make Sure you are<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in view of Camera</h1>' +
+            //     '<h1 class="partial">3)&nbsp;&nbsp;&nbsp;  Press "record" to<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin recording</h1>' +
+            //     '</div>');
 
             // error handling
             player.on('deviceError', function() {

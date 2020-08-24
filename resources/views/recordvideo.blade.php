@@ -57,14 +57,14 @@
                     </div>
                     <div class="row mt-10">
                         <div class="col-md-6 text-left-mobile mb-20">
-                            <img src="assets/img/shutterstock_1683359032.jpg" alt="agent-1" style="width: 80%;">
+                            <img class="image-w-mobile" src="assets/img/shutterstock_1683359032.jpg" alt="agent-1">
                         </div>
                         <div class="col-md-6 text-right-mobile mb-20">
-                            <img src="assets/img/shutterstock_792864508.jpg" alt="agent-1" style="width: 80%;">
+                            <img  class="image-w-mobile" src="assets/img/shutterstock_792864508.jpg" alt="agent-1">
                         </div>
                     </div>
 
-                    <div class="row mt-50">
+                    <div class="row mt-50-mobile">
                         <div class="col-md-4"></div>
                         <div class="col-md-4 text-center">
                             <a href="{{ route('streamrecord') }}"><button class="btn btn-primary h-55 background-green width-80"><b class="font-s-18">Record Video Session</b></button></a>

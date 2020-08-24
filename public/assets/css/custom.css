@@ -191,6 +191,23 @@ body {
     display: flex;
 }
 
+.image-w-mobile {
+    width: 80%;
+}
+
+.mt-50-mobile {
+    margin-top: 50px;
+}
+
+@media (max-height: 800px) {
+    .image-w-mobile {
+        width: 70%;
+    }
+    .mt-50-mobile {
+        margin-top: 10px;
+    }
+}
+
 @media (max-width: 992px) {
     .mobile-none {
         display: none;
