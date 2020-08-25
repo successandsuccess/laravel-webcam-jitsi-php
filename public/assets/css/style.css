@@ -1053,7 +1053,7 @@ a:hover {
 
 @media (min-width: 768px) {
     .intro .intro-body {
-        padding-left: 2rem;
+        /* padding-left: 0rem; */
     }
 }
 

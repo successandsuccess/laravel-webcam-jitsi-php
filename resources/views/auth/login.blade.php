@@ -27,55 +27,67 @@
                 <div class="container mb-80">
                     <div class="row">
 
-                        <div class="col-md-3"></div>
-                        <div class="col-lg-6 m-auto">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10 m-auto">
                             <div class="intro-body">
-                                <form class="form-a" action="{{ route('login') }}" method="POST">
-                                    @csrf
+                                
 
                                     <div class="row">
                                         <div class="col-md-12 mb-20">
                                             <h1 class="text-center special-font">Welcome!</h1>
                                         </div>
-                                        <div class="col-md-6 mb-2 padding-r-5">
-                                            <div class="form-group">
-                                                <input type="email" id="email" class="form-control form-control-lg form-control-a @error('email') is-invalid @enderror" placeholder="Your email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mb-2 padding-l-5">
-                                            <div class="form-group">
-                                                <input type="password" id="password" class="form-control form-control-lg form-control-a @error('password') is-invalid @enderror" placeholder="Your password" name="password" required autocomplete="current-password">
-                                            
-                                                @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 mb-10">
-                                            <button type="submit" class="btn btn-primary  w-100 h-45">Sign In</button>
-                                        </div>
                                         <div class="col-md-12">
-                                            <a href="{{ route('register') }}"><button type="button" class="btn btn-primary  w-100 h-45">Sign Up</button></a>
+                                            <div class="card">
+                                                <article class="card-body">
+                                                <a href="{{ route('register') }}" class="float-right btn btn-outline-primary">Sign up</a>
+                                                <h4 class="card-title mb-4 mt-1">Sign in</h4>
+                                                <form class="form-a" action="{{ route('login') }}" method="POST">
+                                                @csrf
+                                                    <div class="form-group">
+                                                        <label class="color-b">Your email</label>
+                                                        <input type="email" id="email" class="form-control form-control-lg form-control-a @error('email') is-invalid @enderror" placeholder="Your email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                        @error('email')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                        @enderror
+
+                                                    </div> <!-- form-group// -->
+                                                    <div class="form-group">
+                                                        <label class="color-b">Your password</label>
+                                                        <input type="password" id="password" class="form-control form-control-lg form-control-a @error('password') is-invalid @enderror" placeholder="Your password" name="password" required autocomplete="current-password">
+                                                        @error('password')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div> <!-- form-group// --> 
+                                                    <br>
+                                                    <br>
+                                                    <div class="form-group">
+                                                        <!-- <button type="submit" class="btn btn-primary btn-block"> Sign In </button> -->
+                                                        <button type="submit" class="btn btn-primary  w-100 h-45">Sign In</button>
+                                                    </div> <!-- form-group// -->                     
+                                                    <!-- <div class="form-group">
+                                                            <a href="{{ route('register') }}"><button type="button" class="btn btn-primary btn-block">Sign Up</button></a>
+                                                    </div>                                       -->
+                                                </form>
+                                                </article>
+                                            </div>
                                         </div>
+                                         
+                                     
                                     </div>
-                                </form>
+                               
                             </div>
+
+                           
                         </div>
                         <!-- <div class="col-lg-2 middle-none"></div>
                         <div class="col-lg-4 col-sm-12 m-auto">
                             <img src="assets/img/shutterstock_1683359032.jpg" alt="agent" class="w-450 h-300 mobile-none">
                         </div> -->
-                         <div class="col-md-3"></div>
+                         <div class="col-md-1"></div>
                     </div>
                 </div>
             </div>
