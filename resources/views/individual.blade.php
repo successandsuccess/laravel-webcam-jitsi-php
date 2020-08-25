@@ -95,7 +95,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mb-50">
                          <div class="col-md-4"></div>
                          <div class="col-md-6 text-left">
                                 <a href="{{ route('recordvideo') }}"><button class="btn btn-primary h-55 background-green width-80"><b class="font-s-18">Finished Watching ></b></button></a>
