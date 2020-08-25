@@ -68,11 +68,6 @@ class HomeController extends Controller
         return view('individual');
     }
 
-    public function demonstrate()
-    {
-        return view('demonstrate');
-    }
-
     public function recordvideo()
     {
         return view('recordvideo');

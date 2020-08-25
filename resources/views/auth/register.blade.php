@@ -147,7 +147,7 @@
                                                 </div>
 
                                                 <div class="button-row d-flex mt-4">
-                                                    <button class="btn btn-primary ml-auto js-btn-next" type="submit" title="Next">Sign Up</button>
+                                                    <button class="btn btn-primary ml-auto js-btn-next background-green" style="width: 150px" type="submit" title="Next">Sign Up</button>
                                                 </div>
                                             </div>
                                         </div>

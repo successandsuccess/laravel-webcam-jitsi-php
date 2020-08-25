@@ -61,10 +61,10 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12 mb-10">
-                                            <button type="submit" class="btn btn-primary w-100 h-45">Sign In</button>
+                                            <button type="submit" class="btn btn-primary  w-100 h-45">Sign In</button>
                                         </div>
                                         <div class="col-md-12">
-                                            <a href="{{ route('register') }}"><button type="button" class="btn btn-primary w-100 h-45">Sign Up</button></a>
+                                            <a href="{{ route('register') }}"><button type="button" class="btn btn-primary  w-100 h-45">Sign Up</button></a>
                                         </div>
                                     </div>
                                 </form>

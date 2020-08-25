@@ -57,9 +57,9 @@
         }
         .c-stream {
             width: 70%;
-            color: #fff;
-            background-color: #007bff;
-            border-color: #007bff;
+            /* color: #fff; */
+            /* background-color: #007bff; */
+            /* border-color: #007bff; */
 
             display: inline-block;
             font-weight: 400;
@@ -71,6 +71,10 @@
             font-size: 1rem;
             line-height: 1.5;
             border-radius: .25rem;
+
+            color: #FFF;
+            background: linear-gradient(90deg, #ADD261 0%, #77B336 100%);
+            border: none;
         }
         .mt-50 {
             margin-top: 50px;
@@ -81,6 +85,7 @@
         .text-center {
             text-align: center;
         }
+        
         @media only screen and (min-width: 1760px) {
             .custom {
                 color: black;
@@ -151,14 +156,6 @@
                 //     ' and recordrtc ' + RecordRTC.version;
                 // videojs.log(msg);
             });
-
-            // inti screen with custom introductions.
-            // $('#myVideo').append(
-            //     '<div class="custom">' +
-            //     '<h1 class="partial">1)&nbsp;&nbsp;&nbsp;  Click camera and<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; microphone icon<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; to start camera</h1>' +
-            //     '<h1 class="partial">2)&nbsp;&nbsp;&nbsp;  Make Sure you are<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in view of Camera</h1>' +
-            //     '<h1 class="partial">3)&nbsp;&nbsp;&nbsp;  Press "record" to<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; begin recording</h1>' +
-            //     '</div>');
 
             // error handling
             player.on('deviceError', function() {

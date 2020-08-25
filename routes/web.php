@@ -26,7 +26,6 @@ Route::get('/home', function () {
 })->name('home');
 Route::get('/getstarted', 'HomeController@getstarted')->name('getstarted');
 Route::get('/individual', 'HomeController@individual')->name('individual');
-Route::get('/demonstrate', 'HomeController@demonstrate')->name('demonstrate');
 Route::get('/recordvideo', 'HomeController@recordvideo')->name('recordvideo');
 Route::get('/waiting', 'HomeController@waiting')->name('waiting');
 Route::get('/streamrecord', 'HomeController@streamrecord')->name('streamrecord');
