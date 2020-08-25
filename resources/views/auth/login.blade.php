@@ -24,7 +24,7 @@
         <div class="carousel-item-a intro-item bg-image d-flex">
             <div class="overlay background-g"></div>
             <div class="m-auto">
-                <div class="container">
+                <div class="container mb-80">
                     <div class="row">
 
                         <div class="col-md-3"></div>

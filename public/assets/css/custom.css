@@ -246,6 +246,10 @@ img.image-w-mobile {
     margin-top: 13px;
 }
 
+.mb-80 {
+    margin-bottom: 80px;
+}
+
 @media (max-height: 800px) {
     img.image-w-mobile {
         width: 70%;
