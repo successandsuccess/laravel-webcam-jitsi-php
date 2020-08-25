@@ -27,6 +27,7 @@
                 <div class="container">
                     <div class="row">
 
+                        <div class="col-md-3"></div>
                         <div class="col-lg-6 m-auto">
                             <div class="intro-body">
                                 <form class="form-a" action="{{ route('login') }}" method="POST">
@@ -70,10 +71,11 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-lg-2 middle-none"></div>
+                        <!-- <div class="col-lg-2 middle-none"></div>
                         <div class="col-lg-4 col-sm-12 m-auto">
                             <img src="assets/img/shutterstock_1683359032.jpg" alt="agent" class="w-450 h-300 mobile-none">
-                        </div>
+                        </div> -->
+                         <div class="col-md-3"></div>
                     </div>
                 </div>
             </div>
