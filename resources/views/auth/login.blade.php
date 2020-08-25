@@ -63,10 +63,9 @@
                                                         @enderror
                                                     </div> <!-- form-group// --> 
                                                     <br>
-                                                    <br>
                                                     <div class="form-group">
                                                         <!-- <button type="submit" class="btn btn-primary btn-block"> Sign In </button> -->
-                                                        <button type="submit" class="btn btn-primary  w-100 h-45">Sign In</button>
+                                                        <button type="submit" class="btn btn-primary background-green w-100 h-45">Sign In</button>
                                                     </div> <!-- form-group// -->                     
                                                     <!-- <div class="form-group">
                                                             <a href="{{ route('register') }}"><button type="button" class="btn btn-primary btn-block">Sign Up</button></a>

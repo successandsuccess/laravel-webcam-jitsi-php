@@ -250,6 +250,20 @@ img.image-w-mobile {
     margin-bottom: 80px;
 }
 
+
+/* bootstrap button style overwrite */
+
+.btn-outline-primary {
+    color: #7bb539;
+    border-color: #78b437;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #83ba3f;
+    border-color: #82b93e;
+}
+
 @media (max-height: 800px) {
     img.image-w-mobile {
         width: 70%;
