@@ -181,7 +181,7 @@
                             <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();" style="font-weight: 600; color: gray">
-                                Log Out
+                                {{ __('Logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
