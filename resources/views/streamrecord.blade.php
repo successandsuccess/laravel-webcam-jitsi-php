@@ -210,7 +210,7 @@
                 </p>
                 <div class="mt-50 d-block text-center">
                     <a id="downloadButton" class="button">
-                        <button class="c-stream" style="margin-bottom: 20px; width: 160px; display: none;" id="downloadbtn">Download</button>
+                        <button class="c-stream" style="margin-bottom: 20px; width: 160px; display: none;" id="downloadbtn"><b>DOWNLOAD</b></button>
                     </a>
                 </div>
             </div>
