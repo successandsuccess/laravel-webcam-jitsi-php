@@ -144,6 +144,43 @@
             }
         }
     </style>
+    <style>
+        /* Record Start button customization */
+        .vjs-icon-record-start:before {
+                content: none !important;
+        }
+        .vjs-record-button.vjs-control.vjs-button.vjs-icon-record-start {
+            background: #d40000;
+            width: 100px;
+            height: 40px;
+            margin: 5px;
+        }
+
+        /* unvisible STOP text */
+        .vjs-record-button.vjs-control.vjs-button.vjs-icon-record-start span.c-stop {
+            display: none;
+        }
+        /* unvisible RECORD text */
+        .vjs-record-button.vjs-control.vjs-button.vjs-icon-record-stop span.c-record {
+            display: none;
+        }
+
+        /* Record Stop Button Customization */
+        .vjs-icon-record-stop:before {
+            content: none !important;
+        }
+        .vjs-record-button.vjs-control.vjs-button.vjs-icon-record-stop {
+            background: #d40000;
+            width: 100px;
+            height: 40px;
+            margin: 5px;
+        }
+
+        /* remove the focuse outline in record and stop button */
+        button:focus {
+            outline: 1px !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -226,10 +263,10 @@
     
     <script>
         window.onload = () => {
-            var screenWidth = screen.width;
-            var screenHeight = screen.height;
-            var clientWidth = window.innerWidth;
-            var clientHeight = window.innerHeight;
+            var screenWidth = screen.width; // original pc screen width
+            var screenHeight = screen.height; // original pc screen height
+            var clientWidth = window.innerWidth; // current browser screen width
+            var clientHeight = window.innerHeight; // current browser screen heigth
             console.log(screenWidth, screenHeight, clientWidth, clientHeight);
             // when screen width is < 1560 small pc
             if (clientWidth < 1560) {
@@ -304,6 +341,11 @@
             }
            
 
+
+            
+
+
+
             // error handling
             player.on('deviceError', function() {
                 console.log('device error:', player.deviceErrorCode);
@@ -376,6 +418,19 @@
                     }
                 });
             }
+
+            // custom record button
+            console.log($('.vjs-record.vjs-device-button.vjs-control.vjs-icon-av-perm')[0]);
+            deviceElement = $('.vjs-record.vjs-device-button.vjs-control.vjs-icon-av-perm')[0];
+            deviceElement.addEventListener("click", function(){ 
+                 console.log('Camera Device button clicked.');
+                 console.log($('.vjs-record-button.vjs-control.vjs-button.vjs-icon-record-start')[0]);
+                 // record start button
+                 let recordStartButton = $('.vjs-record-button.vjs-control.vjs-button.vjs-icon-record-start')[0];
+                 recordStartButton.innerHTML = '<span class="c-record"><b>RECORD</b></span><span class="c-stop"><b>STOP</b></span>';
+            });
+
+          
         }
         
     </script>
