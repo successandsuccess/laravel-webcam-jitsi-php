@@ -217,7 +217,7 @@
                         <div class="col-md-4 m-auto"> 
                             <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();" style="font-weight: 600; color: gray">
+                                            document.getElementById('logout-form').submit();" class="head-logout">
                                 {{ __('Logout') }}
                             </a>
 

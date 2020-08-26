@@ -264,6 +264,11 @@ img.image-w-mobile {
     border-color: #82b93e;
 }
 
+.head-logout {
+    font-weight: 600;
+    color: gray;
+}
+
 @media (max-height: 800px) {
     img.image-w-mobile {
         width: 70%;
