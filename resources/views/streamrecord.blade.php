@@ -205,7 +205,7 @@
                 <p class="partial-p">When you're ready, click the record button below and perform your exercises</p>
                 <h1 class="partial">3)&nbsp;&nbsp;Download your session</h1>
                 <p class="partial-p">
-                    Once you are done with your exercises, click the Stop Recording button. Your video will automatically be sent to your doctors! Click download to session_save_path
+                    Once you are done with your exercises, click the Stop Recording button. <b>Your video will automatically be sent to your doctors!</b> Click download to save
                     the video for your own records.
                 </p>
                 <div class="mt-50 d-block text-center">
