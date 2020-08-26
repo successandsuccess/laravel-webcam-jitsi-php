@@ -99,7 +99,7 @@
         }
         .custom-font {
             font-size: 18px;
-            color: #84bb40;
+            color: #70ab27;
         }
         .custom-h1 {
             font-size: 28px;
@@ -113,7 +113,7 @@
             padding-left: 20px;
             padding-right: 20px;
             color: gainsboro;
-            line-height: initial;
+            line-height: 1.32;
         }
         .mb-20-mobile {
             margin-bottom: 20px;
@@ -172,7 +172,7 @@
                     </div> -->
                     <div class="col-md-3 text-center m-auto d-flex">
                         <div class="col-md-8 text-right">
-                            <a href="{{ route('index') }}"><button class="c-stream" style="width: 140px;">Finish</button></a>
+                            <a href="{{ route('index') }}"><button class="c-stream" style="width: 140px;"><b>Finish</b></button></a>
                         </div>
                         <!-- Right Side Of Navbar -->
                             <!-- Authentication Links -->
