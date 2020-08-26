@@ -6,6 +6,15 @@
     <title>Live Stream of Self-Exercise Recording page</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <!-- Vendor CSS Files -->
+    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
+
     <link href="{{ asset('video/video-js.min.css') }}" rel="stylesheet">
     <link href="{{ asset('video/videojs.record.css') }}" rel="stylesheet">
     <link href="{{ asset('video/examples.css') }}" rel="stylesheet">
@@ -32,34 +41,37 @@
             display: block;
         }
         .partial {
-            font-size: 26px;
+            font-size: 19px;
             font-weight: 100;
-            padding: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            padding-bottom: 10px;
             margin: auto;
             color: gainsboro;
         }
-        .container{
+        .custom-container{
             display: flex;
             background: #4e4e4e;
-            margin-bottom: 10px;
+            /* margin-bottom: 10px; */
+            /* min-height: 88.3vh; */
         }
         .video-field{
             display: block;
             width: 540px;
-            margin:auto;
+            /* margin:auto; */
+            padding-top: 20px;
         }
         .vjs-control-bar { 
             font-size: 160% !important; 
         }
         .instruction{
             width:540px;
-            margin: auto;
+            /* margin: auto; */
+            padding-top:20px;
         }
         .c-stream {
             width: 70%;
-            /* color: #fff; */
-            /* background-color: #007bff; */
-            /* border-color: #007bff; */
 
             display: inline-block;
             font-weight: 400;
@@ -85,7 +97,30 @@
         .text-center {
             text-align: center;
         }
-        
+        .custom-font {
+            font-size: 18px;
+            color: #84bb40;
+        }
+        .custom-h1 {
+            font-size: 28px;
+            /* font-weight: 100; */
+            padding: 20px;
+            margin: auto;
+            color: gainsboro;
+            text-align: center;
+        }
+        .partial-p {
+            padding-left: 20px;
+            padding-right: 20px;
+            color: gainsboro;
+            line-height: initial;
+        }
+        .mb-20-mobile {
+            margin-bottom: 20px;
+        }
+        .mt-10-mobile {
+            margin-top: 30px;
+        }
         @media only screen and (min-width: 1760px) {
             .custom {
                 color: black;
@@ -94,29 +129,96 @@
                 padding-left: 150px;
                 display: block;
             }
+            .instruction {
+                padding-right: 20px;
+                padding-left: 20px;
+            }
+        }
+     
+        @media only screen and (max-width: 1560px) {
+            .mb-20-mobile {
+                margin-bottom: 10px;
+            }
+            .mt-10-mobile {
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
 
 <body>
-<div class="container">
+     <!-- ======= Intro Single ======= -->
+     <section class="header-section mb-20-mobile">
+            <div class="margin-l-50 margin-r-50 mt-10-mobile">
+                <div class="row">
+                    <div class="col-md-3 text-center d-flex">
+                        <div class="col-md-8">
+                            <a class="navbar-brand text-brand" href="{{ route('index') }}"><img src="assets/img/chiroonelogo.svg" alt="logo" id="chiroonelogo"></a>
+                        </div>
+                        <div class="col-md-4 m-auto">
+                            <a class="custom-font" href="{{ route('recordvideo') }}">&lt;Back</a>
+                        </div>
+                        
+                        
+                    </div>
+                    <!-- <div class="col-md-2 text-center m-auto">
+                        
+                    </div> -->
+                    <div class="col-md-6">
+                        <h1 class="text-center special-font"></h1>
+                    </div>
+                    <!-- <div class="col-md-1 text-center m-auto">
+                        
+                    </div> -->
+                    <div class="col-md-3 text-center m-auto d-flex">
+                        <div class="col-md-8 text-right">
+                            <a href="{{ route('index') }}"><button class="c-stream" style="width: 140px;">Finish</button></a>
+                        </div>
+                        <!-- Right Side Of Navbar -->
+                            <!-- Authentication Links -->
+                           
+                        <div class="col-md-4 m-auto"> 
+                            <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();" style="font-weight: 600; color: gray">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                   
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- End Intro Single-->
+<div class="custom-container">
     <div class="instruction">
             <div class="custom-instruction">
-                <h1 class="partial">1)&nbsp;&nbsp;&nbsp;  Click camera and microphone icon to start camera</h1>
-                <h1 class="partial">2)&nbsp;&nbsp;&nbsp;  Make Sure you are in view of Camera</h1>
-                <h1 class="partial">3)&nbsp;&nbsp;&nbsp;  Press "record" to begin recording</h1>
+                <h1 class="custom-h1">Instructions</h1>
+                <h1 class="partial">1)&nbsp;&nbsp;Enable Camera Access</h1>
+                <p class="partial-p">Click the camera icon in the center of your screen to turn on your computer's video.</p>
+                <h1 class="partial">2)&nbsp;&nbsp;Record exercise session</h1>
+                <p class="partial-p">When you're ready, click the record button below and perform your exercises</p>
+                <h1 class="partial">3)&nbsp;&nbsp;Download your session</h1>
+                <p class="partial-p">
+                    Once you are done with your exercises, click the Stop Recording button. Your video will automatically be sent to your doctors! Click download to session_save_path
+                    the video for your own records.
+                </p>
                 <div class="mt-50 d-block text-center">
                     <a id="downloadButton" class="button">
-                        <button class="c-stream" style="margin-bottom: 20px;">Download</button>
+                        <button class="c-stream" style="margin-bottom: 20px; width: 160px; display: none;" id="downloadbtn">Download</button>
                     </a>
-                    <a href="{{ route('recordvideo') }}"><button class="c-stream">Go Back</button></a>
                 </div>
-                
             </div>
     </div>
     <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
     <div class="video-field">
-        <iframe width="358" height="167" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h1 class="custom-h1">Exercise Tutorials</h1>
+        <iframe class="margin-t-10" width="358" height="167" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <iframe width="358" height="167" src="https://www.youtube.com/embed/mTFxY_HS8OM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <iframe width="358" height="167" src="https://www.youtube.com/embed/XLLBYnVtMcE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
@@ -129,22 +231,44 @@
             var clientWidth = window.innerWidth;
             var clientHeight = window.innerHeight;
             console.log(screenWidth, screenHeight, clientWidth, clientHeight);
-            let downloadButton = document.getElementById("downloadButton");
-            var options = {
-                controls: true,
-                bigPlayButton: false,
-                width: clientWidth-20,
-                height: clientHeight-50,
-                fluid: false,
-                plugins: {
-                    record: {
-                        audio: true,
-                        video: true,
-                        maxLength: 2000,
-                        debug: true
+            if (clientWidth < 1560) {
+                var options = {
+                    controls: true,
+                    bigPlayButton: false,
+                    width: clientWidth-50,
+                    // height: clientHeight-115.6,
+                    height: clientHeight-83,
+                    fluid: false,
+                    plugins: {
+                        record: {
+                            audio: true,
+                            video: true,
+                            maxLength: 2000,
+                            debug: true
+                        }
                     }
-                }
-            };
+                };
+            }
+            else {
+                var options = {
+                    controls: true,
+                    bigPlayButton: false,
+                    width: clientWidth-50,
+                    height: clientHeight-115.6,
+                    // height: clientHeight-83,
+                    fluid: false,
+                    plugins: {
+                        record: {
+                            audio: true,
+                            video: true,
+                            maxLength: 2000,
+                            debug: true
+                        }
+                    }
+                };
+            }
+            let downloadButton = document.getElementById("downloadButton");
+            
 
             // apply some workarounds for opera browser
             applyVideoWorkaround();
@@ -155,7 +279,28 @@
                 //     ' with videojs-record ' + videojs.getPluginVersion('record') +
                 //     ' and recordrtc ' + RecordRTC.version;
                 // videojs.log(msg);
+                console.log('initiated.');
             });
+
+            // Video body Camera instruction Text here. 
+            $('#myVideo').append('<h3 class="text-center color-w" id="guide">Click Icon Below to <br> Enable Camera</h3>');
+            if (clientHeight > 900) {
+                 $('#guide').css('margin-top', '270px');
+            }
+            else if (clientHeight <= 900 && clientHeight > 800)
+            {
+                $('#guide').css('margin-top', '240px');
+            }
+            else if (clientHeight <= 800 && clientHeight > 730) {
+                $('#guide').css('margin-top', '200px');
+            }
+            else if (clientHeight <= 730 && clientHeight > 690) {
+                $('#guide').css('margin-top', '180px');
+            }
+            else {
+                $('#guide').css('margin-top', '100px');
+            }
+           
 
             // error handling
             player.on('deviceError', function() {
@@ -179,6 +324,8 @@
                 downloadButton.href = URL.createObjectURL(player.recordedData);
                 downloadButton.download = "RecordedVideo.webm";
                 window.alert('Success in Record!');
+
+                $('#downloadbtn').css('display', 'initial');
 
                 // upload recorded data
                 upload(player.recordedData);

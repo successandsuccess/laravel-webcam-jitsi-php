@@ -52,7 +52,8 @@
                                                                     </span>
                                                         @enderror
 
-                                                    </div> <!-- form-group// -->
+                                                    </div>
+
                                                     <div class="form-group">
                                                         <label class="color-b">Your password</label>
                                                         <input type="password" id="password" class="form-control form-control-lg form-control-a @error('password') is-invalid @enderror" placeholder="Your password" name="password" required autocomplete="current-password">
@@ -61,15 +62,13 @@
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
                                                         @enderror
-                                                    </div> <!-- form-group// --> 
+                                                    </div> 
+
                                                     <br>
+
                                                     <div class="form-group">
-                                                        <!-- <button type="submit" class="btn btn-primary btn-block"> Sign In </button> -->
                                                         <button type="submit" class="btn btn-primary background-green w-100 h-45">Sign In</button>
-                                                    </div> <!-- form-group// -->                     
-                                                    <!-- <div class="form-group">
-                                                            <a href="{{ route('register') }}"><button type="button" class="btn btn-primary btn-block">Sign Up</button></a>
-                                                    </div>                                       -->
+                                                    </div>      
                                                 </form>
                                                 </article>
                                             </div>
@@ -82,10 +81,6 @@
 
                            
                         </div>
-                        <!-- <div class="col-lg-2 middle-none"></div>
-                        <div class="col-lg-4 col-sm-12 m-auto">
-                            <img src="assets/img/shutterstock_1683359032.jpg" alt="agent" class="w-450 h-300 mobile-none">
-                        </div> -->
                          <div class="col-md-1"></div>
                     </div>
                 </div>
