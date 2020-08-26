@@ -154,6 +154,7 @@
             width: 100px;
             height: 40px;
             margin: 5px;
+            border-radius: .25rem;
         }
         .c-record {
             font-family: sans-serif !important;
@@ -180,6 +181,7 @@
             width: 100px;
             height: 40px;
             margin: 5px;
+            border-radius: .25rem;
         }
 
         /* remove the focuse outline in record and stop button */
