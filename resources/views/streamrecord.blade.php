@@ -188,6 +188,11 @@
         button:focus {
             outline: 1px !important;
         }
+
+        /* control bar */
+        .video-js .vjs-control-bar {
+            background: rgba(43,51,63) !important;
+        }
     </style>
 </head>
 
