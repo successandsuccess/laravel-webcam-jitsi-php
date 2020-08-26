@@ -63,7 +63,7 @@
             padding-top: 20px;
         }
         .vjs-control-bar { 
-            font-size: 160% !important; 
+            font-size: 173% !important; 
         }
         .instruction{
             width:540px;
@@ -154,6 +154,12 @@
             width: 100px;
             height: 40px;
             margin: 5px;
+        }
+        .c-record {
+            font-family: sans-serif !important;
+        }
+        .c-stop {
+            font-family: sans-serif !important;
         }
 
         /* unvisible STOP text */
