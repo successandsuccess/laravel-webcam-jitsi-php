@@ -181,7 +181,7 @@
                             <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();" style="font-weight: 600; color: gray">
-                                {{ __('Logout') }}
+                                Log Out
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -231,6 +231,7 @@
             var clientWidth = window.innerWidth;
             var clientHeight = window.innerHeight;
             console.log(screenWidth, screenHeight, clientWidth, clientHeight);
+            // when screen width is < 1560 small pc
             if (clientWidth < 1560) {
                 var options = {
                     controls: true,
@@ -249,7 +250,8 @@
                     }
                 };
             }
-            else {
+            else // when screen width is > 1560px big pc 
+            {
                 var options = {
                     controls: true,
                     bigPlayButton: false,
@@ -282,7 +284,7 @@
                 console.log('initiated.');
             });
 
-            // Video body Camera instruction Text here. 
+            // Video body Camera instruction Text here forcely using JavaScript
             $('#myVideo').append('<h3 class="text-center color-w" id="guide">Click Icon Below to <br> Enable Camera</h3>');
             if (clientHeight > 900) {
                  $('#guide').css('margin-top', '270px');
