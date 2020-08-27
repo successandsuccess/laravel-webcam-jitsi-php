@@ -10,7 +10,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Favicons -->
-    <link rel="icon" href="https://www.chiroone.com/wp-content/uploads/2020/03/cropped-chiro-one-favicon-32x32.png" sizes="32x32">
+    <!-- <link rel="icon" href="https://www.chiroone.com/wp-content/uploads/2020/03/cropped-chiro-one-favicon-32x32.png" sizes="32x32"> -->
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="32x32">
     <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Scripts -->

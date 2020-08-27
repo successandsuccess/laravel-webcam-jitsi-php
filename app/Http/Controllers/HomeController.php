@@ -127,7 +127,7 @@ class HomeController extends Controller
         {
             // make New jitsi meet
             $uuid = Uuid::generate()->string;
-            $jitsimeet = 'https://meet.jit.si/'. $uuid;
+            $jitsimeet = 'https://video.patientconnect.io/'. $uuid;
             
             // save New meet record
             $meeting = new Meetings;
