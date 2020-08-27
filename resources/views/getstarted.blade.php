@@ -37,7 +37,7 @@
         <!-- End Intro Single-->
 
         <!-- =======  Blog Grid ======= -->
-        <section class="news-grid grid background-g h-80vh">
+        <section class="news-grid grid background-g">
             <div class="container pt-20">
                 <div class="row color-w">
                     <div class="col-md-2">
