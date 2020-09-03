@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('/screenshotupload', 'ScreenshotController@upload')->name('screenshotupload');
+Route::get('/imageeditor', 'ScreenshotController@index')->name('imageeditor');
 
 // Route::get('/', 'HomeController@index')->name('index');
 Route::get('/', function() {

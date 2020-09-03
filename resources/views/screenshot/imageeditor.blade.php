@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Image Editor</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ asset('assets/screenshot/style.css') }}">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="action.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/screenshot/action.js') }}"></script>
     <style>
         .main {
             margin: 0 auto;
