@@ -21,8 +21,8 @@ class ScreenshotController extends Controller
         $uuid = $request->input('uuid');
 
         $folderPath = public_path('uploads');
-        
-        dd($img);
+
+        // dd($img);
         $image_parts = explode(";base64,", $img);
         $image_type_aux = explode("image/", $image_parts[0]);
         dd($image_type_aux);
