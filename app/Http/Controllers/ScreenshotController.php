@@ -17,8 +17,13 @@ class ScreenshotController extends Controller
         // dd($request->input('uuid'));
         // $decodedImage = base64_decode($request->input('image'));
         $img = $request->input('image');
-
         $uuid = $request->input('uuid');
+        print_r($img);
+        print_r('<br>'.$uuid);
+        print_r(222);
+        exit;
+
+        
 
         $folderPath = public_path('uploads');
 
