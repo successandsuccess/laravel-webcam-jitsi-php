@@ -35,7 +35,7 @@ class ScreenshotController extends Controller
         $image_base64 = base64_decode($image_parts[1]);
         $file = $folderPath. '/' . $uuid . '.'.$image_type;
 
-        dd($file);
+        // dd($file);
 
         file_put_contents($file, $image_base64);
 
