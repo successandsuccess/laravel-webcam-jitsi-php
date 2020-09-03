@@ -7,9 +7,16 @@ use App\Screenshot;
 
 class ScreenshotController extends Controller
 {
-    public function index() 
+    public function index(Request $request) 
     {
-        return view('screenshot.imageeditor');
+        $uuid = $request->screenshotid;
+        $screenshot = Screenshot::where('uuid', $uuid)->first();
+        if ($screenshot != null) {
+            $imageUrl = $screenshot->url;
+        } else {
+            $imageUrl = '';
+        }
+        return view('screenshot.imageeditor', compact('imageUrl'));
     }
 
     public function upload(Request $request) 
