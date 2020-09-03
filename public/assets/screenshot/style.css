@@ -297,5 +297,7 @@
 }
 
 .btn-zoom {
-    border-radius: 1px;
+    background: linear-gradient(90deg, #add261 0, #77b336 100%);
+    border-radius: 4px;
+    height: 27px;
 }
