@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Uuid;
+use App\VideoUploads;
+use Auth;
 
 class ScreenshotController extends Controller
 {
