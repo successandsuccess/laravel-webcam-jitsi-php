@@ -12,7 +12,7 @@ class ScreenshotController extends Controller
         $uuid = $request->screenshotid;
         $screenshot = Screenshot::where('uuid', $uuid)->first();
         if ($screenshot != null) {
-            $imageUrl = $screenshot->url;
+            $imageUrl = substr($screenshot->url, 20);
         } else {
             $imageUrl = '';
         }
