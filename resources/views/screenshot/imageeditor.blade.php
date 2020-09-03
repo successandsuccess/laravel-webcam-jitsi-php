@@ -71,11 +71,11 @@
                     return parseInt(str.substring(0, (result != -1) ? result : str.length))
                 }
                 var method = {
-                    penColor: "#FF0000",
+                    penColor: "#000000",
                     penSize: 3,
                     erasePenSize: 5,
                     erasePenColor: "",
-                    savedPenColor: "#FF0000",
+                    savedPenColor: "#000000",
                     savedPenSize: 3,
                     selectedShapeType: "pen",
                     /* pen,line,triangle,rect,circle,text */
