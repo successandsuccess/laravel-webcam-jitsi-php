@@ -16,9 +16,11 @@ class ScreenshotController extends Controller
     {
         // dd($request->input('uuid'));
         // $decodedImage = base64_decode($request->input('image'));
+        $data = $request->input('data');
         $img = $request->input('image');
         $uuid = $request->input('uuid');
-        print_r($img);
+        print_r($data);
+        print_r('<br>'.$img);
         print_r('<br>'.$uuid);
         print_r(222);
         exit;
