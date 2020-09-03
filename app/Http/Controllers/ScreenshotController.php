@@ -13,6 +13,6 @@ class ScreenshotController extends Controller
 
     public function upload(Request $request) 
     {
-        dd(1);
+        dd($request->uuid);
     }
 }
