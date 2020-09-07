@@ -26,8 +26,10 @@
     <script src="{{ asset('video/videojs.record.js') }}"></script>
 
     <script src="{{ asset('video/browser-workarounds.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
+    
     <style>
         /* change player background color */
         
@@ -194,6 +196,15 @@
             background: rgba(43,51,63) !important;
         }
     </style>
+
+    <!-- Multi-Step-Modal-CSS -->
+    <style>
+        .m-progress-bar {
+            min-height: 1em;
+            background: #28a745;
+            width: 5%;
+        }
+    </style>
 </head>
 
 <body>
@@ -211,15 +222,11 @@
                         
                         
                     </div>
-                    <!-- <div class="col-md-2 text-center m-auto">
-                        
-                    </div> -->
+              
                     <div class="col-md-6">
                         <h1 class="text-center special-font"></h1>
                     </div>
-                    <!-- <div class="col-md-1 text-center m-auto">
-                        
-                    </div> -->
+               
                     <div class="col-md-3 text-center m-auto d-flex">
                         <div class="col-md-8 text-right">
                             <a href="{{ route('index') }}"><button class="c-stream" style="width: 140px;"><b>Finish</b></button></a>
@@ -274,6 +281,295 @@
     </div>
 </div>
     
+
+    
+    <!-- Multi Step Modal -->
+    <form class="modal multi-step" id="reviewmodal">
+        <div class="modal-dialog">
+            <div class="modal-content h-100">
+                <div class="modal-body step-1" data-step="1">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Assesment</h5>
+                                    <p class="card-text">This form will be used to collect information about your Telehealth Video Session. This is an opportunity to provide feedback regarding your experience with the session, as well as confirming that you have completed
+                                        the exercises and the video recording as outlined in your individual care plan.
+                                    </p>
+                                    <a href="#" style="color: red;">* Required</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Email address <span style="color: red;">*</span></h5>
+
+                                    <input id="email" type="email" name="email" placeholder="Your eamil" style="outline: none; border: none; border-bottom: 1px solid gray;">
+                                    <p style="color:red; display: none;" id="email-validator">This field is required</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Name <span style="color: red;">*</span></h5>
+
+                                    <input id="name" type="text" name="name" placeholder="Your answer" style="outline: none; border: none; border-bottom: 1px solid gray;">
+                                    <p style="color:red; display: none;" id="name-validator">This field is required</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body step-2" data-step="2">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Assesment</h5>
+                                    <a href="#" style="color: red;">* Required</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Video Telehealth Session</h5>
+
+                                    <p>This form will collect information about your Video Telehealth Session, Please complete each question and type your name at the bottom to confirm completion.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Were you able to complete all of the exercises in your individualized care plan? <span style="color:red">*</span>
+                                    </h5>
+                                    <input type="radio" id="male" name="completable" value="1" checked onclick="radioSelect(1)">
+                                    <label for="male">Yes</label><br>
+                                    <input type="radio" id="female" onclick="radioSelect(1)" value="0" name="completable">
+                                    <label for="female">No</label><br>
+                                    <input type="radio" id="female" name="completable" value="2" onclick="radioSelect(2)">
+                                    <label for="female">Other</label> &nbsp;
+                                    <input class="w-80" id="other" type="text" name="completable_other" style="display:none; outline: none; border: none; border-bottom: 1px solid gray;">
+                                    <p style="color:red; display: none;" id="other-validator">This field is required</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">If you checked "No" or "Other" above, please discribe any difficulty you had with each exercise in the space below:
+                                    </h5>
+
+                                    <input class="w-100" id="difficult_answer" type="text" name="difficult_answer" placeholder="Your answer" style="outline: none; border: none; border-bottom: 1px solid gray;">
+                                    <p style="color:red; display: none;" id="difficult_answer-validator">This field is required</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">On a scale of 1 to 5, with 5 being "very difficult", how would you rate &lt;Exercise 1&gt;? <span style="color: red;">*</span>
+                                    </h5>
+
+                                    <div class="col-md-12 d-flex">
+                                        <div class="col-md-3 left-end">
+                                            <p>Very Easy</p>
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="male">1</label>
+                                            <input type="radio" id="male" name="qeeue" value="1" checked>
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="female">2</label>
+                                            <input type="radio" id="female" name="qeeue" value="2">
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="female">3</label>
+                                            <input type="radio" id="female" name="qeeue" value="3">
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="female">4</label>
+                                            <input type="radio" id="female" name="qeeue" value="4">
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="female">5</label>
+                                            <input type="radio" id="female" name="qeeue" value="5">
+                                        </div>
+
+
+                                        <div class="col-md-4 right-end">
+                                            <p>Very Difficult</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">On a scale of 1 to 5, with 5 being "very difficult", how would you rate &lt;Exercise 2&gt;? <span style="color: red;">*</span>
+                                    </h5>
+
+                                    <div class="col-md-12 d-flex">
+                                        <div class="col-md-3 left-end">
+                                            <p>Very Easy</p>
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="male">1</label>
+                                            <input type="radio" id="male" name="qeeueb" value="1" checked>
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="female">2</label>
+                                            <input type="radio" id="female" name="qeeueb" value="2">
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="female">3</label>
+                                            <input type="radio" id="female" name="qeeueb" value="3">
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="female">4</label>
+                                            <input type="radio" id="female" name="qeeueb" value="4">
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="female">5</label>
+                                            <input type="radio" id="female" name="qeeueb" value="5">
+                                        </div>
+
+
+                                        <div class="col-md-4 right-end">
+                                            <p>Very Difficult</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">On a scale of 1 to 5, with 5 being "very difficult", how would you rate &lt;Exercise 3&gt;? <span style="color: red;">*</span>
+                                    </h5>
+
+                                    <div class="col-md-12 d-flex">
+                                        <div class="col-md-3 left-end">
+                                            <p>Very Easy</p>
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="male">1</label>
+                                            <input type="radio" id="male" name="qeeuec" value="1" checked>
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="female">2</label>
+                                            <input type="radio" id="female" name="qeeuec" value="2">
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="female">3</label>
+                                            <input type="radio" id="female" name="qeeuec" value="3">
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="female">4</label>
+                                            <input type="radio" id="female" name="qeeuec" value="4">
+                                        </div>
+                                        <div class="col-md-1 d-grid">
+                                            <label for="female">5</label>
+                                            <input type="radio" id="female" name="qeeuec" value="5">
+                                        </div>
+
+
+                                        <div class="col-md-4 right-end">
+                                            <p>Very Difficult</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Please type your full name below as acknowledgement that you have completed the exercises in your individual care plan
+                                        <span style="color: red;">*</span></h5>
+
+                                    <input class="w-80" id="exerciseAnswer" type="text" name="exerciser" placeholder="Your answer" style="outline: none; border: none; border-bottom: 1px solid gray;" >
+                                    <p style="color:red; display: none;" id="exerciseAnswer-validator">This field is required</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin: 20px;">
+                    <p>A copy of your responses will be emailed to the address you provided.</p>
+                </div>
+
+                <div class="row d-flex">
+                    <div class="col-md-12 text-center">
+
+                        <div class="m-progress m-auto w-50">
+                            <div class="m-progress-bar-wrapper">
+                                <div class="m-progress-bar">
+                                </div>
+                            </div>
+                            <div class="m-progress-stats">
+                                page
+                                <span class="m-progress-current">
+                                </span> /
+                                <span class="m-progress-total">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="justify-content: initial; border: none;">
+                    <button type="button" class="btn btn-default step step-2 modal-button shadow bg-white rounded" style="width: 100px;" data-step="2" onclick="sendEvent('#reviewmodal', 1)">Back</button>
+
+                    <div class="text-left">
+                        <button type="button" class="btn btn-default step step-1 modal-button shadow bg-white rounded" style="width: 100px;" data-step="1" onclick="sendEvent('#reviewmodal', 2)">Next</button>
+                    </div>
+
+                    <button type="button" class="btn btn-success step step-2 modal-button shadow" style="width: 100px;" onclick="sendSubmit()" data-step="2">Submit</button>
+                </div>
+                <div style="margin: 20px;">
+                    <p>Never submit passwords through Google Forms</p>
+                    <div class="row custom-footer">
+                        <div class="col-md-3"><b>Google</b>Forms</div>
+                        <div class="col-md-9">This form was created inside of Hayter.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- Mutli Step Modal End -->
+
     <script>
         window.onload = () => {
             var screenWidth = screen.width; // original pc screen width
@@ -383,6 +679,9 @@
                 window.alert('Success in Record!');
 
                 $('#downloadbtn').css('display', 'initial');
+                $('#reviewmodal').modal({
+                    backdrop: 'static'
+                });
 
                 // upload recorded data
                 upload(player.recordedData);
@@ -399,7 +698,6 @@
 
                 console.log('upload recording ' + blob.name + ' to ' + serverUrl);
 
-                console.log('Form DATA')
                 for (var key of formData.entries()) {
                         console.log(key[0] + ', ' + key[1]);
                     }
@@ -433,11 +731,9 @@
             }
 
             // custom record button
-            console.log($('.vjs-record.vjs-device-button.vjs-control.vjs-icon-av-perm')[0]);
             deviceElement = $('.vjs-record.vjs-device-button.vjs-control.vjs-icon-av-perm')[0];
             deviceElement.addEventListener("click", function(){ 
                  console.log('Camera Device button clicked.');
-                 console.log($('.vjs-record-button.vjs-control.vjs-button.vjs-icon-record-start')[0]);
                  // record start button
                  let recordStartButton = $('.vjs-record-button.vjs-control.vjs-button.vjs-icon-record-start')[0];
                  recordStartButton.innerHTML = '<span class="c-record"><b>RECORD</b></span><span class="c-stop"><b>STOP</b></span>';
@@ -447,6 +743,83 @@
         }
         
     </script>
+
+    <!-- Multi-Step-Modal JS -->
+    <script src="{{ asset('assets/js/multi-step-modal.js') }}"></script>
+    <script>
+        sendEvent = function(sel, step) {
+            var sel_event = new CustomEvent('next.m.' + step, {
+                detail: {
+                    step: step
+                }
+            });
+            window.dispatchEvent(sel_event);
+        }
+
+        function radioSelect(param) {
+            console.log(param);
+            if (param == 2) {
+                $('#other').css('display', 'initial');
+                $('#other-validator').css('display', 'initial')
+            } else {
+                $('#other').css('display', 'none');
+                $('#other-validator').css('display', 'none')
+            }
+        }
+
+        function sendSubmit() {
+
+            if ( $('#difficult_answer').val() == '' || $('#exerciseAnswer').val() == '' ) {
+                if ( $('#difficult_answer').val() == '' ) {
+                    $('#difficult_answer-validator').css('display', 'initial');
+                } else if ( $('#exerciseAnswer').val() == '' ) {
+                    $('#exerciseAnswer-validator').css('display', 'initial');
+                } else {
+                    $('#difficult_answer-validator').css('display', 'initial');
+                    $('#exerciseAnswer-validator').css('display', 'initial');
+                }
+            }
+            else {
+                $('#difficult_answer-validator').css('display', 'none');
+                $('#exerciseAnswer-validator').css('display', 'none');
+
+                let reviewData = $('#reviewmodal').serialize();
+
+                // start upload
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                
+                $.ajax({
+                    url: "{{ url('/streamrecord') }}",
+                    type: 'POST',              
+                    data: reviewData,
+                    success: function(result)
+                    {
+                        if( result == 'Success' ) {
+                            $('#reviewmodal').modal('hide');
+                        }
+                        else {
+                            console.log('Error Occured In upload, Retry or Check Network');
+                            window.alert('Review Submit went wrong. Check network and retry.')
+                        }
+                    },
+                    error: function(data)
+                    {
+                        console.log('error',data);
+                        window.alert('Review Submit went wrong. Check network and retry.');
+                    }
+                });
+
+            }
+            
+            
+
+        }
+    </script>
+
 
 </body>
 

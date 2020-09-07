@@ -63,15 +63,15 @@
                 var name = $('#name').val()
                 if (email == '' && name == '') {
                     console.log('email and name is required')
-                    $('#email-validator').css('display', 'block')
-                    $('#name-validator').css('display', 'block')
+                    $('#email-validator').css('display', 'block');
+                    $('#name-validator').css('display', 'block');
                 } else if (email == '') {
-                    $('#email-validator').css('display', 'block')
+                    $('#email-validator').css('display', 'block');
                 } else if (name == '') {
-                    $('#name-validator').css('display', 'block')
+                    $('#name-validator').css('display', 'block');
                 } else {
-                    $('#email-validator').css('display', 'none')
-                    $('#name-validator').css('display', 'none')
+                    $('#email-validator').css('display', 'none');
+                    $('#name-validator').css('display', 'none');
                     reset();
                     var to_show = $modal.find('.step-' + step);
                     if (to_show.length === 0) {
