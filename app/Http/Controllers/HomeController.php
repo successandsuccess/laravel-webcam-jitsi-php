@@ -7,6 +7,7 @@ use Uuid;
 use App\User;
 use App\Meetings;
 use App\VideoUploads;
+use App\Reviews;
 use Auth;
 use DateTime;
 
@@ -157,6 +158,24 @@ class HomeController extends Controller
     public function streamrecord()
     {
         return view('streamrecord');
+    }
+
+    public function streamrecordreviewsubmit(Request $request)
+    {
+        $reviewData = $request->all();
+        $review = new Reviews;
+        $review->email =  $reviewData['email'];
+        $review->name = $reviewData['name'];
+        $review->completable = $reviewData['completable'];
+        $review->completable_other = $reviewData['completable_other'];
+        $review->difficult_answer = $reviewData['difficult_answer'];
+        $review->qeeue = $reviewData['qeeue'];
+        $review->qeeueb = $reviewData['qeeueb'];
+        $review->qeeuec = $reviewData['qeeuec'];
+        $review->exerciser = $reviewData['exerciser'];
+        $review->save();
+
+        return 'Success';
     }
 
     public function upload(Request $request)

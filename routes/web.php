@@ -31,4 +31,5 @@ Route::get('/individual', 'HomeController@individual')->name('individual');
 Route::get('/recordvideo', 'HomeController@recordvideo')->name('recordvideo');
 Route::get('/waiting', 'HomeController@waiting')->name('waiting');
 Route::get('/streamrecord', 'HomeController@streamrecord')->name('streamrecord');
+Route::post('/streamrecord', 'HomeController@streamrecordreviewsubmit')->name('reviewsubmit');
 Route::post('/upload', 'HomeController@upload')->name('upload');
