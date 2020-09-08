@@ -786,6 +786,8 @@
                 $('#difficult_answer-validator').css('display', 'none');
                 $('#exerciseAnswer-validator').css('display', 'none');
 
+                $('#reviewmodal').modal('hide');
+
                 let reviewData = $('#reviewmodal').serialize();
 
                 // start upload
@@ -802,11 +804,12 @@
                     success: function(result)
                     {
                         if( result == 'Success' ) {
-                            $('#reviewmodal').modal('hide');
+                            
+                            window.alert('Thank your for completing the assessment.  You may now download your copy of the recording, or click Finish to return to the home page.');
                         }
                         else {
                             console.log('Error Occured In upload, Retry or Check Network');
-                            window.alert('Review Submit went wrong. Check network and retry.')
+                            window.alert('Review Submit went wrong. Check network and retry.');
                         }
                     },
                     error: function(data)
