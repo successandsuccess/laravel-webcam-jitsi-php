@@ -308,7 +308,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Email address <span style="color: red;">*</span></h5>
 
-                                    <input id="email" type="email" name="email" placeholder="Your eamil" style="outline: none; border: none; border-bottom: 1px solid gray;">
+                                    <input id="email" type="email" name="email" placeholder="Your email" style="outline: none; border: none; border-bottom: 1px solid gray;">
                                     <p style="color:red; display: none;" id="email-validator">This field is required</p>
                                 </div>
                             </div>
