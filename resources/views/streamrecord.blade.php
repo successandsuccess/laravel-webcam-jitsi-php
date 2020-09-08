@@ -293,7 +293,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Assesment</h5>
-                                    <p class="card-text">This form will be used to collect information about your Telehealth Video Session. This is an opportunity to provide feedback regarding your experience with the session, as well as confirming that you have completed
+                                    <p class="card-text" style="color:black;">This form will be used to collect information about your Telehealth Video Session. This is an opportunity to provide feedback regarding your experience with the session, as well as confirming that you have completed
                                         the exercises and the video recording as outlined in your individual care plan.
                                     </p>
                                     <a href="#" style="color: red;">* Required</a>
@@ -347,7 +347,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Video Telehealth Session</h5>
 
-                                    <p>This form will collect information about your Video Telehealth Session, Please complete each question and type your name at the bottom to confirm completion.
+                                    <p style="color:black;">This form will collect information about your Video Telehealth Session, Please complete each question and type your name at the bottom to confirm completion.
                                     </p>
                                 </div>
                             </div>
@@ -361,11 +361,11 @@
                                     <h5 class="card-title">Were you able to complete all of the exercises in your individualized care plan? <span style="color:red">*</span>
                                     </h5>
                                     <input type="radio" id="male" name="completable" value="1" checked onclick="radioSelect(1)">
-                                    <label for="male">Yes</label><br>
+                                    <label for="male" style="color:black;">Yes</label><br>
                                     <input type="radio" id="female" onclick="radioSelect(1)" value="0" name="completable">
-                                    <label for="female">No</label><br>
+                                    <label for="female" style="color:black;">No</label><br>
                                     <input type="radio" id="female" name="completable" value="2" onclick="radioSelect(2)">
-                                    <label for="female">Other</label> &nbsp;
+                                    <label for="female" style="color:black;">Other</label> &nbsp;
                                     <input class="w-80" id="other" type="text" name="completable_other" style="display:none; outline: none; border: none; border-bottom: 1px solid gray;">
                                     <p style="color:red; display: none;" id="other-validator">This field is required</p>
                                 </div>
@@ -396,32 +396,32 @@
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-3 left-end">
-                                            <p>Very Easy</p>
+                                            <p style="color:black;">Very Easy</p>
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="male">1</label>
+                                            <label for="male" style="color:black;">1</label>
                                             <input type="radio" id="male" name="qeeue" value="1" checked>
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="female">2</label>
+                                            <label for="female" style="color:black;">2</label>
                                             <input type="radio" id="female" name="qeeue" value="2">
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="female">3</label>
+                                            <label for="female" style="color:black;">3</label>
                                             <input type="radio" id="female" name="qeeue" value="3">
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="female">4</label>
+                                            <label for="female" style="color:black;">4</label>
                                             <input type="radio" id="female" name="qeeue" value="4">
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="female">5</label>
+                                            <label for="female" style="color:black;">5</label>
                                             <input type="radio" id="female" name="qeeue" value="5">
                                         </div>
 
 
                                         <div class="col-md-4 right-end">
-                                            <p>Very Difficult</p>
+                                            <p style="color:black;">Very Difficult</p>
                                         </div>
                                     </div>
                                 </div>
@@ -438,32 +438,32 @@
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-3 left-end">
-                                            <p>Very Easy</p>
+                                            <p style="color:black;">Very Easy</p>
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="male">1</label>
+                                            <label for="male" style="color:black;">1</label>
                                             <input type="radio" id="male" name="qeeueb" value="1" checked>
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="female">2</label>
+                                            <label for="female" style="color:black;">2</label>
                                             <input type="radio" id="female" name="qeeueb" value="2">
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="female">3</label>
+                                            <label for="female" style="color:black;">3</label>
                                             <input type="radio" id="female" name="qeeueb" value="3">
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="female">4</label>
+                                            <label for="female" style="color:black;">4</label>
                                             <input type="radio" id="female" name="qeeueb" value="4">
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="female">5</label>
+                                            <label for="female" style="color:black;">5</label>
                                             <input type="radio" id="female" name="qeeueb" value="5">
                                         </div>
 
 
                                         <div class="col-md-4 right-end">
-                                            <p>Very Difficult</p>
+                                            <p style="color:black;">Very Difficult</p>
                                         </div>
                                     </div>
                                 </div>
@@ -480,32 +480,32 @@
 
                                     <div class="col-md-12 d-flex">
                                         <div class="col-md-3 left-end">
-                                            <p>Very Easy</p>
+                                            <p style="color:black;">Very Easy</p>
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="male">1</label>
+                                            <label for="male" style="color:black;">1</label>
                                             <input type="radio" id="male" name="qeeuec" value="1" checked>
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="female">2</label>
+                                            <label for="female" style="color:black;">2</label>
                                             <input type="radio" id="female" name="qeeuec" value="2">
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="female">3</label>
+                                            <label for="female" style="color:black;">3</label>
                                             <input type="radio" id="female" name="qeeuec" value="3">
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="female">4</label>
+                                            <label for="female" style="color:black;">4</label>
                                             <input type="radio" id="female" name="qeeuec" value="4">
                                         </div>
                                         <div class="col-md-1 d-grid">
-                                            <label for="female">5</label>
+                                            <label for="female" style="color:black;">5</label>
                                             <input type="radio" id="female" name="qeeuec" value="5">
                                         </div>
 
 
                                         <div class="col-md-4 right-end">
-                                            <p>Very Difficult</p>
+                                            <p style="color:black;">Very Difficult</p>
                                         </div>
                                     </div>
                                 </div>
@@ -528,7 +528,7 @@
                     </div>
                 </div>
                 <div style="margin: 20px;">
-                    <p>A copy of your responses will be emailed to the address you provided.</p>
+                    <p style="color:black;">A copy of your responses will be emailed to the address you provided.</p>
                 </div>
 
                 <div class="row d-flex">
@@ -539,7 +539,7 @@
                                 <div class="m-progress-bar">
                                 </div>
                             </div>
-                            <div class="m-progress-stats">
+                            <div class="m-progress-stats" style="color:black;">
                                 page
                                 <span class="m-progress-current">
                                 </span> /
@@ -558,13 +558,13 @@
 
                     <button type="button" class="btn btn-success step step-2 modal-button shadow" style="width: 100px;" onclick="sendSubmit()" data-step="2">Submit</button>
                 </div>
-                <div style="margin: 20px;">
+                <!-- <div style="margin: 20px;">
                     <p>Never submit passwords through Google Forms</p>
                     <div class="row custom-footer">
                         <div class="col-md-3"><b>Google</b>Forms</div>
                         <div class="col-md-9">This form was created inside of Hayter.</div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </form>
@@ -769,15 +769,18 @@
 
         function sendSubmit() {
 
-            if ( $('#difficult_answer').val() == '' || $('#exerciseAnswer').val() == '' ) {
-                if ( $('#difficult_answer').val() == '' ) {
-                    $('#difficult_answer-validator').css('display', 'initial');
-                } else if ( $('#exerciseAnswer').val() == '' ) {
+            // if ( $('#difficult_answer').val() == '' || $('#exerciseAnswer').val() == '' ) {
+            //     if ( $('#difficult_answer').val() == '' ) {
+            //         $('#difficult_answer-validator').css('display', 'initial');
+            //     } else if ( $('#exerciseAnswer').val() == '' ) {
+            //         $('#exerciseAnswer-validator').css('display', 'initial');
+            //     } else {
+            //         $('#difficult_answer-validator').css('display', 'initial');
+            //         $('#exerciseAnswer-validator').css('display', 'initial');
+            //     }
+            // }
+            if ( $('#exerciseAnswer').val() == '' ) {
                     $('#exerciseAnswer-validator').css('display', 'initial');
-                } else {
-                    $('#difficult_answer-validator').css('display', 'initial');
-                    $('#exerciseAnswer-validator').css('display', 'initial');
-                }
             }
             else {
                 $('#difficult_answer-validator').css('display', 'none');
