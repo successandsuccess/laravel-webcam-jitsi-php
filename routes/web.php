@@ -40,4 +40,6 @@ Route::prefix('admin')->group(function() {
     Route::get('/register', 'Auth\AdminRegisterController@showRegisterForm')->name('admin.register');
     Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+    Route::get('/dashboard/selfdirectedvisits','Admin\AdminController@selfdirectedvisits')->name('admin.dashboard.selfdirectedvisits');
+    Route::get('/dashboard/patientqueue','Admin\AdminController@patientqueue')->name('admin.dashboard.patientqueue');
 });

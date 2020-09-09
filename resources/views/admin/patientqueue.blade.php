@@ -125,7 +125,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-              <li class="breadcrumb-item active">Appointment Page</li>
+              <li class="breadcrumb-item active">Patient Queue</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -145,13 +145,13 @@
 
                 <div class="row mb-50">
                     <div class="col-md-6 m-auto">
-                        <p class="card-text">
-                        3:30 PM - <span class="color-blue">Joey Tribbiani</span>
+                        <p class="card-text d-flex normal-p">
+                        3:30 PM - <span class="speci-p">&nbsp;Joey Tribbiani</span>
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
                         <button class="btn btn-default w-100px">MESSAGE</button>
-                        <button class="btn btn-primary w-100px">START</button>
+                        <button class="btn btn-primary btn-blue w-100px">START</button>
                     </div>
 
                     
@@ -161,9 +161,9 @@
                 <h5 class="card-title custom-h5">UP NEXT</h5>
 
                 <div class="row mb-10">
-                    <div class="col-md-6 m-auto">
-                        <p class="card-text">
-                        3:45 PM - <span class="color-blue">Monica Geller</span>
+                <div class="col-md-6 m-auto">
+                        <p class="card-text d-flex normal-p">
+                        3:45 PM - <span class="speci-p">&nbsp;Monica Geller</span>
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
@@ -173,8 +173,8 @@
 
                 <div class="row">
                     <div class="col-md-6 m-auto">
-                        <p class="card-text">
-                        4:00 PM - <span class="color-blue">Chandler Bing</span>
+                        <p class="card-text d-flex normal-p">
+                        4:00 PM - <span class="speci-p">&nbsp;Chandler Bing</span>
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
@@ -198,38 +198,38 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>10/10/20</td>
-                      <td>2:45 PM</td>
-                      <td class="color-blue">Rachel Green</td>
-                      <td><span class="tag tag-success">16:45 mins</span></td>
+                      <td class="table-p">10/10/20</td>
+                      <td class="table-p">2:45 PM</td>
+                      <td class="table-p color-blue">Rachel Green</td>
+                      <td class="table-p">16:45 mins</span></td>
+                      <td><button class="btn btn-default w-110 color-blue btn-p">DEATILS</button></td>
+                    </tr>
+                    <tr>
+                      <td class="table-p">10/10/20</td>
+                      <td class="table-p">2:00 PM</td>
+                      <td class="table-p color-blue">Alexander Pierc</td>
+                      <td class="table-p">8:39 mins</span></td>
                       <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
                     </tr>
                     <tr>
-                      <td>10/10/20</td>
-                      <td>2:00 PM</td>
-                      <td class="color-blue">Alexander Pierc</td>
-                      <td><span class="tag tag-warning">8:39 mins</span></td>
+                      <td  class="table-p">10/10/20</td>
+                      <td class="table-p">10:30 AM</td>
+                      <td class="table-p color-blue">Bob Doe</td>
+                      <td class="table-p">8:39 mins</span></td>
                       <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
                     </tr>
                     <tr>
-                      <td>10/10/20</td>
-                      <td>10:30 AM</td>
-                      <td class="color-blue">Bob Doe</td>
-                      <td><span class="tag tag-primary">8:39 mins</span></td>
+                      <td class="table-p">10/10/20</td>
+                      <td class="table-p">10:15 PM</td>
+                      <td class="table-p color-blue">Mike Doe</td>
+                      <td class="table-p">16:45 mins</span></td>
                       <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
                     </tr>
                     <tr>
-                      <td>10/10/20</td>
-                      <td>10:15 PM</td>
-                      <td class="color-blue">Mike Doe</td>
-                      <td><span class="tag tag-danger">16:45 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
-                    </tr>
-                    <tr>
-                      <td>10/10/20</td>
-                      <td>10:00 PM</td>
-                      <td class="color-blue">Emily London</td>
-                      <td><span class="tag tag-danger">8:45 mins</span></td>
+                      <td class="table-p">10/10/20</td>
+                      <td class="table-p">10:00 PM</td>
+                      <td class="table-p color-blue">Emily London</td>
+                      <td class="table-p">8:45 mins</span></td>
                       <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
                     </tr>
                   </tbody>

@@ -14,6 +14,18 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.dashboard');
+        return redirect()->route('admin.dashboard.patientqueue');
     }
+
+    public function patientqueue()
+    {
+        return view('admin.patientqueue');
+    }
+
+    public function selfdirectedvisits()
+    {
+        return view('admin.selfdirectedvisits');
+    }
+
+
 }

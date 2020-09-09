@@ -64,7 +64,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('admin.dashboard.patientqueue') }}" class="nav-link active">
+                <a href="{{ route('admin.dashboard.patientqueue') }}" class="nav-link">
                   <p>
                     Patient Queue
                     <span class="right badge badge-danger">12</span>
@@ -72,7 +72,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.dashboard.selfdirectedvisits') }}" class="nav-link">
+                <a href="{{ route('admin.dashboard.selfdirectedvisits') }}" class="nav-link active">
                   <p>
                     Self Directed Visits
                     <span class="right badge badge-danger">7</span>
@@ -119,13 +119,13 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 custom-h1">Welcome Back Dr. Johns</h1>
-            <p>Get yourself camera ready, there are patients waiting.</p>
+            <h1 class="m-0 custom-h1">Your patients have been busy!</h1>
+            <p>You have four recordings to review.</p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-              <li class="breadcrumb-item active">Appointment Page</li>
+              <li class="breadcrumb-item active">Self Directed Visits</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -138,54 +138,78 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="custom-h3">Patient Queue (12)</h3>
+            <h3 class="custom-h3">Recordings to Review (7)</h3>
             <div class="card">
               <div class="card-body d-grid p-50">
-                <h5 class="card-title custom-h5">FIRST APPOINTMENT</h5>
-
-                <div class="row mb-50">
+                <div class="row">
                     <div class="col-md-6 m-auto">
-                        <p class="card-text">
-                        3:30 PM - <span class="color-blue">Joey Tribbiani</span>
+                        <p class="card-text speci-p">
+                            Rachel Green
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
-                        <button class="btn btn-default w-100px">MESSAGE</button>
-                        <button class="btn btn-primary w-100px">START</button>
+                        <button class="btn btn-primary btn-blue w-100px">VIEW</button>
                     </div>
-
-                    
+                </div>
+                <div class="row mb-10">
+                    <div class="col-md-6">
+                        <p class="custom-p">Received 10/09/2020 09:55AM</p>
+                    </div>
                 </div>
                 
 
-                <h5 class="card-title custom-h5">UP NEXT</h5>
-
-                <div class="row mb-10">
+                <div class="row">
                     <div class="col-md-6 m-auto">
-                        <p class="card-text">
-                        3:45 PM - <span class="color-blue">Monica Geller</span>
+                        <p class="card-text speci-p">
+                            Leslie Knope
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
-                        <button class="btn btn-default w-100px">MESSAGE</button>
+                        <button class="btn btn-primary btn-blue w-100px">VIEW</button>
+                    </div>
+                </div>
+                <div class="row mb-10">
+                    <div class="col-md-6">
+                        <p class="custom-p">Received 10/09/2020 09:55AM</p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 m-auto">
-                        <p class="card-text">
-                        4:00 PM - <span class="color-blue">Chandler Bing</span>
+                        <p class="card-text speci-p">
+                            April Lundgate
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
-                        <button class="btn btn-default w-100px">MESSAGE</button>
+                        <button class="btn btn-primary btn-blue w-100px">VIEW</button>
+                    </div>
+                </div>
+                <div class="row mb-10">
+                    <div class="col-md-6">
+                        <p class="custom-p">Received 10/09/2020 09:55AM</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 m-auto">
+                        <p class="card-text speci-p">
+                            Andy Dwyer
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-primary btn-blue w-100px">VIEW</button>
+                    </div>
+                </div>
+                <div class="row mb-10">
+                    <div class="col-md-6">
+                        <p class="custom-p">Received 10/09/2020 09:55AM</p>
                     </div>
                 </div>
               </div>
             </div>
 
             <div>
-                <h3 class="custom-h3">Past Appointments</h3>
+                <h3 class="custom-h3">Past Recordings</h3>
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
@@ -198,39 +222,39 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>10/10/20</td>
-                      <td>2:45 PM</td>
-                      <td class="color-blue">Rachel Green</td>
-                      <td><span class="tag tag-success">16:45 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
+                      <td class="table-p">10/10/20</td>
+                      <td class="table-p">2:45 PM</td>
+                      <td class="table-p color-blue">Rachel Green</td>
+                      <td class="table-p">16:45 mins</span></td>
+                      <td><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></td>
                     </tr>
                     <tr>
-                      <td>10/10/20</td>
-                      <td>2:00 PM</td>
-                      <td class="color-blue">Alexander Pierc</td>
-                      <td><span class="tag tag-warning">8:39 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
+                      <td class="table-p">10/10/20</td>
+                      <td class="table-p">2:00 PM</td>
+                      <td class="table-p color-blue">Alexander Pierc</td>
+                      <td class="table-p">8:39 mins</span></td>
+                      <td><button class="btn btn-default w-110 color-blue">VIEW</button></td>
                     </tr>
                     <tr>
-                      <td>10/10/20</td>
-                      <td>10:30 AM</td>
-                      <td class="color-blue">Bob Doe</td>
-                      <td><span class="tag tag-primary">8:39 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
+                      <td  class="table-p">10/10/20</td>
+                      <td class="table-p">10:30 AM</td>
+                      <td class="table-p color-blue">Bob Doe</td>
+                      <td class="table-p">8:39 mins</span></td>
+                      <td><button class="btn btn-default w-110 color-blue">VIEW</button></td>
                     </tr>
                     <tr>
-                      <td>10/10/20</td>
-                      <td>10:15 PM</td>
-                      <td class="color-blue">Mike Doe</td>
-                      <td><span class="tag tag-danger">16:45 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
+                      <td class="table-p">10/10/20</td>
+                      <td class="table-p">10:15 PM</td>
+                      <td class="table-p color-blue">Mike Doe</td>
+                      <td class="table-p">16:45 mins</span></td>
+                      <td><button class="btn btn-default w-110 color-blue">VIEW</button></td>
                     </tr>
                     <tr>
-                      <td>10/10/20</td>
-                      <td>10:00 PM</td>
-                      <td class="color-blue">Emily London</td>
-                      <td><span class="tag tag-danger">8:45 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
+                      <td class="table-p">10/10/20</td>
+                      <td class="table-p">10:00 PM</td>
+                      <td class="table-p color-blue">Emily London</td>
+                      <td class="table-p">8:45 mins</span></td>
+                      <td><button class="btn btn-default w-110 color-blue">VIEW</button></td>
                     </tr>
                   </tbody>
                 </table>

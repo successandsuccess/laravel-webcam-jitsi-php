@@ -93,7 +93,6 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 24px;
-    /* or 171% */
     letter-spacing: 0.15px;
     color: #3746B0 !important;
 }
@@ -116,4 +115,74 @@
 
 .mb-10 {
     margin-bottom: 10px;
+}
+
+.w-110 {
+    width: 110px;
+}
+
+.mw-150px {
+    min-width: 150px !important;
+}
+
+.custom-p {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 24px;
+    /* or 171% */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.speci-p {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    /* or 120% */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.15px;
+    color: #5E90ED;
+}
+
+.normal-p {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    /* or 120% */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.table-p {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    /* or 133% */
+    align-items: center;
+    letter-spacing: 0.15px;
+    color: rgba(0, 0, 0, 0.6);
+    padding-top: 1.1rem !important;
+}
+
+.btn-p {
+    font-family: Open Sans;
+    font-size: 15px;
+}
+
+.btn-blue {
+    background: #5E90ED;
+    border-color: #5E90ED;
 }
