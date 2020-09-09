@@ -22,7 +22,7 @@
 <body class="hold-transition register-page">
     <div class="register-box">
   <div class="register-logo">
-    <a href="{{ route('admin.dashboard') }}"><b>Admin Register</b></a>
+    <a href="{{ route('admin.dashboard') }}"><b class="special-dark-color">Admin Register</b></a>
   </div>
 
   <div class="card pt-50 pb-50">
@@ -97,19 +97,19 @@
             <div class="icheck-primary">
               <input type="checkbox" id="agreeTerms" name="terms" value="agree" required>
               <label for="agreeTerms">
-               I agree to the <a href="#">terms</a>
+               I agree to the <a href="#" class="special-dark-color">terms</a>
               </label>
             </div>
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <button type="submit" class="btn btn-primary btn-block special-button">Register</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
 
-      <a href="{{ route('admin.login') }}" class="text-center mt-30">I already have a Admin Account</a>
+      <a href="{{ route('admin.login') }}" class="text-center mt-30 special-dark-color">I already have a Admin Account</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

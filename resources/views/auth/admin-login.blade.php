@@ -22,7 +22,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="route('admin.dashboard')"><b>Admin Login</b></a>
+            <a href="route('admin.dashboard')"><b class="special-dark-color">Admin Login</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="card pt-50 pb-50">
@@ -69,14 +69,14 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-4">
-                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    <button type="submit" class="btn btn-primary btn-block special-button">Sign In</button>
                 </div>
                 <!-- /.col -->
                 </div>
             </form>
 
             <p class="mb-0 mt-30">
-                <a href="{{ route('admin.register') }}" class="text-center">Register a new Admin Provider</a>
+                <a href="{{ route('admin.register') }}" class="text-center special-dark-color">Register a new Admin Provider</a>
             </p>
             </div>
             <!-- /.login-card-body -->

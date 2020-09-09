@@ -21,3 +21,13 @@
 .img-size-45 {
     width: 45px;
 }
+
+.special-dark-color {
+    color: #92ab5f;
+}
+
+.special-button {
+    color: #FFF;
+    background: linear-gradient(90deg, #ADD261 0%, #77B336 100%);
+    border: none;
+}
