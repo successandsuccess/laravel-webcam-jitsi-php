@@ -15,14 +15,12 @@ use Illuminate\Support\Facades\Route;
 Route::post('/screenshotupload', 'ScreenshotController@upload')->name('screenshotupload');
 Route::get('/imageeditor', 'ScreenshotController@index')->name('imageeditor');
 
-// Route::get('/', 'HomeController@index')->name('index');
 Route::get('/', function() {
     return redirect('/getstarted');
 })->name('index');
 
 Auth::routes(['verify' => true]);
 
-// Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', function () {
     return redirect('/getstarted');
 })->name('home');
@@ -33,3 +31,13 @@ Route::get('/waiting', 'HomeController@waiting')->name('waiting');
 Route::get('/streamrecord', 'HomeController@streamrecord')->name('streamrecord');
 Route::post('/streamrecord', 'HomeController@streamrecordreviewsubmit')->name('reviewsubmit');
 Route::post('/upload', 'HomeController@upload')->name('upload');
+
+// Admin routes
+Route::prefix('admin')->group(function() {
+    Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+    Route::get('/register', 'Auth\AdminRegisterController@showRegisterForm')->name('admin.register');
+    Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
+    Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+});
