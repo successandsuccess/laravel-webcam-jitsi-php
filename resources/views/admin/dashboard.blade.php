@@ -116,10 +116,11 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
-      <div class="container-fluid">
+      <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Appointment Page</h1>
+            <h1 class="m-0 custom-h1">Welcome Back Dr. Johns</h1>
+            <p>Get yourself camera ready, there are patients waiting.</p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -134,35 +135,58 @@
 
     <!-- Main content -->
     <div class="content">
-      <div class="container-fluid">
+      <div class="container">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-12">
+            <h3 class="custom-h3">Patient Queue (12)</h3>
             <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+              <div class="card-body d-grid p-50">
+                <h5 class="card-title custom-h5">FIRST APPOINTMENT</h5>
 
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
+                <div class="row mb-50">
+                    <div class="col-md-6 m-auto">
+                        <p class="card-text">
+                        3:30 PM - <span class="color-blue">Joey Tribbiani</span>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-default w-100px">MESSAGE</button>
+                        <button class="btn btn-primary w-100px">START</button>
+                    </div>
 
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                    
+                </div>
+                
+
+                <h5 class="card-title custom-h5">UP NEXT</h5>
+
+                <div class="row mb-10">
+                    <div class="col-md-6 m-auto">
+                        <p class="card-text">
+                        3:45 PM - <span class="color-blue">Monica Geller</span>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-default w-100px">MESSAGE</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 m-auto">
+                        <p class="card-text">
+                        4:00 PM - <span class="color-blue">Chandler Bing</span>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-default w-100px">MESSAGE</button>
+                    </div>
+                </div>
               </div>
             </div>
 
-            <div class="card card-primary card-outline">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's
-                  content.
-                </p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div>
-            </div><!-- /.card -->
+            <div>
+                <h3 class="custom-h3">Past Appointments</h3>
+            </div>
           </div>
           
         </div>
