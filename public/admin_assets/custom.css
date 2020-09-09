@@ -51,3 +51,20 @@
 .color-blue {
     color: #007bff !important;
 }
+
+.background-dark-blue {
+    background: #3746B0;
+    box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.background-none {
+    background: none !important;
+}
+
+.boxshadow-none {
+    box-shadow: none !important;
+}
+
+.cursor-none {
+    cursor: not-allowed;
+}

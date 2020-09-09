@@ -41,7 +41,7 @@
     </nav>  
     
       <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4 background-dark-blue">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link background-w">
       <img src="{{ asset('assets/img/chiroonelogo.svg') }}" alt="AdminLTE Logo" class="w-70 ml-25">
@@ -53,44 +53,56 @@
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
-              <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
+            <a href="#" class="nav-link active background-none boxshadow-none cursor-none">
               <p>
                 Appointment
-                <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link active">
-                  <!-- <i class="far fa-circle nav-icon"></i> -->
-                  <p>Patient Queue
-                  <span class="right badge badge-danger">12</span>
+                  <p>
+                    Patient Queue
+                    <span class="right badge badge-danger">12</span>
                   </p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <!-- <i class="far fa-circle nav-icon"></i> -->
-                  <p>Self Directed Visit
-                  <span class="right badge badge-danger">7</span>
+                  <p>
+                    Self Directed Visits
+                    <span class="right badge badge-danger">7</span>
                   </p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active background-none boxshadow-none cursor-none">
               <p>
                 Manage
-                
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>
+                    Patient Directory
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <p>
+                    Exercises
+                  </p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
