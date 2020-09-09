@@ -186,6 +186,54 @@
 
             <div>
                 <h3 class="custom-h3">Past Appointments</h3>
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>DATE</th>
+                      <th>TIME</th>
+                      <th>PATIENT</th>
+                      <th>DURATION</th>
+                      <th>ACTIONS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>10/10/20</td>
+                      <td>2:45 PM</td>
+                      <td>Rachel Green</td>
+                      <td><span class="tag tag-success">16:45 mins</span></td>
+                      <td><button class="btn btn-default">DEATILS</button></td>
+                    </tr>
+                    <tr>
+                      <td>10/10/20</td>
+                      <td>2:00 PM</td>
+                      <td>Alexander Pierc</td>
+                      <td><span class="tag tag-warning">8:39 mins</span></td>
+                      <td><button class="btn btn-default">DEATILS</button></td>
+                    </tr>
+                    <tr>
+                      <td>10/10/20</td>
+                      <td>10:30 AM</td>
+                      <td>Bob Doe</td>
+                      <td><span class="tag tag-primary">8:39 mins</span></td>
+                      <td><button class="btn btn-default">DEATILS</button></td>
+                    </tr>
+                    <tr>
+                      <td>10/10/20</td>
+                      <td>10:15 PM</td>
+                      <td>Mike Doe</td>
+                      <td><span class="tag tag-danger">16:45 mins</span></td>
+                      <td><button class="btn btn-default">DEATILS</button></td>
+                    </tr>
+                    <tr>
+                      <td>10/10/20</td>
+                      <td>10:00 PM</td>
+                      <td>Emily London</td>
+                      <td><span class="tag tag-danger">8:45 mins</span></td>
+                      <td><button class="btn btn-default">DEATILS</button></td>
+                    </tr>
+                  </tbody>
+                </table>
             </div>
           </div>
           
