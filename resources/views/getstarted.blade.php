@@ -105,7 +105,7 @@
                                 </div>
 
                                 <div>
-                                    <button class="btn btn-primary text-center h-55 background-green w-100" id="consultation"><b class="font-s-18">Schedule Session</b></button>
+                                    <button class="btn btn-primary text-center h-55 background-green w-100" id="consultation"><b class="font-s-18">Enter Waiting Room</b></button>
                                 </div>
                             </div>
                         </div>

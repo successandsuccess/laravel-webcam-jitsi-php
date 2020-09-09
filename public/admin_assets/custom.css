@@ -31,3 +31,23 @@
     background: linear-gradient(90deg, #ADD261 0%, #77B336 100%);
     border: none;
 }
+
+.w-70 {
+    width: 70%;
+}
+
+.ml-25 {
+    margin-left: 25px;
+}
+
+.background-w {
+    background: white;
+}
+
+.h-81 {
+    height: 81px;
+}
+
+.color-blue {
+    color: #007bff !important;
+}

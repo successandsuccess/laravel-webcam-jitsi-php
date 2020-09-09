@@ -4,22 +4,15 @@
 <div class="wrapper">
 
 
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>
-        </ul>
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light h-81">
 
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
+                <a class="nav-link color-blue" href="#">
                     My Account
-                    <!-- <span class="badge badge-danger navbar-badge">3</span> -->
                 </a>
             </li>
             <!-- Notifications Dropdown Menu -->
@@ -50,9 +43,8 @@
       <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('admin.dashboard') }}" class="brand-link">
-      <img src="{{ asset('assets/img/chiroonelogo.svg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
-      <span class="brand-text font-weight-light" style="visibility: hidden">AdminLTE 3</span>
+    <a href="{{ route('admin.dashboard') }}" class="brand-link background-w">
+      <img src="{{ asset('assets/img/chiroonelogo.svg') }}" alt="AdminLTE Logo" class="w-70 ml-25">
     </a>
 
     <!-- Sidebar -->
@@ -66,16 +58,16 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
               <p>
                 Appointment
-                <i class="right fas fa-angle-left"></i>
+                <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
+                  <!-- <i class="far fa-circle nav-icon"></i> -->
                   <p>Patient Queue
                   <span class="right badge badge-danger">12</span>
                   </p>
@@ -83,7 +75,7 @@
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <!-- <i class="far fa-circle nav-icon"></i> -->
                   <p>Self Directed Visit
                   <span class="right badge badge-danger">7</span>
                   </p>
