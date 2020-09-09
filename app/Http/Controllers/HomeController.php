@@ -90,9 +90,9 @@ class HomeController extends Controller
         // available time list
         $times = [
             'Select Time...',
-            '1:45pm',
-            '2:00pm',
-            '3:00pm'
+            '1:45 pm',
+            '2:00 pm',
+            '3:00 pm'
         ];
 
         // This is for Real Database datetime.

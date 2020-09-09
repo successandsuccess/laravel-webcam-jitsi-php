@@ -60,8 +60,8 @@
 
                         <div class="card custom-card">
                             <div class="card-body text-center">
-                                <h4 class="card-title text-center" style="color: #fff9f9;">Chat with your doctor</h4>
-                                <h6 class="card-subtitle mb-2 text-center" style="color: #fff9f9;">Schedule a remote one on one with your physician.</h6>
+                                <h4 class="card-title text-center" style="color: #fff9f9;">Time For Your Appointment</h4>
+                                <h6 class="card-subtitle mb-2 text-center" style="color: #fff9f9;">Select the physician you're here to see.</h6>
 
                                 <div class="mb-10 mt-10">
                                     @if (isset($providerId) && $providerId != 0)
@@ -117,13 +117,13 @@
                             <div class="card-body text-center">
                                 <h4 class="card-title text-center" style="color: #fff9f9;">Self Directed Visit</h4>
                                 <h6 class="card-subtitle mb-2 text-center" style="color: #fff9f9;">Consistency is the key to recovery.</h6>
-                                <h6 class="card-subtitle mb-2 text-center mt-10" style="color: #fff9f9;">
+                                <h6 class="card-subtitle mb-2 text-center mt-54" style="color: #fff9f9;">
                                     Here you can view videos of your prescribed exercises and then record your self
                                     to send to your doctor with questions you have.
                                 </h6>
 
 
-                                <div class="mt-54">
+                                <div class="mt-58">
                                     <a href="{{ route('individual') }}"><button class="btn btn-primary text-center h-55 background-green w-100"><b class="font-s-18">Start Session</b></button></a>
                                 </div>
                             </div>

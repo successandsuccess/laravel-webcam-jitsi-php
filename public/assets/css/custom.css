@@ -269,6 +269,14 @@ img.image-w-mobile {
     color: gray;
 }
 
+.card-title {
+    margin-bottom: 1rem;
+}
+
+.mt-58 {
+    margin-top: 58px;
+}
+
 @media (max-height: 800px) {
     img.image-w-mobile {
         width: 70%;
