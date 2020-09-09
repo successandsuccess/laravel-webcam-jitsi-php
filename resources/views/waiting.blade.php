@@ -10,7 +10,7 @@
                         <a class="navbar-brand text-brand" href="{{ route('index') }}"><img src="assets/img/chiroonelogo.svg" alt="logo" id="chiroonelogo"></a>
                     </div>
                     <div class="col-md-8">
-                        <h1 class="text-center special-font">Appointment Details</h1>
+                        <h1 class="text-center special-font">Waiting Room</h1>
                     </div>
                     <div class="col-md-2 text-center m-auto">
                         <!-- Right Side Of Navbar -->
@@ -48,13 +48,13 @@
                                 <h5 class="card-subtitle mb-2 text-center mt-10" style="color: #fff9f9;">Provider</h5>
                                 <h5 class="card-subtitle mb-2 text-center" style="color: #fff9f9;" >{{ $provider }}</h5>
                                 <h5 class="card-subtitle mb-2 text-center mt-10" style="color: #fff9f9;">
-                                    Time
+                                    Queue Time
                                 </h5>
                                 <h5 class="card-subtitle mb-2 text-center" style="color: #fff9f9;" >{{ strtoupper($time) }} MDT</h5>
                                 <a href="mailto:henry@patientconnect.io?subject=Mail from Patient in telehealth.patientconnect.io&body=Patient First Name: Nick, Patient Last Name: DeVito, Patient Email: hh@mobilehenry.com, Patient Address: ,Patient Phone: 8138434646, Meet URL: PATIENT REQUESTS RESCHEDULE, Meet Time: 2020-08-24 14:00:00"
                                 ><h5 class="card-subtitle mb-2 text-center" style="color:#7cb63a; cursor:pointer" ><b>Reschedule</b></h5></a>
-                               
-                                <div class="mt-54">
+                                <h5 class="card-subtitle mb-2 mt-54 text-center" style="color: #fff9f9;" >Your provider is ready to see you now.</h5>
+                                <div>
                                     <button id="jitsimeet" class="btn btn-primary text-center h-55 background-green width-80"><b class="font-s-18">Start Session</b></button>
                                 </div>
                             </div>
