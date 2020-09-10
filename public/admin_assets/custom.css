@@ -186,3 +186,11 @@
     background: #5E90ED;
     border-color: #5E90ED;
 }
+
+#example1 thead {
+    text-align: center;
+}
+
+#example1 td {
+    text-align: center;
+}
