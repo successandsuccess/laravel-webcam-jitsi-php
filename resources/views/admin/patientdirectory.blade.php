@@ -4,6 +4,26 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('admin_assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin_assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+
+    <style>
+        #example1_filter input {
+            height: 50px;
+            font-size: 19px;
+        }
+        #example1_filter label {
+            font-size: 19px;
+        }
+
+        #example1_length label {
+            font-size: 18px;
+        }
+
+        #example1_length select {
+            height: 45px;
+            width: 100px;
+            font-size: 18px;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -140,7 +160,7 @@
 
     <!-- Main content -->
     <div class="content">
-      <div class="container">
+      <div class="container pb-50">
         <div class="row">
           <div class="col-lg-12">
             <div>
