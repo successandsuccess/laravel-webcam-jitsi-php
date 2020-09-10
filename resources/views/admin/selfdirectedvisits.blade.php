@@ -148,7 +148,7 @@
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
-                        <button class="btn btn-primary btn-blue w-100px">VIEW</button>
+                        <a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-primary btn-blue w-100px">VIEW</button></a>
                     </div>
                 </div>
                 <div class="row mb-10">
@@ -165,7 +165,7 @@
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
-                        <button class="btn btn-primary btn-blue w-100px">VIEW</button>
+                        <a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-primary btn-blue w-100px">VIEW</button></a>
                     </div>
                 </div>
                 <div class="row mb-10">
@@ -181,7 +181,7 @@
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
-                        <button class="btn btn-primary btn-blue w-100px">VIEW</button>
+                        <a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-primary btn-blue w-100px">VIEW</button></a>
                     </div>
                 </div>
                 <div class="row mb-10">
@@ -197,7 +197,7 @@
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
-                        <button class="btn btn-primary btn-blue w-100px">VIEW</button>
+                        <a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-primary btn-blue w-100px">VIEW</button></a>
                     </div>
                 </div>
                 <div class="row mb-10">
