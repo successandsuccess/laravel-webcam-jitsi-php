@@ -37,4 +37,13 @@ class AdminController extends Controller
         return view('admin.exercises');
     }
 
+    public function selfdirectedvisitsview()
+    {
+        return view('admin.selfdirectedvisitsview');
+    }
+
+    public function patientdirectorymanage() {
+        return view('admin.patientdirectorymanage');
+    }
+
 }

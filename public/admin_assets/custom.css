@@ -291,3 +291,66 @@ input.custom-search:-webkit-autofill:active {
 .footer-border {
     border-top: 1px solid rgba(0, 0, 0, .125);
 }
+
+.font-w-600 {
+    font-weight: 600;
+}
+
+.pt-0 {
+    padding-top: 0px !important;
+}
+
+.normal-black-text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    /* or 120% */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.15px;
+    color: #3F394D;
+}
+
+.mb-05rem {
+    margin-bottom: 0.5rem;
+}
+
+.font-18 {
+    font-size: 18px;
+}
+
+.ml-19 {
+    margin-left: 19px;
+}
+
+.color-special {
+    color: #3746b0;
+}
+
+.small-black-text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    /* identical to box height, or 133% */
+    text-align: right;
+    letter-spacing: 0.4px;
+    /* 00. On Surface / High Emphasis */
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.d-lineflex {
+    display: inline-flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.mycardfooter {
+    background: none;
+    border-top: 1px solid gainsboro;
+}
