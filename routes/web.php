@@ -43,4 +43,5 @@ Route::prefix('admin')->group(function() {
     Route::get('/dashboard/selfdirectedvisits','Admin\AdminController@selfdirectedvisits')->name('admin.dashboard.selfdirectedvisits');
     Route::get('/dashboard/patientqueue','Admin\AdminController@patientqueue')->name('admin.dashboard.patientqueue');
     Route::get('/dashboard/patientdirectory', 'Admin\AdminController@patientdirectory')->name('admin.dashboard.patientdirectory');
+    Route::get('/dashboard/exercises', 'Admin\AdminController@exercises')->name('admin.dashboard.exercises');
 });

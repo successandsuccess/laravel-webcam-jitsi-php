@@ -96,7 +96,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.dashboard.exercises') }}" class="nav-link">
                   <p>
                     Exercises
                   </p>

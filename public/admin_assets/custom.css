@@ -194,3 +194,100 @@
 #example1 td {
     text-align: center;
 }
+
+.search-div {
+    width: 300px;
+    height: 50px;
+}
+
+.custom-search {
+    height: 50px;
+    font-size: 16px;
+}
+
+input.custom-search:not(:placeholder-shown) {
+    background-color: white!important;
+}
+
+
+/* Change the white to any color ;) */
+
+input.custom-search:-webkit-autofill,
+input.custom-search:-webkit-autofill:hover,
+input.custom-search:-webkit-autofill:focus,
+input.custom-search:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.blue-color {
+    color: #2F80ED;
+}
+
+.custom-label {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 24px;
+    /* identical to box height, or 200% */
+    letter-spacing: 0.15px;
+    /* 00. On Surface / Medium Emphasis */
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 0px;
+}
+
+.myselect {
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: none;
+    outline: none;
+}
+
+.custom-btn-text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height, or 114% */
+    text-align: center;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    /* 03. On Primary / High Emphasis */
+    color: #FFFFFF;
+}
+
+.custom-card {
+    background: none;
+    box-shadow: none;
+}
+
+.pr-7 {
+    padding-right: 7px;
+}
+
+.pl-7 {
+    padding-left: 7px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.custom-h2 {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    /* identical to box height, or 120% */
+    letter-spacing: 0.15px;
+    /* 00. On Surface / High Emphasis */
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.footer-border {
+    border-top: 1px solid rgba(0, 0, 0, .125);
+}
