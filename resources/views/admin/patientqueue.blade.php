@@ -89,7 +89,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.dashboard.patientdirectory') }}" class="nav-link">
                   <p>
                     Patient Directory
                   </p>
