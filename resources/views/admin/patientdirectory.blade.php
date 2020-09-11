@@ -164,7 +164,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div>
-            <table id="example1" class="table">
+            <table id="example1" class="table background-w">
                   <thead>
                   <tr>
                     <th>PATIENT</th>

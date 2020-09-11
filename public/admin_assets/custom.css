@@ -188,11 +188,11 @@
 }
 
 #example1 thead {
-    text-align: center;
+    text-align: left;
 }
 
 #example1 td {
-    text-align: center;
+    text-align: left;
 }
 
 .search-div {
