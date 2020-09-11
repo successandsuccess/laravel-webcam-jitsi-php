@@ -77,7 +77,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.dashboard.selfdirectedvisits') }}" class="nav-link active">
+                <a href="{{ route('admin.dashboard.selfdirectedvisits') }}" class="nav-link">
                   <p>
                     Self Directed Visits
                     <span class="right badge badge-danger">7</span>
@@ -94,7 +94,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('admin.dashboard.patientdirectory') }}" class="nav-link">
+                <a href="{{ route('admin.dashboard.patientdirectory') }}" class="nav-link active">
                   <p>
                     Patient Directory
                   </p>
@@ -150,19 +150,297 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1 class="m-0 custom-h1">Builidng...</h1>
-           
+            <h1 class="m-0 custom-h1">Rachel Green</h1>
+            <p class="sub-title-p">Last active on 10/10/20, 8:04 AM</p>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
-    <div class="content">
+     <!-- Main content -->
+     <div class="content">
       <div class="container">
-        <div class="row">
-          
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="custom-h3">Patient Care Plan</h3>
+                
+                   
+                        
+                            <ul class="nav nav-tabs-custom" id="custom-tabs-four-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill" href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home" aria-selected="true">Current</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill" href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile" aria-selected="false">Previous</a>
+                                </li>
+                            </ul>
+                        
+                       
+                            <div class="tab-content" id="custom-tabs-four-tabContent">
+                                <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
+                                    <div class="card boxshadow-none mt-10">
+                                        <div class="card-header p-50">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h4 class="normal-black-text">Back Strengthening&nbsp;&nbsp;<i class="fas fa-pen color-blue font-18"></i></h4>
+                                                    <p class="custom-p font-18 mb-05rem">Created 10/02/20</p>
+                                                    <a href="#"><p class="table-p color-blue pt-0 mb-05rem font-14"><i class="fas fa-archive"></i>&nbsp;ARCHIVE</p></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-grid p-50">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="custom-h5 pt-0 mb-05rem">CONDITION&nbsp;&nbsp;<i class="fas fa-pen color-blue font-18"></i></p>
+                                                    <p class="custom-16-font">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in commodo tellus. Nam velit diam, eleifend non est a, convallis elementum libero. Nam finibus lacus a metus hendrerit sollicitudin. Suspendisse maximus at turpis id faucibus. Aenean convallis eros nisl, eu vestibulum orci mattis id.
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="card-footer p-50 mycardfooter">
+                                            <p class="custom-h5">TREATMENT</p>
+                                            <a href="{{ route('admin.dashboard.exercises') }}"><button class="btn btn-default w-150 color-blue mb-25"><i class="fas fa-plus"></i>&nbsp;&nbsp;ADD EXERCISE</button></a>
+                                            <div class="row mb-10">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="text-muted">4x weekly for 20 minutes</li>
+                                                            <li class="text-muted">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <br>
+                                                        
+                                                        <div class="text-right">
+                                                            <p class="text-muted d-lineflex align-center">
+                                                                <i class="fas fa-pen color-blue font-18"></i>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <i class="fas fa-archive color-blue font-18"></i>
+                                                            </p>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-10">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="text-muted">4x weekly for 20 minutes</li>
+                                                            <li class="text-muted">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <br>
+                                                        
+                                                        <div class="text-right">
+                                                            <p class="text-muted d-lineflex align-center">
+                                                                <i class="fas fa-pen color-blue font-18"></i>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <i class="fas fa-archive color-blue font-18"></i>
+                                                            </p>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-10">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="text-muted">4x weekly for 20 minutes</li>
+                                                            <li class="text-muted">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <br>
+                                                        
+                                                        <div class="text-right">
+                                                            <p class="text-muted d-lineflex align-center">
+                                                                <i class="fas fa-pen color-blue font-18"></i>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <i class="fas fa-archive color-blue font-18"></i>
+                                                            </p>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel" aria-labelledby="custom-tabs-four-profile-tab">
+                                    <div class="card boxshadow-none mt-10">
+                                        <div class="card-header p-50">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h4 class="normal-black-text">Front Strengthening&nbsp;&nbsp;<i class="fas fa-pen color-blue font-18"></i></h4>
+                                                    <p class="custom-p font-18 mb-05rem">Created 08/21/20</p>
+                                                    <a href="#"><p class="table-p color-blue pt-0 mb-05rem font-14"><i class="fas fa-archive"></i>&nbsp;ARCHIVE</p></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-grid p-50">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="custom-h5 pt-0 mb-05rem">CONDITION&nbsp;&nbsp;<i class="fas fa-pen color-blue font-18"></i></p>
+                                                    <p class="custom-16-font">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in commodo tellus. Nam velit diam, eleifend non est a, convallis elementum libero. Nam finibus lacus a metus hendrerit sollicitudin. Suspendisse maximus at turpis id faucibus. Aenean convallis eros nisl, eu vestibulum orci mattis id.
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="card-footer p-50 mycardfooter">
+                                            <p class="custom-h5">TREATMENT</p>
+                                            <a href="{{ route('admin.dashboard.exercises') }}"><button class="btn btn-default w-150 color-blue mb-25"><i class="fas fa-plus"></i>&nbsp;&nbsp;ADD EXERCISE</button></a>
+                                            <div class="row mb-10">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="text-muted">4x weekly for 20 minutes</li>
+                                                            <li class="text-muted">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <br>
+                                                        
+                                                        <div class="text-right">
+                                                            <p class="text-muted d-lineflex align-center">
+                                                                <i class="fas fa-pen color-blue font-18"></i>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <i class="fas fa-archive color-blue font-18"></i>
+                                                            </p>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-10">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="text-muted">4x weekly for 20 minutes</li>
+                                                            <li class="text-muted">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <br>
+                                                        
+                                                        <div class="text-right">
+                                                            <p class="text-muted d-lineflex align-center">
+                                                                <i class="fas fa-pen color-blue font-18"></i>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <i class="fas fa-archive color-blue font-18"></i>
+                                                            </p>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-10">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="text-muted">4x weekly for 20 minutes</li>
+                                                            <li class="text-muted">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <br>
+                                                        
+                                                        <div class="text-right">
+                                                            <p class="text-muted d-lineflex align-center">
+                                                                <i class="fas fa-pen color-blue font-18"></i>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <i class="fas fa-archive color-blue font-18"></i>
+                                                            </p>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                       
+                    <!-- /.card -->
+                </div>
+            </div>
+          <div class="col-lg-12">
+                <h3 class="custom-h3">Patient Log</h3>
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>DATE</th>
+                      <th>TIME</th>
+                      <th>SESSION TYPE</th>
+                      <th>PHYSICIAN</th>
+                      <th>DURATION</th>
+                      <th>ACTIONS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="table-p">10/10/20</td>
+                      <td class="table-p">2:45 PM</td>
+                      <td class="table-p color-blue">Self Directed</td>
+                      <td class="table-p">Dr.Johns</td>
+                      <td class="table-p">16:45 mins</span></td>
+                      <td><a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a></td>
+                    </tr>
+                    <tr>
+                        <td class="table-p">10/10/20</td>
+                      <td class="table-p">2:45 PM</td>
+                      <td class="table-p color-blue">Self Directed</td>
+                      <td class="table-p">Dr.Johns</td>
+                      <td class="table-p">16:45 mins</span></td>
+                      <td><a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a></td>
+                    </tr>
+                    <tr>
+                        <td class="table-p">10/10/20</td>
+                      <td class="table-p">2:45 PM</td>
+                      <td class="table-p color-blue">Self Directed</td>
+                      <td class="table-p">Dr.Johns</td>
+                      <td class="table-p">16:45 mins</span></td>
+                      <td><a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a></td>
+                    </tr>
+                    <tr>
+                        <td class="table-p">10/10/20</td>
+                      <td class="table-p">2:45 PM</td>
+                      <td class="table-p color-blue">Self Directed</td>
+                      <td class="table-p">Dr.Johns</td>
+                      <td class="table-p">16:45 mins</span></td>
+                      <td><a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a></td>
+                    </tr>
+                    <tr>
+                        <td class="table-p">10/10/20</td>
+                      <td class="table-p">2:45 PM</td>
+                      <td class="table-p color-blue">Self Directed</td>
+                      <td class="table-p">Dr.Johns</td>
+                      <td class="table-p">16:45 mins</span></td>
+                      <td><a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+          </div>
           
         </div>
         <!-- /.row -->

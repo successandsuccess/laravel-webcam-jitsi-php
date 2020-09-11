@@ -176,269 +176,269 @@
                   <tr>
                     <td class="table-p color-blue">Trident</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Emily London</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Emily London</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Emily London</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Emily London</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Emily London</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                     
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                     
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                     
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                     
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                     
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                     
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                     
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                     
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Mike Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Bob Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Bob Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Bob Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Bob Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Bob Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Bob Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Bob Doe</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Alexander Pierc</td>
                     <td class="table-p">10/10/20 - Self-Directed</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                     
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Alexander Pierc</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Alexander Pierc</td>
                     <td class="table-p">10/10/20 - One on one</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Alexander Pierc</td>
                     <td class="table-p">10/10/20 - Self-Directed</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Alexander Pierc</td>
                     <td class="table-p">10/10/20 - Self-Directed</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                 
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Alexander Pierc</td>
                     <td class="table-p">10/10/20 - Self-Directed</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Alexander Pierc</td>
                     <td class="table-p">10/10/20 - Self-Directed</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Alexander Pierc</td>
                     <td class="table-p">10/10/20 - Self-Directed</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Alexander Pierc</td>
                     <td class="table-p">10/10/20 - Self-Directed</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Alexander Pierc</td>
                     <td class="table-p">10/10/20 - Self-Directed</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Rachel Green</td>
                     <td class="table-p">10/10/20 - Self-Directed</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Rachel Green</td>
                     <td class="table-p">10/10/20 - Self-Directed</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                    
                   </tr>
                   <tr>
                     <td class="table-p color-blue">Rachel Green</td>
                     <td class="table-p">10/10/20 - Self-Directed</td>
-                    <td><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></td>
+                    <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   
                   </tr>
                
