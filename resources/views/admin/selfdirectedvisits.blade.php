@@ -120,7 +120,7 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 custom-h1">Your patients have been busy!</h1>
-            <p>You have four recordings to review.</p>
+            <p class="sub-title-p">You have four recordings to review.</p>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

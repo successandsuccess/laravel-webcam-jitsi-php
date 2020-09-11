@@ -354,3 +354,60 @@ input.custom-search:-webkit-autofill:active {
     background: none;
     border-top: 1px solid gainsboro;
 }
+
+.sub-title-p {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 133% */
+    letter-spacing: 0.15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.nav-tabs-custom .nav-link.active {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    /* identical to box height, or 311% */
+    display: flex;
+    align-items: center;
+    color: #3F394D;
+    border-bottom: 4px solid #FF9F1C;
+}
+
+.nav-link {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    /* identical to box height, or 311% */
+    display: flex;
+    align-items: center;
+    color: #3F394D;
+}
+
+.font-14 {
+    font-size: 14px;
+}
+
+.custom-16-font {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    /* or 150% */
+    letter-spacing: 0.15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.w-150 {
+    width: 150px;
+}
+
+.mb-25 {
+    margin-bottom: 25px;
+}
