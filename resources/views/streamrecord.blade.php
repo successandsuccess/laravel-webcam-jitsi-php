@@ -292,7 +292,7 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Assesment</h5>
+                                    <h5 class="card-title">Assessment</h5>
                                     <p class="card-text" style="color:black;">This form will be used to collect information about your Telehealth Video Session. This is an opportunity to provide feedback regarding your experience with the session, as well as confirming that you have completed
                                         the exercises and the video recording as outlined in your individual care plan.
                                     </p>
@@ -334,7 +334,7 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Assesment</h5>
+                                    <h5 class="card-title">Assessment</h5>
                                     <a href="#" style="color: red;">* Required</a>
                                 </div>
                             </div>
