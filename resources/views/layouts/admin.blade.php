@@ -16,7 +16,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin_assets/dist/css/adminlte.min.css') }}">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://use.typekit.net/jbm8ofu.css">
   <link rel="stylesheet" href="{{ asset('admin_assets/custom.css') }}">
   @yield('css')
  
