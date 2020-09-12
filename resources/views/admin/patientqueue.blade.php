@@ -186,7 +186,7 @@
 
             <div>
                 <h3 class="custom-h3">Past Appointments</h3>
-                <table class="table table-hover text-nowrap">
+                <table class="table table-hover text-nowrap background-w">
                   <thead>
                     <tr>
                       <th>DATE</th>

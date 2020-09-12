@@ -386,7 +386,7 @@
             </div>
           <div class="col-lg-12">
                 <h3 class="custom-h3">Patient Log</h3>
-                <table class="table table-hover text-nowrap">
+                <table class="table table-hover text-nowrap background-w">
                   <thead>
                     <tr>
                       <th>DATE</th>
