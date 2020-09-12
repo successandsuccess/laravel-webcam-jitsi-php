@@ -450,3 +450,7 @@ input.custom-search:-webkit-autofill:active {
     letter-spacing: 0.15px;
     /* color: #FFFFFF !important; */
 }
+
+.w-160 {
+    width: 160px;
+}
