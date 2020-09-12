@@ -202,35 +202,35 @@
                       <td class="table-p">2:45 PM</td>
                       <td class="table-p color-blue">Rachel Green</td>
                       <td class="table-p">16:45 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue btn-p">DEATILS</button></td>
+                      <td><button class="btn btn-default w-110 color-blue btn-p">DETAILS</button></td>
                     </tr>
                     <tr>
                       <td class="table-p">10/10/20</td>
                       <td class="table-p">2:00 PM</td>
                       <td class="table-p color-blue">Alexander Pierc</td>
                       <td class="table-p">8:39 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
+                      <td><button class="btn btn-default w-110 color-blue">DETAILS</button></td>
                     </tr>
                     <tr>
                       <td  class="table-p">10/10/20</td>
                       <td class="table-p">10:30 AM</td>
                       <td class="table-p color-blue">Bob Doe</td>
                       <td class="table-p">8:39 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
+                      <td><button class="btn btn-default w-110 color-blue">DETAILS</button></td>
                     </tr>
                     <tr>
                       <td class="table-p">10/10/20</td>
                       <td class="table-p">10:15 PM</td>
                       <td class="table-p color-blue">Mike Doe</td>
                       <td class="table-p">16:45 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
+                      <td><button class="btn btn-default w-110 color-blue">DETAILS</button></td>
                     </tr>
                     <tr>
                       <td class="table-p">10/10/20</td>
                       <td class="table-p">10:00 PM</td>
                       <td class="table-p color-blue">Emily London</td>
                       <td class="table-p">8:45 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">DEATILS</button></td>
+                      <td><button class="btn btn-default w-110 color-blue">DETAILS</button></td>
                     </tr>
                   </tbody>
                 </table>
