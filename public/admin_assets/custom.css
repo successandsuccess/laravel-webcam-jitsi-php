@@ -1,7 +1,8 @@
-@font-face {
+/* @font-face {
     font-family: Brandon Grotesque;
     src: url('./font/Brandon-Grotesque/brandon-grotesque-black-58a8a3e824392.otf');
-}
+    font-weight: 500;
+} */
 
 @font-face {
     font-family: Open Sans;
@@ -80,20 +81,22 @@
 }
 
 .custom-h1 {
-    font-family: Brandon Grotesque;
+    font-family: brandon-grotesque;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 36px !important;
     line-height: 56px;
+    /* identical to box height, or 156% */
     color: #3746B0;
 }
 
 .custom-h3 {
-    font-family: Brandon Grotesque;
+    font-family: brandon-grotesque;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 26px !important;
     line-height: 56px;
+    /* identical to box height, or 215% */
     color: #3746B0;
 }
 
@@ -151,7 +154,7 @@
 .speci-p {
     font-family: Open Sans;
     font-style: normal;
-    font-weight: 600;
+    font-weight: normal;
     font-size: 20px;
     line-height: 24px;
     /* or 120% */
@@ -425,4 +428,25 @@ input.custom-search:-webkit-autofill:active {
 .container {
     padding-right: 45px;
     padding-left: 45px;
+}
+
+.nav-link.active.background-none.boxshadow-none.cursor-none {
+    font-size: 14px !important;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 40px;
+    /* or 286% */
+    letter-spacing: 0.15px;
+    /* color: rgba(255, 255, 255, 0.7) !important; */
+}
+
+.nav-link {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    /* identical to box height, or 222% */
+    letter-spacing: 0.15px;
+    /* color: #FFFFFF !important; */
 }

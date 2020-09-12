@@ -119,7 +119,7 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 custom-h1">Welcome Back Dr. Johns</h1>
+            <h1 class="m-0 custom-h1">Welcome back Dr. Johns</h1>
             <p class="sub-title-p">Get yourself camera ready, there are patients waiting.</p>
           </div><!-- /.col -->
           <div class="col-sm-6">
