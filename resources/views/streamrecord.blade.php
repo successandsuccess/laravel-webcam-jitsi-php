@@ -565,6 +565,9 @@
                         <div class="col-md-9">This form was created inside of Hayter.</div>
                     </div>
                 </div> -->
+                <div style="margin: 20px;">
+                    <p>Review us on Yelp, Google, etc.</p>
+                </div>
             </div>
         </div>
     </form>
