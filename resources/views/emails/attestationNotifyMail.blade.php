@@ -5,16 +5,6 @@
     <meta charset="utf-8">
     <title>Mail from telehealth.patientconnect.io</title>
 
-        <!-- Vendor CSS Files -->
-    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
-
-
 </head>
 
 <body>  
@@ -47,7 +37,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Email address <span style="color: red;">*</span></h5>
 
-                                    <input id="email" type="email" name="email" value="{{ $details['email'] }}"  style="outline: none; border: none; border-bottom: 1px solid gray;" disabled>
+                                    <input id="email" type="email" name="email" value="{{ $details['email'] }}"  style="outline: none; border: none; border-bottom: 1px solid gray;" readonly>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +49,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Name <span style="color: red;">*</span></h5>
 
-                                    <input id="name" type="text" name="name" value="{{ $details['name'] }}" style="outline: none; border: none; border-bottom: 1px solid gray;" disabled>
+                                    <input id="name" type="text" name="name" value="{{ $details['name'] }}" style="outline: none; border: none; border-bottom: 1px solid gray;" readonly>
                                 </div>
                             </div>
                         </div>
@@ -97,14 +87,35 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Were you able to complete all of the exercises in your individualized care plan? <span style="color:red">*</span>
                                     </h5>
-                                    <input type="radio" id="male" name="completable" value="1" checked>
+                                    @if ( $details['completable'] == 1 ) 
+                                    <input type="radio" id="male" name="completable" value="1" checked readonly>
                                     <label for="male" style="color:black;">Yes</label><br>
-                                    <input type="radio" id="female" value="0" name="completable">
+                                    <input type="radio" id="female" value="0" name="completable" readonly>
                                     <label for="female" style="color:black;">No</label><br>
-                                    <input type="radio" id="female" name="completable" value="2">
+                                    <input type="radio" id="female" name="completable" value="2" readonly>
                                     <label for="female" style="color:black;">Other</label> &nbsp;
                                     <input class="w-80" id="other" type="text" name="completable_other" style="display:none; outline: none; border: none; border-bottom: 1px solid gray;">
                                     <p style="color:red; display: none;" id="other-validator">This field is required</p>
+                                    @elseif ( $details['completable'] == 0 )
+                                    <input type="radio" id="male" name="completable" value="1" readonly>
+                                    <label for="male" style="color:black;">Yes</label><br>
+                                    <input type="radio" id="female" value="0" name="completable" checked readonly>
+                                    <label for="female" style="color:black;">No</label><br>
+                                    <input type="radio" id="female" name="completable" value="2" readonly>
+                                    <label for="female" style="color:black;">Other</label> &nbsp;
+                                    <input class="w-80" id="other" type="text" name="completable_other" style="display:none; outline: none; border: none; border-bottom: 1px solid gray;">
+                                    <p style="color:red; display: none;" id="other-validator">This field is required</p>
+                                    @else
+                                    <input type="radio" id="male" name="completable" value="1" readonly>
+                                    <label for="male" style="color:black;">Yes</label><br>
+                                    <input type="radio" id="female" value="0" name="completable" readonly>
+                                    <label for="female" style="color:black;">No</label><br>
+                                    <input type="radio" id="female" name="completable" value="2" checked readonly>
+                                    <label for="female" style="color:black;">Other</label> &nbsp;
+                                        @if ( isset($details['completable_other']) && $details['completable_other'] != '' )
+                                        <input class="w-80" id="other" type="text" name="completable_other" value="{{ $details['completable_other'] }}" style="outline: none; border: none; border-bottom: 1px solid gray;" readonly>
+                                        @endif
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -117,7 +128,7 @@
                                     <h5 class="card-title">If you checked "No" or "Other" above, please discribe any difficulty you had with each exercise in the space below:
                                     </h5>
 
-                                    <input class="w-100" id="difficult_answer" type="text" name="difficult_answer" value="{{ $details['difficult_answer'] }}" style="outline: none; border: none; border-bottom: 1px solid gray;" disabled>
+                                    <input class="w-100" id="difficult_answer" type="text" name="difficult_answer" value="{{ $details['difficult_answer'] }}" style="outline: none; border: none; border-bottom: 1px solid gray;" readonly>
                                 </div>
                             </div>
                         </div>
@@ -134,25 +145,26 @@
                                         <div class="col-md-3 left-end">
                                             <p style="color:black;">Very Easy</p>
                                         </div>
+
                                         <div class="col-md-1 d-grid">
                                             <label for="male" style="color:black;">1</label>
-                                            <input type="radio" id="male" name="qeeue" value="1" checked>
+                                            <input type="radio" id="male" name="qeeue" value="1" <?php if ($details['qeeue'] == 1 ) echo 'checked';  ?> readonly>
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="female" style="color:black;">2</label>
-                                            <input type="radio" id="female" name="qeeue" value="2">
+                                            <input type="radio" id="female" name="qeeue" value="2" <?php if ($details['qeeue'] == 2 ) echo 'checked';  ?> readonly>
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="female" style="color:black;">3</label>
-                                            <input type="radio" id="female" name="qeeue" value="3">
+                                            <input type="radio" id="female" name="qeeue" value="3" <?php if ($details['qeeue'] == 3 ) echo 'checked';  ?> readonly>
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="female" style="color:black;">4</label>
-                                            <input type="radio" id="female" name="qeeue" value="4">
+                                            <input type="radio" id="female" name="qeeue" value="4" <?php if ($details['qeeue'] == 4 ) echo 'checked';  ?> readonly>
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="female" style="color:black;">5</label>
-                                            <input type="radio" id="female" name="qeeue" value="5">
+                                            <input type="radio" id="female" name="qeeue" value="5" <?php if ($details['qeeue'] == 5 ) echo 'checked';  ?> readonly>
                                         </div>
 
 
@@ -178,23 +190,23 @@
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="male" style="color:black;">1</label>
-                                            <input type="radio" id="male" name="qeeueb" value="1" checked>
+                                            <input type="radio" id="male" name="qeeueb" value="1" <?php if ($details['qeeueb'] == 1 ) echo 'checked';  ?> readonly>
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="female" style="color:black;">2</label>
-                                            <input type="radio" id="female" name="qeeueb" value="2">
+                                            <input type="radio" id="female" name="qeeueb" value="2" <?php if ($details['qeeueb'] == 2 ) echo 'checked';  ?> readonly>
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="female" style="color:black;">3</label>
-                                            <input type="radio" id="female" name="qeeueb" value="3">
+                                            <input type="radio" id="female" name="qeeueb" value="3" <?php if ($details['qeeueb'] == 3 ) echo 'checked';  ?> readonly>
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="female" style="color:black;">4</label>
-                                            <input type="radio" id="female" name="qeeueb" value="4">
+                                            <input type="radio" id="female" name="qeeueb" value="4" <?php if ($details['qeeueb'] == 4 ) echo 'checked';  ?> readonly>
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="female" style="color:black;">5</label>
-                                            <input type="radio" id="female" name="qeeueb" value="5">
+                                            <input type="radio" id="female" name="qeeueb" value="5" <?php if ($details['qeeueb'] == 5 ) echo 'checked';  ?> readonly>
                                         </div>
 
 
@@ -220,23 +232,23 @@
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="male" style="color:black;">1</label>
-                                            <input type="radio" id="male" name="qeeuec" value="1" checked>
+                                            <input type="radio" id="male" name="qeeuec" value="1" <?php if ($details['qeeuec'] == 1 ) echo 'checked';  ?> readonly>
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="female" style="color:black;">2</label>
-                                            <input type="radio" id="female" name="qeeuec" value="2">
+                                            <input type="radio" id="female" name="qeeuec" value="2" <?php if ($details['qeeuec'] == 2 ) echo 'checked';  ?> readonly>
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="female" style="color:black;">3</label>
-                                            <input type="radio" id="female" name="qeeuec" value="3">
+                                            <input type="radio" id="female" name="qeeuec" value="3" <?php if ($details['qeeuec'] == 3 ) echo 'checked';  ?> readonly>
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="female" style="color:black;">4</label>
-                                            <input type="radio" id="female" name="qeeuec" value="4">
+                                            <input type="radio" id="female" name="qeeuec" value="4" <?php if ($details['qeeuec'] == 4 ) echo 'checked';  ?> readonly>
                                         </div>
                                         <div class="col-md-1 d-grid">
                                             <label for="female" style="color:black;">5</label>
-                                            <input type="radio" id="female" name="qeeuec" value="5">
+                                            <input type="radio" id="female" name="qeeuec" value="5" <?php if ($details['qeeuec'] == 5 ) echo 'checked';  ?> readonly>
                                         </div>
 
 
@@ -256,7 +268,7 @@
                                     <h5 class="card-title">Please type your full name below as acknowledgement that you have completed the exercises in your individual care plan
                                         <span style="color: red;">*</span></h5>
 
-                                    <input class="w-80" id="exerciseAnswer" type="text" name="exerciser" value="{{ $details['exerciser'] }}" style="outline: none; border: none; border-bottom: 1px solid gray;" disabled>
+                                    <input class="w-80" id="exerciseAnswer" type="text" name="exerciser" value="{{ $details['exerciser'] }}" style="outline: none; border: none; border-bottom: 1px solid gray;" readonly>
                                 </div>
                             </div>
                         </div>
@@ -276,9 +288,6 @@
     <!-- Mutli Step Modal End -->
 </div>
 
-
-    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 
