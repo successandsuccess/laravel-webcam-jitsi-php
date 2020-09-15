@@ -214,7 +214,7 @@
                 <div class="row">
                     <div class="col-md-3 text-center d-flex">
                         <div class="col-md-8">
-                            <a class="navbar-brand text-brand" href="{{ route('index') }}"><img src="assets/img/chiroonelogo.svg" alt="logo" id="chiroonelogo"></a>
+                            <a class="navbar-brand text-brand" href="{{ route('index') }}"><img src="{{ env('APP_LOGO') }}" alt="logo" id="chiroonelogo"></a>
                         </div>
                         <div class="col-md-4 m-auto">
                             <a class="custom-font" href="{{ route('recordvideo') }}">&lt;Back</a>

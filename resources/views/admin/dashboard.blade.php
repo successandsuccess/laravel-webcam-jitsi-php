@@ -44,7 +44,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4 background-dark-blue">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link background-w">
-      <img src="{{ asset('assets/img/chiroonelogo.svg') }}" alt="AdminLTE Logo" class="w-70 ml-25">
+      <img src="{{ asset(env('APP_LOGO')) }}" alt="AdminLTE Logo" class="w-70 ml-25">
     </a>
 
     <!-- Sidebar -->

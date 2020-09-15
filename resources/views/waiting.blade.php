@@ -7,7 +7,7 @@
             <div class="margin-l-50 margin-r-50 mt-10">
                 <div class="row">
                     <div class="col-md-2 text-center">
-                        <a class="navbar-brand text-brand" href="{{ route('index') }}"><img src="assets/img/chiroonelogo.svg" alt="logo" id="chiroonelogo"></a>
+                        <a class="navbar-brand text-brand" href="{{ route('index') }}"><img src="{{ env('APP_LOGO') }}" alt="logo" id="chiroonelogo"></a>
                     </div>
                     <div class="col-md-8">
                         <h1 class="text-center special-font">Waiting Room</h1>
