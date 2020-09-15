@@ -175,6 +175,10 @@ class HomeController extends Controller
         $review->exerciser = $reviewData['exerciser'];
         $review->save();
 
+        
+
+        \Mail::to($reviewData['email'])->send(new \App\Mail\AttestationNotifyMail($reviewData));
+
         return 'Success';
     }
 
@@ -198,5 +202,4 @@ class HomeController extends Controller
 
         }
     }
-
 }
