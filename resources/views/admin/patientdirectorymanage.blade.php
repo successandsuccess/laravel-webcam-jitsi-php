@@ -202,7 +202,7 @@
                                         </div>
                                         <div class="card-footer p-50 mycardfooter">
                                             <p class="custom-h5">TREATMENT</p>
-                                            <a href="{{ route('admin.dashboard.exercises') }}"><button class="btn btn-default w-160 color-blue mb-25"><i class="fas fa-plus"></i>&nbsp;&nbsp;ADD EXERCISE</button></a>
+                                            <button class="btn btn-default w-160 color-blue mb-25" type="button" data-backdrop="static" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus"></i>&nbsp;&nbsp;ADD EXERCISE</button>
                                             <div class="row mb-10">
                                                 <div class="col-md-6 m-auto d-flex">
                                                     <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -378,7 +378,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                
                             </div>
                        
                     <!-- /.card -->
@@ -452,4 +451,349 @@
 
 
 </div>
+
+<div class="modal fade" id="modal-lg">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header border-none pl-40 pb-0 pr-40">
+              <h4 class="modal-title custom-h3">Assign Exercises</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" class="blue-color">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body pt-0 pl-25 pr-25">
+
+                            <ul class="nav nav-tabs-custom" id="custom-tabs-three-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active  font-16" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">RELATED EXERCISES</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link  font-16" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">PROGRAMS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link  font-16" id="custom-tabs-three-exercises-tab" data-toggle="pill" href="#custom-tabs-three-exercises" role="tab" aria-controls="custom-tabs-three-exercises" aria-selected="false">ALL EXERCISES</a>
+                                </li>
+                            </ul>
+                        
+                       
+                            <div class="tab-content" id="custom-tabs-three-tabContent">
+                                <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+                                    <div class="card boxshadow-none mt-10">
+                                        <div class="card-header border-b-none">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h4 class="custom-h5 mt-4px mb-11px">PROGRAMS - UPPER BACK</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-grid border-1-gasinsboro m-18 mb-30 max-width-635">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
+                                                    <div class="row">
+                                                      <div class="col-md-6"> 
+                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
+                                                      </div>
+                                                      <div class="col-md-6 text-right">
+                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
+                                                      </div>
+                                                    </div>
+                                                   
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;Upper Back Stretches</p>
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;SI Joint Extensions</p>
+                                                    <p class="semi-samll-text mb-10"><i class="fas fa-video"></i>&nbsp;Lumbar Stenosis Stretches</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="card-footer mycardfooter mt-5px">
+                                                      <div class="row mb-25 mt-30">
+                                                          <div class="col-md-6">
+                                                            <p class="custom-h5 mt-5px">EXERCISES - UPPER BACK(6)</p>
+                                                          </div>
+                                                          <div class="col-md-6 text-right">
+                                                            <button class="btn btn-primary btn-blue w-135px h-36px blue-btn-font">ASSIGN ALL</button>
+                                                          </div>
+                                                      </div>
+                                            
+                                            <div class="row mb-10 border-1-b-gainsboro">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <br>
+                                                        <div class="d-inline-flex">
+                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-10 border-1-b-gainsboro">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <br>
+                                                        <div class="d-inline-flex">
+                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-10 border-1-b-gainsboro">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <br>
+                                                        <div class="d-inline-flex">
+                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row mb-10 border-1-b-gainsboro">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">PDF</h4>
+                                                        <br>
+                                                        <div class="d-inline-flex">
+                                                             <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-10 border-1-b-gainsboro">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">PDF</h4>
+                                                        <br>
+                                                        <div class="d-inline-flex">
+                                                             <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-10 border-1-b-gainsboro">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">PDF</h4>
+                                                        <br>
+                                                        <div class="d-inline-flex">
+                                                             <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+                                    <div class="card boxshadow-none mt-10">
+                                        <div class="card-header border-b-none">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h4 class="custom-h5 mt-4px mb-11px">PROGRAMS - UPPER BACK</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-grid border-1-gasinsboro m-18 mb-25 max-width-635">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
+                                                    <div class="row">
+                                                      <div class="col-md-6"> 
+                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
+                                                      </div>
+                                                      <div class="col-md-6 text-right">
+                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
+                                                      </div>
+                                                    </div>
+                                                   
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;Upper Back Stretches</p>
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;SI Joint Extensions</p>
+                                                    <p class="semi-samll-text mb-10"><i class="fas fa-video"></i>&nbsp;Lumbar Stenosis Stretches</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body d-grid border-1-gasinsboro m-18 mb-25 max-width-635">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
+                                                    <div class="row">
+                                                      <div class="col-md-6"> 
+                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
+                                                      </div>
+                                                      <div class="col-md-6 text-right">
+                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
+                                                      </div>
+                                                    </div>
+                                                   
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;Upper Back Stretches</p>
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;SI Joint Extensions</p>
+                                                    <p class="semi-samll-text mb-10"><i class="fas fa-video"></i>&nbsp;Lumbar Stenosis Stretches</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body d-grid border-1-gasinsboro m-18 mb-25 max-width-635">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
+                                                    <div class="row">
+                                                      <div class="col-md-6"> 
+                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
+                                                      </div>
+                                                      <div class="col-md-6 text-right">
+                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
+                                                      </div>
+                                                    </div>
+                                                   
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;Upper Back Stretches</p>
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;SI Joint Extensions</p>
+                                                    <p class="semi-samll-text mb-10"><i class="fas fa-video"></i>&nbsp;Lumbar Stenosis Stretches</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body d-grid border-1-gasinsboro m-18 mb-25 max-width-635">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
+                                                    <div class="row">
+                                                      <div class="col-md-6"> 
+                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
+                                                      </div>
+                                                      <div class="col-md-6 text-right">
+                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
+                                                      </div>
+                                                    </div>
+                                                   
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;Upper Back Stretches</p>
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;SI Joint Extensions</p>
+                                                    <p class="semi-samll-text mb-10"><i class="fas fa-video"></i>&nbsp;Lumbar Stenosis Stretches</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body d-grid border-1-gasinsboro m-18 mb-25 max-width-635">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
+                                                    <div class="row">
+                                                      <div class="col-md-6"> 
+                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
+                                                      </div>
+                                                      <div class="col-md-6 text-right">
+                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
+                                                      </div>
+                                                    </div>
+                                                   
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;Upper Back Stretches</p>
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;SI Joint Extensions</p>
+                                                    <p class="semi-samll-text mb-10"><i class="fas fa-video"></i>&nbsp;Lumbar Stenosis Stretches</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-body d-grid border-1-gasinsboro m-18 mb-25 max-width-635">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
+                                                    <div class="row">
+                                                      <div class="col-md-6"> 
+                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
+                                                      </div>
+                                                      <div class="col-md-6 text-right">
+                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
+                                                      </div>
+                                                    </div>
+                                                   
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;Upper Back Stretches</p>
+                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;SI Joint Extensions</p>
+                                                    <p class="semi-samll-text mb-10"><i class="fas fa-video"></i>&nbsp;Lumbar Stenosis Stretches</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="custom-tabs-three-exercises" role="tabpanel" aria-labelledby="custom-tabs-three-exercises-tab">
+                                    <div class="card boxshadow-none mt-10">
+                                        <div class="card-header border-b-none">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h4 class="custom-h5 mt-4px mb-11px">Constructing...</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+
+                                    </div>
+                                </div>
+                            </div>
+
+            </div>
+          
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
 @endsection

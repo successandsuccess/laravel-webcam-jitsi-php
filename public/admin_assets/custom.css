@@ -1,9 +1,3 @@
-/* @font-face {
-    font-family: Brandon Grotesque;
-    src: url('./font/Brandon-Grotesque/brandon-grotesque-black-58a8a3e824392.otf');
-    font-weight: 500;
-} */
-
 @font-face {
     font-family: Open Sans;
     src: url('./font/Open_Sans/OpenSans-Regular.ttf');
@@ -116,6 +110,10 @@
 
 .w-100px {
     width: 150px;
+}
+
+.w-115px {
+    width: 115px;
 }
 
 .p-50 {
@@ -334,6 +332,10 @@ input.custom-search:-webkit-autofill:active {
     font-size: 18px;
 }
 
+.font-16 {
+    font-size: 16px !important;
+}
+
 .ml-19 {
     margin-left: 19px;
 }
@@ -453,4 +455,200 @@ input.custom-search:-webkit-autofill:active {
 
 .w-160 {
     width: 160px;
+}
+
+.border-b-none {
+    border-bottom: none;
+}
+
+.border-1-gasinsboro {
+    border: 1px solid gainsboro;
+}
+
+.m-18 {
+    margin-left: 18px;
+    margin-right: 18px;
+}
+
+.small-custom-text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    /* identical to box height, or 120% */
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    /* Black / High Emphasis */
+    color: rgba(0, 0, 0, 0.87);
+    mix-blend-mode: normal;
+}
+
+.normal-custom-text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px;
+    /* or 167% */
+    letter-spacing: 0.15px;
+    /* Black / High Emphasis */
+    color: rgba(0, 0, 0, 0.87);
+    mix-blend-mode: normal;
+}
+
+.semi-samll-text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 24px;
+    /* or 200% */
+    letter-spacing: 0.25px;
+    /* Black / Medium Emphasis */
+    color: rgba(0, 0, 0, 0.6);
+    mix-blend-mode: normal;
+}
+
+.blue-btn-font {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height, or 114% */
+    text-align: center;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    /* 03. On Primary / High Emphasis */
+    color: #FFFFFF;
+}
+
+.h-38px {
+    height: 38px;
+}
+
+.mt-5px {
+    margin-top: 5px;
+}
+
+.exercise-blue-small-font {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px !important;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    letter-spacing: 0.15px;
+    color: #5E90ED;
+}
+
+.exercise-li-muted-font {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px !important;
+    line-height: 20px;
+    /* or 143% */
+    letter-spacing: 0.25px;
+    /* 00. On Surface / Medium Emphasis */
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.exercise-assigned-italic {
+    font-family: Open Sans;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 14px !important;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    text-align: right;
+    letter-spacing: 0.25px;
+    /* 00. On Surface / Medium Emphasis */
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.w-135px {
+    width: 135px;
+}
+
+.d-inline-flex {
+    display: inline-flex;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.white-btn-font {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height, or 114% */
+    text-align: center;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    color: #3D67AA;
+}
+
+.w-90px {
+    width: 90px;
+}
+
+.h-36px {
+    height: 36px;
+}
+
+.w-109px {
+    width: 109px;
+}
+
+.border-1-b-gainsboro {
+    border-bottom: 1px solid gainsboro;
+}
+
+.border-none {
+    border: none;
+}
+
+.pl-30 {
+    padding-left: 30px;
+}
+
+.pb-0 {
+    padding-bottom: 0px;
+}
+
+.mt-4px {
+    margin-top: 4px;
+}
+
+.mb-11px {
+    margin-bottom: 11px;
+}
+
+.max-width-706 {
+    max-width: 706px;
+}
+
+.max-width-635 {
+    max-width: 635px;
+}
+
+.pl-40 {
+    padding-left: 40px;
+}
+
+.pr-40 {
+    padding-right: 40px;
+}
+
+.pl-25 {
+    padding-left: 25px;
+}
+
+.pr-25 {
+    padding-right: 25px;
 }
