@@ -652,3 +652,7 @@ input.custom-search:-webkit-autofill:active {
 .pr-25 {
     padding-right: 25px;
 }
+
+.exercise-modal-close:focus {
+    outline: none;
+}

@@ -302,7 +302,7 @@
                                         </div>
                                         <div class="card-footer p-50 mycardfooter">
                                             <p class="custom-h5">TREATMENT</p>
-                                            <a href="{{ route('admin.dashboard.exercises') }}"><button class="btn btn-default w-150 color-blue mb-25"><i class="fas fa-plus"></i>&nbsp;&nbsp;ADD EXERCISE</button></a>
+                                            <button class="btn btn-default w-160 color-blue mb-25" type="button" data-backdrop="static" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus"></i>&nbsp;&nbsp;ADD EXERCISE</button>
                                             <div class="row mb-10">
                                                 <div class="col-md-6 m-auto d-flex">
                                                     <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -457,7 +457,7 @@
           <div class="modal-content">
             <div class="modal-header border-none pl-40 pb-0 pr-40">
               <h4 class="modal-title custom-h3">Assign Exercises</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close exercise-modal-close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true" class="blue-color">&times;</span>
               </button>
             </div>
@@ -646,9 +646,14 @@
                                 <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
                                     <div class="card boxshadow-none mt-10">
                                         <div class="card-header border-b-none">
-                                            <div class="row">
+                                            <div class="row mt-5px mb-25">
                                                 <div class="col-md-12">
-                                                    <h4 class="custom-h5 mt-4px mb-11px">PROGRAMS - UPPER BACK</h4>
+                                                  <div class="input-group search-div">
+                                                      <input class="form-control py-2 border-right-0 border custom-search" type="search" placeholder="Search Program Name" name="search">
+                                                      <span class="input-group-append background-w">
+                                                          <div class="input-group-text bg-transparent"><i class="fa fa-search blue-color"></i></div>
+                                                      </span>
+                                                  </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -779,9 +784,146 @@
                                         <div class="card-header border-b-none">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h4 class="custom-h5 mt-4px mb-11px">Constructing...</h4>
+                                                  <div class="row mt-5px mb-25">
+                                                    <div class="col-md-12">
+                                                      <div class="input-group search-div">
+                                                          <input class="form-control py-2 border-right-0 border custom-search" type="search" placeholder="Search Program Name" name="search">
+                                                          <span class="input-group-append background-w">
+                                                              <div class="input-group-text bg-transparent"><i class="fa fa-search blue-color"></i></div>
+                                                          </span>
+                                                      </div>
+                                                    </div>
+                                                  </div>
                                                 </div>
                                             </div>
+                                        </div>
+
+                                        <div class="card-footer mycardfooter mt-5px border-none">
+                                            
+                                            <div class="row mb-10 border-1-b-gainsboro">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <br>
+                                                        <div class="d-inline-flex">
+                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-10 border-1-b-gainsboro">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <br>
+                                                        <div class="d-inline-flex">
+                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-10 border-1-b-gainsboro">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <br>
+                                                        <div class="d-inline-flex">
+                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row mb-10 border-1-b-gainsboro">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">PDF</h4>
+                                                        <br>
+                                                        <div class="d-inline-flex">
+                                                             <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-10 border-1-b-gainsboro">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">PDF</h4>
+                                                        <br>
+                                                        <div class="d-inline-flex">
+                                                             <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-10 border-1-b-gainsboro">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
+                                                        <ul>
+                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text">PDF</h4>
+                                                        <br>
+                                                        <div class="d-inline-flex">
+                                                             <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+
+
+
+
+
                                         </div>
                                       
 
