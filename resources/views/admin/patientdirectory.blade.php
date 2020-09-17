@@ -164,7 +164,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div>
-            <table id="example1" class="table background-w">
+            <table id="example1" class="table background-w yajra-datatable">
                   <thead>
                   <tr>
                     <th>PATIENT</th>
@@ -173,7 +173,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
+                  <!-- <tr>
                     <td class="table-p color-blue">Trident</td>
                     <td class="table-p">10/10/20 - One on one</td>
                     <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
@@ -440,7 +440,7 @@
                     <td class="table-p">10/10/20 - Self-Directed</td>
                     <td><a href="{{ route('admin.patientdirectory.manage') }}"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a></td>
                   
-                  </tr>
+                  </tr> -->
                
                   </tbody>
                 </table>
@@ -463,8 +463,16 @@
     <script src="{{ asset('admin_assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <script>
         $("#example1").DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('admin.dashboard.patientdirectory') }}",
                 "responsive": true,
                 "autoWidth": false,
+                columns: [
+                  { data: 'name', name: 'name' },
+                  { data: 'email', email: 'email' },
+                  { data: 'action', name: 'action' }
+                ]
             });
     </script>
   @endsection

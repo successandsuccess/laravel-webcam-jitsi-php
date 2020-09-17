@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
+use DataTables;
 
 class AdminController extends Controller
 {
@@ -27,8 +29,25 @@ class AdminController extends Controller
         return view('admin.selfdirectedvisits');
     }
 
-    public function patientdirectory()
+    public function patientdirectory(Request $request)
     {
+        $patients = User::all();
+
+        if ($request->ajax()) {
+            $data = $patients;
+
+            return DataTables::of($data)
+                        ->addColumn(
+                            'action', function($row) {
+                                $editUrl = url('/admin/dashboard/patientdirectory/manage');
+                                $btn = '<a href="'. $editUrl .'"><button class="btn btn-default w-110 color-blue btn-p">MANAGE</button></a>';
+                                return $btn;
+                            }
+                        )
+                        ->rawColumns(['action'])
+                        ->make(true);
+        }
+
         return view('admin.patientdirectory');
     }
 
