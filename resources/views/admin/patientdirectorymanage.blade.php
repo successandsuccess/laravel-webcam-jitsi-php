@@ -202,7 +202,7 @@
                                         </div>
                                         <div class="card-footer p-50 mycardfooter">
                                             <p class="custom-h5">TREATMENT</p>
-                                            <button class="btn btn-default w-160 color-blue mb-25" type="button" data-backdrop="static" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus"></i>&nbsp;&nbsp;ADD EXERCISE</button>
+                                            <button class="btn btn-default color-blue mb-25" type="button" data-backdrop="static" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus"></i>&nbsp;&nbsp;ADD EXERCISE</button>
                                             <div class="row mb-10">
                                                 <div class="col-md-6 m-auto d-flex">
                                                     <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -302,7 +302,7 @@
                                         </div>
                                         <div class="card-footer p-50 mycardfooter">
                                             <p class="custom-h5">TREATMENT</p>
-                                            <button class="btn btn-default w-160 color-blue mb-25" type="button" data-backdrop="static" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus"></i>&nbsp;&nbsp;ADD EXERCISE</button>
+                                            <button class="btn btn-default color-blue mb-25" type="button" data-backdrop="static" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus"></i>&nbsp;&nbsp;ADD EXERCISE</button>
                                             <div class="row mb-10">
                                                 <div class="col-md-6 m-auto d-flex">
                                                     <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
