@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use DataTables;
+use App\Dx;
+use App\Rx;
 
 class AdminController extends Controller
 {
@@ -111,7 +113,11 @@ class AdminController extends Controller
                     ->first();
         // dd($patient);
 
-        return view('admin.patientdirectorymanage', compact('patient'));
+        // get all rxs from current dx
+        $current_dx_id = $patient->dx_1;
+        $allRxs = Rx::where('dx_no', $current_dx_id)->get();
+                        // dd($allRxs);
+        return view('admin.patientdirectorymanage', compact('patient', 'allRxs'));
     }
 
 }

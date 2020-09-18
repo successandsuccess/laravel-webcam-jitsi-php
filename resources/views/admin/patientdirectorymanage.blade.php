@@ -289,55 +289,8 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row mb-10">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="80" src="{{ $patient->getDx1->getRx4->rx_link ? $patient->getDx1->getRx4->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">{{ $patient->getDx1->getRx4->rx_name ? $patient->getDx1->getRx4->rx_name : 'template rx name' }}</p>
-                                                        <ul>
-                                                            <li class="text-muted">4x weekly for 20 minutes</li>
-                                                            <li class="text-muted">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text uppercase">{{ $patient->getDx1->getRx4->type ? $patient->getDx1->getRx4->type : 'unkown' }}</h4>
-                                                        <br>
-                                                        
-                                                        <div class="text-right">
-                                                            <p class="text-muted d-lineflex align-center">
-                                                                <i class="fas fa-pen color-blue font-18"></i>
-                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                <i class="fas fa-archive color-blue font-18"></i>
-                                                            </p>
-                                                        </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-10">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="80" src="{{ $patient->getDx1->getRx5->rx_link ? $patient->getDx1->getRx5->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">{{ $patient->getDx1->getRx5->rx_name ? $patient->getDx1->getRx5->rx_name : 'template rx name' }}</p>
-                                                        <ul>
-                                                            <li class="text-muted">4x weekly for 20 minutes</li>
-                                                            <li class="text-muted">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text uppercase">{{ $patient->getDx1->getRx5->type ? $patient->getDx1->getRx5->type : 'unkown' }}</h4>
-                                                        <br>
-                                                        
-                                                        <div class="text-right">
-                                                            <p class="text-muted d-lineflex align-center">
-                                                                <i class="fas fa-pen color-blue font-18"></i>
-                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                <i class="fas fa-archive color-blue font-18"></i>
-                                                            </p>
-                                                        </div>
-                                                </div>
-                                            </div>
+                                         
+                                       
 
 
 
@@ -549,7 +502,7 @@
                                         <div class="card-header border-b-none">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h4 class="custom-h5 mt-4px mb-11px">PROGRAMS - UPPER BACK</h4>
+                                                    <h4 class="custom-h5 mt-4px mb-11px">PROGRAMS - {{ $patient->getDx1->dx_name ? $patient->getDx1->dx_name : 'Template Dx Name' }}</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -559,7 +512,7 @@
                                                     <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
                                                     <div class="row">
                                                       <div class="col-md-6"> 
-                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
+                                                        <h3 class="normal-custom-text">{{ $patient->getDx1->dx_name ? $patient->getDx1->dx_name : 'Template Dx Name' }} PROGRAM</h3>
                                                       </div>
                                                       <div class="col-md-6 text-right">
                                                         <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
@@ -576,14 +529,41 @@
                                         <div class="card-footer mycardfooter mt-5px">
                                                       <div class="row mb-25 mt-30">
                                                           <div class="col-md-6">
-                                                            <p class="custom-h5 mt-5px">EXERCISES - UPPER BACK(6)</p>
+                                                            <!-- <p class="custom-h5 mt-5px">EXERCISES - UPPER BACK(6)</p> -->
+                                                            <p class="custom-h5 mt-5px">EXERCISES - {{ $patient->getDx1->dx_name ? $patient->getDx1->dx_name : 'Template Dx Name' }} ({{ count($allRxs) }})</p> 
                                                           </div>
                                                           <div class="col-md-6 text-right">
                                                             <button class="btn btn-primary btn-blue w-135px h-36px blue-btn-font">ASSIGN ALL</button>
                                                           </div>
                                                       </div>
+
+                                            @foreach ( $allRxs as $rx )
+
+                                            <div class="row mb-10 border-1-b-gainsboro">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <!-- <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p> -->
+                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
+                                                        <ul>
+                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
+                                                        <br>
+                                                        <div class="d-inline-flex">
+                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
+                                                        </div>
+                                                </div>
+                                            </div>
+
+                                            @endforeach
                                             
-                                            <div class="row mb-10 border-1-b-gainsboro">
+                                            <!-- <div class="row mb-10 border-1-b-gainsboro">
                                                 <div class="col-md-6 m-auto d-flex">
                                                     <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                     <div class="d-block">
@@ -701,7 +681,7 @@
                                                              <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
                                                         </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
 
 
 
