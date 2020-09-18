@@ -150,7 +150,9 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1 class="m-0 custom-h1">Rachel Green</h1>
+            <h1 class="m-0 custom-h1">
+              {{ $patient? $patient->name : 'Template Name' }}
+            </h1>
             <p class="sub-title-p">Last active on 10/10/20, 8:04 AM</p>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -183,8 +185,8 @@
                                         <div class="card-header p-50">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h4 class="normal-black-text">Back Strengthening&nbsp;&nbsp;<i class="fas fa-pen color-blue font-18"></i></h4>
-                                                    <p class="custom-p font-18 mb-05rem">Created 10/02/20</p>
+                                                    <h4 class="normal-black-text">{{ $patient->getDx1->dx_name ? $patient->getDx1->dx_name : 'template dx name'  }}&nbsp;&nbsp;<i class="fas fa-pen color-blue font-18"></i></h4>
+                                                    <p class="custom-p font-18 mb-05rem">{{ $patient->getDx1->created_at ? 'Created '.$patient->getDx1->created_at : 'Created 10/02/20' }}</p>
                                                     <a href="#"><p class="table-p color-blue pt-0 mb-05rem font-14"><i class="fas fa-archive"></i>&nbsp;ARCHIVE</p></a>
                                                 </div>
                                             </div>
@@ -194,7 +196,11 @@
                                                 <div class="col-md-12">
                                                     <p class="custom-h5 pt-0 mb-05rem">CONDITION&nbsp;&nbsp;<i class="fas fa-pen color-blue font-18"></i></p>
                                                     <p class="custom-16-font">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in commodo tellus. Nam velit diam, eleifend non est a, convallis elementum libero. Nam finibus lacus a metus hendrerit sollicitudin. Suspendisse maximus at turpis id faucibus. Aenean convallis eros nisl, eu vestibulum orci mattis id.
+                                                      {{ 
+                                                        $patient->getDx1->dx_desc ? 
+                                                        $patient->getDx1->dx_desc :
+                                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in commodo tellus. Nam velit diam, eleifend non est a, convallis elementum libero. Nam finibus lacus a metus hendrerit sollicitudin. Suspendisse maximus at turpis id faucibus. Aenean convallis eros nisl, eu vestibulum orci mattis id.'
+                                                       }}
                                                     </p>
                                                 </div>
                                             </div>
@@ -203,11 +209,14 @@
                                         <div class="card-footer p-50 mycardfooter">
                                             <p class="custom-h5">TREATMENT</p>
                                             <button class="btn btn-default color-blue mb-25" type="button" data-backdrop="static" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus"></i>&nbsp;&nbsp;ADD EXERCISE</button>
+                                            
+                                            
+                                            
                                             <div class="row mb-10">
                                                 <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <iframe width="150" height="80" src="{{ $patient->getDx1->getRx1->rx_link ? $patient->getDx1->getRx1->rx_link : 'https://www.youtube.com/embed/vuGnzLxRvZM' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                     <div class="d-block">
-                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">Upper Back Stretches</p>
+                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">{{ $patient->getDx1->getRx1->rx_name ? $patient->getDx1->getRx1->rx_name : 'template rx name' }}</p>
                                                         <ul>
                                                             <li class="text-muted">4x weekly for 20 minutes</li>
                                                             <li class="text-muted">Continue for 3 weeks</li>
@@ -215,7 +224,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <h4 class="small-black-text uppercase">{{ $patient->getDx1->getRx1->type ? $patient->getDx1->getRx1->type : 'unkown' }}</h4>
                                                         <br>
                                                         
                                                         <div class="text-right">
@@ -227,11 +236,13 @@
                                                         </div>
                                                 </div>
                                             </div>
+
+
                                             <div class="row mb-10">
                                                 <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <iframe width="150" height="80" src="{{ $patient->getDx1->getRx2->rx_link ? $patient->getDx1->getRx2->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                     <div class="d-block">
-                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">Upper Back Stretches</p>
+                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">{{ $patient->getDx1->getRx2->rx_name ? $patient->getDx1->getRx2->rx_name : 'template rx name' }}</p>
                                                         <ul>
                                                             <li class="text-muted">4x weekly for 20 minutes</li>
                                                             <li class="text-muted">Continue for 3 weeks</li>
@@ -239,7 +250,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <h4 class="small-black-text uppercase">{{ $patient->getDx1->getRx2->type ? $patient->getDx1->getRx2->type : 'unkown' }}</h4>
                                                         <br>
                                                         
                                                         <div class="text-right">
@@ -251,11 +262,13 @@
                                                         </div>
                                                 </div>
                                             </div>
+
+
                                             <div class="row mb-10">
                                                 <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <iframe width="150" height="80" src="{{ $patient->getDx1->getRx3->rx_link ? $patient->getDx1->getRx3->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                     <div class="d-block">
-                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">Upper Back Stretches</p>
+                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">{{ $patient->getDx1->getRx3->rx_name ? $patient->getDx1->getRx3->rx_name : 'template rx name' }}</p>
                                                         <ul>
                                                             <li class="text-muted">4x weekly for 20 minutes</li>
                                                             <li class="text-muted">Continue for 3 weeks</li>
@@ -263,7 +276,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">VIDEO</h4>
+                                                        <h4 class="small-black-text uppercase">{{ $patient->getDx1->getRx3->type ? $patient->getDx1->getRx3->type : 'unkown' }}</h4>
                                                         <br>
                                                         
                                                         <div class="text-right">
@@ -275,6 +288,60 @@
                                                         </div>
                                                 </div>
                                             </div>
+
+                                            <div class="row mb-10">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="80" src="{{ $patient->getDx1->getRx4->rx_link ? $patient->getDx1->getRx4->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">{{ $patient->getDx1->getRx4->rx_name ? $patient->getDx1->getRx4->rx_name : 'template rx name' }}</p>
+                                                        <ul>
+                                                            <li class="text-muted">4x weekly for 20 minutes</li>
+                                                            <li class="text-muted">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text uppercase">{{ $patient->getDx1->getRx4->type ? $patient->getDx1->getRx4->type : 'unkown' }}</h4>
+                                                        <br>
+                                                        
+                                                        <div class="text-right">
+                                                            <p class="text-muted d-lineflex align-center">
+                                                                <i class="fas fa-pen color-blue font-18"></i>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <i class="fas fa-archive color-blue font-18"></i>
+                                                            </p>
+                                                        </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-10">
+                                                <div class="col-md-6 m-auto d-flex">
+                                                    <iframe width="150" height="80" src="{{ $patient->getDx1->getRx5->rx_link ? $patient->getDx1->getRx5->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <div class="d-block">
+                                                        <p class="table-p color-blue pt-0 mb-05rem ml-19">{{ $patient->getDx1->getRx5->rx_name ? $patient->getDx1->getRx5->rx_name : 'template rx name' }}</p>
+                                                        <ul>
+                                                            <li class="text-muted">4x weekly for 20 minutes</li>
+                                                            <li class="text-muted">Continue for 3 weeks</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                        <h4 class="small-black-text uppercase">{{ $patient->getDx1->getRx5->type ? $patient->getDx1->getRx5->type : 'unkown' }}</h4>
+                                                        <br>
+                                                        
+                                                        <div class="text-right">
+                                                            <p class="text-muted d-lineflex align-center">
+                                                                <i class="fas fa-pen color-blue font-18"></i>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <i class="fas fa-archive color-blue font-18"></i>
+                                                            </p>
+                                                        </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            
                                         </div>
                                     </div>
                                 </div>

@@ -152,7 +152,7 @@
           <div class="col-sm-12">
             <h1 class="m-0 custom-h1">Rachel Green - Self Directed, 10/10/20</h1>
             <p class="table-p color-blue pt-0">
-                <a href="{{ route('admin.patientdirectory.manage') }}">View Rachel Green.</a>
+                <a href="{{ route('admin.patientdirectory.manage', [ 'id' => 19 ]) }}">View Rachel Green.</a>
             </p>
           </div><!-- /.col -->
         </div><!-- /.row -->

@@ -15,6 +15,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+  
     protected $fillable = [
         'name', 
         'email', 
@@ -29,7 +30,15 @@ class User extends Authenticatable
         'insurance_phone',
         'group',
         'policy_id',
-        'gender'
+        'gender',
+        'prov_id_1',
+        'prov_id_2',
+        'prov_id_3',
+        'dx_1',
+        'dx_2',
+        'dx_3',
+        'dx_4',
+        'dx_5'
     ];
 
     /**
@@ -49,4 +58,44 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getProvider1()
+    {
+        return $this->belongsTo('App\Admin','prov_id_1' ,'id');
+    }
+
+    public function getProvider2()
+    {
+        return $this->belongsTo('App\Admin','prov_id_2', 'id');
+    }
+
+    public function getProvider3()
+    {
+        return $this->belongsTo('App\Admin','prov_id_3', 'id');
+    }
+
+    public function getDx1()
+    {
+        return $this->belongsTo('App\Dx', 'dx_1', 'dx_id');
+    }
+
+    public function getDx2()
+    {
+        return $this->belongsTo('App\Dx', 'dx_2', 'dx_id');
+    }
+
+    public function getDx3()
+    {
+        return $this->belongsTo('App\Dx', 'dx_3', 'dx_id');
+    }
+
+    public function getDx4()
+    {
+        return $this->belongsTo('App\Dx', 'dx_4', 'dx_id');
+    }
+
+    public function getDx5()
+    {
+        return $this->belongsTo('App\Dx', 'dx_5', 'dx_id');
+    }
 }

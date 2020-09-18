@@ -45,5 +45,5 @@ Route::prefix('admin')->group(function() {
     Route::get('/dashboard/patientdirectory', 'Admin\AdminController@patientdirectory')->name('admin.dashboard.patientdirectory');
     Route::get('/dashboard/exercises', 'Admin\AdminController@exercises')->name('admin.dashboard.exercises');
     Route::get('/dashboard/selfdirectedvisits/view', 'Admin\AdminController@selfdirectedvisitsview')->name('admin.selfdirectedvisits.view');
-    Route::get('/dashboard/patientdirectory/manage', 'Admin\AdminController@patientdirectorymanage')->name('admin.patientdirectory.manage');
+    Route::get('/dashboard/patientdirectory/manage/{id}', 'Admin\AdminController@patientdirectorymanage')->name('admin.patientdirectory.manage');
 });

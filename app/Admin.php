@@ -12,10 +12,23 @@
         protected $guard = 'admin';
 
         protected $fillable = [
-            'name', 'email', 'password',
+            'name', 
+            'email', 
+            'password',
+            'phone',
+            'street',
+            'city',
+            'zip',
+            'l_name',
         ];
 
         protected $hidden = [
             'password', 'remember_token',
         ];
+
+
+        public function forPatients()
+        {
+            return $this->hasMany('App\User');
+        }
     }

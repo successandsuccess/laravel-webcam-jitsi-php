@@ -270,6 +270,10 @@ input.custom-search:-webkit-autofill:active {
     color: #FFFFFF;
 }
 
+.uppercase {
+    text-transform: uppercase;
+}
+
 .custom-card {
     background: none;
     box-shadow: none;
