@@ -530,163 +530,66 @@
                                                       <div class="row mb-25 mt-30">
                                                           <div class="col-md-6">
                                                             <!-- <p class="custom-h5 mt-5px">EXERCISES - UPPER BACK(6)</p> -->
-                                                            <p class="custom-h5 mt-5px">EXERCISES - {{ $patient->getDx1->dx_name ? $patient->getDx1->dx_name : 'Template Dx Name' }} ({{ count($allRxs) }})</p> 
+                                                            <p class="custom-h5 mt-5px">EXERCISES - {{ $patient->getDx1->dx_name ? $patient->getDx1->dx_name : 'Template Dx Name' }} ({{ count($dxRxs) }})</p> 
                                                           </div>
                                                           <div class="col-md-6 text-right">
                                                             <button class="btn btn-primary btn-blue w-135px h-36px blue-btn-font">ASSIGN ALL</button>
                                                           </div>
                                                       </div>
 
-                                            @foreach ( $allRxs as $rx )
+                                            @foreach ( $dxRxs as $rx )
 
-                                            <div class="row mb-10 border-1-b-gainsboro">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <!-- <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p> -->
-                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
-                                                        <ul>
-                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
-                                                        <br>
-                                                        <div class="d-inline-flex">
-                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
-                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
+                                                      @if ( $rx->rx_id == $patient->getDx1->rx_1 || $rx->rx_id == $patient->getDx1->rx_2 ||  $rx->rx_id == $patient->getDx1->rx_3 )
+                                                        <div class="row mb-10 border-1-b-gainsboro">
+                                                            <div class="col-md-6 m-auto d-flex">
+                                                                <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                <div class="d-block">
+                                                                    <!-- <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p> -->
+                                                                    <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
+                                                                    <ul>
+                                                                        <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                                        <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 text-right">
+                                                                    <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
+                                                                    <br>
+                                                                    <div class="d-inline-flex">
+                                                                        <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                                        <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
+                                                                    </div>
+                                                            </div>
                                                         </div>
-                                                </div>
-                                            </div>
+                                                      @endif
+                                              @endforeach
+
+                                              @foreach ( $dxRxs as $rx )
+                                                      @if ( $rx->rx_id != $patient->getDx1->rx_1 && $rx->rx_id != $patient->getDx1->rx_2 && $rx->rx_id != $patient->getDx1->rx_3 )
+                                                        <div class="row mb-10 border-1-b-gainsboro">
+                                                          <div class="col-md-6 m-auto d-flex">
+                                                              <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                              <div class="d-block">
+                                                                  <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
+                                                                  <ul>
+                                                                      <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                                      <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                                  </ul>
+                                                              </div>
+                                                          </div>
+                                                          <div class="col-md-6 text-right">
+                                                                  <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
+                                                                  <br>
+                                                                  <div class="d-inline-flex">
+                                                                      <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
+                                                                  </div>
+                                                          </div>
+                                                        </div>
+                                                      @endif
+                                                      
 
                                             @endforeach
                                             
-                                            <!-- <div class="row mb-10 border-1-b-gainsboro">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
-                                                        <ul>
-                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">VIDEO</h4>
-                                                        <br>
-                                                        <div class="d-inline-flex">
-                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
-                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-10 border-1-b-gainsboro">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
-                                                        <ul>
-                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">VIDEO</h4>
-                                                        <br>
-                                                        <div class="d-inline-flex">
-                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
-                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-10 border-1-b-gainsboro">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
-                                                        <ul>
-                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">VIDEO</h4>
-                                                        <br>
-                                                        <div class="d-inline-flex">
-                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
-                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
-                                                        </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="row mb-10 border-1-b-gainsboro">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
-                                                        <ul>
-                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">PDF</h4>
-                                                        <br>
-                                                        <div class="d-inline-flex">
-                                                             <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-10 border-1-b-gainsboro">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
-                                                        <ul>
-                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">PDF</h4>
-                                                        <br>
-                                                        <div class="d-inline-flex">
-                                                             <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-10 border-1-b-gainsboro">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
-                                                        <ul>
-                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">PDF</h4>
-                                                        <br>
-                                                        <div class="d-inline-flex">
-                                                             <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
-                                                        </div>
-                                                </div>
-                                            </div> -->
-
-
-
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -704,13 +607,17 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        
+                                        @foreach ( $allDxs as $dx )
+
                                         <div class="card-body d-grid border-1-gasinsboro m-18 mb-25 max-width-635">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
                                                     <div class="row">
                                                       <div class="col-md-6"> 
-                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
+                                                        <!-- <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3> -->
+                                                          <h3 class="normal-custom-text uppercase">{{ $dx->dx_name }} PROGRAM</h3> 
                                                       </div>
                                                       <div class="col-md-6 text-right">
                                                         <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
@@ -724,105 +631,8 @@
                                             </div>
                                         </div>
 
-                                        <div class="card-body d-grid border-1-gasinsboro m-18 mb-25 max-width-635">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
-                                                    <div class="row">
-                                                      <div class="col-md-6"> 
-                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
-                                                      </div>
-                                                      <div class="col-md-6 text-right">
-                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
-                                                      </div>
-                                                    </div>
-                                                   
-                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;Upper Back Stretches</p>
-                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;SI Joint Extensions</p>
-                                                    <p class="semi-samll-text mb-10"><i class="fas fa-video"></i>&nbsp;Lumbar Stenosis Stretches</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
 
-                                        <div class="card-body d-grid border-1-gasinsboro m-18 mb-25 max-width-635">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
-                                                    <div class="row">
-                                                      <div class="col-md-6"> 
-                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
-                                                      </div>
-                                                      <div class="col-md-6 text-right">
-                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
-                                                      </div>
-                                                    </div>
-                                                   
-                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;Upper Back Stretches</p>
-                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;SI Joint Extensions</p>
-                                                    <p class="semi-samll-text mb-10"><i class="fas fa-video"></i>&nbsp;Lumbar Stenosis Stretches</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="card-body d-grid border-1-gasinsboro m-18 mb-25 max-width-635">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
-                                                    <div class="row">
-                                                      <div class="col-md-6"> 
-                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
-                                                      </div>
-                                                      <div class="col-md-6 text-right">
-                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
-                                                      </div>
-                                                    </div>
-                                                   
-                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;Upper Back Stretches</p>
-                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;SI Joint Extensions</p>
-                                                    <p class="semi-samll-text mb-10"><i class="fas fa-video"></i>&nbsp;Lumbar Stenosis Stretches</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="card-body d-grid border-1-gasinsboro m-18 mb-25 max-width-635">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
-                                                    <div class="row">
-                                                      <div class="col-md-6"> 
-                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
-                                                      </div>
-                                                      <div class="col-md-6 text-right">
-                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
-                                                      </div>
-                                                    </div>
-                                                   
-                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;Upper Back Stretches</p>
-                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;SI Joint Extensions</p>
-                                                    <p class="semi-samll-text mb-10"><i class="fas fa-video"></i>&nbsp;Lumbar Stenosis Stretches</p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="card-body d-grid border-1-gasinsboro m-18 mb-25 max-width-635">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <p class="small-custom-text mt-0 mb-0">(3) EXERCISES</p>
-                                                    <div class="row">
-                                                      <div class="col-md-6"> 
-                                                        <h3 class="normal-custom-text">UPPER BACK PROGRAM</h3>
-                                                      </div>
-                                                      <div class="col-md-6 text-right">
-                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
-                                                      </div>
-                                                    </div>
-                                                   
-                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;Upper Back Stretches</p>
-                                                    <p class="semi-samll-text mb-0"><i class="fas fa-video"></i>&nbsp;SI Joint Extensions</p>
-                                                    <p class="semi-samll-text mb-10"><i class="fas fa-video"></i>&nbsp;Lumbar Stenosis Stretches</p>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                     </div>
                                 </div>
@@ -846,131 +656,59 @@
                                         </div>
 
                                         <div class="card-footer mycardfooter mt-5px border-none">
-                                            
-                                            <div class="row mb-10 border-1-b-gainsboro">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
-                                                        <ul>
-                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">VIDEO</h4>
-                                                        <br>
-                                                        <div class="d-inline-flex">
-                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
-                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-10 border-1-b-gainsboro">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
-                                                        <ul>
-                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">VIDEO</h4>
-                                                        <br>
-                                                        <div class="d-inline-flex">
-                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
-                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-10 border-1-b-gainsboro">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
-                                                        <ul>
-                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">VIDEO</h4>
-                                                        <br>
-                                                        <div class="d-inline-flex">
-                                                             <p class="exercise-assigned-italic m-auto">Assigned</p> 
-                                                             <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
-                                                        </div>
-                                                </div>
-                                            </div>
 
+                                              @foreach ( $allRxs as $rx )
 
-                                            <div class="row mb-10 border-1-b-gainsboro">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
-                                                        <ul>
-                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">PDF</h4>
-                                                        <br>
-                                                        <div class="d-inline-flex">
-                                                             <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-10 border-1-b-gainsboro">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
-                                                        <ul>
-                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">PDF</h4>
-                                                        <br>
-                                                        <div class="d-inline-flex">
-                                                             <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
-                                                        </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-10 border-1-b-gainsboro">
-                                                <div class="col-md-6 m-auto d-flex">
-                                                    <iframe width="150" height="85" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                    <div class="d-block">
-                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p>
-                                                        <ul>
-                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                        <h4 class="small-black-text">PDF</h4>
-                                                        <br>
-                                                        <div class="d-inline-flex">
-                                                             <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
-                                                        </div>
-                                                </div>
-                                            </div>
+                                                            @if ( $rx->rx_id == $patient->getDx1->rx_1 || $rx->rx_id == $patient->getDx1->rx_2 ||  $rx->rx_id == $patient->getDx1->rx_3 )
+                                                              <div class="row mb-10 border-1-b-gainsboro">
+                                                                  <div class="col-md-6 m-auto d-flex">
+                                                                      <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                      <div class="d-block">
+                                                                          <!-- <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p> -->
+                                                                          <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
+                                                                          <ul>
+                                                                              <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                                              <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                                          </ul>
+                                                                      </div>
+                                                                  </div>
+                                                                  <div class="col-md-6 text-right">
+                                                                          <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
+                                                                          <br>
+                                                                          <div class="d-inline-flex">
+                                                                              <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                                              <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
+                                                                          </div>
+                                                                  </div>
+                                                              </div>
+                                                            @endif
+                                                    @endforeach
 
+                                                    @foreach ( $allRxs as $rx )
+                                                            @if ( $rx->rx_id != $patient->getDx1->rx_1 && $rx->rx_id != $patient->getDx1->rx_2 && $rx->rx_id != $patient->getDx1->rx_3 )
+                                                              <div class="row mb-10 border-1-b-gainsboro">
+                                                                <div class="col-md-6 m-auto d-flex">
+                                                                    <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                    <div class="d-block">
+                                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
+                                                                        <ul>
+                                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
+                                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 text-right">
+                                                                        <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
+                                                                        <br>
+                                                                        <div class="d-inline-flex">
+                                                                            <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
+                                                                        </div>
+                                                                </div>
+                                                              </div>
+                                                            @endif
+                                                            
 
-
-
-
+                                                  @endforeach
                                         </div>
                                       
 

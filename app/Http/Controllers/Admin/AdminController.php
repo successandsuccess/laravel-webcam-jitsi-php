@@ -113,11 +113,16 @@ class AdminController extends Controller
                     ->first();
         // dd($patient);
 
-        // get all rxs from current dx
+        // get all rxs from current dx using dx_no
         $current_dx_id = $patient->dx_1;
-        $allRxs = Rx::where('dx_no', $current_dx_id)->get();
-                        // dd($allRxs);
-        return view('admin.patientdirectorymanage', compact('patient', 'allRxs'));
+        $dxRxs = Rx::where('dx_no', $current_dx_id)->get();
+
+        // get all dxs from dxs table
+        $allDxs = Dx::all();
+
+        // get all rxs from rxs table
+        $allRxs = Rx::all();
+        return view('admin.patientdirectorymanage', compact('patient', 'dxRxs', 'allDxs', 'allRxs'));
     }
 
 }
