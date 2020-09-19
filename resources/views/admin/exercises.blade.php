@@ -176,7 +176,43 @@
                     <div class="card card-solid custom-card">
                         <div class="card-body pb-0 pr-7 pl-7">
                             <div class="row d-flex align-items-stretch">
+                                @foreach( $rxs as $rx )
                                 <div class="col-12 col-sm-6 col-md-6">
+                                    <div class="card bg-light">
+                                        <div class="card-header text-muted">
+                                            <h2 class="lead custom-h2">{{ $rx->rx_name }}</h2>
+                                            <p class="text-muted text-sm mb-0">{{ $rx->type }}</p>
+                                        </div>
+                                        <div class="card-body pt-0 pb-0 padding-none">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <!-- <img src="{{ asset('assets/img/shutterstock_725473423.jpg') }}" alt="" class="img-fluid">
+                                                 -->
+                                                 <iframe width="100%" height="248" src="{{ $rx->rx_link }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="card-footer footer-border background-none mt-minus-6px">
+                                            <div class="row mt-10">
+                                                    <div class="col-12">
+                                                        <p class="text-muted text-sm">
+                                                            {{ $rx->rx_note }}
+                                                        </p>
+                                                    </div>
+                                                    
+                                                </div>
+                                            <div class="text-left">
+                                                <a href="#" class="special-p">
+                                                    Manage
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+
+                                <!-- <div class="col-12 col-sm-6 col-md-6">
                                     <div class="card bg-light">
                                         <div class="card-header text-muted">
                                             <h2 class="lead custom-h2">Ab Stretches</h2>
@@ -207,231 +243,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-6">
-                                    <div class="card bg-light">
-                                        <div class="card-header text-muted">
-                                            <h2 class="lead custom-h2">Ab Stretches</h2>
-                                            <p class="text-muted text-sm mb-0">Video</p>
-                                        </div>
-                                        <div class="card-body pt-0 pb-0">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <img src="{{ asset('assets/img/shutterstock_725473423.jpg') }}" alt="" class="img-fluid">
-                                                </div>
-                                            </div>
-                                           
-                                        </div>
-                                        <div class="card-footer footer-border background-none">
-                                            <div class="row mt-10">
-                                                    <div class="col-12">
-                                                        <p class="text-muted text-sm">
-                                                            Abs Streatching, core strengthening, rectus
-                                                            abdominis, transversus abdominis.
-                                                        </p>
-                                                    </div>
-                                                    
-                                                </div>
-                                            <div class="text-left">
-                                                <a href="#" class="special-p">
-                                                    Manage
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-6">
-                                    <div class="card bg-light">
-                                        <div class="card-header text-muted">
-                                            <h2 class="lead custom-h2">Ab Stretches</h2>
-                                            <p class="text-muted text-sm mb-0">Video</p>
-                                        </div>
-                                        <div class="card-body pt-0 pb-0">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <img src="{{ asset('assets/img/shutterstock_725473423.jpg') }}" alt="" class="img-fluid">
-                                                </div>
-                                            </div>
-                                           
-                                        </div>
-                                        <div class="card-footer footer-border background-none">
-                                            <div class="row mt-10">
-                                                    <div class="col-12">
-                                                        <p class="text-muted text-sm">
-                                                            Abs Streatching, core strengthening, rectus
-                                                            abdominis, transversus abdominis.
-                                                        </p>
-                                                    </div>
-                                                    
-                                                </div>
-                                            <div class="text-left">
-                                                <a href="#" class="special-p">
-                                                    Manage
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-6">
-                                    <div class="card bg-light">
-                                        <div class="card-header text-muted">
-                                            <h2 class="lead custom-h2">Ab Stretches</h2>
-                                            <p class="text-muted text-sm mb-0">Video</p>
-                                        </div>
-                                        <div class="card-body pt-0 pb-0">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <img src="{{ asset('assets/img/shutterstock_725473423.jpg') }}" alt="" class="img-fluid">
-                                                </div>
-                                            </div>
-                                           
-                                        </div>
-                                        <div class="card-footer footer-border background-none">
-                                            <div class="row mt-10">
-                                                    <div class="col-12">
-                                                        <p class="text-muted text-sm">
-                                                            Abs Streatching, core strengthening, rectus
-                                                            abdominis, transversus abdominis.
-                                                        </p>
-                                                    </div>
-                                                    
-                                                </div>
-                                            <div class="text-left">
-                                                <a href="#" class="special-p">
-                                                    Manage
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-6">
-                                    <div class="card bg-light">
-                                        <div class="card-header text-muted">
-                                            <h2 class="lead custom-h2">Ab Stretches</h2>
-                                            <p class="text-muted text-sm mb-0">Video</p>
-                                        </div>
-                                        <div class="card-body pt-0 pb-0">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <img src="{{ asset('assets/img/shutterstock_725473423.jpg') }}" alt="" class="img-fluid">
-                                                </div>
-                                            </div>
-                                           
-                                        </div>
-                                        <div class="card-footer footer-border background-none">
-                                            <div class="row mt-10">
-                                                    <div class="col-12">
-                                                        <p class="text-muted text-sm">
-                                                            Abs Streatching, core strengthening, rectus
-                                                            abdominis, transversus abdominis.
-                                                        </p>
-                                                    </div>
-                                                    
-                                                </div>
-                                            <div class="text-left">
-                                                <a href="#" class="special-p">
-                                                    Manage
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-6">
-                                    <div class="card bg-light">
-                                        <div class="card-header text-muted">
-                                            <h2 class="lead custom-h2">Ab Stretches</h2>
-                                            <p class="text-muted text-sm mb-0">Video</p>
-                                        </div>
-                                        <div class="card-body pt-0 pb-0">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <img src="{{ asset('assets/img/shutterstock_725473423.jpg') }}" alt="" class="img-fluid">
-                                                </div>
-                                            </div>
-                                           
-                                        </div>
-                                        <div class="card-footer footer-border background-none">
-                                            <div class="row mt-10">
-                                                    <div class="col-12">
-                                                        <p class="text-muted text-sm">
-                                                            Abs Streatching, core strengthening, rectus
-                                                            abdominis, transversus abdominis.
-                                                        </p>
-                                                    </div>
-                                                    
-                                                </div>
-                                            <div class="text-left">
-                                                <a href="#" class="special-p">
-                                                    Manage
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-6">
-                                    <div class="card bg-light">
-                                        <div class="card-header text-muted">
-                                            <h2 class="lead custom-h2">Ab Stretches</h2>
-                                            <p class="text-muted text-sm mb-0">Video</p>
-                                        </div>
-                                        <div class="card-body pt-0 pb-0">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <img src="{{ asset('assets/img/shutterstock_725473423.jpg') }}" alt="" class="img-fluid">
-                                                </div>
-                                            </div>
-                                           
-                                        </div>
-                                        <div class="card-footer footer-border background-none">
-                                            <div class="row mt-10">
-                                                    <div class="col-12">
-                                                        <p class="text-muted text-sm">
-                                                            Abs Streatching, core strengthening, rectus
-                                                            abdominis, transversus abdominis.
-                                                        </p>
-                                                    </div>
-                                                    
-                                                </div>
-                                            <div class="text-left">
-                                                <a href="#" class="special-p">
-                                                    Manage
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 col-md-6">
-                                    <div class="card bg-light">
-                                        <div class="card-header text-muted">
-                                            <h2 class="lead custom-h2">Ab Stretches</h2>
-                                            <p class="text-muted text-sm mb-0">Video</p>
-                                        </div>
-                                        <div class="card-body pt-0 pb-0">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <img src="{{ asset('assets/img/shutterstock_725473423.jpg') }}" alt="" class="img-fluid">
-                                                </div>
-                                            </div>
-                                           
-                                        </div>
-                                        <div class="card-footer footer-border background-none">
-                                            <div class="row mt-10">
-                                                    <div class="col-12">
-                                                        <p class="text-muted text-sm">
-                                                            Abs Streatching, core strengthening, rectus
-                                                            abdominis, transversus abdominis.
-                                                        </p>
-                                                    </div>
-                                                    
-                                                </div>
-                                            <div class="text-left">
-                                                <a href="#" class="special-p">
-                                                    Manage
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> -->
+                      
                             
                             </div>
                         </div>

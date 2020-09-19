@@ -57,7 +57,9 @@ class AdminController extends Controller
 
     public function exercises()
     {
-        return view('admin.exercises');
+        $rxs = Rx::all();
+
+        return view('admin.exercises', compact('rxs'));
     }
 
     public function selfdirectedvisitsview()

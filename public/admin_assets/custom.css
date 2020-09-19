@@ -660,3 +660,11 @@ input.custom-search:-webkit-autofill:active {
 .exercise-modal-close:focus {
     outline: none;
 }
+
+.padding-none {
+    padding: 0px;
+}
+
+.mt-minus-6px {
+    margin-top: -6px;
+}
