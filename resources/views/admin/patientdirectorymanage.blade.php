@@ -218,8 +218,10 @@
                                                     <div class="d-block">
                                                         <p class="table-p color-blue pt-0 mb-05rem ml-19">{{ $patient->getDx1->getRx1->rx_name ? $patient->getDx1->getRx1->rx_name : 'template rx name' }}</p>
                                                         <ul>
-                                                            <li class="text-muted">4x weekly for 20 minutes</li>
-                                                            <li class="text-muted">Continue for 3 weeks</li>
+                                                            <!-- <li class="text-muted">4x weekly for 20 minutes</li> -->
+                                                            <!-- <li class="text-muted">Continue for 3 weeks</li> -->
+                                                            <li class="text-muted">{{ $patient->getDx1->getRx1->frequency ? $patient->getDx1->getRx1->frequency : 'template rx frequency' }}</li>
+                                                            <li class="text-muted">{{ $patient->getDx1->getRx1->duration ? $patient->getDx1->getRx1->duration : 'template rx duration' }}</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -244,8 +246,8 @@
                                                     <div class="d-block">
                                                         <p class="table-p color-blue pt-0 mb-05rem ml-19">{{ $patient->getDx1->getRx2->rx_name ? $patient->getDx1->getRx2->rx_name : 'template rx name' }}</p>
                                                         <ul>
-                                                            <li class="text-muted">4x weekly for 20 minutes</li>
-                                                            <li class="text-muted">Continue for 3 weeks</li>
+                                                        <li class="text-muted">{{ $patient->getDx1->getRx2->frequency ? $patient->getDx1->getRx2->frequency : 'template rx frequency' }}</li>
+                                                            <li class="text-muted">{{ $patient->getDx1->getRx2->duration ? $patient->getDx1->getRx2->duration : 'template rx duration' }}</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -270,8 +272,8 @@
                                                     <div class="d-block">
                                                         <p class="table-p color-blue pt-0 mb-05rem ml-19">{{ $patient->getDx1->getRx3->rx_name ? $patient->getDx1->getRx3->rx_name : 'template rx name' }}</p>
                                                         <ul>
-                                                            <li class="text-muted">4x weekly for 20 minutes</li>
-                                                            <li class="text-muted">Continue for 3 weeks</li>
+                                                            <li class="text-muted">{{ $patient->getDx1->getRx3->frequency ? $patient->getDx1->getRx3->frequency : 'template rx frequency' }}</li>
+                                                            <li class="text-muted">{{ $patient->getDx1->getRx3->duration ? $patient->getDx1->getRx3->duration : 'template rx duration' }}</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -547,8 +549,8 @@
                                                                     <!-- <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p> -->
                                                                     <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
                                                                     <ul>
-                                                                        <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                                        <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                                        <li class="exercise-li-muted-font">{{ $rx->frequency }}</li>
+                                                                        <li class="exercise-li-muted-font">{{ $rx->duration }}</li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -572,8 +574,8 @@
                                                               <div class="d-block">
                                                                   <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
                                                                   <ul>
-                                                                      <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                                      <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                                      <li class="exercise-li-muted-font">{{ $rx->frequency }}</li>
+                                                                      <li class="exercise-li-muted-font">{{ $rx->duration }}</li>
                                                                   </ul>
                                                               </div>
                                                           </div>
@@ -667,8 +669,8 @@
                                                                           <!-- <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p> -->
                                                                           <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
                                                                           <ul>
-                                                                              <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                                              <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                                              <li class="exercise-li-muted-font">{{ $rx->frequency }}</li>
+                                                                              <li class="exercise-li-muted-font">{{ $rx->duration }}</li>
                                                                           </ul>
                                                                       </div>
                                                                   </div>
@@ -692,8 +694,8 @@
                                                                     <div class="d-block">
                                                                         <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
                                                                         <ul>
-                                                                            <li class="exercise-li-muted-font">4x weekly for 20 minutes</li>
-                                                                            <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                                                            <li class="exercise-li-muted-font">{{ $rx->frequency }}</li>
+                                                                            <li class="exercise-li-muted-font">{{ $rx->duration }}</li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
