@@ -721,6 +721,10 @@ input.custom-search:-webkit-autofill:active {
     -moz-appearance: none;
 }
 
+.pt-20 {
+    padding-top: 20px;
+}
+
 .normal-white-text-14 {
     font-family: Open Sans;
     font-style: normal;

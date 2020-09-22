@@ -161,7 +161,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <div class="content">
+    <div class="content pb-50">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -178,8 +178,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body d-grid p-50">
-                    <p class="table-p color-special">Patient Care Plan</p>
+                <div class="card-body d-grid p-50 pt-20">
+                    <p class="table-p color-special mb-50">Patient Care Plan</p>
                     <div class="row mb-10">
                         <div class="col-md-6 m-auto d-flex">
                             <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
