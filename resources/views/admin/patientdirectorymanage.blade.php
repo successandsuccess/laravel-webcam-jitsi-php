@@ -161,10 +161,56 @@
     <!-- /.content-header -->
 
      <!-- Main content -->
-     <div class="content">
+     <div class="content pb-50">
       <div class="container">
             <div class="row">
-                <div class="col-md-12">
+              <div class="col-md-12">
+                  <h3 class="custom-h3">Patient Activity</h3>
+                  <div class="card boxshadow-none mt-10">
+                      <div class="card-header p-50 pb-20 border-none">
+                          <div class="row">
+                              <div class="col-md-12">
+                                 
+                                  <p class="custom-h5 mb-05rem">THIS WEEK</p>
+                                
+                              </div>
+                          </div>
+                      </div>
+                      <div class="card-body p-50 border-none pt-0 pb-35">
+                          <div class="row">
+                              
+                                  <div class="col-md-4 col-sm-12">
+                                    <p class="big-muted-text">4</p>
+                                  </div>
+                                  <div class="col-md-4 col-sm-12">
+                                    <p class="big-muted-text">24:34 mins</p>
+                                  </div>
+                                  <div class="col-md-4 col-sm-12">
+                                    <p class="big-muted-text">0</p>
+                                  </div>
+                          
+                                  <div class="col-md-4 col-sm-12">
+                                    <p class="custom-p">Completed Sessions</p>
+                                  </div>
+                                  <div class="col-md-4 col-sm-12">
+                                    <p class="custom-p">Average Session Time</p>
+                                  </div>
+                                  <div class="col-md-4 col-sm-12">
+                                    <p class="custom-p">Incompleted Exercises</p>
+                                  </div>
+                            
+                          </div>
+
+                      </div>
+                      <div class="card-footer p-50 mycardfooter border-none pt-0">
+                          <p class="custom-h5">SELF DIRECTED SESSIONS OVER TIME</p>
+                          <img class="width-100" src="{{ asset('admin_assets/dist/img/patternedchart.png') }}" alt="charts">
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mt-50px">
                     <h3 class="custom-h3">Patient Care Plan</h3>
                 
                    
@@ -182,25 +228,54 @@
                             <div class="tab-content" id="custom-tabs-four-tabContent">
                                 <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel" aria-labelledby="custom-tabs-four-home-tab">
                                     <div class="card boxshadow-none mt-10">
-                                        <div class="card-header p-50">
+                                        <div class="card-header p-50 border-none pb-0">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h4 class="normal-black-text">{{ $patient->getDx1->dx_name ? $patient->getDx1->dx_name : 'template dx name'  }}&nbsp;&nbsp;<i class="fas fa-pen color-blue font-18"></i></h4>
-                                                    <p class="custom-p font-18 mb-05rem">{{ $patient->getDx1->created_at ? 'Created '.$patient->getDx1->created_at : 'Created 10/02/20' }}</p>
-                                                    <a href="#"><p class="table-p color-blue pt-0 mb-05rem font-14"><i class="fas fa-archive"></i>&nbsp;ARCHIVE</p></a>
+                                                    <p class="custom-h5 uppercase">Overview</p>
+                                                    <div class="row">
+                                                      <div class="col-md-6">
+                                                        <h4 class="normal-black-text">{{ $patient->getDx1->dx_name ? $patient->getDx1->dx_name : 'template dx name'  }}</h4>
+                                                      </div>
+                                                      <div class="col-md-6 d-flex justify-content-end">
+                                                        <a href="#"><p class="table-p color-blue pt-0 mb-05rem font-14"><i class="fas fa-archive"></i>&nbsp;ARCHIVE</p></a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-pen color-blue font-18"></i>
+                                                      </div>
+                                                    </div>
+                                                    <p class="custom-p font-18 mb-05rem">{{ $patient->getDx1->created_at ? 'Created: '.$patient->getDx1->created_at : 'Created: 10/02/20' }}</p>
+                                                    <p class="custom-p font-18 mb-05rem">Length: 6 weeks</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="card-body d-grid p-50">
                                             <div class="row">
+                                                <div class="col-md-12 pb-50">
+                                                    <p class="custom-h5 pt-0 mb-05rem">DX TAGS</p>
+                                                    <div class="row">
+                                                      <div class="col-md-5">
+                                                        <select class="admin-select" name="dxs" id="dxs">
+                                                          <option value="1">Lumbar Stenosis</option>
+                                                          <option value="2">Cervical Stenosis </option>
+                                                          <option value="3">Front Stenosis </option>
+                                                          <option value="4">Back Stenosis </option>
+                                                          <option value="5">Spine Stenosis </option>
+                                                        </select>
+                                                      </div>
+                                                      <div class="col-md-7 d-flex m-auto">
+                                                          <div class="custom-rounded-tag normal-white-text-14 d-flex">Lumbar Stenosis <span><i class="far fa-times-circle"></i></span></div>
+                                                      </div>
+                                                    </div>
+                                                      
+                                                </div>
                                                 <div class="col-md-12">
-                                                    <p class="custom-h5 pt-0 mb-05rem">CONDITION&nbsp;&nbsp;<i class="fas fa-pen color-blue font-18"></i></p>
+                                                    <div class="row">
+                                                      <div class="col-md-6">
+                                                        <p class="custom-h5 pt-0 mb-05rem">PRACTITIONER NOTES</p>
+                                                      </div>
+                                                      <div class="col-md-6 text-right">
+                                                        <i class="fas fa-pen color-blue font-18"></i>
+                                                      </div>
+                                                    </div>
                                                     <p class="custom-16-font">
-                                                      {{ 
-                                                        $patient->getDx1->dx_desc ? 
-                                                        $patient->getDx1->dx_desc :
-                                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in commodo tellus. Nam velit diam, eleifend non est a, convallis elementum libero. Nam finibus lacus a metus hendrerit sollicitudin. Suspendisse maximus at turpis id faucibus. Aenean convallis eros nisl, eu vestibulum orci mattis id.'
-                                                       }}
+                                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in commodo tellus. Nam velit diam, eleifend non est a, convallis elementum libero. Nam finibus lacus a metus hendrerit sollicitudin.
                                                     </p>
                                                 </div>
                                             </div>
@@ -213,7 +288,7 @@
                                             @for ( $i = 1; $i <=5; $i++ )
                                               @if ( isset($patient->getDx1['getRx'.$i]) )
                        
-                                              <div class="row mb-10">
+                                              <div class="row mb-10 border-1-b-gainsboro">
                                                   <div class="col-md-6 m-auto d-flex">
                                                       <iframe width="150" height="80" src="{{ $patient->getDx1['getRx'.$i]->rx_link ? $patient->getDx1['getRx'.$i]->rx_link : 'https://www.youtube.com/embed/vuGnzLxRvZM' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                       <div class="d-block">
@@ -353,7 +428,7 @@
             </div>
           <div class="col-lg-12">
                 <h3 class="custom-h3">Patient Log</h3>
-                <table class="table table-hover text-nowrap background-w">
+                <table class="table table-hover text-nowrap background-w margin-bottom-0">
                   <thead>
                     <tr>
                       <th>DATE</th>

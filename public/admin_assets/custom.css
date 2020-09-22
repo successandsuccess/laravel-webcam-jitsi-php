@@ -8,7 +8,7 @@
 }
 
 .pb-50 {
-    padding-bottom: 50px;
+    padding-bottom: 50px !important;
 }
 
 .mt-30 {
@@ -671,4 +671,78 @@ input.custom-search:-webkit-autofill:active {
 
 .min-height-100px {
     min-height: 100px;
+}
+
+.big-muted-text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px !important;
+    line-height: 24px;
+    /* identical to box height, or 75% */
+    letter-spacing: 0.15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.pt-30 {
+    padding-top: 30px;
+}
+
+.pb-20 {
+    padding-bottom: 20px;
+}
+
+.pb-35 {
+    padding-bottom: 35px;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.mt-50px {
+    margin-top: 50px;
+}
+
+.admin-select {
+    width: 280px;
+    height: 56px;
+    background: rgba(33, 33, 33, 0.08);
+    border-radius: 4px 4px 4px 4px;
+    border: none;
+    padding-left: 20px;
+    padding-right: 10px;
+    outline: none;
+    background-image: linear-gradient(45deg, transparent 50%, rgba(0, 0, 0, 0.54) 60%), linear-gradient(135deg, rgba(0, 0, 0, 0.54) 40%, transparent 50%) !important;
+    background-position: calc(100% - 30px) 22px, calc(100% - 20px) 22px, 100% 0;
+    background-size: 10px 10px, 10px 10px;
+    background-repeat: no-repeat;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.normal-white-text-14 {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px !important;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    letter-spacing: 0.25px;
+    color: #FFFFFF;
+}
+
+.custom-rounded-tag {
+    background: #5E90ED;
+    border-radius: 16px;
+    width: 165px;
+    height: 32px;
+    padding: 6px;
+    padding-left: 13px;
+    padding-right: 10px;
+    justify-content: space-between;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0px;
 }
