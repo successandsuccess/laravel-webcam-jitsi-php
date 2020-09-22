@@ -668,3 +668,7 @@ input.custom-search:-webkit-autofill:active {
 .mt-minus-6px {
     margin-top: -6px;
 }
+
+.min-height-100px {
+    min-height: 100px;
+}

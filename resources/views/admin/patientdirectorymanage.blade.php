@@ -488,7 +488,7 @@
                                             @foreach ( $dxRxs as $rx )
 
                                                       @if ( $rx->rx_id == $patient->getDx1->rx_1 || $rx->rx_id == $patient->getDx1->rx_2 ||  $rx->rx_id == $patient->getDx1->rx_3 )
-                                                        <div class="row mb-10 border-1-b-gainsboro">
+                                                        <div class="row mb-10 border-1-b-gainsboro min-height-100px">
                                                             <div class="col-md-6 m-auto d-flex">
                                                                 <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                                 <div class="d-block">
@@ -514,7 +514,7 @@
 
                                               @foreach ( $dxRxs as $rx )
                                                       @if ( $rx->rx_id != $patient->getDx1->rx_1 && $rx->rx_id != $patient->getDx1->rx_2 && $rx->rx_id != $patient->getDx1->rx_3 )
-                                                        <div class="row mb-10 border-1-b-gainsboro">
+                                                        <div class="row mb-10 border-1-b-gainsboro min-height-100px">
                                                           <div class="col-md-6 m-auto d-flex">
                                                               <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                               <div class="d-block">
@@ -614,7 +614,7 @@
                                                               $rx->rx_id == $patient->getDx1->rx_4 ||
                                                               $rx->rx_id == $patient->getDx1->rx_5 
                                                               )
-                                                              <div class="row mb-10 border-1-b-gainsboro">
+                                                              <div class="row mb-10 border-1-b-gainsboro min-height-100px">
                                                                   <div class="col-md-6 m-auto d-flex">
                                                                       <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                                       <div class="d-block">
@@ -646,7 +646,7 @@
                                                               $rx->rx_id != $patient->getDx1->rx_4 &&
                                                               $rx->rx_id != $patient->getDx1->rx_5 
                                                               )
-                                                              <div class="row mb-10 border-1-b-gainsboro">
+                                                              <div class="row mb-10 border-1-b-gainsboro min-height-100px">
                                                                 <div class="col-md-6 m-auto d-flex">
                                                                     <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                                                     <div class="d-block">
