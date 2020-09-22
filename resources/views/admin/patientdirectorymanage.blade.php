@@ -251,7 +251,7 @@
                                                     <p class="custom-h5 pt-0 mb-05rem">DX TAGS</p>
                                                     <div class="row">
                                                       <div class="col-md-5">
-                                                        <select class="admin-select" name="dxs" id="dxs">
+                                                        <select class="admin-select custom-16-font" name="dxs" id="dxs">
                                                           <option value="1">Lumbar Stenosis</option>
                                                           <option value="2">Cervical Stenosis </option>
                                                           <option value="3">Front Stenosis </option>
