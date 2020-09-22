@@ -251,16 +251,27 @@
                                                     <p class="custom-h5 pt-0 mb-05rem">DX TAGS</p>
                                                     <div class="row">
                                                       <div class="col-md-5">
-                                                        <select class="admin-select custom-16-font" name="dxs" id="dxs">
-                                                          <option value="1">Lumbar Stenosis</option>
+                                                        <select onchnage="dxsChange()" class="admin-select custom-16-font" name="dxs" id="dxs">
+                                                          <option value="0">Select diagnosis</option>
+                                                          <option value="1" selected>Lumbar Stenosis</option>
                                                           <option value="2">Cervical Stenosis </option>
                                                           <option value="3">Front Stenosis </option>
                                                           <option value="4">Back Stenosis </option>
                                                           <option value="5">Spine Stenosis </option>
                                                         </select>
                                                       </div>
-                                                      <div class="col-md-7 d-flex m-auto">
-                                                          <div class="custom-rounded-tag normal-white-text-14 d-flex">Lumbar Stenosis <span><i class="far fa-times-circle"></i></span></div>
+                                                      <div class="col-md-7 m-auto d-flex" >
+                                                        
+                                                        <div class="col-md-12">
+                                                          <div class="row" id="dxs_show">
+                                                                <div class="col-md-6 mb-10" id="1">
+                                                                  <div class="custom-rounded-tag normal-white-text-14 d-flex">Lumbar Stenosis <span onclick="remove_dxs(1)"><i class="far fa-times-circle"></i></span></div>
+                                                                </div>
+                                                          </div>
+                                                        </div>
+                                                       
+                                                        
+                                                      
                                                       </div>
                                                     </div>
                                                       
@@ -758,4 +769,33 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
+@endsection
+
+@section('javascript')
+<script>
+  var selectedArray = ["1"];
+  $('#dxs').on('change', function () {
+    let dxsSelect = document.getElementById('dxs');
+    let selectedDx = dxsSelect.options[dxsSelect.selectedIndex].text;
+    let selectedDxIndex = dxsSelect.options[dxsSelect.selectedIndex].value;
+    // console.log(selectedArray);
+    // console.log(selectedArray.indexOf(selectedDxIndex));
+    if ( selectedDxIndex != 0 && selectedArray.indexOf(selectedDxIndex) === -1) {
+      // console.log(selectedDxIndex);
+      selectedArray.push(selectedDxIndex);
+      $('#dxs_show').append('<div class="col-md-6 mb-10" id="' + selectedDxIndex + '"><div class="custom-rounded-tag normal-white-text-14 d-flex">' + selectedDx + ' <span onclick="remove_dxs('+ selectedDxIndex +')"><i class="far fa-times-circle"></i></span></div></div>');
+    }
+  });
+
+  function remove_dxs(removedx) {
+    // console.log(removedx);
+    $('#'+removedx).remove();
+    let dxsSelect = document.getElementById('dxs').selectedIndex = "0";
+
+    let position = selectedArray.indexOf(removedx.toString());
+
+    selectedArray.splice(position, 1);
+    // console.log(selectedArray);
+  }
+</script>
 @endsection
