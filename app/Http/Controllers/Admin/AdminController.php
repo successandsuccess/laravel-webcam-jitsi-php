@@ -127,4 +127,65 @@ class AdminController extends Controller
         return view('admin.patientdirectorymanage', compact('patient', 'dxRxs', 'allDxs', 'allRxs'));
     }
 
+    // remove the assgined exercises in dxs
+    public function patientdirectorymanageRemove(Request $request)
+    {
+        // dd($request->patientId);
+        $patient = User::with('getDx1')->find($request->patientId);
+        // dd($patient);
+        $dx_id = $patient->getDx1->dx_id;
+
+        $dx = Dx::find($dx_id);
+        // dd($dx['rx_'.$request->index]);
+        $dx['rx_'.$request->index] = null;
+        $dx->save();
+
+        return 'Success';
+        
+
+    }
+
+    // assign the exercises in dxs
+    public function patientdirectorymanageAssign(Request $request)
+    {
+        // dd($request->rx_id);
+        $result = [];
+        $patient = User::with('getDx1')->find($request->patientId);
+        $dx_id = $patient->getDx1->dx_id;
+
+        $dx = Dx::find($dx_id);
+        
+        if ( $dx->rx_1 == null ) {
+            $dx->rx_1 = $request->rx_id;
+            $dx->save();
+            $result['info'] = 'Success';
+            $result['index'] = 1;
+        } else if ( $dx->rx_2 == null ) {
+            $dx->rx_2 = $request->rx_id;
+            $dx->save();
+            $result['info'] = 'Success';
+            $result['index'] = 2;
+        } else if ( $dx->rx_3 == null ) {
+            $dx->rx_3 = $request->rx_id;
+            $dx->save();
+            $result['info'] = 'Success';
+            $result['index'] = 3;
+        } else if ( $dx->rx_4 == null ) {
+            $dx->rx_4 = $request->rx_id;
+            $dx->save();
+            $result['info'] = 'Success';
+            $result['index'] = 4;
+        } else if ( $dx->rx_5 == null ) {
+            $dx->rx_5 = $request->rx_id;
+            $dx->save();
+            $result['info'] = 'Success';
+            $result['index'] = 5;
+        } else {
+            $result['info'] = 'Full';
+        }
+
+        return $result;
+        
+    }
+
 }

@@ -46,4 +46,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/dashboard/exercises', 'Admin\AdminController@exercises')->name('admin.dashboard.exercises');
     Route::get('/dashboard/selfdirectedvisits/view', 'Admin\AdminController@selfdirectedvisitsview')->name('admin.selfdirectedvisits.view');
     Route::get('/dashboard/patientdirectory/manage/{id}', 'Admin\AdminController@patientdirectorymanage')->name('admin.patientdirectory.manage');
+    // remove assigned exercise in dxs.
+    Route::post('/dashboard/patientdirectory/manage/remove', 'Admin\AdminController@patientdirectorymanageRemove')->name('admin.patientdirectory.manage.remove');
+    // assign exercises in dxs
+    Route::post('/dashboard/patientdirectory/manage/assign', 'Admin\AdminController@patientdirectorymanageAssign')->name('admin.patientdirectory.manage.assign');
 });
