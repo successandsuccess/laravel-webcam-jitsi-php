@@ -788,65 +788,147 @@
 
                                               @foreach ( $allRxs as $rx )
 
-                                                            @if ( 
-                                                              $rx->rx_id == $patient->getDx1->rx_1 || 
-                                                              $rx->rx_id == $patient->getDx1->rx_2 ||  
-                                                              $rx->rx_id == $patient->getDx1->rx_3 ||
-                                                              $rx->rx_id == $patient->getDx1->rx_4 ||
-                                                              $rx->rx_id == $patient->getDx1->rx_5 
-                                                              )
-                                                              <div class="row mb-10 border-1-b-gainsboro min-height-100px">
-                                                                  <div class="col-md-6 m-auto d-flex">
-                                                                      <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                                      <div class="d-block">
-                                                                          <!-- <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p> -->
-                                                                          <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
-                                                                          <ul>
-                                                                              <li class="exercise-li-muted-font">{{ $rx->frequency }}</li>
-                                                                              <li class="exercise-li-muted-font">{{ $rx->duration }}</li>
-                                                                          </ul>
-                                                                      </div>
-                                                                  </div>
-                                                                  <div class="col-md-6 text-right">
-                                                                          <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
-                                                                          <br>
-                                                                          <div class="d-inline-flex">
-                                                                              <p class="exercise-assigned-italic m-auto">Assigned</p> 
-                                                                              <button class="btn btn-default w-90px h-36px white-btn-font ml-20">Remove</button>
-                                                                          </div>
-                                                                  </div>
-                                                              </div>
-                                                            @endif
+                                                      @if ( $rx->rx_id == $patient->getDx1->rx_1 )
+                                                        <div class="row mb-10 border-1-b-gainsboro min-height-100px">
+                                                            <div class="col-md-6 m-auto d-flex">
+                                                                <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                <div class="d-block">
+                                                                    <!-- <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p> -->
+                                                                    <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
+                                                                    <ul>
+                                                                        <li class="exercise-li-muted-font">{{ $rx->frequency }}</li>
+                                                                        <li class="exercise-li-muted-font">{{ $rx->duration }}</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 text-right">
+                                                                    <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
+                                                                    <br>
+                                                                    <div class="d-inline-flex" id="related1">
+                                                                        <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                                        <button class="btn btn-default w-90px h-36px white-btn-font ml-20" onclick="handleRemove(<?php echo $patient->id ?> ,1, <?php echo $rx->rx_id ?>)">Remove</button>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                      @elseif ( $rx->rx_id == $patient->getDx1->rx_2 )
+                                                        <div class="row mb-10 border-1-b-gainsboro min-height-100px">
+                                                            <div class="col-md-6 m-auto d-flex">
+                                                                <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                <div class="d-block">
+                                                                    <!-- <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p> -->
+                                                                    <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
+                                                                    <ul>
+                                                                        <li class="exercise-li-muted-font">{{ $rx->frequency }}</li>
+                                                                        <li class="exercise-li-muted-font">{{ $rx->duration }}</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 text-right">
+                                                                    <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
+                                                                    <br>
+                                                                    <div class="d-inline-flex" id="related2">
+                                                                        <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                                        <button class="btn btn-default w-90px h-36px white-btn-font ml-20" onclick="handleRemove(<?php echo $patient->id ?> ,2, <?php echo $rx->rx_id ?>)">Remove</button>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                      @elseif ( $rx->rx_id == $patient->getDx1->rx_3 )
+                                                        <div class="row mb-10 border-1-b-gainsboro min-height-100px">
+                                                            <div class="col-md-6 m-auto d-flex">
+                                                                <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                <div class="d-block">
+                                                                    <!-- <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p> -->
+                                                                    <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
+                                                                    <ul>
+                                                                        <li class="exercise-li-muted-font">{{ $rx->frequency }}</li>
+                                                                        <li class="exercise-li-muted-font">{{ $rx->duration }}</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 text-right">
+                                                                    <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
+                                                                    <br>
+                                                                    <div class="d-inline-flex" id="related3">
+                                                                        <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                                        <button class="btn btn-default w-90px h-36px white-btn-font ml-20" onclick="handleRemove(<?php echo $patient->id ?> ,3, <?php echo $rx->rx_id ?>)">Remove</button>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                      @elseif ( $rx->rx_id == $patient->getDx1->rx_4 )
+                                                        <div class="row mb-10 border-1-b-gainsboro min-height-100px">
+                                                            <div class="col-md-6 m-auto d-flex">
+                                                                <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                <div class="d-block">
+                                                                    <!-- <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p> -->
+                                                                    <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
+                                                                    <ul>
+                                                                        <li class="exercise-li-muted-font">{{ $rx->frequency }}</li>
+                                                                        <li class="exercise-li-muted-font">{{ $rx->duration }}</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 text-right">
+                                                                    <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
+                                                                    <br>
+                                                                    <div class="d-inline-flex" id="related4">
+                                                                        <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                                        <button class="btn btn-default w-90px h-36px white-btn-font ml-20" onclick="handleRemove(<?php echo $patient->id ?> ,4, <?php echo $rx->rx_id ?>)">Remove</button>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                      @elseif ( $rx->rx_id == $patient->getDx1->rx_5 )
+                                                        <div class="row mb-10 border-1-b-gainsboro min-height-100px">
+                                                            <div class="col-md-6 m-auto d-flex">
+                                                                <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                                <div class="d-block">
+                                                                    <!-- <p class="exercise-blue-small-font pt-0 mb-0 ml-19">Upper Back Stretches</p> -->
+                                                                    <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
+                                                                    <ul>
+                                                                        <li class="exercise-li-muted-font">{{ $rx->frequency }}</li>
+                                                                        <li class="exercise-li-muted-font">{{ $rx->duration }}</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 text-right">
+                                                                    <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
+                                                                    <br>
+                                                                    <div class="d-inline-flex" id="related5">
+                                                                        <p class="exercise-assigned-italic m-auto">Assigned</p> 
+                                                                        <button class="btn btn-default w-90px h-36px white-btn-font ml-20" onclick="handleRemove(<?php echo $patient->id ?> ,5, <?php echo $rx->rx_id ?>)">Remove</button>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                      @endif
                                                     @endforeach
 
                                                     @foreach ( $allRxs as $rx )
-                                                            @if ( 
-                                                              $rx->rx_id != $patient->getDx1->rx_1 && 
-                                                              $rx->rx_id != $patient->getDx1->rx_2 && 
-                                                              $rx->rx_id != $patient->getDx1->rx_3 &&
-                                                              $rx->rx_id != $patient->getDx1->rx_4 &&
-                                                              $rx->rx_id != $patient->getDx1->rx_5 
-                                                              )
-                                                              <div class="row mb-10 border-1-b-gainsboro min-height-100px">
-                                                                <div class="col-md-6 m-auto d-flex">
-                                                                    <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                                                    <div class="d-block">
-                                                                        <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
-                                                                        <ul>
-                                                                            <li class="exercise-li-muted-font">{{ $rx->frequency }}</li>
-                                                                            <li class="exercise-li-muted-font">{{ $rx->duration }}</li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6 text-right">
-                                                                        <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
-                                                                        <br>
-                                                                        <div class="d-inline-flex">
-                                                                            <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20">Assign</button>
-                                                                        </div>
-                                                                </div>
+                                                      @if ( 
+                                                        $rx->rx_id != $patient->getDx1->rx_1 && 
+                                                        $rx->rx_id != $patient->getDx1->rx_2 && 
+                                                        $rx->rx_id != $patient->getDx1->rx_3 &&
+                                                        $rx->rx_id != $patient->getDx1->rx_4 &&
+                                                        $rx->rx_id != $patient->getDx1->rx_5 
+                                                        )
+                                                        <div class="row mb-10 border-1-b-gainsboro min-height-100px">
+                                                          <div class="col-md-6 m-auto d-flex">
+                                                              <iframe width="150" height="85" src="{{ $rx->rx_link ? $rx->rx_link : '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                              <div class="d-block">
+                                                                  <p class="exercise-blue-small-font pt-0 mb-0 ml-19">{{ $rx->rx_name }}</p>
+                                                                  <ul>
+                                                                      <li class="exercise-li-muted-font">{{ $rx->frequency }}</li>
+                                                                      <li class="exercise-li-muted-font">{{ $rx->duration }}</li>
+                                                                  </ul>
                                                               </div>
-                                                            @endif
+                                                          </div>
+                                                          <div class="col-md-6 text-right">
+                                                                  <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
+                                                                  <br>
+                                                                  <div class="d-inline-flex" id="relatedAssign<?php echo $rx->rx_id?>">
+                                                                      <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20" onclick="handleAssign(<?php echo $patient->id ?>,<?php echo $rx->rx_id ?>)">Assign</button>
+                                                                  </div>
+                                                          </div>
+                                                        </div>
+                                                      @endif
                                                             
 
                                                   @endforeach
@@ -921,8 +1003,8 @@
                 
                 window.alert('Removed Successfully!');
 
-                $('#related'+index).html('<button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20" onclick="handleAssign(' + patientId + ',' + rx_id + ')">Assign</button>');
-                $('#related'+index).attr('id', 'relatedAssign'+rx_id);
+                $('[id="related' + index + '"]').html('<button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20" onclick="handleAssign(' + patientId + ',' + rx_id + ')">Assign</button>');
+                $('[id="related' + index + '"]').attr('id', 'relatedAssign'+rx_id);
             }
             else {
                 console.log('Error Occured In Removing, Retry or Check Network');
@@ -964,12 +1046,11 @@
             if( result['info'] == 'Success' ) {
                 
                 window.alert('Assigned Successfully!');
-
-                $('#relatedAssign'+rx_id).html('<p class="exercise-assigned-italic m-auto">Assigned</p><button class="btn btn-default w-90px h-36px white-btn-font ml-20" onclick="handleRemove('+ patientId +',' + result['index'] +',' + rx_id + ')">Remove</button>');
-                $('#relatedAssign'+rx_id).attr('id', 'related'+result['index']);
+                $('[id = "relatedAssign' + rx_id + '"]').html('<p class="exercise-assigned-italic m-auto">Assigned</p><button class="btn btn-default w-90px h-36px white-btn-font ml-20" onclick="handleRemove('+ patientId +',' + result['index'] +',' + rx_id + ')">Remove</button>');
+                $('[id = "relatedAssign' + rx_id + '"]').attr('id', 'related'+result['index']);
 
             } else if ( result['info'] == 'Full' ) {
-              window.alert('Fully Assigned, So as to assign this exercise, you need to remove one of assigned exercises.')
+              window.alert('FAILED ASSIGN! Fully ASSIGNED, SO AS TO ASSIGN THIS EXERCISE, PLEASE REMOVE ONE');
             }
             else {
                 console.log('Error Occured In Assigning, Retry or Check Network');
