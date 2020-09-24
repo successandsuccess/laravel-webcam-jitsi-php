@@ -511,7 +511,7 @@
           <div class="modal-content">
             <div class="modal-header border-none pl-40 pb-0 pr-40">
               <h4 class="modal-title custom-h3">Assign Exercises</h4>
-              <button type="button" class="close exercise-modal-close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close exercise-modal-close" data-dismiss="modal" onclick="handleCloseModal()" aria-label="Close">
                 <span aria-hidden="true" class="blue-color">&times;</span>
               </button>
             </div>
@@ -950,6 +950,31 @@
 
 @section('javascript')
 <script>
+  // handle close modal
+  function handleCloseModal() {
+    location.reload();
+  }
+
+  // setting toastr options
+  toastr.options = {
+                  "closeButton": false,
+                  "debug": false,
+                  "newestOnTop": false,
+                  "progressBar": false,
+                  "positionClass": "toast-top-right",
+                  "preventDuplicates": false,
+                  "onclick": null,
+                  "showDuration": "10",
+                  "hideDuration": "1000",
+                  "timeOut": "1000",
+                  "extendedTimeOut": "1000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+                }
+
+  // handle the dynamic dxs tag selecting and changing
   var selectedArray = ["1"];
   $('#dxs').on('change', function () {
     let dxsSelect = document.getElementById('dxs');
@@ -964,6 +989,7 @@
     }
   });
 
+  // remove the dxs tags when change
   function remove_dxs(removedx) {
     // console.log(removedx);
     $('#'+removedx).remove();
@@ -1001,20 +1027,24 @@
         {
             if( result == 'Success' ) {
                 
-                window.alert('Removed Successfully!');
+                // toastr success
+                // window.alert('Removed Successfully!');
+                toastr.success('Exercise was successfully removed.');
 
                 $('[id="related' + index + '"]').html('<button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20" onclick="handleAssign(' + patientId + ',' + rx_id + ')">Assign</button>');
                 $('[id="related' + index + '"]').attr('id', 'relatedAssign'+rx_id);
             }
             else {
                 console.log('Error Occured In Removing, Retry or Check Network');
-                window.alert('Removing went wrong. Check network and retry.');
+                // window.alert('Removing went wrong. Check network and retry.');
+                toastr.error('Removing went wrong. Check network and retry.');
             }
         },
         error: function(data)
         {
             console.log('error',data);
-            window.alert('Removing went wrong. Check network and retry.');
+            // window.alert('Removing went wrong. Check network and retry.');
+            toastr.error('Removing went wrong. Check network and retry.');
         }
     });
 
@@ -1044,23 +1074,28 @@
         {
             console.log(result);
             if( result['info'] == 'Success' ) {
+
+              
                 
-                window.alert('Assigned Successfully!');
+                toastr.success('Exercise was successfully assigned.');
                 $('[id = "relatedAssign' + rx_id + '"]').html('<p class="exercise-assigned-italic m-auto">Assigned</p><button class="btn btn-default w-90px h-36px white-btn-font ml-20" onclick="handleRemove('+ patientId +',' + result['index'] +',' + rx_id + ')">Remove</button>');
                 $('[id = "relatedAssign' + rx_id + '"]').attr('id', 'related'+result['index']);
 
             } else if ( result['info'] == 'Full' ) {
-              window.alert('FAILED ASSIGN! Fully ASSIGNED, SO AS TO ASSIGN THIS EXERCISE, PLEASE REMOVE ONE');
+              // window.alert('FAILED ASSIGN! Fully ASSIGNED, SO AS TO ASSIGN THIS EXERCISE, PLEASE REMOVE ONE');
+              toastr.warning('FAILED ASSIGN! Fully ASSIGNED, PLEASE REMOVE ONE')
             }
             else {
                 console.log('Error Occured In Assigning, Retry or Check Network');
-                window.alert('Assigning went wrong. Check network and retry.');
+                // window.alert('Assigning went wrong. Check network and retry.');
+                toastr.error('Assigning went wrong. Check network and retry.');
             }
         },
         error: function(data)
         {
             console.log('error',data);
-            window.alert('Assigning went wrong. Check network and retry.');
+            // window.alert('Assigning went wrong. Check network and retry.');
+            toastr.error('Assigning went wrong. Check network and retry.');
         }
     });
 

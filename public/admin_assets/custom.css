@@ -750,3 +750,24 @@ input.custom-search:-webkit-autofill:active {
 .margin-bottom-0 {
     margin-bottom: 0px;
 }
+
+.toast.toast-success {
+    border: none !important;
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+    right: 11px !important;
+}
+
+.toast.toast-warning {
+    border: none !important;
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+    right: 11px !important;
+}
+
+.toast.toast-error {
+    border: none !important;
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+    right: 11px !important;
+}
