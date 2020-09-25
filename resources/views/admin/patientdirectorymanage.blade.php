@@ -728,7 +728,7 @@
                                             <div class="row mt-5px mb-25">
                                                 <div class="col-md-12">
                                                   <div class="input-group search-div">
-                                                      <input class="form-control py-2 border-right-0 border custom-search" type="search" placeholder="Search Program Name" name="search">
+                                                      <input class="form-control py-2 border-right-0 border custom-search" placeholder="Search Program Name" name="search">
                                                       <span class="input-group-append background-w">
                                                           <div class="input-group-text bg-transparent"><i class="fa fa-search blue-color"></i></div>
                                                       </span>
@@ -773,7 +773,7 @@
                                                   <div class="row mt-5px mb-25">
                                                     <div class="col-md-12">
                                                       <div class="input-group search-div">
-                                                          <input class="form-control py-2 border-right-0 border custom-search" type="search" placeholder="Search Program Name" name="search">
+                                                          <input class="form-control py-2 border-right-0 border custom-search" onkeyup="searchAllExercises()" placeholder="Search Exercise Name" name="searchAllExercises" id="searchAllExercises">
                                                           <span class="input-group-append background-w">
                                                               <div class="input-group-text bg-transparent"><i class="fa fa-search blue-color"></i></div>
                                                           </span>
@@ -784,7 +784,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="card-footer mycardfooter mt-5px border-none">
+                                        <div class="card-footer mycardfooter mt-5px border-none" id="myUL">
 
                                               @foreach ( $allRxs as $rx )
 
@@ -1099,6 +1099,27 @@
         }
     });
 
+  }
+
+  function searchAllExercises()
+  {
+    let input, filter, parent, child, a, i, txtValue;
+    input = document.getElementById("searchAllExercises");
+    filter = input.value.toUpperCase();
+    // console.log(filter);
+    parent = document.getElementById('myUL');
+    child = document.querySelectorAll('#myUL .row.mb-10.border-1-b-gainsboro.min-height-100px');
+    // console.log(child.length);
+    for ( i=0; i<child.length; i++ ) {
+      a = child[i].querySelector('.exercise-blue-small-font.pt-0.mb-0.ml-19');
+      txtValue = a.textContent || a.innerText;
+      // console.log(txtValue);
+      if ( txtValue.toUpperCase().indexOf(filter) > -1 ) {
+        child[i].style.display = "";
+      } else {
+        child[i].style.display = "none";
+      }
+    }
   }
 </script>
 @endsection

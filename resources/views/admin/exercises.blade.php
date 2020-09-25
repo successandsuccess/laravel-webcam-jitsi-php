@@ -147,7 +147,7 @@
          
             <div class="col-md-6">
                 <div class="input-group search-div">
-                    <input class="form-control py-2 border-right-0 border custom-search" type="search" placeholder="Search by tutorial Name" name="search">
+                    <input class="form-control py-2 border-right-0 border custom-search" placeholder="Search by tutorial Name" name="search">
                     <span class="input-group-append background-w">
                         <div class="input-group-text bg-transparent"><i class="fa fa-search blue-color"></i></div>
                     </span>
