@@ -98,4 +98,29 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Dx', 'dx_5', 'dx_id');
     }
+
+    public function getRx1()
+    {
+        return $this->belongsTo('App\Rx', 'rx_1', 'rx_id');
+    }
+
+    public function getRx2()
+    {
+        return $this->belongsTo('App\Rx', 'rx_2', 'rx_id');
+    }
+
+    public function getRx3()
+    {
+        return $this->belongsTo('App\Rx', 'rx_3', 'rx_id');
+    }
+
+    public function getRx4()
+    {
+        return $this->belongsTo('App\Rx', 'rx_4', 'rx_id');
+    }
+
+    public function getRx5()
+    {
+        return $this->belongsTo('App\Rx', 'rx_5', 'rx_id');
+    }
 }

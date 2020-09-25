@@ -82,35 +82,11 @@ class AdminController extends Controller
                             'getDx4',
                             'getDx5',
 
-                            'getDx1.getRx1',
-                            'getDx1.getRx2',
-                            'getDx1.getRx3',
-                            'getDx1.getRx4',
-                            'getDx1.getRx5',
-
-                            'getDx2.getRx1',
-                            'getDx2.getRx2',
-                            'getDx2.getRx3',
-                            'getDx2.getRx4',
-                            'getDx2.getRx5',
-
-                            'getDx3.getRx1',
-                            'getDx3.getRx2',
-                            'getDx3.getRx3',
-                            'getDx3.getRx4',
-                            'getDx3.getRx5',
-
-                            'getDx4.getRx1',
-                            'getDx4.getRx2',
-                            'getDx4.getRx3',
-                            'getDx4.getRx4',
-                            'getDx4.getRx5',
-
-                            'getDx5.getRx1',
-                            'getDx5.getRx2',
-                            'getDx5.getRx3',
-                            'getDx5.getRx4',
-                            'getDx5.getRx5',
+                            'getRx1',
+                            'getRx2',
+                            'getRx3',
+                            'getRx4',
+                            'getRx5'
                         )
                     ->first();
         // dd($patient);
@@ -132,13 +108,9 @@ class AdminController extends Controller
     {
         // dd($request->patientId);
         $patient = User::with('getDx1')->find($request->patientId);
-        // dd($patient);
-        $dx_id = $patient->getDx1->dx_id;
-
-        $dx = Dx::find($dx_id);
-        // dd($dx['rx_'.$request->index]);
-        $dx['rx_'.$request->index] = null;
-        $dx->save();
+      
+        $patient['rx_'.$request->index] = null;
+        $patient->save();
 
         return 'Success';
         
@@ -151,33 +123,30 @@ class AdminController extends Controller
         // dd($request->rx_id);
         $result = [];
         $patient = User::with('getDx1')->find($request->patientId);
-        $dx_id = $patient->getDx1->dx_id;
-
-        $dx = Dx::find($dx_id);
         
-        if ( $dx->rx_1 == null ) {
-            $dx->rx_1 = $request->rx_id;
-            $dx->save();
+        if ( $patient->rx_1 == null ) {
+            $patient->rx_1 = $request->rx_id;
+            $patient->save();
             $result['info'] = 'Success';
             $result['index'] = 1;
-        } else if ( $dx->rx_2 == null ) {
-            $dx->rx_2 = $request->rx_id;
-            $dx->save();
+        } else if ( $patient->rx_2 == null ) {
+            $patient->rx_2 = $request->rx_id;
+            $patient->save();
             $result['info'] = 'Success';
             $result['index'] = 2;
-        } else if ( $dx->rx_3 == null ) {
-            $dx->rx_3 = $request->rx_id;
-            $dx->save();
+        } else if ( $patient->rx_3 == null ) {
+            $patient->rx_3 = $request->rx_id;
+            $patient->save();
             $result['info'] = 'Success';
             $result['index'] = 3;
-        } else if ( $dx->rx_4 == null ) {
-            $dx->rx_4 = $request->rx_id;
-            $dx->save();
+        } else if ( $patient->rx_4 == null ) {
+            $patient->rx_4 = $request->rx_id;
+            $patient->save();
             $result['info'] = 'Success';
             $result['index'] = 4;
-        } else if ( $dx->rx_5 == null ) {
-            $dx->rx_5 = $request->rx_id;
-            $dx->save();
+        } else if ( $patient->rx_5 == null ) {
+            $patient->rx_5 = $request->rx_id;
+            $patient->save();
             $result['info'] = 'Success';
             $result['index'] = 5;
         } else {
