@@ -549,7 +549,7 @@
                                                         <h3 class="normal-custom-text">{{ $patient->getDx1->dx_name ? $patient->getDx1->dx_name : 'Template Dx Name' }} PROGRAM</h3>
                                                       </div>
                                                       <div class="col-md-6 text-right">
-                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
+                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font chirobrand-btn">ASSIGN</button>
                                                       </div>
                                                     </div>
                                                    
@@ -567,7 +567,7 @@
                                                             <p class="custom-h5 mt-5px">EXERCISES - {{ $patient->getDx1->dx_name ? $patient->getDx1->dx_name : 'Template Dx Name' }} ({{ count($dxRxs) }})</p> 
                                                           </div>
                                                           <div class="col-md-6 text-right">
-                                                            <button class="btn btn-primary btn-blue w-135px h-36px blue-btn-font">ASSIGN ALL</button>
+                                                            <button class="btn btn-primary btn-blue w-135px h-36px blue-btn-font chirobrand-btn">ASSIGN ALL</button>
                                                           </div>
                                                       </div>
 
@@ -710,7 +710,7 @@
                                                                   <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
                                                                   <br>
                                                                   <div class="d-inline-flex" id="relatedAssign<?php echo $rx->rx_id?>">
-                                                                      <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20" onclick="handleAssign(<?php echo $patient->id ?>,<?php echo $rx->rx_id ?>)">Assign</button>
+                                                                      <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20 chirobrand-btn" onclick="handleAssign(<?php echo $patient->id ?>,<?php echo $rx->rx_id ?>)">Assign</button>
                                                                   </div>
                                                           </div>
                                                         </div>
@@ -749,7 +749,7 @@
                                                           <h3 class="normal-custom-text uppercase">{{ $dx->dx_name }} PROGRAM</h3> 
                                                       </div>
                                                       <div class="col-md-6 text-right">
-                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font">ASSIGN</button>
+                                                        <button class="btn btn-primary btn-blue w-109px h-36px blue-btn-font chirobrand-btn">ASSIGN</button>
                                                       </div>
                                                     </div>
                                                    
@@ -924,7 +924,7 @@
                                                                   <h4 class="small-black-text uppercase">{{ $rx->type }}</h4>
                                                                   <br>
                                                                   <div class="d-inline-flex" id="relatedAssign<?php echo $rx->rx_id?>">
-                                                                      <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20" onclick="handleAssign(<?php echo $patient->id ?>,<?php echo $rx->rx_id ?>)">Assign</button>
+                                                                      <button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20 chirobrand-btn" onclick="handleAssign(<?php echo $patient->id ?>,<?php echo $rx->rx_id ?>)">Assign</button>
                                                                   </div>
                                                           </div>
                                                         </div>
@@ -1031,7 +1031,7 @@
                 // window.alert('Removed Successfully!');
                 toastr.success('Exercise was successfully removed.');
 
-                $('[id="related' + index + '"]').html('<button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20" onclick="handleAssign(' + patientId + ',' + rx_id + ')">Assign</button>');
+                $('[id="related' + index + '"]').html('<button class="btn btn-primary btn-blue w-90px h-36px blue-btn-font ml-20 chirobrand-btn" onclick="handleAssign(' + patientId + ',' + rx_id + ')">Assign</button>');
                 $('[id="related' + index + '"]').attr('id', 'relatedAssign'+rx_id);
             }
             else {

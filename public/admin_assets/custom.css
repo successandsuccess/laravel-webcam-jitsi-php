@@ -58,7 +58,8 @@
 }
 
 .background-dark-blue {
-    background: #3746B0;
+    /* background: #3746B0; */
+    background: #4e4e4e;
     box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
@@ -770,4 +771,10 @@ input.custom-search:-webkit-autofill:active {
     padding-top: 25px !important;
     padding-bottom: 25px !important;
     right: 11px !important;
+}
+
+.chirobrand-btn {
+    color: #FFF;
+    background: linear-gradient(90deg, #ADD261 0%, #77B336 100%);
+    border: none;
 }
