@@ -157,9 +157,10 @@
             <div class="col-md-2">
                    
                         <label class="custom-label">Sort by</label>
-                        <select class="myselect">
-                          <option>A-Z</option>
-                          <option>Z-A</option>
+                        <select class="myselect" onchange="selectSort()" id="selectSort">
+                          <option value="0">Select Option</option>
+                          <option value="1">A-Z</option>
+                          <option value="2">Z-A</option>
                         </select>
                      
             </div>
@@ -233,6 +234,7 @@
 
 @section('javascript')
 <script>
+// filter 
 function searchExercises() {
   let input, filter, parent, child, a, i, txtValue;
     input = document.getElementById("searchExercises");
@@ -251,6 +253,86 @@ function searchExercises() {
         child[i].style.display = "none";
       }
     }
+}
+
+// select box changed function
+function selectSort() {
+  let selectedValue = document.getElementById('selectSort').value;
+  console.log(selectedValue);
+  if ( selectedValue == 1 ) {
+    sortList(1);
+  } else if (selectedValue == 2) {
+    sortList(2);
+  }
+}
+
+// sorting A-Z
+function sortList(order) {
+  
+  let list, i, switching, b, shouldSwitch, a, txtValue;
+  list = document.getElementById("myParent");
+  switching = true;
+  // sort increasing by alphabetically
+  if ( order == 1 ) {
+    /* Make a loop that will continue until
+    no switching has been done: */
+    while (switching) {
+      // start by saying: no switching is done:
+      switching = false;
+      b = document.querySelectorAll("#myParent .col-12.col-sm-6.col-md-6");
+      // Loop through all list-items:
+      for (i = 0; i < (b.length - 1); i++) {
+        // start by saying there should be no switching:
+        shouldSwitch = false;
+        /* check if the next item should
+        switch place with the current item: */
+        if (b[i].querySelector('.lead.custom-h2').innerHTML.toLowerCase() > b[i + 1].querySelector('.lead.custom-h2').innerHTML.toLowerCase()) {
+          /* if next item is alphabetically
+          lower than current item, mark as a switch
+          and break the loop: */
+          shouldSwitch = true;
+          break;
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark the switch as done: */
+        b[i].parentNode.insertBefore(b[i + 1], b[i]);
+        switching = true;
+      }
+    }
+  } 
+  else // decrease sorting alphabetically
+  {
+    /* Make a loop that will continue until
+    no switching has been done: */
+    while (switching) {
+      // start by saying: no switching is done:
+      switching = false;
+      b = document.querySelectorAll("#myParent .col-12.col-sm-6.col-md-6");
+      // Loop through all list-items:
+      for (i = 0; i < (b.length - 1); i++) {
+        // start by saying there should be no switching:
+        shouldSwitch = false;
+        /* check if the next item should
+        switch place with the current item: */
+        if (b[i].querySelector('.lead.custom-h2').innerHTML.toLowerCase() < b[i + 1].querySelector('.lead.custom-h2').innerHTML.toLowerCase()) {
+          /* if next item is alphabetically
+          lower than current item, mark as a switch
+          and break the loop: */
+          shouldSwitch = true;
+          break;
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark the switch as done: */
+        b[i].parentNode.insertBefore(b[i + 1], b[i]);
+        switching = true;
+      }
+    }
+  }
+  
 }
 </script>
 @endsection
