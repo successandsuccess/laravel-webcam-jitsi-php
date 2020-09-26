@@ -147,7 +147,7 @@
          
             <div class="col-md-6">
                 <div class="input-group search-div">
-                    <input class="form-control py-2 border-right-0 border custom-search" placeholder="Search by tutorial Name" name="search">
+                    <input class="form-control py-2 border-right-0 border custom-search" id="searchExercises" onkeyup="searchExercises()" placeholder="Search by tutorial Name" name="search">
                     <span class="input-group-append background-w">
                         <div class="input-group-text bg-transparent"><i class="fa fa-search blue-color"></i></div>
                     </span>
@@ -175,7 +175,7 @@
                     <!-- Default box -->
                     <div class="card card-solid custom-card">
                         <div class="card-body pb-0 pr-7 pl-7">
-                            <div class="row d-flex align-items-stretch">
+                            <div class="row d-flex align-items-stretch" id="myParent">
                                 @foreach( $rxs as $rx )
                                 <div class="col-12 col-sm-6 col-md-6">
                                     <div class="card bg-light">
@@ -212,40 +212,6 @@
                                 </div>
                                 @endforeach
 
-                                <!-- <div class="col-12 col-sm-6 col-md-6">
-                                    <div class="card bg-light">
-                                        <div class="card-header text-muted">
-                                            <h2 class="lead custom-h2">Ab Stretches</h2>
-                                            <p class="text-muted text-sm mb-0">Video</p>
-                                        </div>
-                                        <div class="card-body pt-0 pb-0">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <img src="{{ asset('assets/img/shutterstock_725473423.jpg') }}" alt="" class="img-fluid">
-                                                </div>
-                                            </div>
-                                           
-                                        </div>
-                                        <div class="card-footer footer-border background-none">
-                                            <div class="row mt-10">
-                                                    <div class="col-12">
-                                                        <p class="text-muted text-sm">
-                                                            Abs Streatching, core strengthening, rectus
-                                                            abdominis, transversus abdominis.
-                                                        </p>
-                                                    </div>
-                                                    
-                                                </div>
-                                            <div class="text-left">
-                                                <a href="#" class="special-p">
-                                                    Manage
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-                      
-                            
                             </div>
                         </div>
                     
@@ -263,4 +229,28 @@
 
 
 </div>
+@endsection
+
+@section('javascript')
+<script>
+function searchExercises() {
+  let input, filter, parent, child, a, i, txtValue;
+    input = document.getElementById("searchExercises");
+    filter = input.value.toUpperCase();
+    // console.log(filter);
+    parent = document.getElementById('myParent');
+    child = document.querySelectorAll('#myParent .col-12.col-sm-6.col-md-6');
+    // console.log(child.length);
+    for ( i=0; i<child.length; i++ ) {
+      a = child[i].querySelector('.lead.custom-h2');
+      txtValue = a.textContent || a.innerText;
+      // console.log(txtValue);
+      if ( txtValue.toUpperCase().indexOf(filter) > -1 ) {
+        child[i].style.display = "";
+      } else {
+        child[i].style.display = "none";
+      }
+    }
+}
+</script>
 @endsection
