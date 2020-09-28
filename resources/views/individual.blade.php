@@ -39,6 +39,7 @@
 
         <!-- =======  Blog Grid ======= -->
         <section class="news-grid grid d-flex" style="height: 80vh;">
+        
             <div class="pt-20 m-auto w-100 mobile-response-center">
                 <div class="row w-100">
 
@@ -46,7 +47,29 @@
                     </div>
 
                     <div class="col-md-6">
+                    <?php $defined = 0; ?>
+                        @for( $i = 1; $i < 6; $i++ )
+                            @if ( isset($patient['getRx'.$i]) && $patient['getRx'.$i] != null )
+                            <div class="row mb-50">
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-2 text-right-mobile">
+                                    <i class="fa fa-check-circle-o" style="color: #004eff; font-size: 44px;" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-md-6">
+                                    <h2>{{ $patient['getRx'.$i]->rx_name }}</h2>
+                                    <p>{{ $patient['getRx'.$i]->rx_note }}</p>
+                                    <iframe width="358" height="167" src="{{ $patient['getRx'.$i]->rx_link }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+                            </div>
+                            <?php $defined++ ?>
+                            @endif
+                        @endfor
 
+                        @if ( $defined == 0 )
                         <div class="row mb-50">
                             <div class="col-md-2">
                             </div>
@@ -94,6 +117,7 @@
                             <div class="col-md-2">
                             </div>
                         </div>
+                        @endif
 
                         <div class="row mb-50">
                          <div class="col-md-4"></div>
@@ -109,8 +133,6 @@
                     </div>
 
                 </div>
-
-
             </div>
         </section>
         <!-- End Blog Grid-->

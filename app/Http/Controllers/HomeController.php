@@ -66,7 +66,9 @@ class HomeController extends Controller
 
     public function individual()
     {
-        return view('individual');
+        // get the exercises
+        $patient = User::with('getRx1','getRx2','getRx3','getRx4','getRx5')->find(Auth::getUser()->id);
+        return view('individual', compact('patient'));
     }
 
     public function recordvideo()
