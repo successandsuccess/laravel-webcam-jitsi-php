@@ -3,6 +3,9 @@
 @section('css')
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- DataTables -->
+<link rel="stylesheet" href="{{ asset('admin_assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin_assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 @endsection
 
 @section('content')
@@ -439,7 +442,7 @@
             </div>
           <div class="col-lg-12">
                 <h3 class="custom-h3">Patient Log</h3>
-                <table class="table table-hover text-nowrap background-w margin-bottom-0">
+                <table class="table table-hover text-nowrap background-w margin-bottom-0" id="patientlogs">
                   <thead>
                     <tr>
                       <th>DATE</th>
@@ -450,21 +453,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @if( !isset($patientLogs[0]) )
-                  <tr>
-                        <td class="table-p text-center" colspan="5">No Logs Yet</td>
-                  </tr>
-                  @else
-                    @foreach($patientLogs as $log)
-                      <tr>
-                        <td class="table-p">{{ $log->appoint_time->format('Y-m-d') }}</td>
-                        <td class="table-p">{{ $log->appoint_time->format('H:i:s') }}</td>
-                        <td class="table-p color-blue">{{ $log->type == 2 ? 'Self Directed' : 'One on One' }}</td>
-                        <td class="table-p">{{ $log->length }} mins</span></td>
-                        <td><a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a></td>
-                      </tr>
-                    @endforeach
-                  @endif
+                 
                   </tbody>
                 </table>
           </div>
@@ -923,6 +912,11 @@
 @endsection
 
 @section('javascript')
+<script src="{{ asset('admin_assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('admin_assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin_assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('admin_assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+
 <script>
   // handle close modal
   function handleCloseModal() {
@@ -1095,5 +1089,21 @@
       }
     }
   }
+
+  // patient log yajra datatable
+  $('#patientlogs').DataTable({
+    processing: true,
+    serverSide: true,
+    "responsive": true,
+    "autoWidth": false,
+    ajax: "{{ route( 'admin.patientdirectory.manage', ['id' => $patient->id] ) }}",
+    columns: [
+      {data: 'appoint_date', name: 'date'},
+      {data: 'appoint_time', name: 'time'},
+      {data: 'type', name: 'session_type'},
+      {data: 'length', name:'duration'},
+      {data: 'action', name: 'actions'}
+    ]
+  });
 </script>
 @endsection

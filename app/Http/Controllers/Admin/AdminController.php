@@ -115,8 +115,31 @@ class AdminController extends Controller
                             'getProvider'
                             )
                         ->get();
+
+        if ($request->ajax()) {
+            return Datatables::of($patientLogs)
+                ->editColumn('appoint_date', function ($log) {
+                    return $log->appoint_time->format('Y-m-d');
+                })
+                ->editColumn('appoint_time', function ($log) {
+                    return $log->appoint_time->format('H:i:s');
+                })
+                ->editColumn('type', function ($log) {
+                    return $log->type == 2 ? 'Self Directed' : 'One on One';
+                })
+                ->editColumn('length', function ($log) {
+                    return $log->length." min";
+                })
+                ->addColumn('action', function($row){
+                    $editUrl = url('/admin/dashboard/selfdirectedvisits/view');
+                    $btn = '<a href="' . $editUrl . '"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
         // dd($patientLogs);
-        return view('admin.patientdirectorymanage', compact('patient', 'dxRxs', 'allDxs', 'allRxs', 'patientLogs'));
+        return view('admin.patientdirectorymanage', compact('patient', 'dxRxs', 'allDxs', 'allRxs'));
     }
 
     // remove the assgined exercises in dxs
