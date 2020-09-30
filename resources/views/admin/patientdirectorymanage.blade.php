@@ -445,52 +445,26 @@
                       <th>DATE</th>
                       <th>TIME</th>
                       <th>SESSION TYPE</th>
-                      <th>PHYSICIAN</th>
                       <th>DURATION</th>
                       <th>ACTIONS</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="table-p">10/10/20</td>
-                      <td class="table-p">2:45 PM</td>
-                      <td class="table-p color-blue">Self Directed</td>
-                      <td class="table-p">Dr.Johns</td>
-                      <td class="table-p">16:45 mins</span></td>
-                      <td><a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a></td>
-                    </tr>
-                    <tr>
-                        <td class="table-p">10/10/20</td>
-                      <td class="table-p">2:45 PM</td>
-                      <td class="table-p color-blue">Self Directed</td>
-                      <td class="table-p">Dr.Johns</td>
-                      <td class="table-p">16:45 mins</span></td>
-                      <td><a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a></td>
-                    </tr>
-                    <tr>
-                        <td class="table-p">10/10/20</td>
-                      <td class="table-p">2:45 PM</td>
-                      <td class="table-p color-blue">Self Directed</td>
-                      <td class="table-p">Dr.Johns</td>
-                      <td class="table-p">16:45 mins</span></td>
-                      <td><a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a></td>
-                    </tr>
-                    <tr>
-                        <td class="table-p">10/10/20</td>
-                      <td class="table-p">2:45 PM</td>
-                      <td class="table-p color-blue">Self Directed</td>
-                      <td class="table-p">Dr.Johns</td>
-                      <td class="table-p">16:45 mins</span></td>
-                      <td><a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a></td>
-                    </tr>
-                    <tr>
-                        <td class="table-p">10/10/20</td>
-                      <td class="table-p">2:45 PM</td>
-                      <td class="table-p color-blue">Self Directed</td>
-                      <td class="table-p">Dr.Johns</td>
-                      <td class="table-p">16:45 mins</span></td>
-                      <td><a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a></td>
-                    </tr>
+                  @if( !isset($patientLogs[0]) )
+                  <tr>
+                        <td class="table-p text-center" colspan="5">No Logs Yet</td>
+                  </tr>
+                  @else
+                    @foreach($patientLogs as $log)
+                      <tr>
+                        <td class="table-p">{{ $log->appoint_time->format('Y-m-d') }}</td>
+                        <td class="table-p">{{ $log->appoint_time->format('H:i:s') }}</td>
+                        <td class="table-p color-blue">{{ $log->type == 2 ? 'Self Directed' : 'One on One' }}</td>
+                        <td class="table-p">{{ $log->length }} mins</span></td>
+                        <td><a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a></td>
+                      </tr>
+                    @endforeach
+                  @endif
                   </tbody>
                 </table>
           </div>

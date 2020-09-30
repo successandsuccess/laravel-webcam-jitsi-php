@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\PatientActivity;
+use App\Reviews;
+use App\Screenshot;
+use App\Meetings;
+use App\VideoUploads;
 use DataTables;
 use App\Dx;
 use App\Rx;
@@ -100,7 +105,18 @@ class AdminController extends Controller
 
         // get all rxs from rxs table
         $allRxs = Rx::all();
-        return view('admin.patientdirectorymanage', compact('patient', 'dxRxs', 'allDxs', 'allRxs'));
+
+        // get patient log from patient activities
+        $patientLogs = PatientActivity::where('user_id', $id)
+                        ->with(
+                            'getMeetings',
+                            'getVideoUploads', 
+                            'getUser', 
+                            'getProvider'
+                            )
+                        ->get();
+        // dd($patientLogs);
+        return view('admin.patientdirectorymanage', compact('patient', 'dxRxs', 'allDxs', 'allRxs', 'patientLogs'));
     }
 
     // remove the assgined exercises in dxs

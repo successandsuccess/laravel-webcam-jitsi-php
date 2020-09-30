@@ -31,4 +31,14 @@ class PatientActivity extends Model
     {
         return $this->belongsTo('App\Admin', 'provider_id', 'id');
     }
+
+    public function getMeetings()
+    {
+        return $this->belongsTo('App\Meetings', 'meetings_id', 'id');
+    }
+
+    public function getVideoUploads() 
+    {
+        return $this->belongsTo('App\VideoUploads', 'videouploads_id', 'id');
+    }
 }

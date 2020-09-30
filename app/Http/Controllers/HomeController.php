@@ -8,6 +8,7 @@ use App\User;
 use App\Meetings;
 use App\VideoUploads;
 use App\Reviews;
+use App\PatientActivity;
 use Auth;
 use DateTime;
 
@@ -187,18 +188,35 @@ class HomeController extends Controller
     public function upload(Request $request)
     {
         header('Access-Control-Allow-Origin: *');
+        $duration = 0;
+        if ( isset($request->duration) ) {
+            $duration = $request->duration;
+        }
+        
         
         if ( 0 < $_FILES['file']['error'] ) {
             echo 'Error: ' . $_FILES['file']['error'] . '<br>';
         }
         else {
+            
             move_uploaded_file($_FILES['file']['tmp_name'], public_path('uploads') . '/' . $_FILES['file']['name']);
             $target_path = $_SERVER['DOCUMENT_ROOT'] . "/uploads/" . $_FILES['file']['name'];
+
     
             $videoUpload = new VideoUploads;
             $videoUpload->videoUrl = $target_path;
             $videoUpload->userId = Auth::user()->id;
+            $videoUpload->duration = $duration;
             $videoUpload->save();
+
+            $patientActivity = new PatientActivity;
+            $patientActivity->appoint_time = $videoUpload->created_at; // current recorded time
+            $patientActivity->type = 2; // self directed video record type.
+            $patientActivity->length = $duration; // recorded video length
+            $patientActivity->completion = 1; // session completion checking.
+            $patientActivity->videouploads_id = $videoUpload->id; // recorded video
+            $patientActivity->user_id = Auth::user()->id; // recorded patient
+            $patientActivity->save();
 
             echo 'Success';
 

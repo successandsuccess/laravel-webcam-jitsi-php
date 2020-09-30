@@ -10,7 +10,8 @@ class VideoUploads extends Model
 
     protected $fillable = [
         'videoUrl',
-        'userId'
+        'userId',
+        'duration'
     ];
 
     public function userRelation()

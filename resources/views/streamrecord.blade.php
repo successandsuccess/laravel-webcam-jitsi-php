@@ -676,7 +676,7 @@
             player.on('finishRecord', function() {
                 // the blob object contains the recorded data that
                 // can be downloaded by the user, stored on server etc.
-                console.log('finished recording: ', player.recordedData);
+                // console.log('finished recording: ', player.recordedData);
                 downloadButton.href = URL.createObjectURL(player.recordedData);
                 downloadButton.download = "RecordedVideo.webm";
                 window.alert('Success in Record!');
@@ -685,25 +685,28 @@
                 $('#reviewmodal').modal({
                     backdrop: 'static'
                 });
-
+                // console.log(player.record().getDuration().toFixed(0));
+                let videoDuration = player.record().getDuration().toFixed(0); // second
                 // upload recorded data
-                upload(player.recordedData);
+                upload(player.recordedData, videoDuration);
             });
 
             // upload function definition
-            function upload(blob) {
+            function upload(blob, duration) {
                 // this upload handler is served using webpack-dev-server for
                 // this example, see build-config/fragments/dev.js
                 var serverUrl = '/upload';
                 var formData = new FormData();
-              
+               
                 formData.append('file', blob, blob.name);
+                formData.append('duration', duration);
 
-                console.log('upload recording ' + blob.name + ' to ' + serverUrl);
+                console.log(duration + 'second upload recording ' + blob.name + ' to ' + serverUrl);
 
-                for (var key of formData.entries()) {
-                        console.log(key[0] + ', ' + key[1]);
-                    }
+                // for (var key of formData.entries()) {
+                //         console.log(key[0] + ', ' + key[1]);
+                //     }
+            
                 // start upload
                 $.ajaxSetup({
                     headers: {
