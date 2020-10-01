@@ -141,70 +141,32 @@
             <h3 class="custom-h3">Recordings to Review (7)</h3>
             <div class="card">
               <div class="card-body d-grid p-50">
+              @if( !isset($patientActivities[0]) )
+                <div class="row mb-10">
+                    <div class="col-md-12">
+                        <p class="custom-p text-center">No Recordings to review</p>
+                    </div>
+                </div>
+              @else
+                @foreach( $patientActivities as $activity )
                 <div class="row">
                     <div class="col-md-6 m-auto">
                         <p class="card-text speci-p">
-                            Rachel Green
+                            {{ $activity->getUser->name }}
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-primary btn-blue w-100px">VIEW</button></a>
+                        <a href="{{ route('admin.selfdirectedvisits.view', ['activityId' => $activity->id]) }}"><button class="btn btn-primary btn-blue w-100px">VIEW</button></a>
                     </div>
                 </div>
                 <div class="row mb-10">
                     <div class="col-md-6">
-                        <p class="custom-p">Received 10/09/2020 09:55AM</p>
+                        <p class="custom-p">Received {{ $activity->appoint_time }}</p>
                     </div>
                 </div>
-                
+                @endforeach
+              @endif 
 
-                <div class="row">
-                    <div class="col-md-6 m-auto">
-                        <p class="card-text speci-p">
-                            Leslie Knope
-                        </p>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-primary btn-blue w-100px">VIEW</button></a>
-                    </div>
-                </div>
-                <div class="row mb-10">
-                    <div class="col-md-6">
-                        <p class="custom-p">Received 10/09/2020 09:55AM</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 m-auto">
-                        <p class="card-text speci-p">
-                            April Lundgate
-                        </p>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-primary btn-blue w-100px">VIEW</button></a>
-                    </div>
-                </div>
-                <div class="row mb-10">
-                    <div class="col-md-6">
-                        <p class="custom-p">Received 10/09/2020 09:55AM</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 m-auto">
-                        <p class="card-text speci-p">
-                            Andy Dwyer
-                        </p>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <a href="{{ route('admin.selfdirectedvisits.view') }}"><button class="btn btn-primary btn-blue w-100px">VIEW</button></a>
-                    </div>
-                </div>
-                <div class="row mb-10">
-                    <div class="col-md-6">
-                        <p class="custom-p">Received 10/09/2020 09:55AM</p>
-                    </div>
-                </div>
               </div>
             </div>
 

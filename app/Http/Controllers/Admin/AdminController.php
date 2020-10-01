@@ -33,7 +33,10 @@ class AdminController extends Controller
 
     public function selfdirectedvisits()
     {
-        return view('admin.selfdirectedvisits');
+        // get activities from patient Activities
+        $patientActivities = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')->get();
+        // dd($patientActivities);
+        return view('admin.selfdirectedvisits', compact('patientActivities'));
     }
 
     public function patientdirectory(Request $request)
@@ -67,9 +70,12 @@ class AdminController extends Controller
         return view('admin.exercises', compact('rxs'));
     }
 
-    public function selfdirectedvisitsview()
+    public function selfdirectedvisitsview(Request $request, $activityId)
     {
-        return view('admin.selfdirectedvisitsview');
+        // dd($activityId);
+        $patientActivity = PatientActivity::find($activityId);
+        // dd($patientActivity);
+        return view('admin.selfdirectedvisitsview', compact('patientActivity'));
     }
 
     public function patientdirectorymanage(Request $request, $id) 
@@ -131,7 +137,7 @@ class AdminController extends Controller
                     return $log->length." min";
                 })
                 ->addColumn('action', function($row){
-                    $editUrl = url('/admin/dashboard/selfdirectedvisits/view');
+                    $editUrl = url('/admin/dashboard/selfdirectedvisits/view/'.$row->id);
                     $btn = '<a href="' . $editUrl . '"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a>';
                     return $btn;
                 })

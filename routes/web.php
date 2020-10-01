@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/dashboard/patientqueue','Admin\AdminController@patientqueue')->name('admin.dashboard.patientqueue');
     Route::get('/dashboard/patientdirectory', 'Admin\AdminController@patientdirectory')->name('admin.dashboard.patientdirectory');
     Route::get('/dashboard/exercises', 'Admin\AdminController@exercises')->name('admin.dashboard.exercises');
-    Route::get('/dashboard/selfdirectedvisits/view', 'Admin\AdminController@selfdirectedvisitsview')->name('admin.selfdirectedvisits.view');
+    Route::get('/dashboard/selfdirectedvisits/view/{activityId}', 'Admin\AdminController@selfdirectedvisitsview')->name('admin.selfdirectedvisits.view');
     Route::get('/dashboard/patientdirectory/manage/{id}', 'Admin\AdminController@patientdirectorymanage')->name('admin.patientdirectory.manage');
     // remove assigned exercise in dxs.
     Route::post('/dashboard/patientdirectory/manage/remove', 'Admin\AdminController@patientdirectorymanageRemove')->name('admin.patientdirectory.manage.remove');
