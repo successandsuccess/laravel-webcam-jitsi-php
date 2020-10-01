@@ -72,8 +72,17 @@ class AdminController extends Controller
 
     public function selfdirectedvisitsview(Request $request, $activityId)
     {
-        // dd($activityId);
-        $patientActivity = PatientActivity::find($activityId);
+        $patientActivity = PatientActivity::with(
+            'getUser', 
+            'getVideoUploads', 
+            'getMeetings', 
+            'getProvider',
+            'getUser.getRx1',
+            'getUser.getRx2',
+            'getUser.getRx3',
+            'getUser.getRx4',
+            'getUser.getRx5'
+            )->find($activityId);
         // dd($patientActivity);
         return view('admin.selfdirectedvisitsview', compact('patientActivity'));
     }

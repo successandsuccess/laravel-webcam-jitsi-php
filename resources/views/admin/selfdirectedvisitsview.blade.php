@@ -150,9 +150,9 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1 class="m-0 custom-h1">Rachel Green - Self Directed, 10/10/20</h1>
+            <h1 class="m-0 custom-h1">{{ $patientActivity->getUser->name }} - {{ $patientActivity->type == 2? 'Self Directed' : 'One on One' }}, {{ $patientActivity->appoint_time->format('Y-m-d') }}</h1>
             <p class="table-p color-blue pt-0">
-                <a href="{{ route('admin.patientdirectory.manage', [ 'id' => 19 ]) }}">View Rachel Green.</a>
+                <a href="{{ route('admin.patientdirectory.manage', [ 'id' => $patientActivity->user_id ]) }}">View {{ $patientActivity->getUser->name }}.</a>
             </p>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -170,9 +170,9 @@
                 <div class="card-header p-50">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4 class="normal-black-text">Session Type - Self Directed</h4>
-                            <p class="custom-p font-18 mb-05rem">Recorded at 9:10 AM CT, 10/10/20</p>
-                            <p class="custom-p font-18 mb-05rem">Session Length: 16:47</p>
+                            <h4 class="normal-black-text">Session Type - {{ $patientActivity->type == 2? 'Self Directed': 'One on One' }}</h4>
+                            <p class="custom-p font-18 mb-05rem">Recorded at {{ $patientActivity->appoint_time }}</p>
+                            <p class="custom-p font-18 mb-05rem">Session Length: {{ $patientActivity->length }} min</p>
                             <a href="#"><p class="table-p color-blue pt-0 mb-05rem">View Assessment Form</p></a>
                             <a href="#"><p class="table-p color-blue pt-0 mb-05rem">View Recording</p></a>
                         </div>
@@ -180,82 +180,45 @@
                 </div>
                 <div class="card-body d-grid p-50 pt-20">
                     <p class="table-p color-special mb-50">Patient Care Plan</p>
+                    <?php $j = 0; ?>
+                    @for ( $i = 1; $i <=5; $i++ )
+                      @if( isset($patientActivity->getUser['getRx'.$i]) )
+                      <div class="row mb-10">
+                          <div class="col-md-6 m-auto d-flex">
+                              <iframe width="150" height="80" src="{{ $patientActivity->getUser['getRx'.$i]->rx_link }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                              <div class="d-block">
+                                  <p class="table-p color-blue pt-0 mb-05rem ml-19">{{ $patientActivity->getUser['getRx'.$i]->rx_name }}</p>
+                                  <ul>
+                                      <li class="text-muted">{{ $patientActivity->getUser['getRx'.$i]->duration }}</li>
+                                      <li class="text-muted">{{ $patientActivity->getUser['getRx'.$i]->frequency }}</li>
+                                  </ul>
+                              </div>
+                                  
+                                  
+                          </div>
+                          <div class="col-md-6 text-right">
+                                  <h4 class="small-black-text uppercase">{{ $patientActivity->getUser['getRx'.$i]->type }}</h4>
+                                  <br>
+                                  
+                                  <div class="text-right">
+                                      <p class="text-muted d-lineflex align-center">
+                                          <i class="fa fa-check-circle-o" style="color: #33d847; font-size: 30px;" aria-hidden="true"></i>
+                                          <span>&nbsp;Patient Completed</span>
+                                      </p>
+                                  </div>
+                          </div>
+                          <?php $j++ ?>
+                      </div>
+                      @endif
+                    @endfor
+                    @if ( $j == 0 ) 
                     <div class="row mb-10">
-                        <div class="col-md-6 m-auto d-flex">
-                            <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <div class="d-block">
-                                <p class="table-p color-blue pt-0 mb-05rem ml-19">Upper Back Stretches</p>
-                                <ul>
-                                    <li class="text-muted">4x weekly for 20 minutes</li>
-                                    <li class="text-muted">Continue for 3 weeks</li>
-                                </ul>
-                            </div>
-                                
-                                
-                        </div>
-                        <div class="col-md-6 text-right">
-                                <h4 class="small-black-text">VIDEO</h4>
-                                <br>
-                                
-                                <div class="text-right">
-                                    <p class="text-muted d-lineflex align-center">
-                                        <i class="fa fa-check-circle-o" style="color: #33d847; font-size: 30px;" aria-hidden="true"></i>
-                                        <span>&nbsp;Patient Completed</span>
-                                    </p>
-                                </div>
-                                    
-                                
-                            
+                        <div class="col-md-12 m-auto d-flex text-center justify-content-center">
+                          <p class="table-p pt-0 mb-05rem ml-19">No Assigned Exercises</p>
                         </div>
                     </div>
-                    <div class="row mb-10">
-                        <div class="col-md-6 m-auto d-flex">
-                            <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <div class="d-block">
-                                <p class="table-p color-blue pt-0 mb-05rem ml-19">Upper Back Stretches</p>
-                                <ul>
-                                    <li class="text-muted">4x weekly for 20 minutes</li>
-                                    <li class="text-muted">Continue for 3 weeks</li>
-                                </ul>
-                            </div>
-                                
-                                
-                        </div>
-                        <div class="col-md-6 text-right">
-                                <h4 class="small-black-text">VIDEO</h4>
-                                <br>
-                                
-                                <div class="text-right">
-                                    <p class="text-muted d-lineflex align-center">
-                                        <i class="fa fa-check-circle-o" style="color: #33d847; font-size: 30px;" aria-hidden="true"></i>
-                                        <span>&nbsp;Patient Completed</span>
-                                    </p>
-                                </div>
-                        </div>
-                    </div>
-                    <div class="row mb-10">
-                        <div class="col-md-6 m-auto d-flex">
-                            <iframe width="150" height="80" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            <div class="d-block">
-                                <p class="table-p color-blue pt-0 mb-05rem ml-19">Upper Back Stretches</p>
-                                <ul>
-                                    <li class="text-muted">4x weekly for 20 minutes</li>
-                                    <li class="text-muted">Continue for 3 weeks</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6 text-right">
-                                <h4 class="small-black-text">VIDEO</h4>
-                                <br>
-                                
-                                <div class="text-right">
-                                    <p class="text-muted d-lineflex align-center">
-                                        <i class="fa fa-check-circle-o" style="color: #33d847; font-size: 30px;" aria-hidden="true"></i>
-                                        <span>&nbsp;Patient Completed</span>
-                                    </p>
-                                </div>
-                        </div>
-                    </div>
+                    @endif
+                  
 
                 </div>
                 <div class="card-footer p-50 mycardfooter">

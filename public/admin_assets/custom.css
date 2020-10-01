@@ -778,3 +778,7 @@ input.custom-search:-webkit-autofill:active {
     background: linear-gradient(90deg, #ADD261 0%, #77B336 100%);
     border: none;
 }
+
+.justify-content-center {
+    justify-content: center;
+}
