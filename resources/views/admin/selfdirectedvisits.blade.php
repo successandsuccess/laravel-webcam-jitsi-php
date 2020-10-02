@@ -75,7 +75,10 @@
                 <a href="{{ route('admin.dashboard.selfdirectedvisits') }}" class="nav-link active">
                   <p>
                     Self Directed Visits
-                    <span class="right badge badge-danger">7</span>
+                    @if ( $recordingsToReview == 0 )
+                    @else
+                    <span class="right badge badge-danger">{{ $recordingsToReview }}</span>
+                    @endif
                   </p>
                 </a>
               </li>
@@ -138,17 +141,17 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="custom-h3">Recordings to Review (7)</h3>
+            <h3 class="custom-h3">Recordings to Review ({{ $recordingsToReview }})</h3>
             <div class="card">
               <div class="card-body d-grid p-50">
-              @if( !isset($patientActivities[0]) )
+              @if( !isset($availablePatientActivities[0]) )
                 <div class="row mb-10">
                     <div class="col-md-12">
                         <p class="custom-p text-center">No Recordings to review</p>
                     </div>
                 </div>
               @else
-                @foreach( $patientActivities as $activity )
+                @foreach( $availablePatientActivities as $activity )
                 <div class="row">
                     <div class="col-md-6 m-auto">
                         <p class="card-text speci-p">
@@ -156,7 +159,8 @@
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="{{ route('admin.selfdirectedvisits.view', ['activityId' => $activity->id]) }}"><button class="btn btn-primary btn-blue w-100px">VIEW</button></a>
+                        <!-- <a href="{{ route('admin.selfdirectedvisits.view', ['activityId' => $activity->id, 'completionCheck' => 1]) }}"><button class="btn btn-primary btn-blue w-100px">VIEW</button></a> -->
+                        <a onclick="makeRecordingToView(<?php echo $activity->id ?>)" ><button class="btn btn-primary btn-blue w-100px">VIEW</button></a>
                     </div>
                 </div>
                 <div class="row mb-10">
@@ -233,4 +237,46 @@
 
 
 </div>
+@endsection
+
+@section('javascript')
+<script>
+  function makeRecordingToView(activityId) 
+  {
+    console.log('Clicked view button', activityId);
+    sendingData = {
+      activityId: activityId
+    }
+    $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                
+    $.ajax({
+        url: "{{ url('/admin/dashboard/selfdirectedvisit/view/checkrecordingview') }}",
+        type: 'POST',              
+        data: sendingData,
+        success: function(result)
+        {
+            console.log(result);
+            if( result == 'Success' ) {
+              window.location = "/admin/dashboard/selfdirectedvisits/view/"+activityId;
+            }
+            else {
+                console.log('Error Occured In VIEW details, Retry or Check Network');
+                window.alert('VIEW details went wrong. Check network and retry.');
+                // toastr.error('View Details went wrong. Check network and retry.');
+            }
+        },
+        error: function(data)
+        {
+            console.log('error',data);
+            window.alert('VIEW details went wrong. Check network and retry.');
+            // toastr.error('View Details went wrong. Check network and retry.');
+        }
+    });
+  
+  }
+</script>
 @endsection

@@ -16,9 +16,16 @@ use App\Rx;
 
 class AdminController extends Controller
 {
+    public $RecordingsToReview;
+
     public function __construct()
     {
         $this->middleware('auth:admin');
+
+        $recordings = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
+                                                        ->where('completion', 0)
+                                                        ->get();
+        $this->RecordingsToReview = count($recordings);
     }
 
     public function index()
@@ -28,19 +35,29 @@ class AdminController extends Controller
 
     public function patientqueue()
     {
-        return view('admin.patientqueue');
+        $recordingsToReview = $this->RecordingsToReview;
+        return view('admin.patientqueue', compact('recordingsToReview'));
     }
 
     public function selfdirectedvisits()
     {
+        // dd($this->RecordingsToReview);
+        $recordingsToReview = $this->RecordingsToReview;
         // get activities from patient Activities
-        $patientActivities = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')->get();
+        $availablePatientActivities = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
+                                                        ->where('completion', 0)
+                                                        ->get();
+
+        $pastPaitientActivities = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
+                                                    ->where('completion', 1)
+                                                    ->get();
         // dd($patientActivities);
-        return view('admin.selfdirectedvisits', compact('patientActivities'));
+        return view('admin.selfdirectedvisits', compact('availablePatientActivities', 'pastPaitientActivities', 'recordingsToReview'));
     }
 
     public function patientdirectory(Request $request)
     {
+        $recordingsToReview = $this->RecordingsToReview;
         $patients = User::all();
         // $patients = User::latest()->get();
         // dd($patients);
@@ -60,18 +77,20 @@ class AdminController extends Controller
                         ->make(true);
         }
 
-        return view('admin.patientdirectory');
+        return view('admin.patientdirectory', compact('recordingsToReview'));
     }
 
     public function exercises()
     {
+        $recordingsToReview = $this->RecordingsToReview;
         $rxs = Rx::all();
 
-        return view('admin.exercises', compact('rxs'));
+        return view('admin.exercises', compact('rxs', 'recordingsToReview'));
     }
 
     public function selfdirectedvisitsview(Request $request, $activityId)
     {
+        $recordingsToReview = $this->RecordingsToReview;
         $patientActivity = PatientActivity::with(
             'getUser', 
             'getVideoUploads', 
@@ -84,12 +103,23 @@ class AdminController extends Controller
             'getUser.getRx5'
             )->find($activityId);
         // dd($patientActivity);
-        return view('admin.selfdirectedvisitsview', compact('patientActivity'));
+        return view('admin.selfdirectedvisitsview', compact('patientActivity', 'recordingsToReview'));
+    }
+
+    // check to see recording to review
+    public function checkrecordingview(Request $request)
+    {
+        // dd($request->activityId);
+        $patientActivity = PatientActivity::find($request->activityId);
+        $patientActivity->completion = 1;
+        $patientActivity->save();
+        return 'Success';
     }
 
     public function patientdirectorymanage(Request $request, $id) 
     {
         // dd($id);
+        $recordingsToReview = $this->RecordingsToReview;
         $patient = User::where('id', $id)
                     ->with(
                             'getProvider1', 
@@ -154,7 +184,7 @@ class AdminController extends Controller
                 ->make(true);
         }
         // dd($patientLogs);
-        return view('admin.patientdirectorymanage', compact('patient', 'dxRxs', 'allDxs', 'allRxs'));
+        return view('admin.patientdirectorymanage', compact('patient', 'dxRxs', 'allDxs', 'allRxs', 'recordingsToReview'));
     }
 
     // remove the assgined exercises in dxs

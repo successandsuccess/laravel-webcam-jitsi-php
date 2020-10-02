@@ -80,7 +80,10 @@
                 <a href="{{ route('admin.dashboard.selfdirectedvisits') }}" class="nav-link active">
                   <p>
                     Self Directed Visits
-                    <span class="right badge badge-danger">7</span>
+                    @if ( $recordingsToReview == 0 )
+                    @else
+                    <span class="right badge badge-danger">{{ $recordingsToReview }}</span>
+                    @endif
                   </p>
                 </a>
               </li>

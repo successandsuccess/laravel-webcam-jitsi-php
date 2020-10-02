@@ -213,7 +213,7 @@ class HomeController extends Controller
             $patientActivity->appoint_time = $videoUpload->created_at; // current recorded time
             $patientActivity->type = 2; // self directed video record type.
             $patientActivity->length = $duration; // recorded video length
-            $patientActivity->completion = 1; // session completion checking.
+            $patientActivity->completion = 0; // session completion checking to view recordings from provider.
             $patientActivity->videouploads_id = $videoUpload->id; // recorded video
             $patientActivity->user_id = Auth::user()->id; // recorded patient
             $patientActivity->save();
