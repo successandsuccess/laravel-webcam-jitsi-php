@@ -23,6 +23,7 @@ class AdminController extends Controller
         $this->middleware('auth:admin');
 
         $recordings = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
+                                                        ->where('type', 2) // only self directed videos
                                                         ->where('completion', 0)
                                                         ->get();
         $this->RecordingsToReview = count($recordings);
