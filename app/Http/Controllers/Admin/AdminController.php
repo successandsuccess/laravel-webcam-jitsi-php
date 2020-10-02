@@ -39,9 +39,8 @@ class AdminController extends Controller
         return view('admin.patientqueue', compact('recordingsToReview'));
     }
 
-    public function selfdirectedvisits()
+    public function selfdirectedvisits(Request $request)
     {
-        // dd($this->RecordingsToReview);
         $recordingsToReview = $this->RecordingsToReview;
         // get activities from patient Activities
         $availablePatientActivities = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
@@ -52,6 +51,30 @@ class AdminController extends Controller
                                                     ->where('completion', 1)
                                                     ->get();
         // dd($patientActivities);
+
+        if ($request->ajax()) {
+            return Datatables::of($pastPaitientActivities)
+                ->editColumn('appoint_date', function ($log) {
+                    return $log->appoint_time->format('Y-m-d');
+                })
+                ->editColumn('appoint_time', function ($log) {
+                    return $log->appoint_time->format('H:i:s');
+                })
+                ->editColumn('patient', function ($log) {
+                    return $log->getUser->name;
+                })
+                ->editColumn('length', function ($log) {
+                    return $log->length." min";
+                })
+                ->addColumn('action', function($row){
+                    $editUrl = url('/admin/dashboard/selfdirectedvisits/view/'.$row->id);
+                    $btn = '<a href="' . $editUrl . '"><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
         return view('admin.selfdirectedvisits', compact('availablePatientActivities', 'pastPaitientActivities', 'recordingsToReview'));
     }
 

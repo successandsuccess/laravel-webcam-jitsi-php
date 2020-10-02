@@ -1,5 +1,12 @@
 @extends('layouts.admin')
 
+
+@section('css')
+<!-- DataTables -->
+<link rel="stylesheet" href="{{ asset('admin_assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin_assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+@endsection
+
 @section('content')
 <div class="wrapper">
 
@@ -176,7 +183,7 @@
 
             <div>
                 <h3 class="custom-h3">Past Recordings</h3>
-                <table class="table table-hover text-nowrap background-w">
+                <table class="table table-hover text-nowrap background-w" id="pastRecordings">
                   <thead>
                     <tr>
                       <th>DATE</th>
@@ -187,41 +194,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="table-p">10/10/20</td>
-                      <td class="table-p">2:45 PM</td>
-                      <td class="table-p color-blue">Rachel Green</td>
-                      <td class="table-p">16:45 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue btn-p">VIEW</button></td>
-                    </tr>
-                    <tr>
-                      <td class="table-p">10/10/20</td>
-                      <td class="table-p">2:00 PM</td>
-                      <td class="table-p color-blue">Alexander Pierc</td>
-                      <td class="table-p">8:39 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">VIEW</button></td>
-                    </tr>
-                    <tr>
-                      <td  class="table-p">10/10/20</td>
-                      <td class="table-p">10:30 AM</td>
-                      <td class="table-p color-blue">Bob Doe</td>
-                      <td class="table-p">8:39 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">VIEW</button></td>
-                    </tr>
-                    <tr>
-                      <td class="table-p">10/10/20</td>
-                      <td class="table-p">10:15 PM</td>
-                      <td class="table-p color-blue">Mike Doe</td>
-                      <td class="table-p">16:45 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">VIEW</button></td>
-                    </tr>
-                    <tr>
-                      <td class="table-p">10/10/20</td>
-                      <td class="table-p">10:00 PM</td>
-                      <td class="table-p color-blue">Emily London</td>
-                      <td class="table-p">8:45 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">VIEW</button></td>
-                    </tr>
                   </tbody>
                 </table>
             </div>
@@ -240,6 +212,11 @@
 @endsection
 
 @section('javascript')
+<script src="{{ asset('admin_assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('admin_assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin_assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('admin_assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+
 <script>
   function makeRecordingToView(activityId) 
   {
@@ -266,17 +243,32 @@
             else {
                 console.log('Error Occured In VIEW details, Retry or Check Network');
                 window.alert('VIEW details went wrong. Check network and retry.');
-                // toastr.error('View Details went wrong. Check network and retry.');
             }
         },
         error: function(data)
         {
             console.log('error',data);
             window.alert('VIEW details went wrong. Check network and retry.');
-            // toastr.error('View Details went wrong. Check network and retry.');
         }
     });
   
   }
+
+
+  // patient log yajra datatable
+  $('#pastRecordings').DataTable({
+    processing: true,
+    serverSide: true,
+    "responsive": true,
+    "autoWidth": false,
+    ajax: "{{ route('admin.dashboard.selfdirectedvisits') }}",
+    columns: [
+      {data: 'appoint_date', name: 'date'},
+      {data: 'appoint_time', name: 'time'},
+      {data: 'patient', name: 'patient'},
+      {data: 'length', name:'duration'},
+      {data: 'action', name: 'actions'}
+    ]
+  });
 </script>
 @endsection
