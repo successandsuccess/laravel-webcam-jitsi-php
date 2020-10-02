@@ -44,10 +44,12 @@ class AdminController extends Controller
         $recordingsToReview = $this->RecordingsToReview;
         // get activities from patient Activities
         $availablePatientActivities = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
+                                                        ->where('type', 2) // only self directed videos
                                                         ->where('completion', 0)
                                                         ->get();
 
         $pastPaitientActivities = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
+                                                    ->where('type', 2) // only self directed videos
                                                     ->where('completion', 1)
                                                     ->get();
         // dd($patientActivities);

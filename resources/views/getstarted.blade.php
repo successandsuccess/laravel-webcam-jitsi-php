@@ -66,20 +66,23 @@
                                 <div class="mb-10 mt-10">
                                     @if (isset($providerId) && $providerId != 0)
                                         <select name="provider" id="provider" class="btn text-center h-55 w-100 background-white color-b" style="font-size: larger; text-align:center; text-align-last: center;" data-style="btn-primary">
-                                        @foreach($providers as $index => $provider)
-                                            @if($index == $providerId)
-                                            <option value="<?php echo $index; ?>" selected><?php echo $provider; ?></option>
+                                        @foreach($providers as $provider)
+                                            @if($provider->id == $providerId)
+                                            <option value="<?php echo $provider->id; ?>" selected><?php echo $provider->name; ?></option>
                                             @else
-                                            <option value="<?php echo $index; ?>"><?php echo $provider; ?></option>
+                                            <option value="<?php echo $provider->id; ?>"><?php echo $provider->name; ?></option>
                                             @endif
                                         @endforeach
                                         </select>
                                     @else
                                         <select name="provider" id="provider" class="btn text-center h-55 w-100 background-white color-b" style="font-size: larger; text-align:center; text-align-last: center;" data-style="btn-primary">
-                                            <option value="0">Select Provider...</option>
+                                            <!-- <option value="0">Select Provider...</option>
                                             <option value="1">Dr.Johns</option>
                                             <option value="2">Dr.Wang</option>
-                                            <option value="3">Mr.Smith.CA</option>
+                                            <option value="3">Mr.Smith.CA</option> -->
+                                            @foreach($providers as $provider)
+                                            <option value="{{ $provider->id }}">{{ $provider->name }}</option>
+                                            @endforeach
                                         </select>
                                     @endif
                                 </div>

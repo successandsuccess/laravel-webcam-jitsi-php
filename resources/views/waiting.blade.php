@@ -46,7 +46,7 @@
                             <div class="card-body text-center">
                                 <h2 class="card-title text-center" style="color: #fff9f9;">You're all set!</h2>
                                 <h5 class="card-subtitle mb-2 text-center mt-10" style="color: #fff9f9;">Provider</h5>
-                                <h5 class="card-subtitle mb-2 text-center" style="color: #fff9f9;" >{{ $provider }}</h5>
+                                <h5 class="card-subtitle mb-2 text-center" style="color: #fff9f9;" >{{ $provider->name }}</h5>
                                 <h5 class="card-subtitle mb-2 text-center mt-10" style="color: #fff9f9;">
                                     Queue Time
                                 </h5>

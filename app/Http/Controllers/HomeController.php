@@ -8,6 +8,7 @@ use App\User;
 use App\Meetings;
 use App\VideoUploads;
 use App\Reviews;
+use App\Admin;
 use App\PatientActivity;
 use Auth;
 use DateTime;
@@ -38,12 +39,15 @@ class HomeController extends Controller
     public function getstarted(Request $request)
     {
         // provider list
-        $providers = [
-            'Select Provider...',
-            'Dr.Johns',
-            'Dr.Wang',
-            'Mr.Smith.CA'
-        ];
+        // $providers = [
+        //     'Select Provider...',
+        //     'Dr.Johns',
+        //     'Dr.Wang',
+        //     'Mr.Smith.CA'
+        // ];
+
+        $providers = Admin::all();
+        // dd($providers);
 
          // available time list
         $times = [
@@ -84,12 +88,14 @@ class HomeController extends Controller
         $timeId = $request->input('time');
 
         // provider list
-        $providers = [
-            'Select Provider...',
-            'Dr.Johns',
-            'Dr.Wang',
-            'Mr.Smith.CA'
-        ];
+        // $providers = [
+        //     'Select Provider...',
+        //     'Dr.Johns',
+        //     'Dr.Wang',
+        //     'Mr.Smith.CA'
+        // ];
+        $providers = Admin::all();
+        // dd($providers);
         // available time list
         $times = [
             'Select Time...',
@@ -106,7 +112,8 @@ class HomeController extends Controller
             '15:00:00',
         ];
 
-        $provider = $providers[$providerId];
+        // $provider = $providers[$providerId];
+        $provider = Admin::find($providerId);
         $time = $times[$timeId];
         $databaseTime = $databaseTimes[$timeId]; // This is for Real Database datetime.
 
@@ -119,7 +126,7 @@ class HomeController extends Controller
         // Get the meet info if meet already is booked.
         $prevMeeting = Meetings::where('userId' ,$user->id)
                                 ->where('time', $todayDateTime)
-                                ->where('provider', $provider)
+                                ->where('provider_id', $provider->id)
                                 ->first();
         
         if( $prevMeeting != null ) //when already existed meeting.
@@ -131,15 +138,26 @@ class HomeController extends Controller
         {
             // make New jitsi meet
             $uuid = Uuid::generate()->string;
-            $jitsimeet = 'https://video.patientconnect.io/'. $uuid;
+            $jitsimeet = env('VIDEO_PATIENT_URL').'/'. $uuid;
             
             // save New meet record
             $meeting = new Meetings;
-            $meeting->provider = $provider;
+            $meeting->provider_id = $provider->id;
             $meeting->time = $todayDateTime;
             $meeting->meetUrl = $jitsimeet;
             $meeting->userId = $user->id;
             $meeting->save();
+
+            // save to patient activities
+            $patientActivity = new PatientActivity;
+            $patientActivity->appoint_time = $todayDateTime;
+            $patientActivity->length = 0;
+            $patientActivity->type = 1;
+            $patientActivity->completion = 0;
+            $patientActivity->user_id = $user->id;
+            $patientActivity->provider_id = $provider->id;
+            $patientActivity->meetings_id = $meeting->id;
+            $patientActivity->save();
 
             // Send Notify email to Provider
             $details = [
