@@ -243,7 +243,7 @@
 <script>
   function makeRecordingToView(activityId) 
   {
-    console.log('Clicked view button', activityId);
+    // console.log('Clicked view button', activityId);
     sendingData = {
       activityId: activityId
     }
