@@ -782,3 +782,19 @@ input.custom-search:-webkit-autofill:active {
 .justify-content-center {
     justify-content: center;
 }
+
+.min-height-139px {
+    min-height: 139px;
+}
+
+@media (max-width: 1246px) {
+    .min-height-139px {
+        min-height: 159px;
+    }
+}
+
+@media (max-width: 1079px) {
+    .min-height-139px {
+        min-height: 180px;
+    }
+}

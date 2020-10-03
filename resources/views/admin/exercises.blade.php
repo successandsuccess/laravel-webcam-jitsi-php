@@ -197,7 +197,7 @@
                                             </div>
                                            
                                         </div>
-                                        <div class="card-footer footer-border background-none mt-minus-6px">
+                                        <div class="card-footer footer-border background-none mt-minus-6px min-height-139px">
                                             <div class="row mt-10">
                                                     <div class="col-12">
                                                         <p class="text-muted text-sm">
