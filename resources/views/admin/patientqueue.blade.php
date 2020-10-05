@@ -155,7 +155,7 @@
             <div class="card">
               <div class="card-body d-grid p-50">
                 <h5 class="card-title custom-h5">FIRST APPOINTMENT</h5>
-
+                @if ( isset($currentQueues[0]) )
                 <div class="row mb-50">
                     <div class="col-md-6 m-auto">
                         <!-- <p class="card-text d-flex normal-p">
@@ -169,9 +169,16 @@
                         <button class="btn btn-default w-100px">MESSAGE</button>
                         <button class="btn btn-primary btn-blue w-100px">START</button>
                     </div>
-
-                    
                 </div>
+                @else
+                <div class="row mb-50">
+                  <div class="col-md-12 text-center" >
+                    <p class="card-text text-center">
+                        No queues to view now
+                    </p>
+                  </div>
+                </div>
+                @endif
                 
 
                 <h5 class="card-title custom-h5">UP NEXT</h5>
