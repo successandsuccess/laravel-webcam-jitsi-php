@@ -63,7 +63,11 @@
                 <a href="{{ route('admin.dashboard.patientqueue') }}" class="nav-link">
                   <p>
                     Patient Queue
-                    <span class="right badge badge-danger">12</span>
+                    @if ( $patientQueueCount == 0 ) 
+
+                    @else 
+                      <span class="right badge badge-danger">{{ $patientQueueCount }}</span>
+                    @endif
                   </p>
                 </a>
               </li>

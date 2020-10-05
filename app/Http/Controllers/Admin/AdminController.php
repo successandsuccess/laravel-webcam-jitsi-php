@@ -17,6 +17,7 @@ use App\Rx;
 class AdminController extends Controller
 {
     public $RecordingsToReview;
+    public $PatientQueueCounts;
 
     public function __construct()
     {
@@ -27,6 +28,11 @@ class AdminController extends Controller
                                                         ->where('completion', 0)
                                                         ->get();
         $this->RecordingsToReview = count($recordings);
+
+        $queues = PatientActivity::where('type', 1) // only 1:1 meeting
+                                   ->where('completion', 0)
+                                   ->get();
+        $this->PatientQueueCounts = count($queues);
     }
 
     public function index()
@@ -34,15 +40,60 @@ class AdminController extends Controller
         return redirect()->route('admin.dashboard.patientqueue');
     }
 
-    public function patientqueue()
+    public function patientqueue(Request $request)
     {
         $recordingsToReview = $this->RecordingsToReview;
-        return view('admin.patientqueue', compact('recordingsToReview'));
+        $patientQueueCount = $this->PatientQueueCounts;
+
+        $currentQueues = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
+                                        ->where('type', 1)
+                                        ->where('completion', 0)
+                                        ->get();
+
+        $pastQueues = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
+                                        ->where('type', 1)
+                                        ->where('completion', 1)
+                                        ->get();
+
+        if ($request->ajax()) {
+            return Datatables::of($pastQueues)
+                ->editColumn('appoint_date', function ($log) {
+                    return $log->appoint_time->format('Y-m-d');
+                })
+                ->editColumn('appoint_time', function ($log) {
+                    return $log->appoint_time->format('H:i:s');
+                })
+                ->editColumn('patient', function ($log) {
+                    return $log->getUser->name;
+                })
+                ->editColumn('length', function ($log) {
+                    $Hour = (int) ($log->length / 60);
+                    if ( strlen($Hour) == 1 ) {
+                        $Hour = "0".$Hour;
+                    }
+                    $Minute = $log->length - $Hour;
+                    if ( strlen($Minute) == 1 ) {
+                        $Minute = "0".$Minute;
+                    }
+                    return $Hour.":".$Minute." min";
+                })
+                ->addColumn('action', function($row){
+                    // $editUrl = url('/admin/dashboard/selfdirectedvisits/view/'.$row->id);
+                    $editUrl = '#';
+                    $btn = '<a href="' . $editUrl . '"><button class="btn btn-default w-110 color-blue btn-p">DETAILS</button></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('admin.patientqueue', compact('recordingsToReview', 'patientQueueCount', 'currentQueues', 'pastQueues'));
     }
 
     public function selfdirectedvisits(Request $request)
     {
         $recordingsToReview = $this->RecordingsToReview;
+        $patientQueueCount = $this->PatientQueueCounts;
         // get activities from patient Activities
         $availablePatientActivities = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
                                                         ->where('type', 2) // only self directed videos
@@ -67,7 +118,15 @@ class AdminController extends Controller
                     return $log->getUser->name;
                 })
                 ->editColumn('length', function ($log) {
-                    return $log->length." min";
+                    $Hour = (int) ($log->length / 60);
+                    if ( strlen($Hour) == 1 ) {
+                        $Hour = "0".$Hour;
+                    }
+                    $Minute = $log->length - $Hour;
+                    if ( strlen($Minute) == 1 ) {
+                        $Minute = "0".$Minute;
+                    }
+                    return $Hour.":".$Minute." min";
                 })
                 ->addColumn('action', function($row){
                     $editUrl = url('/admin/dashboard/selfdirectedvisits/view/'.$row->id);
@@ -78,12 +137,13 @@ class AdminController extends Controller
                 ->make(true);
         }
 
-        return view('admin.selfdirectedvisits', compact('availablePatientActivities', 'pastPaitientActivities', 'recordingsToReview'));
+        return view('admin.selfdirectedvisits', compact('availablePatientActivities', 'pastPaitientActivities', 'recordingsToReview', 'patientQueueCount'));
     }
 
     public function patientdirectory(Request $request)
     {
         $recordingsToReview = $this->RecordingsToReview;
+        $patientQueueCount = $this->PatientQueueCounts;
         $patients = User::all();
         // $patients = User::latest()->get();
         // dd($patients);
@@ -103,20 +163,22 @@ class AdminController extends Controller
                         ->make(true);
         }
 
-        return view('admin.patientdirectory', compact('recordingsToReview'));
+        return view('admin.patientdirectory', compact('recordingsToReview', 'patientQueueCount'));
     }
 
     public function exercises()
     {
         $recordingsToReview = $this->RecordingsToReview;
+        $patientQueueCount = $this->PatientQueueCounts;
         $rxs = Rx::all();
 
-        return view('admin.exercises', compact('rxs', 'recordingsToReview'));
+        return view('admin.exercises', compact('rxs', 'recordingsToReview', 'patientQueueCount'));
     }
 
     public function selfdirectedvisitsview(Request $request, $activityId)
     {
         $recordingsToReview = $this->RecordingsToReview;
+        $patientQueueCount = $this->PatientQueueCounts;
         $patientActivity = PatientActivity::with(
             'getUser', 
             'getVideoUploads', 
@@ -129,7 +191,7 @@ class AdminController extends Controller
             'getUser.getRx5'
             )->find($activityId);
         // dd($patientActivity);
-        return view('admin.selfdirectedvisitsview', compact('patientActivity', 'recordingsToReview'));
+        return view('admin.selfdirectedvisitsview', compact('patientActivity', 'recordingsToReview', 'patientQueueCount'));
     }
 
     // check to see recording to review
@@ -146,6 +208,7 @@ class AdminController extends Controller
     {
         // dd($id);
         $recordingsToReview = $this->RecordingsToReview;
+        $patientQueueCount = $this->PatientQueueCounts;
         $patient = User::where('id', $id)
                     ->with(
                             'getProvider1', 
@@ -199,7 +262,15 @@ class AdminController extends Controller
                     return $log->type == 2 ? 'Self Directed' : 'One on One';
                 })
                 ->editColumn('length', function ($log) {
-                    return $log->length." min";
+                    $Hour = (int) ($log->length / 60);
+                    if ( strlen($Hour) == 1 ) {
+                        $Hour = "0".$Hour;
+                    }
+                    $Minute = $log->length - $Hour;
+                    if ( strlen($Minute) == 1 ) {
+                        $Minute = "0".$Minute;
+                    }
+                    return $Hour.":".$Minute." min";
                 })
                 ->addColumn('action', function($row){
                     $editUrl = url('/admin/dashboard/selfdirectedvisits/view/'.$row->id);
@@ -210,7 +281,7 @@ class AdminController extends Controller
                 ->make(true);
         }
         // dd($patientLogs);
-        return view('admin.patientdirectorymanage', compact('patient', 'dxRxs', 'allDxs', 'allRxs', 'recordingsToReview'));
+        return view('admin.patientdirectorymanage', compact('patient', 'dxRxs', 'allDxs', 'allRxs', 'recordingsToReview', 'patientQueueCount'));
     }
 
     // remove the assgined exercises in dxs

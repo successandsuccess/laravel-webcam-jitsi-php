@@ -1,5 +1,11 @@
 @extends('layouts.admin')
 
+@section('css')
+<!-- DataTables -->
+<link rel="stylesheet" href="{{ asset('admin_assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('admin_assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+@endsection
+
 @section('content')
 <div class="wrapper">
 
@@ -67,7 +73,11 @@
                 <a href="{{ route('admin.dashboard.patientqueue') }}" class="nav-link active">
                   <p>
                     Patient Queue
-                    <span class="right badge badge-danger">12</span>
+                    @if ( $patientQueueCount == 0 ) 
+
+                    @else 
+                      <span class="right badge badge-danger">{{ $patientQueueCount }}</span>
+                    @endif
                   </p>
                 </a>
               </li>
@@ -141,15 +151,18 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <h3 class="custom-h3">Patient Queue (12)</h3>
+            <h3 class="custom-h3">Patient Queue ({{ $patientQueueCount }})</h3>
             <div class="card">
               <div class="card-body d-grid p-50">
                 <h5 class="card-title custom-h5">FIRST APPOINTMENT</h5>
 
                 <div class="row mb-50">
                     <div class="col-md-6 m-auto">
-                        <p class="card-text d-flex normal-p">
+                        <!-- <p class="card-text d-flex normal-p">
                         3:30 PM - <span class="speci-p">&nbsp;Joey Tribbiani</span>
+                        </p> -->
+                        <p class="card-text d-flex normal-p">
+                        {{ $currentQueues[0]->appoint_time }} - <span class="speci-p">&nbsp;{{ $currentQueues[0]->getUser->name }}</span>
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
@@ -163,33 +176,25 @@
 
                 <h5 class="card-title custom-h5">UP NEXT</h5>
 
+                @for( $i = 1; $i < count($currentQueues); $i++ )
                 <div class="row mb-10">
-                <div class="col-md-6 m-auto">
-                        <p class="card-text d-flex normal-p">
-                        3:45 PM - <span class="speci-p">&nbsp;Monica Geller</span>
-                        </p>
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <button class="btn btn-default w-100px">MESSAGE</button>
-                    </div>
-                </div>
-
-                <div class="row">
                     <div class="col-md-6 m-auto">
                         <p class="card-text d-flex normal-p">
-                        4:00 PM - <span class="speci-p">&nbsp;Chandler Bing</span>
+                        {{ $currentQueues[$i]->appoint_time }} - <span class="speci-p">&nbsp;{{ $currentQueues[$i]->getUser->name }}</span>
                         </p>
                     </div>
                     <div class="col-md-6 text-right">
                         <button class="btn btn-default w-100px">MESSAGE</button>
                     </div>
                 </div>
+                @endfor
+
               </div>
             </div>
 
             <div>
                 <h3 class="custom-h3">Past Appointments</h3>
-                <table class="table table-hover text-nowrap background-w">
+                <table class="table table-hover text-nowrap background-w" id="pastqueues">
                   <thead>
                     <tr>
                       <th>DATE</th>
@@ -200,41 +205,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="table-p">10/10/20</td>
-                      <td class="table-p">2:45 PM</td>
-                      <td class="table-p color-blue">Rachel Green</td>
-                      <td class="table-p">16:45 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue btn-p">DETAILS</button></td>
-                    </tr>
-                    <tr>
-                      <td class="table-p">10/10/20</td>
-                      <td class="table-p">2:00 PM</td>
-                      <td class="table-p color-blue">Alexander Pierc</td>
-                      <td class="table-p">8:39 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">DETAILS</button></td>
-                    </tr>
-                    <tr>
-                      <td  class="table-p">10/10/20</td>
-                      <td class="table-p">10:30 AM</td>
-                      <td class="table-p color-blue">Bob Doe</td>
-                      <td class="table-p">8:39 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">DETAILS</button></td>
-                    </tr>
-                    <tr>
-                      <td class="table-p">10/10/20</td>
-                      <td class="table-p">10:15 PM</td>
-                      <td class="table-p color-blue">Mike Doe</td>
-                      <td class="table-p">16:45 mins</span></td>
-                      <td><button class="btn btn-default w-110 color-blue">DETAILS</button></td>
-                    </tr>
-                    <tr>
+                    <!-- <tr>
                       <td class="table-p">10/10/20</td>
                       <td class="table-p">10:00 PM</td>
                       <td class="table-p color-blue">Emily London</td>
                       <td class="table-p">8:45 mins</span></td>
                       <td><button class="btn btn-default w-110 color-blue">DETAILS</button></td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
             </div>
@@ -250,4 +227,28 @@
 
 
 </div>
+@endsection
+
+@section('javascript')
+<script src="{{ asset('admin_assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('admin_assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('admin_assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('admin_assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script>
+  // patient queue log yajra datatable
+  $('#pastqueues').DataTable({
+    processing: true,
+    serverSide: true,
+    "responsive": true,
+    "autoWidth": false,
+    ajax: "{{ route('admin.dashboard.patientqueue') }}",
+    columns: [
+      {data: 'appoint_date', name: 'date'},
+      {data: 'appoint_time', name: 'time'},
+      {data: 'patient', name: 'patient'},
+      {data: 'length', name:'duration'},
+      {data: 'action', name: 'actions'}
+    ]
+  });
+</script>
 @endsection
