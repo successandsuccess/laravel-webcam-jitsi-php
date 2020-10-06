@@ -170,7 +170,8 @@ class HomeController extends Controller
                 'time' => $todayDateTime,
             ];
 
-            \Mail::to('henry@patientconnect.io')->send(new \App\Mail\MeetNotifyMail($details));
+            // send email to provider.
+            // \Mail::to('henry@patientconnect.io')->send(new \App\Mail\MeetNotifyMail($details));
         }
 
         return view('waiting', compact('provider', 'time', 'jitsimeet', 'providerId', 'timeId'));
@@ -197,8 +198,8 @@ class HomeController extends Controller
         $review->save();
 
         
-
-        \Mail::to($reviewData['email'])->send(new \App\Mail\AttestationNotifyMail($reviewData));
+        // send review form email to patient
+        // \Mail::to($reviewData['email'])->send(new \App\Mail\AttestationNotifyMail($reviewData));
 
         return 'Success';
     }
