@@ -32,6 +32,16 @@ Route::get('/streamrecord', 'HomeController@streamrecord')->name('streamrecord')
 Route::post('/streamrecord', 'HomeController@streamrecordreviewsubmit')->name('reviewsubmit');
 Route::post('/upload', 'HomeController@upload')->name('upload');
 
+// Patient Routes
+Route::prefix('patient')->group(function() {
+    Route::get('/', function(){
+        return redirect('/patient/getstarted');
+    })->name('patient.index');
+    Route::get('/getstarted', 'PatientController@getstarted')->name('patient.getstarted');
+    Route::get('/careplan', 'PatientController@patientcareplan')->name('patient.careplan');
+    Route::get('/waiting', 'PatientController@patientwaiting')->name('patient.waiting');
+});
+
 // Admin routes
 Route::prefix('admin')->group(function() {
     Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');

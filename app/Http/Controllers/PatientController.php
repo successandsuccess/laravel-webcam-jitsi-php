@@ -14,7 +14,7 @@ use Auth;
 use DateTime;
 
 
-class HomeController extends Controller
+class PatientController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -66,7 +66,15 @@ class HomeController extends Controller
             $timeId = 0;
         }
 
-        return view('getstarted', compact('providerId', 'timeId', 'providers', 'times'));
+        return view('patient.getstarted', compact('providerId', 'timeId', 'providers', 'times'));
+    }
+
+    public function patientcareplan() {
+        return view('patient.careplan');
+    }
+
+    public function patientwaiting() {
+        return view('patient.waiting');
     }
 
     public function individual()

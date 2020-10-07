@@ -4,7 +4,7 @@
 }
 
 .pt-50 {
-    padding-top: 50px;
+    padding-top: 50px !important;
 }
 
 .pb-50 {
@@ -451,7 +451,7 @@ input.custom-search:-webkit-autofill:active {
 .custom-16-font {
     font-family: Open Sans;
     font-style: normal;
-    font-weight: normal;
+    font-weight: normal !important;
     font-size: 16px;
     line-height: 24px;
     /* or 150% */
@@ -1046,6 +1046,77 @@ input.custom-search:-webkit-autofill:active {
 
 .mb-35px {
     margin-bottom: 35px;
+}
+
+.width-137px {
+    width: 137px;
+}
+
+.patient-careplan-blue-h1 {
+    font-family: brandon-grotesque;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 56px;
+    /* identical to box height, or 156% */
+    text-align: center;
+    color: #3746B0;
+}
+
+.patient-exit-text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 56px;
+    /* identical to box height, or 400% */
+    color: #5E90ED;
+}
+
+.ml-40px {
+    margin-left: 40px;
+}
+
+.pt-15px {
+    padding-top: 15px;
+}
+
+.max-width-962px {
+    max-width: 962px;
+}
+
+.waiting-light-blue-h3 {
+    font-family: brandon-grotesque;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 56px;
+    /* identical to box height, or 215% */
+    color: #3746B0;
+}
+
+.mt-minus-25px {
+    margin-top: -25px;
+}
+
+.patient-divider {
+    border: 1px solid #D8D8D8;
+}
+
+input[type=radio] {
+    transform: scale(1.5);
+}
+
+.justiy-content-space-between {
+    justify-content: space-between;
+}
+
+.mb-30px {
+    margin-bottom: 30px;
+}
+
+.ml-15px {
+    margin-left: 15px;
 }
 
 @media (min-width: 1500px) {

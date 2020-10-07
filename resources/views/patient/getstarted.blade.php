@@ -41,7 +41,7 @@
                                 </div>
 
                                 <div class="mt-30px mb-10">
-                                    <button class="btn patient-disabled-btn patient-btn-text width-246px height-36px"> Enter Waiting Room</button>
+                                    <a href="{{ route('patient.waiting') }}"><button class="btn patient-disabled-btn patient-btn-text width-246px height-36px"> Enter Waiting Room</button></a>
                                 </div>
                             </div>
                     </div>
@@ -67,7 +67,7 @@
                                 </div>
 
                                 <div class="mt-30px mb-10">
-                                    <button class="btn blue-btn patient-btn-text width-150px height-36px"> Let's do it</button>
+                                    <a href="{{ route('patient.careplan') }}"><button class="btn blue-btn patient-btn-text width-150px height-36px">Let's do it</button></a>
                                 </div>
                             </div>
                     </div>
