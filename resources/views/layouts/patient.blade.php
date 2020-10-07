@@ -12,7 +12,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>Telehealth PatientConnect | Admin Dashboard</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ asset('admin_assets/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- <link rel="stylesheet" href="{{ asset('admin_assets/plugins/fontawesome-free/css/all.min.css') }}"> -->
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin_assets/dist/css/adminlte.min.css') }}">
 

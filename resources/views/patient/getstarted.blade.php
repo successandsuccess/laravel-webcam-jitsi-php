@@ -7,7 +7,7 @@
                 <div class="patient-box pt-10px mt-25px">
                     <div class="row">
                         <div class="col-md-7">
-                            <p class="patient-bold-blue-p mb-0">This Week's progress</p>
+                            <p class="patient-bold-blue-p mb-0 d-flex"><i class="material-icons-outlined mt-15px">trending_up</i>&nbsp;&nbsp;This Week's progress</p>
                             <p class="custom-16-font mb-0"><b>You're on a roll!</b> You've logged 4 Self Directed sessions this week.</p>
                             <p class="custom-16-font mb-0">Keep up the good work, consistency is key to recovery.</p>
                         </div>
@@ -21,7 +21,7 @@
                 <div class="row mt-35px">
                     <div class="col-md-6">
                             <div class="patient-box pt-10px">
-                                <p class="patient-bold-blue-p mb-0px">Appointments</p>
+                                <p class="patient-bold-blue-p mb-0px d-flex"><i class="material-icons-outlined mt-15px">supervised_user_circle</i>&nbsp;&nbsp;Appointments</p>
                                 <h1 class="custom-h3-normal mt-minus-10">Attend a telehealth appointment.</h1>
 
                                 <div class="form-group d-grid mb-12px">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-md-6">
                             <div class="patient-box pt-10px">
-                                <p class="patient-bold-blue-p mb-0px"><i class="far fa-user-circle"></i>&nbsp;&nbsp;Self Directed Session</p>
+                                <p class="patient-bold-blue-p mb-0px d-flex"><i class="material-icons-outlined mt-15px">account_circle</i>&nbsp;&nbsp;Self Directed Session</p>
                                 <h1 class="custom-h3-normal mt-minus-10">You have homework exercises.</h1>
 
                                 <div class="form-group d-grid mb-12px mt-20px">
@@ -76,7 +76,7 @@
                 <div class="row mt-35px">
                     <div class="col-md-12">
                         <div class="patient-box pt-10px">
-                            <p class="patient-bold-blue-p mb-0px">Your Care plan</p>
+                            <p class="patient-bold-blue-p mb-0px d-flex"><i class="material-icons-outlined mt-15px">assignment</i>&nbsp;&nbsp;Your Care plan</p>
                             <div class="row">
                                     <div class="col-md-4">
                                         <h1 class="custom-h3-normal">Overview</h1>
@@ -151,7 +151,7 @@
                 <div class="row mt-35px">
                     <div class="col-md-12">
                         <div class="patient-box pt-10px">
-                            <p class="patient-bold-blue-p">History</p>
+                            <p class="patient-bold-blue-p d-flex"><span class="material-icons-outlined mt-15px">history</span>&nbsp;&nbsp;History</p>
 
                             <div class="row">
                                 <div class="col-md-3">
@@ -188,7 +188,7 @@
                             <p class="patient-bold-blue-p">Your Pain Over Time</p>
 
                             <p class="exercise-blue-small-font mb-35px">09/28/2020 - 10/04/2020 &nbsp;<i class="fas fa-angle-down"></i></p>
-                            <canvas id="myChart" height="200" width="700"></canvas>
+                            <canvas id="myChart" height="200" width="900"></canvas>
                         </div>
                     </div>
                 </div>
@@ -207,13 +207,13 @@ var myChart = new Chart(ctx, {
         labels: ['','Mon','Tue','Wed','Thur','Fri','Sat','Sun',''],
         datasets: [{ 
             data: [2,2,2,2,1,2,1,1,1],
-            label: "weak",
+            label: "Pateint Record After Session ",
             borderColor: "#4681ec", // blue
             backgroundColor: "rgb(70, 129, 236, 0.6)",
             fill: 'start'
         }, { 
             data: [4,4,3,3,2,2,2,2,2],
-            label: "strong",
+            label: "Patient Record Before Session",
             borderColor: "#ff9e58", // dark yellow
             backgroundColor: "rgb(255, 158, 88, 0.6)",
             fill: 'start'
@@ -221,7 +221,8 @@ var myChart = new Chart(ctx, {
         ]
     },
     options: {
-        responsive: false,
+        responsive: true,
+        maintainAspectRatio: true,
         bezierCurve: false,
         elements: {
             line: {
@@ -258,7 +259,8 @@ var myChart = new Chart(ctx, {
 			}]
         },
         legend: {
-            display: false,
+            display: true,
+            position: 'right'
         }
        
     }
