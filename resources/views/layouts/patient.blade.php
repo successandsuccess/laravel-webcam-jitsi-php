@@ -27,7 +27,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   @yield('css')
 </head>
 <body class="hold-transition sidebar-mini">
-<main id="main" class="background-g">
+<main id="main" class="background-g height-100vh">
         <!-- ======= Header-Section ======= -->
         <section>
             <div class="header-section">

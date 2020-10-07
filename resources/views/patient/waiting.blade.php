@@ -182,7 +182,7 @@
                         <div class="patient-divider"></div>
 
                         <div class="mb-10 mt-15px">
-                                    <a href="#"><button class="btn blue-btn patient-btn-text width-150px height-36px">Submit</button></a>
+                                    <a href="{{ route('patient.waiting.ready') }}"><button class="btn blue-btn patient-btn-text width-150px height-36px">Submit</button></a>
                         </div>
                 </div>    
             </div>
