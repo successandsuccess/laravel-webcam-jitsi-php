@@ -1,0 +1,153 @@
+@extends('layouts.patient')
+
+@section('content')
+        <section class="pt-50 pb-50"> 
+            <div class="container">
+                <h1 class="custom-h1">Welcome back Lacey!</h1>
+                <div class="patient-box pt-10px mt-25px">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <p class="patient-bold-blue-p mb-0">This Week's progress</p>
+                            <p class="custom-16-font mb-0"><b>You're on a roll!</b> You've logged 4 Self Directed sessions this week.</p>
+                            <p class="custom-16-font mb-0">Keep up the good work, consistency is key to recovery.</p>
+                        </div>
+                   
+                        <div class="col-md-5 m-auto">
+                            <p>Stars , Coming soon</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-35px">
+                    <div class="col-md-6">
+                            <div class="patient-box pt-10px">
+                                <p class="patient-bold-blue-p mb-0px">Appointments</p>
+                                <h1 class="custom-h3-normal mt-minus-10">Attend a telehealth appointment.</h1>
+
+                                <div class="form-group d-grid mb-12px">
+                                    <label class="patient-small-label" for="practitioner">Practitioner</label>
+                                    <select class="patient-select-box" name="practitioner" id="practitioner">
+                                        <option value="0">Select Practitioner</option>
+                                        <option value="1">Dr. Wang</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group d-grid">
+                                    <label class="patient-small-label" for="practitioner">Queue Time</label>
+                                    <select  class="patient-select-box" name="practitioner" id="practitioner">
+                                        <option value="0">Select Queue Time</option>
+                                        <option value="1">15:00</option>
+                                    </select>
+                                </div>
+
+                                <div class="mt-30px mb-10">
+                                    <button class="btn patient-disabled-btn patient-btn-text width-246px height-36px"> Enter Waiting Room</button>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-md-6">
+                            <div class="patient-box pt-10px">
+                                <p class="patient-bold-blue-p mb-0px">Self Directed Session</p>
+                                <h1 class="custom-h3-normal mt-minus-10">You have homework exercises.</h1>
+
+                                <div class="form-group d-grid mb-12px mt-20px">
+                                    <p class="custom-16-font">
+                                        Dr. Wang prescribed <b>three exercises</b> <br> for You
+                                        to perform at home. 
+                                    </p>
+                                </div>
+
+                                <div class="form-group d-grid mt-28px">
+                                    <p class="custom-16-font mb-0">
+                                        Frequency: <b>Daily</b>
+                                    </p>
+                                    <p class="custom-16-font">
+                                        Estimated Time: <b>30 minutes</b>
+                                    </p>
+                                </div>
+
+                                <div class="mt-30px mb-10">
+                                    <button class="btn blue-btn patient-btn-text width-150px height-36px"> Let's do it</button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                <div class="row mt-35px">
+                    <div class="col-md-12">
+                        <div class="patient-box pt-10px">
+                            <p class="patient-bold-blue-p mb-0px">Your Care plan</p>
+                            <div class="row">
+                                    <div class="col-md-4">
+                                        <h1 class="custom-h3-normal">Overview</h1>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h1 class="custom-h3-normal">Practitioner's Notes</h1>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="patient-gray-box">
+                                                <p class="custom-h2 mb-10">Back Strengthening</p>
+                                                <p class="sub-title-p mb-0px">Created: 10/02/20</p>
+                                                <p class="sub-title-p mb-0px">Length: 6 weeks</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="patient-gray-box">
+                                                <p class="sub-title-p">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in commodo tellus. Nam velit diam, eleifend non est a, convallis elementum libero. Nam finibus lacus a metus hendrerit sollicitudin.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                            </div>
+
+                            <h1 class="custom-h3-normal mt-25px">Current Treatment</h1>
+                            <div>
+                                <button class="btn blue-btn patient-btn-text width-303px height-36px">
+                                    Start Self Directed Session
+                                </button>
+                            </div>
+
+                            <div class="row mt-25px">
+                                    <div class="col-md-4">
+                                        <div class="patient-card-box">
+                                            <img src="{{ asset('admin_assets/dist/img/photo1.png') }}" class="width-100" alt="exercise image">
+                                            <p class="patient-card-box-title mt-15px mb-5px">Upper Back Stretches</p>
+                                            <ul class="pl-18px">
+                                                <li class="exercise-li-muted-font">4x week, for 20 minutes</li>
+                                                <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="patient-card-box">
+                                            <img src="{{ asset('admin_assets/dist/img/photo2.png') }}" class="width-100" alt="exercise image">
+                                            <p class="patient-card-box-title mt-15px mb-5px">SI Joint Extension</p>
+                                            <ul class="pl-18px" >
+                                                <li class="exercise-li-muted-font">4x week, for 20 minutes</li>
+                                                <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="patient-card-box">
+                                            <img src="{{ asset('admin_assets/dist/img/photo4.jpg') }}" class="width-100" alt="exercise image">
+                                            <p class="patient-card-box-title mt-15px mb-5px">Lumbar Stenosis Stretches</p>
+                                            <ul class="pl-18px">
+                                                <li class="exercise-li-muted-font">4x week, for 20 minutes</li>
+                                                <li class="exercise-li-muted-font">Continue for 3 weeks</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <a href="#" class="patient-link-text mt-10">View Previous Care Plans</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+@endsection

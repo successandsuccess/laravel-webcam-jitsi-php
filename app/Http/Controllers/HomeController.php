@@ -66,7 +66,7 @@ class HomeController extends Controller
             $timeId = 0;
         }
 
-        return view('getstarted', compact('providerId', 'timeId', 'providers', 'times'));
+        return view('patient.getstarted', compact('providerId', 'timeId', 'providers', 'times'));
     }
 
     public function individual()
