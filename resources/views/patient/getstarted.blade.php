@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-md-6">
                             <div class="patient-box pt-10px">
-                                <p class="patient-bold-blue-p mb-0px">Self Directed Session</p>
+                                <p class="patient-bold-blue-p mb-0px"><i class="far fa-user-circle"></i>&nbsp;&nbsp;Self Directed Session</p>
                                 <h1 class="custom-h3-normal mt-minus-10">You have homework exercises.</h1>
 
                                 <div class="form-group d-grid mb-12px mt-20px">
