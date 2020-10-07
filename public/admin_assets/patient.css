@@ -1009,6 +1009,45 @@ input.custom-search:-webkit-autofill:active {
     margin-top: 35px;
 }
 
+.patient-page-background {
+    background-color: #f1f1f1;
+}
+
+.history-card {
+    background: rgba(94, 144, 237, 0.7);
+    border-radius: 30px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+.history-brandon-font {
+    font-family: brandon-grotesque;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    /* identical to box height, or 100% */
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.history-brandon-big-font {
+    font-family: brandon-grotesque;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 36px;
+    /* identical to box height, or 100% */
+    color: #FFFFFF;
+}
+
+.mb-35px {
+    margin-bottom: 35px;
+}
+
 @media (min-width: 1500px) {
     .header-container {
         margin-left: 150px;
