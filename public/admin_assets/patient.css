@@ -439,6 +439,14 @@ input.custom-search:-webkit-autofill:active {
     font-size: 14px;
 }
 
+.mb-minus-5px {
+    margin-bottom: -5px;
+}
+
+.mb-15px {
+    margin-bottom: 15px;
+}
+
 .mt-20px {
     margin-top: 20px;
 }

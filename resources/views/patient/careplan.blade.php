@@ -84,44 +84,44 @@
                 <p class="patient-bold-blue-p mb-0px">Before we get Started</p>
                         <h3 class="waiting-light-blue-h3 mt-minus-25px">Let us know how you've been feeling.</p>
                         <div class="patient-divider"></div>
-                        <p class="sub-title-p mt-30px">How is your pain today?</p>
+                        <p class="sub-title-p mt-20px">How is your pain today?</p>
                         <div class="row mt-30px mb-30px">
-                                        <p class="m-auto">Emjoys Coming Soon</p>
+                                        <p class="m-auto">Emojis Coming Soon</p>
                         </div>
 
                         <div class="patient-divider"></div>
-                        <p class="sub-title-p mt-30px">Have you had or been in an accident since your last visit?</p>
+                        <p class="sub-title-p mt-20px mb-0">Have you had or been in an accident since your last visit?</p>
 
-                        <div class="row mt-10 mb-30px">
+                        <div class="row mt-10 mb-15px">
                                         <div class="col-md-12">
-                                            <div class="d-flex align-center">
-                                                <input type="radio" id="male" name="accident" value="1">
+                                            <div class="d-flex align-center mb-minus-5px">
+                                                <input type="radio" id="accident1" name="accident" value="1">
                                                 <label for="male" class="custom-16-font mt-10 ml-15px">Yes</label>
                                             </div>  
                                             <div class="d-flex align-center">
-                                                <input type="radio" id="female" name="accident" value="2">
+                                                <input type="radio" id="accident2" name="accident" value="2">
                                                 <label for="female" class="custom-16-font mt-10 ml-15px">No</label>
                                             </div>
                                         </div>
                         </div>
 
                         <div class="patient-divider"></div>
-                        <p class="sub-title-p mt-30px">Do you have any new injuries since your last visit?</p>
-                        <div class="row mt-10 mb-30px">
+                        <p class="sub-title-p mt-20px mb-0">Do you have any new injuries since your last visit?</p>
+                        <div class="row mt-10 mb-15px">
                                         <div class="col-md-12">
-                                            <div class="d-flex align-center">
-                                                <input type="radio" id="male" name="injury" value="1">
+                                            <div class="d-flex align-center mb-minus-5px">
+                                                <input type="radio" id="injury1" name="injury" value="1">
                                                 <label for="male" class="custom-16-font mt-10 ml-15px">Yes</label>
                                             </div>  
                                             <div class="d-flex align-center">
-                                                <input type="radio" id="female" name="injury" value="2">
+                                                <input type="radio" id="injury2" name="injury" value="2">
                                                 <label for="female" class="custom-16-font mt-10 ml-15px">No</label>
                                             </div>
                                         </div>
                         </div>
 
-                        <div class="mb-10 mt-15px">
-                                    <a href="#"><button class="btn patient-disabled-btn patient-btn-text width-150px height-36px">Submit</button></a>
+                        <div class="mb-35px mt-15px">
+                                    <button id="firststepbtn" class="btn patient-disabled-btn patient-btn-text width-150px height-36px" onclick="firstStepSubmit()">Submit</button>
                         </div>
                 </div>            
             </div>
@@ -129,4 +129,41 @@
 @endsection
 
 @section('javascript')
+<script>
+    let accidentRadio1 = document.getElementById('accident1');
+    let accidentRadio2 = document.getElementById('accident2');
+    let injuryRadio1 = document.getElementById('injury1');
+    let injuryRadio2 = document.getElementById('injury2');
+    accidentRadio1.addEventListener('change', function(e) {
+        console.log(e.target.name,e.target.checked, e.target.value);
+        if ( injuryRadio1.checked || injuryRadio2.checked) {
+            document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
+            document.getElementById('firststepbtn').classList.add('blue-btn');
+        } 
+    });
+    accidentRadio2.addEventListener('change', function(e) {
+        console.log(e.target.name,e.target.checked, e.target.value);
+        if ( injuryRadio1.checked || injuryRadio2.checked) {
+            document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
+            document.getElementById('firststepbtn').classList.add('blue-btn');
+        } 
+    });
+    injuryRadio1.addEventListener('change', function(e) {
+        if (accidentRadio1.checked || accidentRadio2.checked) {
+            document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
+            document.getElementById('firststepbtn').classList.add('blue-btn');
+        }
+    });
+
+    function firstStepSubmit() {
+        if ( (!accidentRadio1.checked && !accidentRadio2.checked) ||
+                (!injuryRadio1.checked && !injuryRadio2.checked)
+        ) {
+            window.alert('Please Choose One Option');
+        } else {
+            window.location = '/patient/careplan';
+        }
+
+    }
+</script>
 @endsection
