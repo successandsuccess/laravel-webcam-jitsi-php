@@ -27,6 +27,21 @@
     width: 45px;
 }
 
+.width-328px{
+    width: 328px;
+} 
+.height-59px {
+    height: 59px;
+}
+
+.mb-50px {
+    margin-bottom: 50px;
+}
+
+.height-110px {
+    height:110px
+}
+
 .special-dark-color {
     color: #92ab5f;
 }
@@ -266,6 +281,19 @@ input.custom-search:-webkit-autofill:active {
     margin-bottom: 0px;
 }
 
+.login-link-small-font {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 24px;
+    /* identical to box height, or 200% */
+
+    letter-spacing: 0.15px;
+
+    color: #5E90ED;
+}
+
 .myselect {
     width: 100%;
     border-top: none;
@@ -460,6 +488,17 @@ input.custom-search:-webkit-autofill:active {
     border-radius: 4px;
 }
 
+.mb-20px {
+    margin-bottom: 20px;
+}
+
+.pl-90px {
+    padding-left: 90px;
+} 
+.pr-90px {
+    padding-right: 90px;
+} 
+
 .custom-16-font {
     font-family: Open Sans;
     font-style: normal;
@@ -469,6 +508,10 @@ input.custom-search:-webkit-autofill:active {
     /* or 150% */
     letter-spacing: 0.15px;
     color: rgba(0, 0, 0, 0.6);
+}
+
+.color-lightblue {
+    color: #5E90ED;
 }
 
 .custom-16-font-bold {
@@ -1056,8 +1099,27 @@ input.custom-search:-webkit-autofill:active {
     color: #FFFFFF;
 }
 
+.mt-40px {
+    margin-top: 40px;
+}
+
+.patient-bold-h1-font {
+    font-family: brandon-grotesque;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 56px;
+    /* identical to box height, or 156% */
+    text-align: center;
+    color: #3746B0;
+}
+
 .mb-35px {
     margin-bottom: 35px;
+}
+
+.mb-90px {
+    margin-bottom: 90px;
 }
 
 .width-137px {
