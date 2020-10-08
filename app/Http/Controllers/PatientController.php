@@ -38,7 +38,7 @@ class PatientController extends Controller
 
     public function getstarted(Request $request)
     {
-        // provider list
+    
         // $providers = [
         //     'Select Provider...',
         //     'Dr.Johns',
@@ -98,13 +98,13 @@ class PatientController extends Controller
         $providerId = $request->input('provider');
         $timeId = $request->input('time');
 
-        // provider list
         // $providers = [
         //     'Select Provider...',
         //     'Dr.Johns',
         //     'Dr.Wang',
         //     'Mr.Smith.CA'
         // ];
+        
         $providers = Admin::all();
         // dd($providers);
         // available time list
