@@ -40,6 +40,7 @@ Route::prefix('patient')->group(function() {
     })->name('patient.index');
     Route::get('/getstarted', 'PatientController@getstarted')->name('patient.getstarted');
     Route::get('/careplan', 'PatientController@patientcareplan')->name('patient.careplan');
+    Route::get('/careplan/submitfeedback', 'PatientController@careplansubmitfeedback')->name('patient.careplan.submitfeedback');
     Route::get('/waiting', 'PatientController@patientwaiting')->name('patient.waiting');
     Route::get('/waiting-ready', 'PatientController@patientwaitingready')->name('patient.waiting.ready');
 });

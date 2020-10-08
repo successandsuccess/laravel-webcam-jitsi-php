@@ -499,6 +499,10 @@ input.custom-search:-webkit-autofill:active {
     padding-right: 90px;
 }
 
+.width-205px {
+    width: 205px;
+}
+
 .custom-16-font {
     font-family: Open Sans;
     font-style: normal;

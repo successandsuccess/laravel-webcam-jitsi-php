@@ -80,6 +80,39 @@ class PatientController extends Controller
         return view('patient.waiting-ready');
     }
 
+    public function careplansubmitfeedback() {
+        return view('patient.careplansubmitfeedback');
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function individual()
     {
         // get the exercises

@@ -161,7 +161,12 @@
         ) {
             window.alert('Please Choose One Option');
         } else {
-            window.location = '/patient/careplan';
+            if ( accidentRadio1.checked && injuryRadio1.checked ) {
+                window.location = '/patient/careplan/submitfeedback';
+            }
+            else {
+                window.location = '/patient/careplan';
+            }
         }
 
     }
