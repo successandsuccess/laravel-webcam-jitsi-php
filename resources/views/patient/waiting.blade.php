@@ -152,7 +152,6 @@
 
                         <div class="patient-divider"></div>
                         <p class="sub-title-p mt-30px">How better or worse is you pain since your last visit?</p>
-
                         <div class="row mt-10 mb-30px">
                                         <div class="col-md-12">
                                             <div class="d-flex align-center">
@@ -180,7 +179,6 @@
                         </div>
 
                         <div class="patient-divider"></div>
-
                         <div class="mb-10 mt-15px">
                                     <a href="{{ route('patient.waiting.ready') }}"><button class="btn blue-btn patient-btn-text width-150px height-36px">Submit</button></a>
                         </div>
