@@ -12,13 +12,11 @@
                                     <a href="{{ route('patient.waiting') }}"><button class="btn patient-disabled-btn patient-btn-text width-137px height-36px">JOIN MEETING</button></a>
                         </div>
                 </div>     
-                
                 <div class="patient-box mt-25px">
                         <p class="patient-bold-blue-p mb-0px">While you wait</p>
                         <h3 class="waiting-light-blue-h3 mt-minus-25px">Let us know how you've been feeling.</p>
                         <div class="patient-divider"></div>
                         <p class="sub-title-p mt-30px">How is your pain today?</p>
-
                         <div class="row mt-30px mb-30px">
                                         <div class="col-md-12 d-flex justiy-content-space-between">
                                             <p class="custom-p">Minimum</p>
