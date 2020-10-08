@@ -135,6 +135,10 @@
     margin-bottom: 50px;
 }
 
+.mt-minus-50px {
+    margin-top: -50px;
+}
+
 .mb-10 {
     margin-bottom: 10px;
 }
@@ -1121,6 +1125,10 @@ input[type=radio] {
 
 .height-100vh {
     min-height: 100vh;
+}
+
+.diff-background {
+    background: #f3f3f3;
 }
 
 @media (min-width: 1500px) {
