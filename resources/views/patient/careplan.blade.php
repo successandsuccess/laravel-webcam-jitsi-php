@@ -82,7 +82,7 @@
                 </div>
                 <div class="patient-box mt-25px">
                 <p class="patient-bold-blue-p mb-0px">Before we get Started</p>
-                        <h3 class="waiting-light-blue-h3 mt-minus-25px">Let us know how you've been feeling.</p>
+                        <h3 class="waiting-light-blue-h3 mt-minus-25px">Let us know how you've been feeling.</h3>
                         <div class="patient-divider"></div>
                         <p class="sub-title-p mt-20px">How is your pain today?</p>
                         <div class="row mt-30px mb-30px">
@@ -163,6 +163,9 @@
         } else {
             if ( accidentRadio1.checked && injuryRadio1.checked ) {
                 window.location = '/patient/careplan/submitfeedback';
+            }
+            else if (accidentRadio2.checked && injuryRadio2.checked) {
+                window.location = '/patient/careplan/exercises-overview';
             }
             else {
                 window.location = '/patient/careplan';

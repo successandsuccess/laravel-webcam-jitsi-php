@@ -499,6 +499,10 @@ input.custom-search:-webkit-autofill:active {
     padding-right: 90px;
 }
 
+.color-red {
+    color: red
+}
+
 .width-205px {
     width: 205px;
 }
@@ -1185,6 +1189,12 @@ input.custom-search:-webkit-autofill:active {
     border: 1px solid #D8D8D8;
 }
 
+.patient-exercises-divider {
+    background: rgba(33, 33, 33, 0.08);
+    mix-blend-mode: normal;
+    height: 1px;
+}
+
 input[type=radio] {
     transform: scale(1.5);
 }
@@ -1195,6 +1205,10 @@ input[type=radio] {
 
 .mb-30px {
     margin-bottom: 30px;
+}
+
+.mb-40px {
+    margin-bottom: 40px;
 }
 
 .ml-15px {
