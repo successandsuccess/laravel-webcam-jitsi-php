@@ -22,11 +22,9 @@
                         <div class="row mt-30px mb-30px">
                                         <div class="col-md-12 d-flex justiy-content-space-between">
                                             <p class="custom-p">Minimum</p>
-                                      
                                             <div class="d-grid">
                                                 <input type="radio" id="male" name="qeeue" value="1" checked>
                                                 <label for="male" class="custom-p mt-10">1</label>
-                                                
                                             </div>
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="2">
@@ -36,41 +34,34 @@
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="3">
                                                 <label for="female" class="custom-p mt-10">3</label>
-                                                
                                             </div>
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="4">
                                                 <label for="female" class="custom-p mt-10">4</label>
-                                                
                                             </div>
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="5">
                                                 <label for="female" class="custom-p mt-10">5</label>
-                                            
                                             </div>
 
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="6">
                                                 <label for="female" class="custom-p mt-10">6</label>
-                                            
                                             </div>
 
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="7">
                                                 <label for="female" class="custom-p mt-10">7</label>
-                                                
                                             </div>
 
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="8">
                                                 <label for="female" class="custom-p mt-10">8</label>
-                                                
                                             </div>
 
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="9">
                                                 <label for="female" class="custom-p mt-10">9</label>
-                                                
                                             </div>
 
                                             <div class="d-grid">
@@ -78,7 +69,6 @@
                                                 <label for="female" class="custom-p mt-10">10</label>
                                             
                                             </div>
-                               
                                             <p class="custom-p">Extreme</p>
                                         </div>
                         </div>
