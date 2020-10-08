@@ -38,7 +38,7 @@ class PatientController extends Controller
 
     public function getstarted(Request $request)
     {
-        // provider list
+    
         // $providers = [
         //     'Select Provider...',
         //     'Dr.Johns',
