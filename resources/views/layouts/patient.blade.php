@@ -75,7 +75,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('admin_assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('admin_assets/dist/js/adminlte.min.js') }}"></script>
-
 <script src="{{ asset('admin_assets/plugins/toastr/toastr.min.js') }}"></script>
 
 @yield('javascript')
