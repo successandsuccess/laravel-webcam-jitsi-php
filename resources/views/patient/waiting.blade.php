@@ -12,21 +12,17 @@
                                     <a href="{{ route('patient.waiting') }}"><button class="btn patient-disabled-btn patient-btn-text width-137px height-36px">JOIN MEETING</button></a>
                         </div>
                 </div>     
-                
                 <div class="patient-box mt-25px">
                         <p class="patient-bold-blue-p mb-0px">While you wait</p>
                         <h3 class="waiting-light-blue-h3 mt-minus-25px">Let us know how you've been feeling.</p>
                         <div class="patient-divider"></div>
                         <p class="sub-title-p mt-30px">How is your pain today?</p>
-
                         <div class="row mt-30px mb-30px">
                                         <div class="col-md-12 d-flex justiy-content-space-between">
                                             <p class="custom-p">Minimum</p>
-                                      
                                             <div class="d-grid">
                                                 <input type="radio" id="male" name="qeeue" value="1" checked>
                                                 <label for="male" class="custom-p mt-10">1</label>
-                                                
                                             </div>
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="2">
@@ -36,41 +32,34 @@
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="3">
                                                 <label for="female" class="custom-p mt-10">3</label>
-                                                
                                             </div>
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="4">
                                                 <label for="female" class="custom-p mt-10">4</label>
-                                                
                                             </div>
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="5">
                                                 <label for="female" class="custom-p mt-10">5</label>
-                                            
                                             </div>
 
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="6">
                                                 <label for="female" class="custom-p mt-10">6</label>
-                                            
                                             </div>
 
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="7">
                                                 <label for="female" class="custom-p mt-10">7</label>
-                                                
                                             </div>
 
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="8">
                                                 <label for="female" class="custom-p mt-10">8</label>
-                                                
                                             </div>
 
                                             <div class="d-grid">
                                                 <input type="radio" id="female" name="qeeue" value="9">
                                                 <label for="female" class="custom-p mt-10">9</label>
-                                                
                                             </div>
 
                                             <div class="d-grid">
@@ -78,7 +67,6 @@
                                                 <label for="female" class="custom-p mt-10">10</label>
                                             
                                             </div>
-                               
                                             <p class="custom-p">Extreme</p>
                                         </div>
                         </div>
@@ -152,7 +140,6 @@
 
                         <div class="patient-divider"></div>
                         <p class="sub-title-p mt-30px">How better or worse is you pain since your last visit?</p>
-
                         <div class="row mt-10 mb-30px">
                                         <div class="col-md-12">
                                             <div class="d-flex align-center">
@@ -180,7 +167,6 @@
                         </div>
 
                         <div class="patient-divider"></div>
-
                         <div class="mb-10 mt-15px">
                                     <a href="{{ route('patient.waiting.ready') }}"><button class="btn blue-btn patient-btn-text width-150px height-36px">Submit</button></a>
                         </div>

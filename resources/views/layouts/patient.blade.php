@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="header-section">
                 <div class="row header-container">
                     <div class="col-md-6 m-auto">
-                        <a class="navbar-brand text-brand" href="{{ route('index') }}"><img class="width-150px" src="{{ env('APP_LOGO') }}" alt="logo" id="chiroonelogo"></a>
+                        <a class="navbar-brand text-brand" href="{{ route('patient.index') }}"><img class="width-150px" src="{{ env('APP_LOGO') }}" alt="logo" id="chiroonelogo"></a>
                     </div>
                     <div class="col-md-6 header-right-section">
                             <!-- Messages Dropdown Menu -->
