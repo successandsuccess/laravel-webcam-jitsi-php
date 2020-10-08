@@ -129,7 +129,7 @@
                         <div class="patient-exercises-divider"></div>
 
                         <div class="mb-20px mt-40px">
-                                    <button id="firststepbtn" class="btn blue-btn patient-btn-text width-150px height-36px">START</button>
+                                    <a href="{{ route('patient.careplan.exercises_detail') }}"><button id="firststepbtn" class="btn blue-btn patient-btn-text width-150px height-36px">START</button></a>
                         </div>
                 </div>            
             </div>

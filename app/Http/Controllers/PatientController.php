@@ -88,6 +88,10 @@ class PatientController extends Controller
         return view('patient.careplan_exercises_overview');
     }
 
+    public function careplan_exercises_detail() {
+        return view('patient.careplan_exercises_detail');
+    }
+
 
 
 
