@@ -86,7 +86,26 @@
                         <div class="patient-divider"></div>
                         <p class="sub-title-p mt-20px">How is your pain today?</p>
                         <div class="row mt-30px mb-30px">
-                                        <p class="m-auto">Emojis Coming Soon</p>
+                                        <div class="d-grid emojidiv mr-20px" onclick="emojiclicked(1)" id="nopain">
+                                            <img class="emoji" src="{{ asset('admin_assets/dist/img/emoji/nopain.png') }}"  alt="no pain">
+                                            <label class="text-center mt-15px" for="emoji">No Pain</label>
+                                        </div>
+                                        <div class="d-grid emojidiv mr-20px"  onclick="emojiclicked(2)" id="mild" >
+                                            <img class="emoji" src="{{ asset('admin_assets/dist/img/emoji/mild.png') }}"alt="mild">
+                                            <label class="text-center mt-15px" for="emoji">Mild</label>
+                                        </div>
+                                        <div class="d-grid emojidiv mr-20px" onclick="emojiclicked(3)" id="moderate" >
+                                            <img class="emoji" src="{{ asset('admin_assets/dist/img/emoji/moderate.png') }}" alt="moderate">
+                                            <label class="text-center mt-15px" for="emoji">Moderate</label>
+                                        </div>
+                                        <div class="d-grid emojidiv mr-20px" onclick="emojiclicked(4)" id="intense">
+                                            <img class="emoji" src="{{ asset('admin_assets/dist/img/emoji/intense.png') }}"  alt="intense">
+                                            <label class="text-center mt-15px" for="emoji">Intense</label>
+                                        </div>
+                                        <div class="d-grid emojidiv mr-20px" onclick="emojiclicked(5)"id="unspeakable">
+                                            <img class="emoji" src="{{ asset('admin_assets/dist/img/emoji/unspeakable.png') }}"  alt="unspeakable">
+                                            <label class="text-center mt-15px" for="emoji">Unspeakable</label>
+                                        </div>
                         </div>
 
                         <div class="patient-divider"></div>
@@ -130,10 +149,21 @@
 
 @section('javascript')
 <script>
+
+
+    // emojis
+    let nopain = document.getElementById('nopain');
+    let mild = document.getElementById('mild');
+    let moderate = document.getElementById('moderate');
+    let intense = document.getElementById('intense');
+    let unspeakable = document.getElementById('unspeakable');
+
     let accidentRadio1 = document.getElementById('accident1');
     let accidentRadio2 = document.getElementById('accident2');
     let injuryRadio1 = document.getElementById('injury1');
     let injuryRadio2 = document.getElementById('injury2');
+
+
     accidentRadio1.addEventListener('change', function(e) {
         console.log(e.target.name,e.target.checked, e.target.value);
         if ( injuryRadio1.checked || injuryRadio2.checked) {
@@ -162,22 +192,73 @@
     });
 
     function firstStepSubmit() {
-        if ( (!accidentRadio1.checked && !accidentRadio2.checked) ||
-                (!injuryRadio1.checked && !injuryRadio2.checked)
-        ) {
-            window.alert('Please Choose One Option');
+        let clickedEmojiCheck = 0;
+        const classList = document.getElementsByClassName("d-grid emojidiv mr-20px active");
+        const classLength = classList.length;
+        if (classLength != 0) {
+            console.log("Element found with the clicked emoji");
+            clickedEmojiCheck = 1;
         } else {
-            if ( accidentRadio1.checked && injuryRadio1.checked ) {
-                window.location = '/patient/careplan/submitfeedback';
-            }
-            else if (accidentRadio2.checked && injuryRadio2.checked) {
-                window.location = '/patient/careplan/exercises-overview';
-            }
-            else {
-                window.location = '/patient/careplan';
-            }
+            console.log("No element found with the clicked emoji");
         }
 
+        if ( (!accidentRadio1.checked && !accidentRadio2.checked) ||
+                (!injuryRadio1.checked && !injuryRadio2.checked) || !clickedEmojiCheck
+        ) {
+            window.alert('Please Choose Options');
+        } else {
+
+            if ( accidentRadio1.checked && injuryRadio1.checked && clickedEmojiCheck ) {
+                window.location = '/patient/careplan/submitfeedback';
+            }
+            else {
+                window.location = '/patient/careplan/exercises-overview';
+            }
+            
+        }
+
+    }
+
+    function emojiclicked(index) {
+        if ( index == 1 ) {
+            nopain.classList.add('active');
+            mild.classList.remove('active');
+            moderate.classList.remove('active');
+            intense.classList.remove('active');
+            unspeakable.classList.remove('active');
+        }
+
+        if (index == 2) {
+            nopain.classList.remove('active');
+            mild.classList.add('active');
+            moderate.classList.remove('active');
+            intense.classList.remove('active');
+            unspeakable.classList.remove('active');
+        }
+
+        if (index == 3) {
+            nopain.classList.remove('active');
+            mild.classList.remove('active');
+            moderate.classList.add('active');
+            intense.classList.remove('active');
+            unspeakable.classList.remove('active');
+        }
+
+        if (index == 4) {
+            nopain.classList.remove('active');
+            mild.classList.remove('active');
+            moderate.classList.remove('active');
+            intense.classList.add('active');
+            unspeakable.classList.remove('active');
+        }
+
+        if (index == 5) {
+            nopain.classList.remove('active');
+            mild.classList.remove('active');
+            moderate.classList.remove('active');
+            intense.classList.remove('active');
+            unspeakable.classList.add('active');
+        }
     }
 </script>
 @endsection

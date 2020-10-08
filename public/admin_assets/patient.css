@@ -1048,6 +1048,10 @@ input.custom-search:-webkit-autofill:active {
     height: 100%;
 }
 
+.mr-30px {
+    margin-right: 30px;
+}
+
 .mt-25px {
     margin-top: 25px;
 }
@@ -1070,6 +1074,27 @@ input.custom-search:-webkit-autofill:active {
     letter-spacing: 0.15px;
     /* Dark Grey */
     color: #3F394D;
+}
+
+.mr-20px {
+    margin-right: 20px;
+}
+
+.emoji {
+    width: 70px;
+}
+
+.emojidiv {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.emojidiv.active {
+    color: white;
+    background: #5E90ED;
+    border-radius: 6px;
 }
 
 .pl-18px {
