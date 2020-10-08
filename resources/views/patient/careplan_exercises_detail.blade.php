@@ -64,7 +64,7 @@
         <section class="pb-50 pt-15px"> 
         <a class="patient-exit-text d-flex ml-40px" href="{{ route('patient.getstarted') }}" ><i class="material-icons-outlined mt-15px">arrow_back</i>&nbsp;EXIT WAITING ROOM</a>
                 <div class="container max-width-962px">
-                <h1 class="patient-careplan-blue-h1 text-center mt-minus-50px mb-50">Lacey's Care Plan</h1>
+                <h1 class="patient-careplan-blue-h1 text-center mt-minus-50px mb-50">Howard' s Care Plan</h1>
                 <div class="row mb-50">
                     <div class="col-md-12">
                         <ol class="progressbar">
@@ -114,7 +114,7 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record video</button>
+                                <a href="{{ route('streamrecord') }}"><button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record video</button></a>
                             </div>
                             <div class="col-md-6">
                                 <button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record time</button>

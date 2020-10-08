@@ -217,7 +217,8 @@
                             <a class="navbar-brand text-brand" href="{{ route('index') }}"><img src="{{ env('APP_LOGO') }}" alt="logo" id="chiroonelogo"></a>
                         </div>
                         <div class="col-md-4 m-auto">
-                            <a class="custom-font" href="{{ route('recordvideo') }}">&lt;Back</a>
+                            <!-- <a class="custom-font" href="{{ route('recordvideo') }}">&lt;Back</a> -->
+                            <a class="custom-font" href="{{ route('patient.careplan.exercises_detail') }}">&lt;Back</a>
                         </div>
                         
                         
@@ -229,7 +230,8 @@
                
                     <div class="col-md-3 text-center m-auto d-flex">
                         <div class="col-md-8 text-right">
-                            <a href="{{ route('index') }}"><button class="c-stream" style="width: 140px;"><b>Finish</b></button></a>
+                            <!-- <a href="{{ route('index') }}"><button class="c-stream" style="width: 140px;"><b>Finish</b></button></a> -->
+                            <a href="{{ route('patient.careplan.exercises_detail') }}"><button class="c-stream" style="width: 140px;"><b>Finish</b></button></a>
                         </div>
                         <!-- Right Side Of Navbar -->
                             <!-- Authentication Links -->
@@ -682,9 +684,11 @@
                 window.alert('Success in Record!');
 
                 $('#downloadbtn').css('display', 'initial');
-                $('#reviewmodal').modal({
-                    backdrop: 'static'
-                });
+                // show remove modal
+                // $('#reviewmodal').modal({
+                //     backdrop: 'static'
+                // });
+
                 // console.log(player.record().getDuration().toFixed(0));
                 let videoDuration = player.record().getDuration().toFixed(0); // second
                 // upload recorded data
@@ -775,16 +779,6 @@
 
         function sendSubmit() {
 
-            // if ( $('#difficult_answer').val() == '' || $('#exerciseAnswer').val() == '' ) {
-            //     if ( $('#difficult_answer').val() == '' ) {
-            //         $('#difficult_answer-validator').css('display', 'initial');
-            //     } else if ( $('#exerciseAnswer').val() == '' ) {
-            //         $('#exerciseAnswer-validator').css('display', 'initial');
-            //     } else {
-            //         $('#difficult_answer-validator').css('display', 'initial');
-            //         $('#exerciseAnswer-validator').css('display', 'initial');
-            //     }
-            // }
             if ( $('#exerciseAnswer').val() == '' ) {
                     $('#exerciseAnswer-validator').css('display', 'initial');
             }

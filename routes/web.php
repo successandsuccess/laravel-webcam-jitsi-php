@@ -25,6 +25,7 @@ Auth::routes(['verify' => true]);
 Route::get('/home', function () {
     return redirect('/getstarted');
 })->name('home');
+
 Route::get('/getstarted', 'HomeController@getstarted')->name('getstarted');
 Route::get('/individual', 'HomeController@individual')->name('individual');
 Route::get('/recordvideo', 'HomeController@recordvideo')->name('recordvideo');
