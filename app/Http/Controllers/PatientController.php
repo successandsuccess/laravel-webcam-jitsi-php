@@ -47,7 +47,6 @@ class PatientController extends Controller
         // ];
 
         $providers = Admin::all();
-        // dd($providers);
 
          // available time list
         $times = [
