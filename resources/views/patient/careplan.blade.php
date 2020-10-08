@@ -121,7 +121,7 @@
                         </div>
 
                         <div class="mb-10 mt-15px">
-                                    <a href="{{ route('patient.waiting.ready') }}"><button class="btn patient-disabled-btn patient-btn-text width-150px height-36px">Submit</button></a>
+                                    <a href="#"><button class="btn patient-disabled-btn patient-btn-text width-150px height-36px">Submit</button></a>
                         </div>
                 </div>            
             </div>
