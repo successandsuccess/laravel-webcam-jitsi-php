@@ -16,7 +16,8 @@ Route::post('/screenshotupload', 'ScreenshotController@upload')->name('screensho
 Route::get('/imageeditor', 'ScreenshotController@index')->name('imageeditor');
 
 Route::get('/', function() {
-    return redirect('/getstarted');
+    // return redirect('/getstarted');
+    return redirect('/patient/getstarted');
 })->name('index');
 
 Auth::routes(['verify' => true]);
