@@ -113,7 +113,7 @@
                             <div class="row mt-25px">
                                     <div class="col-md-4">
                                         <div class="patient-card-box">
-                                            <img src="{{ asset('admin_assets/dist/img/photo1.png') }}" class="width-100" alt="exercise image">
+                                            <iframe width="100%" height="196" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                             <p class="patient-card-box-title mt-15px mb-5px">Upper Back Stretches</p>
                                             <ul class="pl-18px">
                                                 <li class="exercise-li-muted-font">4x week, for 20 minutes</li>
@@ -123,7 +123,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="patient-card-box">
-                                            <img src="{{ asset('admin_assets/dist/img/photo2.png') }}" class="width-100" alt="exercise image">
+                                            <iframe width="100%" height="196" src="https://www.youtube.com/embed/6BhPhO4ZXNA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                             <p class="patient-card-box-title mt-15px mb-5px">SI Joint Extension</p>
                                             <ul class="pl-18px" >
                                                 <li class="exercise-li-muted-font">4x week, for 20 minutes</li>
@@ -133,7 +133,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="patient-card-box">
-                                            <img src="{{ asset('admin_assets/dist/img/photo4.jpg') }}" class="width-100" alt="exercise image">
+                                            <iframe width="100%" height="196" src="https://www.youtube.com/embed/jwoTJNgh8BY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                             <p class="patient-card-box-title mt-15px mb-5px">Lumbar Stenosis Stretches</p>
                                             <ul class="pl-18px">
                                                 <li class="exercise-li-muted-font">4x week, for 20 minutes</li>
