@@ -14,7 +14,7 @@
                             Based on your feedback, we think practicing your exercises might not be the best thing for you right now.
                         </p>
 
-                        <p class="custom-16-font">
+                        <p class="custom-16-font-bold">
                             Please schedule a visit with your practitioner so we can evaluate next steps and a new care plan. 
                         </p>
 
