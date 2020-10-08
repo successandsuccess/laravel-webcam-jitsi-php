@@ -55,13 +55,13 @@
                         <!-- Progress Tracker v2 -->
                         <ol class="progressbar">
                             <li class="active">
-                               Step 1
+                               CHECK IN
                             </li>
                             <li>
-                               Step 2
+                               EXERCISES
                             </li>
                             <li>
-                               Step 3
+                               REVIEW
                             </li>
                         </ol>
                     </div>
