@@ -154,6 +154,12 @@
             document.getElementById('firststepbtn').classList.add('blue-btn');
         }
     });
+    injuryRadio2.addEventListener('change', function(e) {
+        if (accidentRadio1.checked || accidentRadio2.checked) {
+            document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
+            document.getElementById('firststepbtn').classList.add('blue-btn');
+        }
+    });
 
     function firstStepSubmit() {
         if ( (!accidentRadio1.checked && !accidentRadio2.checked) ||
