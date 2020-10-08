@@ -27,9 +27,10 @@
     width: 45px;
 }
 
-.width-328px{
+.width-328px {
     width: 328px;
-} 
+}
+
 .height-59px {
     height: 59px;
 }
@@ -39,7 +40,7 @@
 }
 
 .height-110px {
-    height:110px
+    height: 110px
 }
 
 .special-dark-color {
@@ -288,9 +289,7 @@ input.custom-search:-webkit-autofill:active {
     font-size: 12px;
     line-height: 24px;
     /* identical to box height, or 200% */
-
     letter-spacing: 0.15px;
-
     color: #5E90ED;
 }
 
@@ -494,10 +493,11 @@ input.custom-search:-webkit-autofill:active {
 
 .pl-90px {
     padding-left: 90px;
-} 
+}
+
 .pr-90px {
     padding-right: 90px;
-} 
+}
 
 .custom-16-font {
     font-family: Open Sans;
@@ -1101,6 +1101,10 @@ input.custom-search:-webkit-autofill:active {
 
 .mt-40px {
     margin-top: 40px;
+}
+
+.pl-105px {
+    padding-left: 105px;
 }
 
 .patient-bold-h1-font {

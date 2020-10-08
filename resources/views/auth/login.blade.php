@@ -33,7 +33,9 @@
                                             </span>
                                         @enderror
                                     </div> 
-                                    <a href="#" class="login-link-small-font">Forgot your password?</a>
+                                    <div class="form-group text-left pl-105px">
+                                        <a href="#" class="login-link-small-font ">Forgot your password?</a>
+                                    </div>
                                     <div class="form-group mt-20px">
                                         <button type="submit" class="btn btn-blue custom-btn-text width-328px height-36px">Sign In</button>
                                     </div>      
