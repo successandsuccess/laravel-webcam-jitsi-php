@@ -783,6 +783,10 @@ input.custom-search:-webkit-autofill:active {
     justify-content: center;
 }
 
+.mt-minus-40px {
+    margin-top: -40px;
+}
+
 .min-height-139px {
     min-height: 139px;
 }

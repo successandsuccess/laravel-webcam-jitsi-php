@@ -214,7 +214,10 @@
                       </div>
                       <div class="card-footer p-50 mycardfooter border-none pt-0">
                           <p class="custom-h5">SELF DIRECTED SESSIONS OVER TIME</p>
-                          <img class="width-100" src="{{ asset('admin_assets/dist/img/patternedchart.png') }}" alt="charts">
+                          <!-- <img class="width-100" src="{{ asset('admin_assets/dist/img/patternedchart.png') }}" alt="charts"> -->
+                          <div class="text-left mt-minus-40px">
+                                <div id = "container"></div>
+                          </div>
                       </div>
                     </div>
               </div>
@@ -1113,4 +1116,122 @@
     ]
   });
 </script>
+
+<script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
+<script type = "text/javascript">
+    google.charts.load('current', {packages: ['corechart','calendar']});     
+</script>
+<script language = "JavaScript">
+         function drawChart() {
+            // Define the chart to be drawn.
+            var data = new google.visualization.DataTable();
+            data.addColumn({ type: 'date', id: 'Date' });
+            data.addColumn({ type: 'number', id: 'Students' });
+            data.addRows([
+               [ new Date(2020, 3, 13), 50 ],
+               [ new Date(2020, 3, 14), 50 ],
+               [ new Date(2020, 3, 15), 49 ],
+               [ new Date(2020, 3, 16), 48 ],
+               [ new Date(2020, 3, 17), 50 ],
+               [ new Date(2020, 3, 19), 50 ],
+               [ new Date(2020, 3, 20), 50 ],
+               [ new Date(2020, 3, 22), 50 ],
+               [ new Date(2020, 3, 23), 50 ],
+               [ new Date(2020, 3, 24), 50 ],
+               [ new Date(2020, 3, 25), 50 ],
+               [ new Date(2020, 3, 26), 50 ],
+               [ new Date(2020, 3, 27), 50 ],
+               [ new Date(2020, 3, 28), 48 ],
+               [ new Date(2020, 3, 29), 48 ],
+            
+               [ new Date(2020, 4, 1), 50 ],
+               [ new Date(2020, 4, 2), 50 ],
+               [ new Date(2020, 4, 3), 49 ],
+               [ new Date(2020, 4, 4), 48 ],
+               [ new Date(2020, 4, 5), 50 ], 
+               [ new Date(2020, 4, 6), 50 ],
+               [ new Date(2020, 4, 8), 50 ],
+               [ new Date(2020, 4, 9), 49 ],
+               [ new Date(2020, 4, 10), 48 ],
+               [ new Date(2020, 4, 11), 50 ], 
+               [ new Date(2020, 4, 12), 50 ],
+               [ new Date(2020, 4, 13), 50 ],
+               [ new Date(2020, 4, 14), 49 ],
+               [ new Date(2020, 4, 15), 48 ],
+               [ new Date(2020, 4, 16), 50 ], 
+               [ new Date(2020, 4, 17), 50 ], 
+               [ new Date(2020, 4, 18), 50 ],
+               [ new Date(2020, 4, 19), 50 ],
+               [ new Date(2020, 4, 20), 49 ],
+               [ new Date(2020, 4, 21), 48 ],
+               [ new Date(2020, 4, 22), 50 ],
+               [ new Date(2020, 4, 23), 50 ], 
+               [ new Date(2020, 4, 24), 50 ],
+               [ new Date(2020, 4, 25), 50 ],
+               [ new Date(2020, 4, 27), 49 ],
+               [ new Date(2020, 4, 28), 48 ],
+               [ new Date(2020, 4, 29), 50 ],
+            
+               [ new Date(2020, 5, 4), 40 ],
+               [ new Date(2020, 5, 5), 50 ],
+               [ new Date(2020, 5, 10), 48 ],
+               [ new Date(2020, 5, 11), 50 ],
+               [ new Date(2020, 5, 12), 42 ],
+               [ new Date(2020, 5, 13), 45 ],
+               [ new Date(2020, 5, 14), 46 ],
+               [ new Date(2020, 5, 16), 45 ],
+               [ new Date(2020, 5, 17), 40 ],
+               [ new Date(2020, 5, 18), 50 ],
+               [ new Date(2020, 5, 19), 48 ],
+               [ new Date(2020, 5, 20), 50 ],
+               [ new Date(2020, 5, 21), 42 ],
+               [ new Date(2020, 5, 22), 45 ],
+               [ new Date(2020, 5, 23), 46 ],
+               [ new Date(2020, 5, 24), 45 ],
+               [ new Date(2020, 5, 25), 40 ],
+               [ new Date(2020, 5, 26), 50 ],
+               [ new Date(2020, 5, 27), 48 ],
+               [ new Date(2020, 5, 28), 50 ],
+               [ new Date(2020, 5, 29), 42 ],
+               [ new Date(2020, 5, 30), 45 ],
+          
+            ]);
+
+            
+            // Set chart options
+            var options = {
+               'title':'',
+               'width':650,
+               'height':200,
+               calendar: {
+               
+                  yearLabel: {
+                     fontName: 'Times-Roman',
+                     fontSize: 32,
+                    //  color: '#1A8763',
+                     color: 'gray',
+                     bold: true,
+                     italic: true
+                  },
+               
+                  monthOutlineColor: {
+                     stroke: '#981b48',
+                     strokeOpacity: 0.8,
+                     strokeWidth: 2
+                  },
+               
+                  unusedMonthOutlineColor: {
+                     stroke: '#bc5679',
+                     strokeOpacity: 0.8,
+                     strokeWidth: 1
+                  }		 
+               }
+            };
+
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.Calendar(document.getElementById('container'));
+            chart.draw(data, options);
+         }
+         google.charts.setOnLoadCallback(drawChart);
+      </script>
 @endsection
