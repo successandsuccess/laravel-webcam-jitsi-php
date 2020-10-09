@@ -111,6 +111,16 @@
     color: #3746B0;
 }
 
+.red-btn {
+    background: #F71735;
+    border-radius: 4px;
+}
+
+.green-btn {
+    background: #95BE3C;
+    border-radius: 4px;
+}
+
 .custom-h3-normal {
     font-family: brandon-grotesque;
     font-style: normal;
@@ -959,6 +969,22 @@ input.custom-search:-webkit-autofill:active {
     padding-left: 57px;
     padding-right: 57px;
     height: 100%;
+}
+
+.delete-font {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height, or 114% */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    /* Cornflower */
+    color: #5E90ED;
 }
 
 .patient-bold-blue-p {

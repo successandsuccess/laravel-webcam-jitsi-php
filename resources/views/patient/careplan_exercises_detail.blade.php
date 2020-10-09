@@ -121,17 +121,44 @@
                             </div>
                         </div>
 
-                        <div class="patient-gray-box mb-20px d-none">
-                            <p class="custom-16-font-bold">
-                                <img src="{{ asset('admin_assets/dist/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                Dr. Wang' s instructions
+                        <!-- timer step 1 -->
+                        <div class="patient-gray-box mb-20px" style="display: none" id = "recordTimeBox1">
+                            <p class="custom-h3-normal text-center">
+                                Set 1
                             </p>
-                            <p class="custom-16-font ml-70px">
-                                                As you perform these stretches be sure to keep your hips in line and your shoulders down. 
+                            <div class="timer text-center">
+                                <img src="{{ asset('admin_assets/dist/img/timer1.png') }}" alt="timer1">
+                            </div>
+                            <div class="text-center mt-25px">
+                                <button onclick="timerHandleStart(1)" class="btn green-btn patient-btn-text width-104px height-36px">START</button>
+                            </div>
+                        </div>
+
+                        <!--  timer step 2 -->
+                        <div class="patient-gray-box mb-20px" style="display: none" id = "recordTimeBox2">
+                            <p class="custom-h3-normal text-center">
+                                Set 1
                             </p>
-                            <ul class="ml-50px">
-                                <li class="custom-16-font">Perform stretch for <b>8 minutes</b></li>
-                            </ul>
+                            <div class="timer text-center">
+                                <img src="{{ asset('admin_assets/dist/img/timer2.png') }}" alt="timer1">
+                            </div>
+                            <div class="text-center mt-25px">
+                                <button onclick="timerHandleStart(2)" class="btn red-btn patient-btn-text width-104px height-36px">STOP</button>
+                            </div>
+                        </div>
+
+                        <!-- Timer step 3 -->
+                        <div class="patient-gray-box mb-20px" style="display: none" id = "recordTimeBox3">
+                            <p class="custom-h3-normal text-center">
+                                Set 1
+                            </p>
+                            <div class="timer text-center">
+                                <img src="{{ asset('admin_assets/dist/img/timer3.png') }}" alt="timer1">
+                            </div>
+                            <div class="text-center mt-25px">
+                                <p class="patient-bold-blue-p mb-0">SET COMPLETED</p>
+                                <p class="delete-font text-center justify-content-center" style="margin-top: -10px">DELETE & REDO</p>
+                            </div>
                         </div>
 
                         @if ($recorded == 1) 
@@ -257,11 +284,35 @@ function handleSubmit() {
 }
 
 function handleDisabledSubmit() {
-    window.alert('Firstly Record video.');
+    let temp = document.getElementById('firststepbtn').className;
+    if ( temp.includes('blue-btn') ) {
+        $('#modal-default').modal('show');
+    } else {
+        window.alert('Firstly Record video.');
+    }
+    
 }
 
 function handleRecordTime() {
+    console.log('clicked')
+    document.getElementById('recordTimeBox1').style.display = 'block';
+}
 
+function timerHandleStart(index) {
+    console.log('timer Started');
+    if (index == 1) {
+        document.getElementById('recordTimeBox1').style.display = 'none';
+        document.getElementById('recordTimeBox2').style.display = 'block';
+    }
+
+    if (index == 2) {
+        document.getElementById('recordTimeBox2').style.display = 'none';
+        document.getElementById('recordTimeBox3').style.display = 'block';
+
+        document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
+        document.getElementById('firststepbtn').classList.add('blue-btn');
+    }
+    
 }
 </script>
 
