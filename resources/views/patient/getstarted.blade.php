@@ -99,7 +99,7 @@
                                         <div class="col-md-8">
                                             <div class="patient-gray-box">
                                                 <p class="sub-title-p">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in commodo tellus. Nam velit diam, eleifend non est a, convallis elementum libero. Nam finibus lacus a metus hendrerit sollicitudin.
+                                                When abdominal muscles are not performing, the muscles of the lower back have to work harder to stabilize your body.  The lumbar spine continues into the hips. When the hip flexors become tight, mobility in the lower back can become constricted. The piriformis muscle is located in the buttocks, but is often responsible for causing shooting pain through the legs and lower back.
                                                 </p>
                                             </div>
                                         </div>

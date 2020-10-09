@@ -121,6 +121,19 @@
                             </div>
                         </div>
 
+                        <!-- <div class="patient-gray-box mb-20px">
+                            <p class="custom-16-font-bold">
+                                <img src="{{ asset('admin_assets/dist/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                Dr. Wang' s instructions
+                            </p>
+                            <p class="custom-16-font ml-70px">
+                                                As you perform these stretches be sure to keep your hips in line and your shoulders down. 
+                            </p>
+                            <ul class="ml-50px">
+                                <li class="custom-16-font">Perform stretch for <b>8 minutes</b></li>
+                            </ul>
+                        </div> -->
+
                         @if ($recorded == 1) 
                         <div class="row">
                             <div class="col-md-8">
@@ -248,7 +261,7 @@ function handleDisabledSubmit() {
 }
 
 function handleRecordTime() {
-    
+
 }
 </script>
 
