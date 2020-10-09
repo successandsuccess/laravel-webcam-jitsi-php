@@ -231,7 +231,7 @@
                     <div class="col-md-3 text-center m-auto d-flex">
                         <div class="col-md-8 text-right">
                             <!-- <a href="{{ route('index') }}"><button class="c-stream" style="width: 140px;"><b>Finish</b></button></a> -->
-                            <a href="{{ route('patient.careplan.exercises_detail') }}"><button class="c-stream" style="width: 140px;"><b>Finish</b></button></a>
+                            <a href="{{ route('patient.careplan.exercises_detail', [ 'recorded' => 1, 'recordId' => 4  ]) }}"><button class="c-stream" style="width: 140px;"><b>Finish</b></button></a>
                         </div>
                         <!-- Right Side Of Navbar -->
                             <!-- Authentication Links -->

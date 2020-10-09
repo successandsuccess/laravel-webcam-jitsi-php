@@ -112,7 +112,7 @@
                             When ready choose an option to record yourself perform the exercise. Recording a video is helpful is you want feedback or have questions for your practitioner on your form.
                         </p>
 
-                        <div class="row">
+                        <div class="row mb-30px">
                             <div class="col-md-6">
                                 <a href="{{ route('streamrecord') }}"><button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record video</button></a>
                             </div>
@@ -120,6 +120,24 @@
                                 <button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record time</button>
                             </div>
                         </div>
+
+                        @if ($recorded == 1) 
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="recorded-video">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <p class="italic-16-font-muted mb-0 d-flex"><span class="material-icons color-green">check_circle_outline</span>&nbsp;&nbsp;&nbsp;Video recording attached - 8:46 mins</p>
+                                        </div>
+                                        <div class="col-md-2 d-flex">
+                                            <p class="video-red-remove-font mb-0">Remove</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        @endif
 
                         <p class="custom-16-font mt-20px mb-30px">
                             Have comments or questions for your practitioner? 
@@ -131,12 +149,103 @@
                         
 
                         <div class="mb-30px mt-35px">
-                                    <a href="{{ route('patient.careplan.exercises_detail') }}"><button id="firststepbtn" class="btn patient-disabled-btn patient-btn-text width-104px height-36px">next</button></a>
+                        @if ($recorded == 1) 
+                            <button class="btn blue-btn patient-btn-text width-104px height-36px" id="show_default_modal">next</button>
+                        @else 
+                            <a href="{{ route('patient.careplan.exercises_detail') }}"><button id="firststepbtn" class="btn patient-disabled-btn patient-btn-text width-104px height-36px">next</button></a>
+                        @endif
                         </div>
                 </div>            
             </div>
         </section>
+
+        <div class="modal" id="modal-default">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <!-- <div class="modal-header">
+                        <h4 class="modal-title">Default Modal</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div> -->
+                    <div class="modal-body text-center">
+                        <p class="real-quick-font mt-30px">Real Quick...</p>
+                        <p class="feedback-black-font">How do you feel after completing exercise one?</p>
+                        <div class="row justify-content-center">
+                                        <div class="d-grid emojidiv mr-20px" onclick="emojiclicked(1)" id="better">
+                                            <img class="emoji" src="{{ asset('admin_assets/dist/img/emoji/mild.png') }}"  alt="no pain">
+                                            <label class="text-center mt-15px" for="emoji">Better</label>
+                                        </div>
+                                        <div class="d-grid emojidiv mr-20px"  onclick="emojiclicked(2)" id="same" >
+                                            <img class="emoji" src="{{ asset('admin_assets/dist/img/emoji/moderate.png') }}"alt="mild">
+                                            <label class="text-center mt-15px" for="emoji">Same</label>
+                                        </div>
+                                        <div class="d-grid emojidiv mr-20px" onclick="emojiclicked(3)" id="worse" >
+                                            <img class="emoji" src="{{ asset('admin_assets/dist/img/emoji/intense.png') }}" alt="moderate">
+                                            <label class="text-center mt-15px" for="emoji">Worse</label>
+                                        </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-center border-none mb-30px">
+                        <button id="submitselfdirectedfeedback" onclick="handleSubmit()" type="button" class="btn patient-disabled-btn patient-btn-text width-104px height-36px">Submit</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
 @endsection
 
 @section('javascript')
+<script>
+    $(document).ready(function(){
+        $("#show_default_modal").click(function(){
+            $("#modal-default").modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+        });
+    });
+
+// emojis
+let better = document.getElementById('better');
+let same = document.getElementById('same');
+let worse = document.getElementById('worse');
+
+function emojiclicked(index) {
+        if ( index == 1 ) {
+            better.classList.add('active');
+            same.classList.remove('active');
+            worse.classList.remove('active');
+        }
+
+        if (index == 2) {
+            better.classList.remove('active');
+            same.classList.add('active');
+            worse.classList.remove('active');
+        }
+
+        if (index == 3) {
+            better.classList.remove('active');
+            same.classList.remove('active');
+            worse.classList.add('active');
+        }
+
+        document.getElementById('submitselfdirectedfeedback').classList.remove('patient-disabled-btn');
+        document.getElementById('submitselfdirectedfeedback').classList.add('blue-btn');
+    }
+
+function handleSubmit() {
+    const classList = document.getElementsByClassName("d-grid emojidiv mr-20px active");
+    const classLength = classList.length;
+    if (classLength != 0) {
+        console.log("Element found with the clicked emoji");
+        window.location = "/patient";
+
+    } else {
+        console.log("No element found with the clicked emoji");
+    }
+}
+</script>
 @endsection

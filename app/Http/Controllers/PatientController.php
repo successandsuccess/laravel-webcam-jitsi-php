@@ -88,8 +88,19 @@ class PatientController extends Controller
         return view('patient.careplan_exercises_overview');
     }
 
-    public function careplan_exercises_detail() {
-        return view('patient.careplan_exercises_detail');
+    public function careplan_exercises_detail(Request $request) {
+        // dd($request->all());
+        $recorded = 0;
+        $recordId = 0;
+
+        if( isset($request->recorded) && $request->recorded == 1 ) {
+            $recorded = 1;
+        }
+
+        if ( isset($request->recordId)) {
+            $recordId = $request->recordId;
+        }
+        return view('patient.careplan_exercises_detail', compact('recorded', 'recordId'));
     }
 
 
