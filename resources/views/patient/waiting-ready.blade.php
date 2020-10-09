@@ -9,7 +9,7 @@
                         <p class="custom-16-font-bold text-center mb-0">Your queue time is 1:45 PM.</p>
                         <p class="custom-16-font text-center">Once your practitioner is ready you will be able join the meeting.</p>
                         <div class="mt-30px mb-25 text-center">
-                                    <a href="https://video.patientconnect.io/meetdoctor" target="_blank"><button class="btn patient-disabled-btn patient-btn-text width-137px height-36px">JOIN MEETING</button></a>
+                                    <a href="https://video.patientconnect.io/meetdoctor" target="_blank"><button class="btn blue-btn patient-btn-text width-137px height-36px">JOIN MEETING</button></a>
                         </div>
                 </div>     
                 

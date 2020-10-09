@@ -68,21 +68,21 @@
                 <div class="row mb-50">
                     <div class="col-md-12">
                         <ol class="progressbar">
-                            <li  class="active">
+                            <li>
                                CHECK IN
                             </li>
                             <li>
                                EXERCISES
                             </li>
-                            <li>
+                            <li class="active">
                                REVIEW
                             </li>
                         </ol>
                     </div>
                 </div>
                 <div class="patient-box mt-25px">
-                <p class="patient-bold-blue-p mb-0px">Before we get Started</p>
-                        <h3 class="waiting-light-blue-h3 mt-minus-25px">Let us know how you've been feeling.</h3>
+                <p class="patient-bold-blue-p mb-0px">Wow, Great job today!</p>
+                        <h3 class="waiting-light-blue-h3 mt-minus-25px">Let us know your final thoughts.</h3>
                         <div class="patient-divider"></div>
                         <p class="sub-title-p mt-20px">How is your pain today?</p>
                         <div class="row mt-30px mb-30px">
@@ -109,38 +109,50 @@
                         </div>
 
                         <div class="patient-divider"></div>
-                        <p class="sub-title-p mt-20px mb-0">Have you had or been in an accident since your last visit?</p>
+                        <p class="sub-title-p mt-20px mb-0">Were you able to complete all the exercises?</p>
 
                         <div class="row mt-10 mb-15px">
                                         <div class="col-md-12">
                                             <div class="d-flex align-center mb-minus-5px">
-                                                <input type="radio" id="accident1" name="accident" value="1">
+                                                <input type="radio" id="completable1" name="completable" value="1">
                                                 <label for="male" class="custom-16-font mt-10 ml-15px">Yes</label>
                                             </div>  
                                             <div class="d-flex align-center">
-                                                <input type="radio" id="accident2" name="accident" value="2">
+                                                <input type="radio" id="completable2" name="completable" value="2">
                                                 <label for="female" class="custom-16-font mt-10 ml-15px">No</label>
                                             </div>
                                         </div>
                         </div>
 
                         <div class="patient-divider"></div>
-                        <p class="sub-title-p mt-20px mb-0">Do you have any new injuries since your last visit?</p>
+                        <p class="sub-title-p mt-20px mb-0">Overall, rate the difficulty of the program:</p>
                         <div class="row mt-10 mb-15px">
                                         <div class="col-md-12">
                                             <div class="d-flex align-center mb-minus-5px">
-                                                <input type="radio" id="injury1" name="injury" value="1">
-                                                <label for="male" class="custom-16-font mt-10 ml-15px">Yes</label>
+                                                <input type="radio" id="level5" name="level" value="5">
+                                                <label for="male" class="custom-16-font mt-10 ml-15px">5 - Very difficult</label>
                                             </div>  
                                             <div class="d-flex align-center">
-                                                <input type="radio" id="injury2" name="injury" value="2">
-                                                <label for="female" class="custom-16-font mt-10 ml-15px">No</label>
+                                                <input type="radio" id="level4" name="level" value="4">
+                                                <label for="female" class="custom-16-font mt-10 ml-15px">4 - Difficult</label>
+                                            </div>
+                                            <div class="d-flex align-center">
+                                                <input type="radio" id="level3" name="level" value="3">
+                                                <label for="female" class="custom-16-font mt-10 ml-15px">3 - Moderate</label>
+                                            </div>
+                                            <div class="d-flex align-center">
+                                                <input type="radio" id="level2" name="level" value="2">
+                                                <label for="female" class="custom-16-font mt-10 ml-15px">2 - Easy</label>
+                                            </div>
+                                            <div class="d-flex align-center">
+                                                <input type="radio" id="level1" name="level" value="1">
+                                                <label for="female" class="custom-16-font mt-10 ml-15px">1 - Very easy</label>
                                             </div>
                                         </div>
                         </div>
 
                         <div class="mb-35px mt-15px">
-                                    <button id="firststepbtn" class="btn patient-disabled-btn patient-btn-text width-150px height-36px" onclick="firstStepSubmit()">Submit</button>
+                                    <button id="firststepbtn" class="btn patient-btn-text width-150px height-36px patient-disabled-btn" onclick="firstStepSubmit()">Submit</button>
                         </div>
                 </div>            
             </div>
@@ -158,68 +170,89 @@
     let intense = document.getElementById('intense');
     let unspeakable = document.getElementById('unspeakable');
 
-    let accidentRadio1 = document.getElementById('accident1');
-    let accidentRadio2 = document.getElementById('accident2');
-    let injuryRadio1 = document.getElementById('injury1');
-    let injuryRadio2 = document.getElementById('injury2');
+    let completableRadio1 = document.getElementById('completable1');
+    let completableRadio2 = document.getElementById('completable2');
+    let levelRadio1 = document.getElementById('level1');
+    let levelRadio2 = document.getElementById('level2');
+    let levelRadio3 = document.getElementById('level3');
+    let levelRadio4 = document.getElementById('level4');
+    let levelRadio5 = document.getElementById('level5');
 
 
-    accidentRadio1.addEventListener('change', function(e) {
+
+    completableRadio1.addEventListener('change', function(e) {
         console.log(e.target.name,e.target.checked, e.target.value);
         let classList = document.getElementsByClassName("d-grid emojidiv mr-20px active");
         let classLength = classList.length;
-        if ( (injuryRadio1.checked || injuryRadio2.checked) && classLength != 0 ) {
+        if ( (levelRadio1.checked || levelRadio2.checked || levelRadio3.checked || levelRadio4.checked || levelRadio5.checked) && classLength != 0 ) {
             document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
             document.getElementById('firststepbtn').classList.add('blue-btn');
         } 
     });
-    accidentRadio2.addEventListener('change', function(e) {
-        console.log(e.target.name,e.target.checked, e.target.value);
+    completableRadio2.addEventListener('change', function(e) {
         let classList = document.getElementsByClassName("d-grid emojidiv mr-20px active");
         let classLength = classList.length;
-        if ( (injuryRadio1.checked || injuryRadio2.checked) && classLength != 0 ) {
+        console.log(e.target.name,e.target.checked, e.target.value);
+        if ( (levelRadio1.checked || levelRadio2.checked || levelRadio3.checked || levelRadio4.checked || levelRadio5.checked) && classLength != 0) {
             document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
             document.getElementById('firststepbtn').classList.add('blue-btn');
         } 
     });
-    injuryRadio1.addEventListener('change', function(e) {
+    levelRadio1.addEventListener('change', function(e) {
         let classList = document.getElementsByClassName("d-grid emojidiv mr-20px active");
         let classLength = classList.length;
-        if ( (accidentRadio1.checked || accidentRadio2.checked) && classLength != 0 ) {
+        if ( (completableRadio1.checked || completableRadio2.checked ) && classLength != 0 ) {
             document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
             document.getElementById('firststepbtn').classList.add('blue-btn');
         }
     });
-    injuryRadio2.addEventListener('change', function(e) {
+    levelRadio2.addEventListener('change', function(e) {
         let classList = document.getElementsByClassName("d-grid emojidiv mr-20px active");
         let classLength = classList.length;
-        if ((accidentRadio1.checked || accidentRadio2.checked) && classLength != 0) {
+        if ((completableRadio1.checked || completableRadio2.checked ) && classLength != 0) {
+            document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
+            document.getElementById('firststepbtn').classList.add('blue-btn');
+        }
+    });
+    levelRadio3.addEventListener('change', function(e) {
+        let classList = document.getElementsByClassName("d-grid emojidiv mr-20px active");
+        let classLength = classList.length;
+        if ((completableRadio1.checked || completableRadio2.checked ) && classLength != 0) {
+            document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
+            document.getElementById('firststepbtn').classList.add('blue-btn');
+        }
+    });
+    levelRadio4.addEventListener('change', function(e) {
+        let classList = document.getElementsByClassName("d-grid emojidiv mr-20px active");
+        let classLength = classList.length;
+        if ((completableRadio1.checked || completableRadio2.checked ) && classLength != 0) {
+            document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
+            document.getElementById('firststepbtn').classList.add('blue-btn');
+        }
+    });
+    levelRadio5.addEventListener('change', function(e) {
+        let classList = document.getElementsByClassName("d-grid emojidiv mr-20px active");
+        let classLength = classList.length;
+        if ((completableRadio1.checked || completableRadio2.checked ) && classLength != 0) {
             document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
             document.getElementById('firststepbtn').classList.add('blue-btn');
         }
     });
 
     function firstStepSubmit() {
-        const classList = document.getElementsByClassName("btn patient-disabled-btn patient-btn-text width-150px height-36px");
+        const classList = document.getElementsByClassName("btn patient-btn-text width-150px height-36px patient-disabled-btn");
         const classLength = classList.length;
         if (classLength == 0) {
             console.log("Element found with the clicked emoji");
-                if ( accidentRadio1.checked && injuryRadio1.checked ) {
-                    window.location = '/patient/careplan/submitfeedback';
-                }
-                else {
-                    window.location = '/patient/careplan/exercises-overview';
-                }
+            window.location = '/patient/';
         } else {
             console.log("No element found with the clicked emoji");
             window.alert('Please choose every options');
         }
-
-        
-
     }
 
     function emojiclicked(index) {
+        
         if ( index == 1 ) {
             nopain.classList.add('active');
             mild.classList.remove('active');
@@ -227,7 +260,7 @@
             intense.classList.remove('active');
             unspeakable.classList.remove('active');
 
-            if ( (accidentRadio1.checked || accidentRadio2.checked) && (injuryRadio1.checked || injuryRadio2.checked) ) {
+            if ((completableRadio1.checked || completableRadio2.checked ) && (levelRadio1.checked || levelRadio2.checked || levelRadio3.checked || levelRadio4.checked || levelRadio5.checked) ) {
                 document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
                 document.getElementById('firststepbtn').classList.add('blue-btn');
             }
@@ -240,7 +273,7 @@
             intense.classList.remove('active');
             unspeakable.classList.remove('active');
 
-            if ( (accidentRadio1.checked || accidentRadio2.checked) && (injuryRadio1.checked || injuryRadio2.checked) ) {
+            if ((completableRadio1.checked || completableRadio2.checked ) && (levelRadio1.checked || levelRadio2.checked || levelRadio3.checked || levelRadio4.checked || levelRadio5.checked) ) {
                 document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
                 document.getElementById('firststepbtn').classList.add('blue-btn');
             }
@@ -253,7 +286,7 @@
             intense.classList.remove('active');
             unspeakable.classList.remove('active');
 
-            if ( (accidentRadio1.checked || accidentRadio2.checked) && (injuryRadio1.checked || injuryRadio2.checked) ) {
+            if ((completableRadio1.checked || completableRadio2.checked ) && (levelRadio1.checked || levelRadio2.checked || levelRadio3.checked || levelRadio4.checked || levelRadio5.checked) ) {
                 document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
                 document.getElementById('firststepbtn').classList.add('blue-btn');
             }
@@ -266,7 +299,7 @@
             intense.classList.add('active');
             unspeakable.classList.remove('active');
 
-            if ( (accidentRadio1.checked || accidentRadio2.checked) && (injuryRadio1.checked || injuryRadio2.checked) ) {
+            if ((completableRadio1.checked || completableRadio2.checked ) && (levelRadio1.checked || levelRadio2.checked || levelRadio3.checked || levelRadio4.checked || levelRadio5.checked) ) {
                 document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
                 document.getElementById('firststepbtn').classList.add('blue-btn');
             }
@@ -279,7 +312,7 @@
             intense.classList.remove('active');
             unspeakable.classList.add('active');
 
-            if ( (accidentRadio1.checked || accidentRadio2.checked) && (injuryRadio1.checked || injuryRadio2.checked) ) {
+            if ((completableRadio1.checked || completableRadio2.checked ) && (levelRadio1.checked || levelRadio2.checked || levelRadio3.checked || levelRadio4.checked || levelRadio5.checked) ) {
                 document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
                 document.getElementById('firststepbtn').classList.add('blue-btn');
             }

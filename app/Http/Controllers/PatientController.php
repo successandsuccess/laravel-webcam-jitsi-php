@@ -103,6 +103,10 @@ class PatientController extends Controller
         return view('patient.careplan_exercises_detail', compact('recorded', 'recordId'));
     }
 
+    public function careplan_exercises_review() {
+        return view('patient.careplan_exercises_review');
+    }
+
 
 
 

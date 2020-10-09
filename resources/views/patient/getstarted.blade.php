@@ -12,8 +12,8 @@
                             <p class="custom-16-font mb-0">Keep up the good work, consistency is key to recovery.</p>
                         </div>
                    
-                        <div class="col-md-5 m-auto">
-                            <p>Stars , Coming soon</p>
+                        <div class="col-md-5 mt-25px text-center">
+                            <img src="{{ asset('admin_assets/dist/img/stars.png') }}" alt="stars">
                         </div>
                     </div>
                 </div>
@@ -26,22 +26,26 @@
 
                                 <div class="form-group d-grid mb-12px">
                                     <label class="patient-small-label" for="practitioner">Practitioner</label>
-                                    <select class="patient-select-box" name="practitioner" id="practitioner">
+                                    <select class="patient-select-box" onchange="practitionerHandleChange()" name="practitioner" id="practitioner">
                                         <option value="0">Select Practitioner</option>
                                         <option value="1">Dr. Wang</option>
+                                        <option value="2">Dr. Smith</option>
+                                        <option value="2">Dr. John</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group d-grid">
-                                    <label class="patient-small-label" for="practitioner">Queue Time</label>
-                                    <select  class="patient-select-box" name="practitioner" id="practitioner">
+                                    <label class="patient-small-label" for="queuetime">Queue Time</label>
+                                    <select  class="patient-select-box" onchange="queuetimeHandleChange()"  name="queuetime" id="queuetime">
                                         <option value="0">Select Queue Time</option>
                                         <option value="1">15:00</option>
+                                        <option value="2">15:30</option>
+                                        <option value="3">16:00</option>
                                     </select>
                                 </div>
 
                                 <div class="mt-30px mb-10">
-                                    <a href="{{ route('patient.waiting') }}"><button class="btn patient-disabled-btn patient-btn-text width-246px height-36px"> Enter Waiting Room</button></a>
+                                    <button id="enterwaitingbtn" onclick="handleEnterWaitingRoom()" class="waiting btn patient-btn-text width-246px height-36px patient-disabled-btn"> Enter Waiting Room</button>
                                 </div>
                             </div>
                     </div>
@@ -105,9 +109,11 @@
 
                             <h1 class="custom-h3-normal mt-25px">Current Treatment</h1>
                             <div>
-                                <button class="btn blue-btn patient-btn-text width-303px height-36px">
-                                    Start Self Directed Session
-                                </button>
+                                <a href="{{ route('patient.careplan') }}">
+                                    <button class="btn blue-btn patient-btn-text width-303px height-36px">
+                                        Start Self Directed Session
+                                    </button>
+                                </a>
                             </div>
 
                             <div class="row mt-25px">
@@ -265,5 +271,46 @@ var myChart = new Chart(ctx, {
        
     }
 });
+
+let practitioner = document.getElementById('practitioner');
+let queuetime = document.getElementById('queuetime');
+
+function practitionerHandleChange() {
+    console.log(practitioner.value,queuetime.value )
+    if (practitioner.value != 0 && queuetime.value != 0) {
+        document.getElementById('enterwaitingbtn').classList.remove('patient-disabled-btn');
+        document.getElementById('enterwaitingbtn').classList.add('blue-btn');
+    }
+
+    if (practitioner.value == 0 && queuetime.value == 0) {
+        document.getElementById('enterwaitingbtn').classList.remove('blue-btn');
+        document.getElementById('enterwaitingbtn').classList.add('patient-disabled-btn');
+    }
+}
+
+function queuetimeHandleChange() {
+    console.log(practitioner.value,queuetime.value )
+    if (practitioner.value != 0 && queuetime.value != 0) {
+        document.getElementById('enterwaitingbtn').classList.remove('patient-disabled-btn');
+        document.getElementById('enterwaitingbtn').classList.add('blue-btn');
+    }
+
+    if (practitioner.value == 0 && queuetime.value == 0) {
+        document.getElementById('enterwaitingbtn').classList.remove('blue-btn');
+        document.getElementById('enterwaitingbtn').classList.add('patient-disabled-btn');
+    }
+}
+
+function handleEnterWaitingRoom() {
+    let classList = document.getElementsByClassName("waiting btn patient-btn-text width-246px height-36px patient-disabled-btn");
+    let classLength = classList.length;
+
+    if (classLength != 0) {
+        window.alert('Please select Practitioner and Queue Time');
+    }
+    else {
+        window.location = '/patient/waiting';
+    }
+}
 </script>
 @endsection

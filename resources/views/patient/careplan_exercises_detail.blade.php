@@ -152,7 +152,7 @@
                         @if ($recorded == 1) 
                             <button class="btn blue-btn patient-btn-text width-104px height-36px" id="show_default_modal">next</button>
                         @else 
-                            <a href="{{ route('patient.careplan.exercises_detail') }}"><button id="firststepbtn" class="btn patient-disabled-btn patient-btn-text width-104px height-36px">next</button></a>
+                            <button id="firststepbtn" onclick="handleDisabledSubmit()" class="btn patient-disabled-btn patient-btn-text width-104px height-36px">next</button>
                         @endif
                         </div>
                 </div>            
@@ -162,12 +162,6 @@
         <div class="modal" id="modal-default">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <!-- <div class="modal-header">
-                        <h4 class="modal-title">Default Modal</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div> -->
                     <div class="modal-body text-center">
                         <p class="real-quick-font mt-30px">Real Quick...</p>
                         <p class="feedback-black-font">How do you feel after completing exercise one?</p>
@@ -241,11 +235,16 @@ function handleSubmit() {
     const classLength = classList.length;
     if (classLength != 0) {
         console.log("Element found with the clicked emoji");
-        window.location = "/patient";
+        window.location = "/patient/careplan/exercises-review";
 
     } else {
         console.log("No element found with the clicked emoji");
+        window.alert('Please choose one option');
     }
+}
+
+function handleDisabledSubmit() {
+    window.alert('Firstly Record video.');
 }
 </script>
 @endsection
