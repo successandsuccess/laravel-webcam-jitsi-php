@@ -152,11 +152,33 @@
                         </div>
 
                         <div class="mb-35px mt-15px">
-                                    <button id="firststepbtn" class="btn patient-btn-text width-150px height-36px patient-disabled-btn" onclick="firstStepSubmit()">Submit</button>
+                                    <button id="firststepbtn" class="btn patient-btn-text width-150px height-36px blue-btn" onclick="firstStepSubmit()">Submit</button>
                         </div>
                 </div>            
             </div>
         </section>
+
+        
+        <div class="modal" id="modal-lastreview">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body text-center pl-40px pr-40px">
+                        <p class="real-quick-font mt-30px">Way to go!</p>
+                        <div class="row justify-content-center">
+                            <img class="emoji" src="{{ asset('admin_assets/dist/img/star.png') }}"  alt="single star">
+                        </div>
+                        <p class="feedback-black-font">Your program has been submitted. You committed <b>22 minutes</b> to your health,
+                    and added another day to your streak!</p>
+                    </div>
+                    <div class="modal-footer justify-content-center border-none mb-30px">
+                        <button id="submitselfdirectedfeedback" onclick="handleLastSubmit()" type="button" class="btn blue-btn patient-btn-text width-246px height-36px">Return to Hompage</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
 @endsection
 
 @section('javascript')
@@ -244,7 +266,11 @@
         const classLength = classList.length;
         if (classLength == 0) {
             console.log("Element found with the clicked emoji");
-            window.location = '/patient/';
+            $("#modal-lastreview").modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#modal-lastreview").modal('show');
         } else {
             console.log("No element found with the clicked emoji");
             window.alert('Please choose every options');
@@ -317,6 +343,10 @@
                 document.getElementById('firststepbtn').classList.add('blue-btn');
             }
         }
+    }
+
+    function handleLastSubmit() {
+        window.location = '/patient';
     }
 </script>
 @endsection

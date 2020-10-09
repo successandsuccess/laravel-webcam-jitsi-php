@@ -1076,6 +1076,14 @@ input.custom-search:-webkit-autofill:active {
     color: #3F394D;
 }
 
+.pl-40px {
+    padding-left: 40px;
+}
+
+.pr-40px {
+    padding-right: 40px;
+}
+
 .recorded-video {
     border: 1px solid #D8D8D8;
     box-sizing: border-box;
@@ -1100,6 +1108,10 @@ input.custom-search:-webkit-autofill:active {
     text-transform: uppercase;
     /* Red */
     color: #F71735;
+}
+
+.width-246px {
+    width: 246px;
 }
 
 .feedback-black-font {
