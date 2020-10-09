@@ -117,7 +117,7 @@
                                 <a href="{{ route('streamrecord') }}"><button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record video</button></a>
                             </div>
                             <div class="col-md-6">
-                                <button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record time</button>
+                                <button onclick="handleRecordTime()" class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record time</button>
                             </div>
                         </div>
 
@@ -246,5 +246,10 @@ function handleSubmit() {
 function handleDisabledSubmit() {
     window.alert('Firstly Record video.');
 }
+
+function handleRecordTime() {
+    
+}
 </script>
+
 @endsection

@@ -217,7 +217,7 @@ var myChart = new Chart(ctx, {
         labels: ['','Mon','Tue','Wed','Thur','Fri','Sat','Sun',''],
         datasets: [{ 
             data: [2,2,2,2,1,2,1,1,1],
-            label: "Pateint Record After Session ",
+            label: "Patient Record After Session ",
             borderColor: "#4681ec", // blue
             backgroundColor: "rgb(70, 129, 236, 0.6)",
             fill: 'start'
