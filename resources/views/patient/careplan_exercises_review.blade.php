@@ -171,7 +171,7 @@
                     and added another day to your streak!</p>
                     </div>
                     <div class="modal-footer justify-content-center border-none mb-30px">
-                        <button id="submitselfdirectedfeedback" onclick="handleLastSubmit()" type="button" class="btn blue-btn patient-btn-text width-246px height-36px">Return to Hompage</button>
+                        <button id="submitselfdirectedfeedback" onclick="handleLastSubmit()" type="button" class="btn blue-btn patient-btn-text width-246px height-36px">Return to Homepage</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->

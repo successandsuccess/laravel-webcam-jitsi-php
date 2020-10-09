@@ -202,9 +202,12 @@
     function firstStepSubmit() {
         const classList = document.getElementsByClassName("btn patient-disabled-btn patient-btn-text width-150px height-36px");
         const classLength = classList.length;
+
+        let unspeakableClassName = unspeakable.className;
+        console.log(unspeakableClassName);
         if (classLength == 0) {
             console.log("Element found with the clicked emoji");
-                if ( accidentRadio1.checked && injuryRadio1.checked ) {
+                if ( unspeakableClassName.includes('active') || accidentRadio1.checked || injuryRadio1.checked ) {
                     window.location = '/patient/careplan/submitfeedback';
                 }
                 else {

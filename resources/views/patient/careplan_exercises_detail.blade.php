@@ -121,7 +121,7 @@
                             </div>
                         </div>
 
-                        <!-- <div class="patient-gray-box mb-20px">
+                        <div class="patient-gray-box mb-20px d-none">
                             <p class="custom-16-font-bold">
                                 <img src="{{ asset('admin_assets/dist/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
                                 Dr. Wang' s instructions
@@ -132,7 +132,7 @@
                             <ul class="ml-50px">
                                 <li class="custom-16-font">Perform stretch for <b>8 minutes</b></li>
                             </ul>
-                        </div> -->
+                        </div>
 
                         @if ($recorded == 1) 
                         <div class="row">
@@ -140,7 +140,7 @@
                                 <div class="recorded-video">
                                     <div class="row">
                                         <div class="col-md-10">
-                                            <p class="italic-16-font-muted mb-0 d-flex"><span class="material-icons color-green">check_circle_outline</span>&nbsp;&nbsp;&nbsp;Video recording attached - 8:46 mins</p>
+                                            <p class="italic-16-font-muted mb-0 d-flex"><span class="material-icons color-green">check_circle_outline</span>&nbsp;&nbsp;&nbsp;Video recording attached</p>
                                         </div>
                                         <div class="col-md-2 d-flex">
                                             <p class="video-red-remove-font mb-0">Remove</p>
