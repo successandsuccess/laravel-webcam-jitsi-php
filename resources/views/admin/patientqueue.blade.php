@@ -24,8 +24,7 @@
             <!-- Notifications Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link p-0" data-toggle="dropdown" href="#">
-                    <img src="{{ asset('admin_assets/dist/img/user3-128x128.jpg') }}" alt="User Avatar" class="img-size-45 img-circle mr-3">
-                    <!-- <span class="badge badge-warning navbar-badge">15</span> -->
+                    <img src="{{ asset('admin_assets/dist/img/henry.png') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right mw-150px">
                 <div class="dropdown-divider"></div>
