@@ -152,7 +152,7 @@
                         </div>
 
                         <div class="mb-35px mt-15px">
-                                    <button id="firststepbtn" class="btn patient-btn-text width-150px height-36px blue-btn" onclick="firstStepSubmit()">Submit</button>
+                                    <button id="firststepbtn" class="btn patient-btn-text width-150px height-36px patient-disabled-btn" onclick="firstStepSubmit()">Submit</button>
                         </div>
                 </div>            
             </div>
