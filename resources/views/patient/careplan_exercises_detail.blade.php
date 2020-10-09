@@ -155,8 +155,8 @@
                             <div class="timer text-center">
                                 <img src="{{ asset('admin_assets/dist/img/timer3.png') }}" alt="timer1">
                             </div>
-                            <div class="text-center mt-25px">
-                                <p class="patient-bold-blue-p mb-0">SET COMPLETED</p>
+                            <div class="text-center">
+                                <p class="patient-bold-blue-p mb-0 d-flex justify-content-center"><span class="material-icons color-green mt-15px">check_circle_outline</span>&nbsp;&nbsp;&nbsp;SET COMPLETED</p>
                                 <p class="delete-font text-center justify-content-center" style="margin-top: -10px">DELETE & REDO</p>
                             </div>
                         </div>
@@ -294,7 +294,10 @@ function handleDisabledSubmit() {
 }
 
 function handleRecordTime() {
-    console.log('clicked')
+    console.log('clicked');
+    document.getElementById('recordTimeBox1').style.display = 'none';
+    document.getElementById('recordTimeBox2').style.display = 'none';
+    document.getElementById('recordTimeBox3').style.display = 'none';
     document.getElementById('recordTimeBox1').style.display = 'block';
 }
 
