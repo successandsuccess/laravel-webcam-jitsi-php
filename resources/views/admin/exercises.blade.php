@@ -54,7 +54,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active background-none boxshadow-none cursor-none">
-              <p>
+              <p class="font-18px">
                 Appointment
               </p>
             </a>
@@ -86,7 +86,7 @@
           </li>
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active background-none boxshadow-none cursor-none">
-              <p>
+              <p class="font-18px">
                 Manage
               </p>
             </a>

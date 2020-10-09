@@ -53,13 +53,28 @@
     height: 81px;
 }
 
+.font-18px {
+    font-size: 18px;
+}
+
+.appointment-font {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 40px;
+    /* or 286% */
+    letter-spacing: 0.15px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
 .color-blue {
     color: #007bff !important;
 }
 
 .background-dark-blue {
-    /* background: #3746B0; */
-    background: #4e4e4e;
+    background: #3746B0;
+    /* background: #4e4e4e; */
     box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
