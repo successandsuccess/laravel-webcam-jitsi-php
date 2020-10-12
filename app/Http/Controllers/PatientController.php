@@ -38,16 +38,8 @@ class PatientController extends Controller
 
     public function getstarted(Request $request)
     {
-    
-        // $providers = [
-        //     'Select Provider...',
-        //     'Dr.Johns',
-        //     'Dr.Wang',
-        //     'Mr.Smith.CA'
-        // ];
-
+        // providers
         $providers = Admin::all();
-
          // available time list
         $times = [
             'Select Time...',

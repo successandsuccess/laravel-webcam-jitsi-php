@@ -25,9 +25,9 @@
                                 <h1 class="custom-h3-normal mt-minus-10">Attend a telehealth appointment.</h1>
 
                                 <div class="form-group d-grid mb-12px">
-                                    <label class="patient-small-label" for="practitioner">Practitioner</label>
-                                    <select class="patient-select-box" onchange="practitionerHandleChange()" name="practitioner" id="practitioner">
-                                        <option value="0">Select Practitioner</option>
+                                    <label class="patient-small-label" for="provider">Provider</label>
+                                    <select class="patient-select-box" onchange="providerHandleChange()" name="provider" id="provider">
+                                        <option value="0">Select Provider</option>
                                         <option value="1">Dr. Wang</option>
                                         <option value="2">Dr. Smith</option>
                                         <option value="2">Dr. John</option>
@@ -86,7 +86,7 @@
                                         <h1 class="custom-h3-normal">Overview</h1>
                                     </div>
                                     <div class="col-md-8">
-                                        <h1 class="custom-h3-normal">Practitioner's Notes</h1>
+                                        <h1 class="custom-h3-normal">Provider's Notes</h1>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
@@ -276,30 +276,30 @@ var myChart = new Chart(ctx, {
     }
 });
 
-let practitioner = document.getElementById('practitioner');
+let provider = document.getElementById('provider');
 let queuetime = document.getElementById('queuetime');
 
-function practitionerHandleChange() {
-    console.log(practitioner.value,queuetime.value )
-    if (practitioner.value != 0 && queuetime.value != 0) {
+function providerHandleChange() {
+    console.log(provider.value,queuetime.value )
+    if (provider.value != 0 && queuetime.value != 0) {
         document.getElementById('enterwaitingbtn').classList.remove('patient-disabled-btn');
         document.getElementById('enterwaitingbtn').classList.add('blue-btn');
     }
 
-    if (practitioner.value == 0 && queuetime.value == 0) {
+    if (provider.value == 0 && queuetime.value == 0) {
         document.getElementById('enterwaitingbtn').classList.remove('blue-btn');
         document.getElementById('enterwaitingbtn').classList.add('patient-disabled-btn');
     }
 }
 
 function queuetimeHandleChange() {
-    console.log(practitioner.value,queuetime.value )
-    if (practitioner.value != 0 && queuetime.value != 0) {
+    console.log(provider.value,queuetime.value )
+    if (provider.value != 0 && queuetime.value != 0) {
         document.getElementById('enterwaitingbtn').classList.remove('patient-disabled-btn');
         document.getElementById('enterwaitingbtn').classList.add('blue-btn');
     }
 
-    if (practitioner.value == 0 && queuetime.value == 0) {
+    if (provider.value == 0 && queuetime.value == 0) {
         document.getElementById('enterwaitingbtn').classList.remove('blue-btn');
         document.getElementById('enterwaitingbtn').classList.add('patient-disabled-btn');
     }
@@ -310,7 +310,7 @@ function handleEnterWaitingRoom() {
     let classLength = classList.length;
 
     if (classLength != 0) {
-        window.alert('Please select Practitioner and Queue Time');
+        window.alert('Please select Provider and Queue Time');
     }
     else {
         window.location = '/patient/waiting';

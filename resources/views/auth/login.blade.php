@@ -2,9 +2,7 @@
 
 @section('content')
  <!-- ======= Intro Single ======= -->
-   
     <div class="container">
-
                 <div class="row mt-40px mb-50px">
                     <div class="col-md-12 text-center">
                         <a href="{{ route('index') }}"><img class="height-110px" src="{{ asset('admin_assets/dist/img/PatientConnectLogo.png') }}" alt="logo" id="chiroonelogo"></a>
@@ -47,13 +45,6 @@
                             <img class="width-100" src="{{ asset('admin_assets/dist/img/PatientConnectAvatar1.jpg') }}" alt="diagnos image">
                         </div>
                 </div>
-
     </div>
-                
- 
     <!-- End Intro Single-->
-
-
-                    
-
 @endsection
