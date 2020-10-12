@@ -10,6 +10,7 @@ use App\VideoUploads;
 use App\Reviews;
 use App\Admin;
 use App\PatientActivity;
+use App\FirstFeedback;
 use Auth;
 use DateTime;
 
@@ -174,6 +175,24 @@ class PatientController extends Controller
         // dd($timeId);
 
         return view('patient.waiting-ready', compact('meeting', 'time', 'timeId'));
+    }
+
+    public function patientwaitingreadyfeedback(Request $request) 
+    {
+        // dd($request->all());
+        $prevFeedback = FirstFeedback::where('meeting_id', $request->meetingId)->get();
+
+        if ( count($prevFeedback) == 0 ) {
+            $feedback = new FirstFeedback;
+            $feedback->todaypain = $request->todaypain;
+            $feedback->totalpain = $request->totalpain;
+            $feedback->lastpain = $request->lastpain;
+            $feedback->meeting_id = $request->meetingId;
+            $feedback->save();
+        } 
+
+        return 'Success';
+       
     }
 
     public function careplan_submitfeedback() {
