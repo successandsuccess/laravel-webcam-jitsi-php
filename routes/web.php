@@ -46,7 +46,7 @@ Route::prefix('patient')->group(function() {
     Route::get('/careplan/exercises-detail', 'PatientController@careplan_exercises_detail')->name('patient.careplan.exercises_detail');
     Route::get('/careplan/exercises-review', 'PatientController@careplan_exercises_review')->name('patient.careplan.exercises_review');
     Route::get('/waiting', 'PatientController@patientwaiting')->name('patient.waiting');
-    Route::get('/waiting-ready', 'PatientController@patientwaitingready')->name('patient.waiting.ready');
+    Route::get('/waiting-ready/{meetingId}', 'PatientController@patientwaitingready')->name('patient.waiting.ready');
 });
 
 // Admin routes

@@ -2,14 +2,14 @@
 
 @section('content')
         <section class="pb-50 pt-15px"> 
-            <a class="patient-exit-text d-flex ml-40px" href="{{ route('patient.getstarted') }}" ><i class="material-icons-outlined mt-15px">arrow_back</i>&nbsp;EXIT WAITING ROOM</a>
+            <a class="patient-exit-text d-flex ml-40px" href="{{ route('patient.getstarted', ['provider' => $providerId, 'time' => $timeId]) }}" ><i class="material-icons-outlined mt-15px">arrow_back</i>&nbsp;EXIT WAITING ROOM</a>
             <div class="container max-width-962px">
                 <div class="patient-box pt-50 mt-25px">
                         <h1 class="patient-careplan-blue-h1 text-center">Dr. Wang will be with you shortly.</h1>
-                        <p class="custom-16-font-bold text-center mb-0">Your queue time is 1:45 PM.</p>
-                        <p class="custom-16-font text-center">Once your practitioner is ready you will be able join the meeting.</p>
+                        <p class="custom-16-font-bold text-center mb-0">Your queue time is {{ strtoupper($time) }}.</p>
+                        <p class="custom-16-font text-center">Once your provider is ready you will be able join the meeting.</p>
                         <div class="mt-30px mb-25 text-center">
-                                    <a href="https://video.patientconnect.io/meetdoctor" target="_blank"><button class="btn patient-disabled-btn patient-btn-text width-137px height-36px">JOIN MEETING</button></a>
+                                    <a href="{{ $jitsimeet }}" target="_blank"><button class="btn patient-disabled-btn patient-btn-text width-137px height-36px">JOIN MEETING</button></a>
                         </div>
                 </div>     
                 <div class="patient-box mt-25px">
@@ -168,7 +168,7 @@
 
                         <div class="patient-divider"></div>
                         <div class="mb-10 mt-15px">
-                                    <a href="{{ route('patient.waiting.ready') }}"><button class="btn blue-btn patient-btn-text width-150px height-36px">Submit</button></a>
+                                    <a href="{{ route('patient.waiting.ready', [ 'meetingId' => $meetingId ]) }}"><button class="btn blue-btn patient-btn-text width-150px height-36px">Submit</button></a>
                         </div>
                 </div>    
             </div>
