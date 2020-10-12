@@ -26,26 +26,50 @@
 
                                 <div class="form-group d-grid mb-12px">
                                     <label class="patient-small-label" for="provider">Provider</label>
+                                    @if (isset($providerId) && $providerId != 0)
                                     <select class="patient-select-box" onchange="providerHandleChange()" name="provider" id="provider">
                                         <option value="0">Select Provider</option>
-                                        <option value="1">Dr. Wang</option>
-                                        <option value="2">Dr. Smith</option>
-                                        <option value="2">Dr. John</option>
+                                        @foreach($providers as $provider)
+                                            @if($provider->id == $providerId)
+                                            <option value="<?php echo $provider->id; ?>" selected><?php echo $provider->name; ?></option>
+                                            @else
+                                            <option value="<?php echo $provider->id; ?>"><?php echo $provider->name; ?></option>
+                                            @endif
+                                        @endforeach
                                     </select>
+                                    @else
+                                    <select class="patient-select-box" onchange="providerHandleChange()" name="provider" id="provider">
+                                        <option value="0">Select Provider</option>
+                                        @foreach($providers as $provider)
+                                            <option value="{{ $provider->id }}">{{ $provider->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @endif
                                 </div>
 
                                 <div class="form-group d-grid">
                                     <label class="patient-small-label" for="queuetime">Queue Time</label>
+                                    @if( isset($timeId) && $timeId != 0 )
                                     <select  class="patient-select-box" onchange="queuetimeHandleChange()"  name="queuetime" id="queuetime">
-                                        <option value="0">Select Queue Time</option>
-                                        <option value="1">15:00</option>
-                                        <option value="2">15:30</option>
-                                        <option value="3">16:00</option>
+                                        @foreach($times as $index => $time)
+                                            @if( $index == $timeId )
+                                                <option value="<?php echo $index; ?>" selected><?php echo $time;?></option>
+                                            @else
+                                                <option value="<?php echo $index; ?>"><?php echo $time;?></option>
+                                            @endif
+                                        @endforeach
                                     </select>
+                                    @else
+                                    <select  class="patient-select-box" onchange="queuetimeHandleChange()"  name="queuetime" id="queuetime">
+                                        @foreach($times as $index => $time)
+                                        <option value="<?php echo $index; ?>"><?php echo $time;?></option>
+                                        @endforeach
+                                    </select>
+                                   @endif
                                 </div>
 
                                 <div class="mt-30px mb-10">
-                                    <button id="enterwaitingbtn" onclick="handleEnterWaitingRoom()" class="waiting btn patient-btn-text width-246px height-36px patient-disabled-btn"> Enter Waiting Room</button>
+                                    <button id="enterwaitingbtn" onclick="handleEnterWaitingRoom()" class="waiting btn patient-btn-text width-246px height-36px patient-disabled-btn">Enter Waiting Room</button>
                                 </div>
                             </div>
                     </div>
@@ -313,7 +337,16 @@ function handleEnterWaitingRoom() {
         window.alert('Please select Provider and Queue Time');
     }
     else {
-        window.location = '/patient/waiting';
+        console.log('EnterWaitingRoom Button Clicked');
+        console.log($('#provider').val());
+        console.log($('#time').val());
+        var provider = $('#provider').val();
+        var time = $('#queuetime').val();
+        if (provider == 0 || time == 0) {
+            window.alert('Please choose the Provider and the time you want.');
+        } else {
+            window.location = '/patient/waiting?provider='+provider+'&time='+time;
+        }
     }
 }
 </script>
@@ -434,5 +467,23 @@ function handleEnterWaitingRoom() {
             chart.draw(data, options);
          }
          google.charts.setOnLoadCallback(drawChart);
+      </script>
+
+      <script>
+      window.onload = function() {
+        let currentUrl = window.location.href;
+        console.log(currentUrl);
+        currentUrl = new URL(currentUrl);
+        let providerId = currentUrl.searchParams.get('provider');
+        let timeId = currentUrl.searchParams.get('time');
+
+        console.log(providerId, timeId)
+
+        if ( providerId != null && providerId != 0 && timeId != null && timeId != 0) {
+            console.log('one on one booked already');
+            document.getElementById('enterwaitingbtn').classList.remove('patient-disabled-btn');
+            document.getElementById('enterwaitingbtn').classList.add('blue-btn');
+        }
+      }
       </script>
 @endsection

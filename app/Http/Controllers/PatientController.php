@@ -43,9 +43,9 @@ class PatientController extends Controller
          // available time list
         $times = [
             'Select Time...',
-            '1:45pm',
-            '2:00pm',
-            '3:00pm',
+            '01:45 PM',
+            '02:00 PM',
+            '02:15 PM',
         ];
 
         // check if provider and time info existed
@@ -64,12 +64,116 @@ class PatientController extends Controller
         return view('patient.careplan');
     }
 
-    public function patientwaiting() {
-        return view('patient.waiting');
+    public function patientwaiting(Request $request) {
+        // get provider and time param from request
+        $providerId = $request->input('provider');
+        $timeId = $request->input('time');
+
+        // provider list
+        $providers = Admin::all();
+
+        // available time list
+        $times = [
+            'Select Time...',
+            '01:45 pm',
+            '02:00 pm',
+            '03:00 pm'
+        ];
+
+        // This is for Real Database datetime.
+        $databaseTimes = [
+            'Select Time...',
+            '13:45:00',
+            '14:00:00',
+            '15:00:00',
+        ];
+
+        // $provider = $providers[$providerId];
+        $provider = Admin::find($providerId);
+        $time = $times[$timeId];
+        $databaseTime = $databaseTimes[$timeId]; // This is for Real Database datetime.
+
+        // Get current user
+        $user = Auth::user();
+        // Get Current Date
+        $todayDate = date("Y-m-d");
+        $todayDateTime = $todayDate." ".$databaseTime;
+
+        // Get the meet info if meet already is booked.
+        $prevMeeting = Meetings::where('userId' ,$user->id)
+                                ->where('time', $todayDateTime)
+                                ->where('provider_id', $provider->id)
+                                ->first();
+        
+        if( $prevMeeting != null ) //when already existed meeting.
+        {
+            // get already existed jitsi meet
+            $jitsimeet = $prevMeeting->meetUrl;
+            $meetingId = $prevMeeting->id;
+        }
+        else // New meeting for new time and new provider
+        {
+            // make New jitsi meet
+            $uuid = Uuid::generate()->string;
+            $jitsimeet = env('VIDEO_PATIENT_URL').'/'. $uuid;
+            
+            // save New meet record
+            $meeting = new Meetings;
+            $meeting->provider_id = $provider->id;
+            $meeting->time = $todayDateTime;
+            $meeting->meetUrl = $jitsimeet;
+            $meeting->userId = $user->id;
+            $meeting->save();
+
+            $meetingId = $meeting->id;
+
+            // save to patient activities
+            $patientActivity = new PatientActivity;
+            $patientActivity->appoint_time = $todayDateTime;
+            $patientActivity->length = 0;
+            $patientActivity->type = 1;
+            $patientActivity->completion = 0;
+            $patientActivity->user_id = $user->id;
+            $patientActivity->provider_id = $provider->id;
+            $patientActivity->meetings_id = $meeting->id;
+            $patientActivity->save();
+
+            // Send Notify email to Provider
+            $details = [
+                'name' => $user->name,
+                'email' => $user->email,
+                'lname' => $user->lname,
+                'phone' => $user->phone,
+                'city' => $user->city,
+                'meetUrl' => $jitsimeet,
+                'time' => $todayDateTime,
+            ];
+
+            // send email to provider.
+            \Mail::to('henry@patientconnect.io')->send(new \App\Mail\MeetNotifyMail($details));
+        }
+        return view('patient.waiting', compact('provider', 'time', 'jitsimeet', 'providerId', 'timeId', 'meetingId'));
     }
 
-    public function patientwaitingready() {
-        return view('patient.waiting-ready');
+    public function patientwaitingready(Request $request, $meetingId) {
+        $meeting = Meetings::find($meetingId);
+        $time = $meeting->time->format('h:i a');
+
+        // available time list
+        $times = [
+            'Select Time...',
+            '01:45 pm',
+            '02:00 pm',
+            '03:00 pm'
+        ];
+
+        // dd($time);
+
+        $timeId = array_search($time, $times, true);
+
+        // dd($timeId);
+
+        return view('patient.waiting-ready', compact('meeting', 'time', 'timeId'));
     }
 
     public function careplan_submitfeedback() {
