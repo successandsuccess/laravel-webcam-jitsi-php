@@ -58,6 +58,8 @@
 }
 
 </style>
+
+<link rel="stylesheet" href="{{ asset('admin_assets/progress-circle-bar.css') }}">
 @endsection
 
 @section('content')
@@ -121,45 +123,31 @@
                             </div>
                         </div>
 
-                        <!-- timer step 1 -->
-                        <div class="patient-gray-box mb-20px" style="display: none" id = "recordTimeBox1">
+                        <!-- timer start -->
+                        <div class="patient-gray-box mb-20px pt-0" style="display: none" id = "recordTimeBox1">
                             <p class="custom-h3-normal text-center">
                                 Set 1
                             </p>
-                            <div class="timer text-center">
-                                <img src="{{ asset('admin_assets/dist/img/timer1.png') }}" alt="timer1">
+                            <div class="d-flex justify-content-center mt-25px">
+                                <div class="progress-circle">
+                                    <span class="timer timer-custom-font">00:00:00</span>
+                                    <div class="left-half-clipper">
+                                        <div class="first50-bar"></div>
+                                        <div class="value-bar"></div>
+                                    </div>
+                                </div>
                             </div>
+               
                             <div class="text-center mt-25px">
-                                <button onclick="timerHandleStart(1)" class="btn green-btn patient-btn-text width-104px height-36px">START</button>
+                                <button id="timerstart" onclick="timerHandleStart(1)" class="btn green-btn patient-btn-text width-104px height-36px mt-15px">START</button>
+                                <button id="timerstop" onclick="timerHandleStart(2)" class="btn red-btn patient-btn-text width-104px height-36px mt-15px" style="display:none;">STOP</button>
+                                <div id="timerfinish" style="display:none;">
+                                    <p class="patient-bold-blue-p mb-0 d-flex justify-content-center"><span class="material-icons color-green mt-15px">check_circle_outline</span>&nbsp;&nbsp;&nbsp;SET COMPLETED</p>
+                                    <p class="delete-font text-center justify-content-center" style="margin-top: -10px">DELETE & REDO</p>
+                                </div>
                             </div>
                         </div>
-
-                        <!--  timer step 2 -->
-                        <div class="patient-gray-box mb-20px" style="display: none" id = "recordTimeBox2">
-                            <p class="custom-h3-normal text-center">
-                                Set 1
-                            </p>
-                            <div class="timer text-center">
-                                <img src="{{ asset('admin_assets/dist/img/timer2.png') }}" alt="timer1">
-                            </div>
-                            <div class="text-center mt-25px">
-                                <button onclick="timerHandleStart(2)" class="btn red-btn patient-btn-text width-104px height-36px">STOP</button>
-                            </div>
-                        </div>
-
-                        <!-- Timer step 3 -->
-                        <div class="patient-gray-box mb-20px" style="display: none" id = "recordTimeBox3">
-                            <p class="custom-h3-normal text-center">
-                                Set 1
-                            </p>
-                            <div class="timer text-center">
-                                <img src="{{ asset('admin_assets/dist/img/timer3.png') }}" alt="timer1">
-                            </div>
-                            <div class="text-center">
-                                <p class="patient-bold-blue-p mb-0 d-flex justify-content-center"><span class="material-icons color-green mt-15px">check_circle_outline</span>&nbsp;&nbsp;&nbsp;SET COMPLETED</p>
-                                <p class="delete-font text-center justify-content-center" style="margin-top: -10px">DELETE & REDO</p>
-                            </div>
-                        </div>
+                        <!-- timer end -->
 
                         @if ($recorded == 1) 
                         <div class="row">
@@ -295,28 +283,62 @@ function handleDisabledSubmit() {
 
 function handleRecordTime() {
     console.log('clicked');
-    document.getElementById('recordTimeBox1').style.display = 'none';
-    document.getElementById('recordTimeBox2').style.display = 'none';
-    document.getElementById('recordTimeBox3').style.display = 'none';
     document.getElementById('recordTimeBox1').style.display = 'block';
 }
 
 function timerHandleStart(index) {
     console.log('timer Started');
+    let tempHours;
+    let tempMinutes;
+    let tempSeconds;
+    let tempTotal;
+    let tempTotalDeg;
     if (index == 1) {
-        document.getElementById('recordTimeBox1').style.display = 'none';
-        document.getElementById('recordTimeBox2').style.display = 'block';
+
+         $('.timer').on('second', function(evt, time){
+            tempHours = time.original.hours;
+            tempMinutes = time.original.minutes;
+            tempSeconds = time.original.seconds;
+            tempTotal = tempHours * 3600 + tempMinutes * 60 + tempSeconds;
+            tempTotalDeg = ( tempTotal / (1 * 3600) ) * 360;
+            tempTotalDeg = tempTotalDeg.toFixed(2) + 'deg';
+            // console.log(tempHours, tempMinutes, tempSeconds, tempTotal, tempTotalDeg);
+            $('.value-bar').css('transform', `rotate(${tempTotalDeg})`);
+
+        });
+
+        $('.timer').countimer('start')
+
+        document.getElementById('timerstart').style.display = 'none';
+        document.getElementById('timerstop').style.display = 'initial';
+
+    
     }
 
     if (index == 2) {
-        document.getElementById('recordTimeBox2').style.display = 'none';
-        document.getElementById('recordTimeBox3').style.display = 'block';
-
+        $('.timer').countimer('stop');
+        console.log('finished time', $('.timer').countimer('current'));
+        document.getElementById('timerstop').style.display = 'none';
+        document.getElementById('timerfinish').style.display = 'initial';
+        $('.value-bar').css('display','none');
         document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
         document.getElementById('firststepbtn').classList.add('blue-btn');
     }
     
 }
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+<script src="{{ asset('admin_assets/dist/js/ez.countimer.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.timer').countimer({
+            autoStart: false,
+            enableEvents: true,
+        });
+    });
 </script>
 
 @endsection

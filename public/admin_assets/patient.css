@@ -1025,6 +1025,17 @@ input.custom-search:-webkit-autofill:active {
     outline: gainsboro;
 }
 
+.timer-custom-font {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 56px;
+    /* identical to box height, or 165% */
+    text-align: center;
+    color: #3746B0 !important;
+}
+
 .patient-disabled-btn {
     background: #D8D8D8;
     border-radius: 4px;
