@@ -244,6 +244,8 @@
             background: rgba(0, 0, 0, 0.64);
             left: -9%;
             width: 240px;
+            height: 41px;
+            line-height: 2.5rem;
         }
 
         .vjs-duration.vjs-time-control.vjs-control .vjs-control-text{
@@ -262,6 +264,8 @@
             opacity: 0;
             left: -2%;
             width: 240px;
+            height: 41px;
+            line-height: 2.5rem;
         }
         .vjs-current-time.vjs-time-control.vjs-control .vjs-control-text{
             position: inherit;
