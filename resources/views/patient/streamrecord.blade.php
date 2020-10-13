@@ -266,13 +266,133 @@
         .vjs-current-time.vjs-time-control.vjs-control .vjs-control-text{
             position: inherit;
         }
+        @media only screen and (max-height: 960px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1480%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1480%;
+            }
+        }
+        @media only screen and (max-height: 930px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1400%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1400%;
+            }
+        }
 
+        @media only screen and (max-height: 900px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1380%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1380%;
+            }
+        }
+        @media only screen and (max-height: 860px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1350%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1350%;
+            }
+        }
+        @media only screen and (max-height: 840px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1320%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1320%;
+            }
+        }
+        @media only screen and (max-height: 828px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1310%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1310%;
+            }
+        }
+        @media only screen and (max-height: 815px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1280%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1280%;
+            }
+        }
+        @media only screen and (max-height: 805px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1250%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1250%;
+            }
+        }
         @media only screen and (max-height: 800px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1210%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1210%;
+            }
+        }
+        @media only screen and (max-height: 785px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1150%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1150%;
+            }
+        }
+        @media only screen and (max-height: 740px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1120%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1120%;
+            }
+        }
+        @media only screen and (max-height: 730px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1115%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1115%;
+            }
+        }
+        @media only screen and (max-height: 720px) {
             .vjs-current-time.vjs-time-control.vjs-control{
                 top: -1100%;
             }
             .vjs-duration.vjs-time-control.vjs-control{
                 top: -1100%;
+            }
+        }
+        @media only screen and (max-height: 700px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1050%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1050%;
+            }
+        }
+        @media only screen and (max-height: 681px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1000%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1000%;
+            }
+        }
+        @media only screen and (max-height: 651px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -950%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -950%;
             }
         }
         @media only screen and (max-height: 630px) {
