@@ -13,6 +13,7 @@ use App\PatientActivity;
 use App\FirstFeedback;
 use Auth;
 use DateTime;
+use App\SecondBeforeFeedback;
 
 
 class PatientController extends Controller
@@ -192,6 +193,17 @@ class PatientController extends Controller
 
     public function careplan_submitfeedback() {
         return view('patient.careplan_submitfeedback');
+    }
+
+    public function careplan_submitfeedback_post(Request $request) {
+        $secondBeforeFeedback = new SecondBeforeFeedback;
+        $secondBeforeFeedback->newaccident = $request->newAccident;
+        $secondBeforeFeedback->newinjury = $request->newInjury;
+        $secondBeforeFeedback->todaypain = $request->todaypain;
+        $secondBeforeFeedback->user_id = Auth::user()->id;
+        $secondBeforeFeedback->save();
+
+        return 'Success';
     }
 
     public function careplan_exercises_overview() {

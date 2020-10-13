@@ -149,7 +149,7 @@
 
 @section('javascript')
 <script>
-
+    let checkedEmojiIndex = 0;
 
     // emojis
     let nopain = document.getElementById('nopain');
@@ -206,12 +206,104 @@
         let unspeakableClassName = unspeakable.className;
         console.log(unspeakableClassName);
         if (classLength == 0) {
-            console.log("Element found with the clicked emoji");
+                let newAccident;
+                let newInjury;
                 if ( unspeakableClassName.includes('active') || accidentRadio1.checked || injuryRadio1.checked ) {
-                    window.location = '/patient/careplan/submitfeedback';
+                    if ( accidentRadio1.checked ) {
+                            newAccident = 1;
+                    } else {
+                        newAccident = 0;
+                    }
+
+                    if( injuryRadio1.checked ) {
+                        newInjury = 1;
+                    } else {
+                        newInjury = 0;
+                    }
+
+                    let sendData = {
+                        newAccident: newAccident,
+                        newInjury: newInjury,
+                        todaypain : checkedEmojiIndex
+                    }
+
+                    $.ajaxSetup({
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    }
+                                });
+                                
+                    $.ajax({
+                        url: "{{ route('patient.careplan.submitfeedback.post') }}",
+                        type: 'POST',              
+                        data: sendData,
+                        success: function(result)
+                        {
+                            if( result == 'Success' ) {
+                                console.log('successfully submitted!');
+                                window.location = '/patient/careplan/submitfeedback';
+                            }
+                            else {
+                                console.log('Error Occured In feedback, Retry or Check Network');
+                                toastr.error('feedback went wrong. Check network and retry.');
+                            }
+                        },
+                        error: function(data)
+                        {
+                            console.log('error',data);
+                            toastr.error('feedback went wrong. Check network and retry.');
+                        }
+                    });
+
                 }
                 else {
-                    window.location = '/patient/careplan/exercises-overview';
+
+                    if ( accidentRadio1.checked ) {
+                            newAccident = 1;
+                    } else {
+                        newAccident = 0;
+                    }
+
+                    if( injuryRadio1.checked ) {
+                        newInjury = 1;
+                    } else {
+                        newInjury = 0;
+                    }
+                    
+                    let sendData = {
+                        newAccident: newAccident,
+                        newInjury: newInjury,
+                        todaypain : checkedEmojiIndex
+                    }
+
+                    $.ajaxSetup({
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    }
+                                });
+                                
+                    $.ajax({
+                        url: "{{ route('patient.careplan.submitfeedback.post') }}",
+                        type: 'POST',              
+                        data: sendData,
+                        success: function(result)
+                        {
+                            if( result == 'Success' ) {
+                                console.log('successfully submitted!');
+                                window.location = '/patient/careplan/exercises-overview';
+                            }
+                            else {
+                                console.log('Error Occured In feedback, Retry or Check Network');
+                                toastr.error('feedback went wrong. Check network and retry.');
+                            }
+                        },
+                        error: function(data)
+                        {
+                            console.log('error',data);
+                            toastr.error('feedback went wrong. Check network and retry.');
+                        }
+                    });
+                    
                 }
         } else {
             console.log("No element found with the clicked emoji");
@@ -224,6 +316,7 @@
 
     function emojiclicked(index) {
         if ( index == 1 ) {
+            checkedEmojiIndex = 1;
             nopain.classList.add('active');
             mild.classList.remove('active');
             moderate.classList.remove('active');
@@ -237,6 +330,7 @@
         }
 
         if (index == 2) {
+            checkedEmojiIndex = 2;
             nopain.classList.remove('active');
             mild.classList.add('active');
             moderate.classList.remove('active');
@@ -250,6 +344,7 @@
         }
 
         if (index == 3) {
+            checkedEmojiIndex = 3;
             nopain.classList.remove('active');
             mild.classList.remove('active');
             moderate.classList.add('active');
@@ -263,6 +358,7 @@
         }
 
         if (index == 4) {
+            checkedEmojiIndex = 4;
             nopain.classList.remove('active');
             mild.classList.remove('active');
             moderate.classList.remove('active');
@@ -276,6 +372,7 @@
         }
 
         if (index == 5) {
+            checkedEmojiIndex = 4;
             nopain.classList.remove('active');
             mild.classList.remove('active');
             moderate.classList.remove('active');

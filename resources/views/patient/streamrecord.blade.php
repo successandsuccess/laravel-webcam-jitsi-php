@@ -624,11 +624,6 @@
                 $('.vjs-current-time.vjs-time-control.vjs-control .vjs-control-text').html('Recording&nbsp;&nbsp;');
             });
 
-            // player.on('stopRecord', function() {
-            //     console.log('stopped recording!');
-           
-            // });
-
             // user completed recording and stream is available
             player.on('finishRecord', function() {
                 $('.vjs-current-time.vjs-time-control.vjs-control').css('opacity', 0);
@@ -646,8 +641,6 @@
                 // upload(player.recordedData, videoDuration);
             });
 
-            
-
             // custom record button
             deviceElement = $('.vjs-record.vjs-device-button.vjs-control.vjs-icon-av-perm')[0];
             deviceElement.addEventListener("click", function(){ 
@@ -658,9 +651,6 @@
                  recordStartButton.innerHTML = '<span class="c-record"><span class="material-icons">adjust</span>&nbsp;<b>RECORD</b></span><span class="c-stop"><span class="material-icons">adjust</span>&nbsp;<b>STOP RECORDING</b></span>';
             });
 
-
-            
-          
         }
 
         function handleDelete() {
