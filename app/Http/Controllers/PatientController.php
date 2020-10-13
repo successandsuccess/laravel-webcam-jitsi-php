@@ -168,11 +168,7 @@ class PatientController extends Controller
             '03:00 pm'
         ];
 
-        // dd($time);
-
         $timeId = array_search($time, $times, true);
-
-        // dd($timeId);
 
         return view('patient.waiting-ready', compact('meeting', 'time', 'timeId'));
     }
@@ -192,7 +188,6 @@ class PatientController extends Controller
         } 
 
         return 'Success';
-       
     }
 
     public function careplan_submitfeedback() {
