@@ -48,6 +48,8 @@ Route::prefix('patient')->group(function() {
     Route::get('/waiting', 'PatientController@patientwaiting')->name('patient.waiting');
     Route::get('/waiting-ready/{meetingId}', 'PatientController@patientwaitingready')->name('patient.waiting.ready');
     Route::post('/waiting-ready', 'PatientController@patientwaitingreadyfeedback')->name('patient.waiting.ready.post');
+    Route::get('/streamrecord', 'PatientController@patientstreamrecord')->name('patient.streamrecord');
+    Route::post('/upload', 'PatientController@upload')->name('patient.upload');
 });
 
 // Admin routes

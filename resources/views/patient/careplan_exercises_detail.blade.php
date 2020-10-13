@@ -116,7 +116,7 @@
 
                         <div class="row mb-30px">
                             <div class="col-md-6">
-                                <a href="{{ route('streamrecord') }}"><button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record video</button></a>
+                                <a href="{{ route('patient.streamrecord') }}"><button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record video</button></a>
                             </div>
                             <div class="col-md-6">
                                 <button onclick="handleRecordTime()" class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record time</button>
@@ -149,7 +149,7 @@
                         </div>
                         <!-- timer end -->
 
-                        @if ($recorded == 1) 
+                        @if ($recordedVideoId != 0) 
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="recorded-video">
@@ -177,7 +177,7 @@
                         
 
                         <div class="mb-30px mt-35px">
-                        @if ($recorded == 1) 
+                        @if ($recordedVideoId != 0) 
                             <button class="btn blue-btn patient-btn-text width-104px height-36px" id="show_default_modal">next</button>
                         @else 
                             <button id="firststepbtn" onclick="handleDisabledSubmit()" class="btn patient-disabled-btn patient-btn-text width-104px height-36px">next</button>
@@ -215,7 +215,7 @@
                 <!-- /.modal-content -->
             </div>
             <!-- /.modal-dialog -->
-      </div>
+        </div>
       <!-- /.modal -->
 @endsection
 

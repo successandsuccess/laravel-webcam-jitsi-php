@@ -200,24 +200,69 @@ class PatientController extends Controller
 
     public function careplan_exercises_detail(Request $request) {
         // dd($request->all());
-        $recorded = 0;
-        $recordId = 0;
+        $recordedVideoId = 0;
+        $patientActivityId = 0;
 
-        if( isset($request->recorded) && $request->recorded == 1 ) {
-            $recorded = 1;
+        if( isset($request->recordedVideoId) ) {
+            $recordedVideoId = $request->recordedVideoId;
         }
 
-        if ( isset($request->recordId)) {
-            $recordId = $request->recordId;
+        if ( isset($request->patientActivityId)) {
+            $patientActivityId = $request->patientActivityId;
         }
-        return view('patient.careplan_exercises_detail', compact('recorded', 'recordId'));
+        return view('patient.careplan_exercises_detail', compact('recordedVideoId', 'patientActivityId'));
     }
 
     public function careplan_exercises_review() {
         return view('patient.careplan_exercises_review');
     }
 
+    public function patientstreamrecord() {
+        return view('patient.streamrecord');
+    }
 
+    public function upload(Request $request)
+    {
+        header('Access-Control-Allow-Origin: *');
+        $duration = 0;
+        if ( isset($request->duration) ) {
+            $duration = $request->duration;
+        }
+        
+        
+        if ( 0 < $_FILES['file']['error'] ) {
+            echo 'Error: ' . $_FILES['file']['error'] . '<br>';
+        }
+        else {
+            
+            move_uploaded_file($_FILES['file']['tmp_name'], public_path('uploads') . '/' . $_FILES['file']['name']);
+            $target_path = $_SERVER['DOCUMENT_ROOT'] . "/uploads/" . $_FILES['file']['name'];
+
+    
+            $videoUpload = new VideoUploads;
+            $videoUpload->videoUrl = $target_path;
+            $videoUpload->userId = Auth::user()->id;
+            $videoUpload->duration = $duration;
+            $videoUpload->save();
+
+            $patientActivity = new PatientActivity;
+            $patientActivity->appoint_time = $videoUpload->created_at; // current recorded time
+            $patientActivity->type = 2; // self directed video record type.
+            $patientActivity->length = $duration; // recorded video length
+            $patientActivity->completion = 0; // session completion checking to view recordings from provider.
+            $patientActivity->videouploads_id = $videoUpload->id; // recorded video
+            $patientActivity->user_id = Auth::user()->id; // recorded patient
+            $patientActivity->save();
+
+            // echo 'Success';
+            return response()->json([
+                'status' => 200,
+                'recordedVideoId' => $videoUpload->id,
+                'patientActivityId' => $patientActivity->id,
+            ]);
+
+        }
+    }
 
 
 
@@ -381,41 +426,4 @@ class PatientController extends Controller
         return 'Success';
     }
 
-    public function upload(Request $request)
-    {
-        header('Access-Control-Allow-Origin: *');
-        $duration = 0;
-        if ( isset($request->duration) ) {
-            $duration = $request->duration;
-        }
-        
-        
-        if ( 0 < $_FILES['file']['error'] ) {
-            echo 'Error: ' . $_FILES['file']['error'] . '<br>';
-        }
-        else {
-            
-            move_uploaded_file($_FILES['file']['tmp_name'], public_path('uploads') . '/' . $_FILES['file']['name']);
-            $target_path = $_SERVER['DOCUMENT_ROOT'] . "/uploads/" . $_FILES['file']['name'];
-
-    
-            $videoUpload = new VideoUploads;
-            $videoUpload->videoUrl = $target_path;
-            $videoUpload->userId = Auth::user()->id;
-            $videoUpload->duration = $duration;
-            $videoUpload->save();
-
-            $patientActivity = new PatientActivity;
-            $patientActivity->appoint_time = $videoUpload->created_at; // current recorded time
-            $patientActivity->type = 2; // self directed video record type.
-            $patientActivity->length = $duration; // recorded video length
-            $patientActivity->completion = 0; // session completion checking to view recordings from provider.
-            $patientActivity->videouploads_id = $videoUpload->id; // recorded video
-            $patientActivity->user_id = Auth::user()->id; // recorded patient
-            $patientActivity->save();
-
-            echo 'Success';
-
-        }
-    }
 }
