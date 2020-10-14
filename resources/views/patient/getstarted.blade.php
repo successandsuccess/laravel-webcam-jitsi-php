@@ -211,14 +211,11 @@
                             </div>
 
                             <p class="patient-bold-blue-p mt-15px">Your Sessions Over Time</p>
-
-                            <!-- <div>
-                                <img src="{{ asset('admin_assets/dist/img/patternedchart.png') }}" alt="chart">
-                            </div> -->
-                            <div class="text-left mt-minus-40px">
+                            <!-- chart calendar start-->
+                            <div class="mt-minus-40px">
                                 <div id = "container"></div>
                             </div>
-
+                            <!-- chart calendar end-->
                             <p class="patient-bold-blue-p">Your Pain Over Time</p>
 
                             <p class="exercise-blue-small-font mb-35px">09/28/2020 - 10/04/2020 &nbsp;<i class="fas fa-angle-down"></i></p>
@@ -436,7 +433,7 @@ function handleEnterWaitingRoom() {
             var options = {
                'title':'',
                 legend: {position: 'none'},
-               'width':900,
+            //    'width':900,
                'height':200,
                 calendar: {
                 
@@ -468,6 +465,10 @@ function handleEnterWaitingRoom() {
             chart.draw(data, options);
          }
          google.charts.setOnLoadCallback(drawChart);
+
+        $(window).resize(function(){
+            drawChart();
+        });
       </script>
 
       <script>
