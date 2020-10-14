@@ -158,7 +158,7 @@
                                     @endfor
                                 @else
                                     <div class="col-md-12">
-                                        <p class="custom-16-font text-center mt-30px mb-40px"><b>Still, No Exercises assigned for you.</b></p>
+                                        <p class="patient-card-box-title text-center mt-30px mb-40px">Still, No Exercises assigned for you.</p>
                                     </div>
                                 @endif
                             </div>
