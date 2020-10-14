@@ -242,7 +242,7 @@
             opacity: 0;
             top: -1520%;
             background: rgba(0, 0, 0, 0.64);
-            left: -9%;
+            left: -11%;
             width: 240px;
             height: 41px;
             line-height: 2.5rem;
@@ -319,6 +319,14 @@
                 top: -1310%;
             }
         }
+        @media only screen and (max-height: 823px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -1300%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -1300%;
+            }
+        }
         @media only screen and (max-height: 815px) {
             .vjs-current-time.vjs-time-control.vjs-control{
                 top: -1280%;
@@ -391,6 +399,14 @@
                 top: -1000%;
             }
         }
+        @media only screen and (max-height: 660px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                top: -980%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                top: -980%;
+            }
+        }
         @media only screen and (max-height: 651px) {
             .vjs-current-time.vjs-time-control.vjs-control{
                 top: -950%;
@@ -413,7 +429,7 @@
                 left: -8%;
             }
             .vjs-duration.vjs-time-control.vjs-control{
-                left: -26%;
+                left: -28%;
             }
         }
         @media only screen and (max-width: 1560px) {
@@ -422,6 +438,14 @@
             }
             .vjs-duration.vjs-time-control.vjs-control{
                 left: -26%;
+            }
+        }
+        @media only screen and (max-width: 1260px) {
+            .vjs-current-time.vjs-time-control.vjs-control{
+                left: -16%;
+            }
+            .vjs-duration.vjs-time-control.vjs-control{
+                left: -30%;
             }
         }
     </style>

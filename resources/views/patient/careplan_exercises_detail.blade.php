@@ -137,7 +137,7 @@
                                 Set {{ $order? $order: 1 }}
                             </p>
                             <div class="d-flex justify-content-center mt-25px">
-                                <div class="progress-circle">
+                                <div id="progress-circle" class="progress-circle">
                                     <span class="timer timer-custom-font">00:00:00</span>
                                     <div class="left-half-clipper">
                                         <div class="first50-bar"></div>
@@ -338,9 +338,15 @@ function timerHandleStart(index, order, exercisecount) {
             tempSeconds = time.original.seconds;
             tempTotal = Number(tempHours) * 3600 + Number(tempMinutes) * 60 + Number(tempSeconds);
             tempTotalDeg = ( Number(tempTotal) / (1 * 3600) ) * 360;
+            if ( (tempTotalDeg > 180 && tempTotalDeg < 360) || (tempTotalDeg > 540 && tempTotalDeg < 720) ) {
+                document.getElementById('progress-circle').classList.add('over50');
+            } else {
+                document.getElementById('progress-circle').classList.remove('over50');
+            }
             tempTotalDeg = tempTotalDeg.toFixed(2) + 'deg';
             // console.log(tempHours, tempMinutes, tempSeconds, tempTotal, tempTotalDeg);
             $('.value-bar').css('transform', `rotate(${tempTotalDeg})`);
+            
 
         });
 
