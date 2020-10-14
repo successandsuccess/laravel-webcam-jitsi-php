@@ -14,6 +14,7 @@ use App\FirstFeedback;
 use Auth;
 use DateTime;
 use App\SecondBeforeFeedback;
+use App\SecondOneExerciseFeedback;
 
 
 class PatientController extends Controller
@@ -273,6 +274,18 @@ class PatientController extends Controller
         $patientActivity->completion = 0; // session completion checking to view recordings from provider.
         $patientActivity->user_id = Auth::user()->id; // recorded patient
         $patientActivity->save();
+
+        return 'Success';
+    }
+
+    public function careplan_exercises_detail_oneexercisefeedback(Request $request)
+    {
+        // save the one exercise feedback after complete one exercise
+        $oneExerciseFeedback = new SecondOneExerciseFeedback;
+        $oneExerciseFeedback->feeling = $request->feeling;
+        $oneExerciseFeedback->order = $request->order;
+        $oneExerciseFeedback->user_id = Auth::user()->id;
+        $oneExerciseFeedback->save();
 
         return 'Success';
     }

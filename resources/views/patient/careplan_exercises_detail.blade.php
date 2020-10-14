@@ -290,11 +290,46 @@ function handleSubmit() {
         let nextOrder = Number(completedExerciseOrder) + 1;
         let exercisecount = document.getElementById('exercisecount').innerHTML
         console.log(completedExerciseOrder, nextOrder ,exercisecount, checkedEmoji);
-        if ( completedExerciseOrder ==  exercisecount) {
-            window.location = "/patient/careplan/exercises-review"; // completed all assigned exercises.
-        } else {
-            window.location = "/patient/careplan/exercises-detail?order=" + nextOrder + "&exercisecount=" + exercisecount; // completed only one exercises. so go to recycle.
+
+        // save the one exercise completion feedback to secondoneexercisefeedbacks
+        let submitData = {
+            feeling: checkedEmoji,
+            order: completedExerciseOrder,
+            exercisecount: exercisecount
         }
+
+        $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        
+        $.ajax({
+            url: "{{ route('patient.careplan.exercises_detail.oneexercisefeedback') }}",
+            type: 'POST',              
+            data: submitData,
+            success: function(result)
+            {
+                if( result == 'Success' ) {
+                    console.log('successfully submitted!');
+                    toastr.success('Submit Feedback was successfully saved.');
+                    if ( completedExerciseOrder ==  exercisecount) {
+                        window.location = "/patient/careplan/exercises-review"; // completed all assigned exercises.
+                    } else {
+                        window.location = "/patient/careplan/exercises-detail?order=" + nextOrder + "&exercisecount=" + exercisecount; // completed only one exercises. so go to recycle.
+                    }
+                }
+                else {
+                    console.log('Error Occured In Submit Feedback, Retry or Check Network');
+                    toastr.error('Submit Feedback went wrong. Check network and retry.');
+                }
+            },
+            error: function(data)
+            {
+                console.log('error',data);
+                toastr.error('Submit Feedback went wrong. Check network and retry.');
+            }
+        });
 
     } else {
         console.log("No element found with the clicked emoji");
