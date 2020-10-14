@@ -84,7 +84,7 @@
                         <p class="patient-bold-blue-p mb-0px">OVERVIEW</p>
                         <h3 class="waiting-light-blue-h3 mt-minus-25px">Here' s the plan.</h3>
                         <p class="custom-16-font mt-20px mb-30px">
-                            Below are the exercises <b>Dr. Wang</b> has perscribed for you. You’ll be walked through each exercise one by one, recording your experience of each. This is about progress not perfection, take your time and do the best you can.
+                            Below are the exercises <b>Dr. {{ $patient->getProvider1? $patient->getProvider1->name: 'Not Available' }}</b> has perscribed for you. You’ll be walked through each exercise one by one, recording your experience of each. This is about progress not perfection, take your time and do the best you can.
                         </p>
                         <p class="custom-16-font mt-20px mb-40px">
                             <b class="color-red">Remember</b>: If your pain ever increases to an uncomfortable level, please stop and contact your practitioner.

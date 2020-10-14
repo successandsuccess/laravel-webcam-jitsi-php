@@ -209,7 +209,7 @@ class PatientController extends Controller
     public function careplan_exercises_overview() {
         $userId = Auth::user()->id;
         // dd($userId);
-        $patient = User::with('getRx1', 'getRx2', 'getRx3')->find($userId);
+        $patient = User::with('getRx1', 'getRx2', 'getRx3', 'getProvider1')->find($userId);
         // dd($patient);
         return view('patient.careplan_exercises_overview', compact('patient'));
     }
