@@ -233,6 +233,9 @@
 
 @section('javascript')
 <script>
+// global values for Recorded time value
+var recordedTime = 0;
+
 // show the feedback modal for one exercises completion
 function showFeedbackModal(order, exercisecount) {
     console.log('Submit Feedback for Exercise ', order);
@@ -305,6 +308,44 @@ function handleDisabledSubmit() {
     let exercisecount = document.getElementById('timerExercisecount').innerHTML;
     let temp = document.getElementById('firststepbtn').className;
     if ( temp.includes('blue-btn') ) {
+        // save the time or video id if time was recorded.
+        if ( recordedTime != 0 ) {
+            let sendData = {
+                record_type: 2,
+                duration: recordedTime,
+                order : order,
+            }
+
+            $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        
+            $.ajax({
+                url: "{{ route('patient.careplan.exercises_detail.timerecord') }}",
+                type: 'POST',              
+                data: sendData,
+                success: function(result)
+                {
+                    if( result == 'Success' ) {
+                        console.log('successfully submitted!');
+                        toastr.success('Recorded Time was successfully saved.');
+                    }
+                    else {
+                        console.log('Error Occured In Time Record Saving, Retry or Check Network');
+                        toastr.error('Time Record Saving went wrong. Check network and retry.');
+                    }
+                },
+                error: function(data)
+                {
+                    console.log('error',data);
+                    toastr.error('Time Record Saving went wrong. Check network and retry.');
+                }
+            });
+        }
+
+
         $('#modal-default').modal('show');
 
         // send the order and exercise count to Submit Modal
@@ -361,6 +402,9 @@ function timerHandleStart(index, order, exercisecount) {
     if (index == 2) {
         $('.timer').countimer('stop');
         console.log('finished time', $('.timer').countimer('current'));
+        let finishedTime = $('.timer').countimer('current').original;
+        // save recorded time as the second format
+        recordedTime = Number(finishedTime.hours) * 3600 + Number(finishedTime.minutes) * 60 + Number(finishedTime.seconds);
         document.getElementById('timerstop').style.display = 'none';
         document.getElementById('timerfinish').style.display = 'initial';
         $('.value-bar').css('display','none');

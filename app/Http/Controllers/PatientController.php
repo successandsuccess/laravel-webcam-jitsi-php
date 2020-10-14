@@ -248,10 +248,29 @@ class PatientController extends Controller
                 $patientDetail = $patient->getRx3;
             }
         }
-        // dd($patientDetail);
-        // dd($recordedVideoId, $patientActivityId, $order, $exercisecount);
 
         return view('patient.careplan_exercises_detail', compact('recordedVideoId', 'patientActivityId', 'order', 'exercisecount', 'patientDetail'));
+    }
+
+    public function careplan_exercises_detail_timerecord(Request $request)
+    {
+        // save the recorded time to videouploads table
+        $timeRecord = new VideoUploads;
+        $timeRecord->record_type = $request->record_type;
+        $timeRecord->duration = $request->duration;
+        $timeRecord->userId = Auth::user()->id;
+        $timeRecord->save();
+
+        // save recorded time activity to the patient actvitiy table
+        $patientActivity = new PatientActivity;
+        $patientActivity->appoint_time = $timeRecord->created_at; // current recorded time
+        $patientActivity->type = 2; // self directed video record type.
+        $patientActivity->length = $request->duration; // recorded video length
+        $patientActivity->completion = 0; // session completion checking to view recordings from provider.
+        $patientActivity->user_id = Auth::user()->id; // recorded patient
+        $patientActivity->save();
+
+        return 'Success';
     }
 
     public function careplan_exercises_review() {
@@ -296,11 +315,12 @@ class PatientController extends Controller
             move_uploaded_file($_FILES['file']['tmp_name'], public_path('uploads') . '/' . $_FILES['file']['name']);
             $target_path = $_SERVER['DOCUMENT_ROOT'] . "/uploads/" . $_FILES['file']['name'];
 
-    
+            //save the recorded video to uploadvideos table as record_type = 1
             $videoUpload = new VideoUploads;
             $videoUpload->videoUrl = $target_path;
             $videoUpload->userId = Auth::user()->id;
             $videoUpload->duration = $duration;
+            $videoUpload->record_type = 1;
             $videoUpload->save();
 
             $patientActivity = new PatientActivity;
