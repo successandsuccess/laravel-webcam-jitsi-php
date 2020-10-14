@@ -435,31 +435,32 @@ function handleEnterWaitingRoom() {
             // Set chart options
             var options = {
                'title':'',
-               'width':650,
+                legend: {position: 'none'},
+               'width':900,
                'height':200,
-               calendar: {
-               
-                  yearLabel: {
-                     fontName: 'Times-Roman',
-                     fontSize: 32,
-                    //  color: '#1A8763',
-                     color: 'gray',
-                     bold: true,
-                     italic: true
-                  },
-               
-                  monthOutlineColor: {
-                     stroke: '#981b48',
-                     strokeOpacity: 0.8,
-                     strokeWidth: 2
-                  },
-               
-                  unusedMonthOutlineColor: {
-                     stroke: '#bc5679',
-                     strokeOpacity: 0.8,
-                     strokeWidth: 1
-                  }		 
-               }
+                calendar: {
+                
+                    yearLabel: {
+                        fontName: 'Times-Roman',
+                        fontSize: 32,
+                        //  color: '#1A8763',
+                        color: 'gray',
+                        bold: true,
+                        italic: true
+                    },
+                
+                    monthOutlineColor: {
+                        stroke: '#981b48',
+                        strokeOpacity: 0.8,
+                        strokeWidth: 2
+                    },
+                
+                    unusedMonthOutlineColor: {
+                        stroke: '#bc5679',
+                        strokeOpacity: 0.8,
+                        strokeWidth: 1
+                    }		 
+                }
             };
 
             // Instantiate and draw the chart.

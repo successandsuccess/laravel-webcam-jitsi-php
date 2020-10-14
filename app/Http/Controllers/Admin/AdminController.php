@@ -100,11 +100,13 @@ class AdminController extends Controller
         $availablePatientActivities = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
                                                         ->where('type', 2) // only self directed videos
                                                         ->where('completion', 0)
+                                                        ->orderby('id', 'desc')
                                                         ->get();
 
         $pastPaitientActivities = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
                                                     ->where('type', 2) // only self directed videos
                                                     ->where('completion', 1)
+                                                    ->orderby('id', 'desc')
                                                     ->get();
         // dd($patientActivities);
 
