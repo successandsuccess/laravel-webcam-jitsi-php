@@ -185,9 +185,6 @@
                         <div id="timerOrder" class="d-none"></div>
                         <div id="timerExercisecount" class="d-none"></div>
                         
-                           
-                        
-
                         <div class="mb-30px mt-35px">
                         @if ($recordedVideoId != 0) 
                             <button class="btn blue-btn patient-btn-text width-104px height-36px" onclick="showFeedbackModal(<?php echo $order; ?>, <?php echo $exercisecount; ?>)">next</button>
