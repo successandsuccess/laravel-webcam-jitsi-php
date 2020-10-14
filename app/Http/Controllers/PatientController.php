@@ -50,6 +50,10 @@ class PatientController extends Controller
             '02:15 PM',
         ];
 
+        // Patient
+        $patient = User::with('getRx1', 'getRx2', 'getRx3')->find(Auth::user()->id);
+        // dd($patient);
+
         // check if provider and time info existed
         if ($request->input('provider') && $request->input('provider') != '') {
             $providerId = $request->input('provider');
@@ -59,7 +63,7 @@ class PatientController extends Controller
             $timeId = 0;
         }
 
-        return view('patient.getstarted', compact('providerId', 'timeId', 'providers', 'times'));
+        return view('patient.getstarted', compact('providerId', 'timeId', 'providers', 'times', 'patient'));
     }
 
     public function patientcareplan() {

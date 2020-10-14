@@ -141,36 +141,26 @@
                             </div>
 
                             <div class="row mt-25px">
-                                    <div class="col-md-4">
-                                        <div class="patient-card-box">
-                                            <iframe width="100%" height="196" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                            <p class="patient-card-box-title mt-15px mb-5px">Upper Back Stretches</p>
-                                            <ul class="pl-18px">
-                                                <li class="exercise-li-muted-font">4x week, for 20 minutes</li>
-                                                <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                            </ul>
-                                        </div>
+                                @if( isset($patient->rx_1) || isset($patient->rx_2) || isset($patient->rx_3 ) )
+                                    @for( $i = 1; $i < 4; $i++ )
+                                        @if( isset($patient['getRx'.$i]) )
+                                            <div class="col-md-4">
+                                                <div class="patient-card-box">
+                                                    <iframe width="100%" height="196" src="{{ $patient['getRx'.$i]->rx_link ? $patient['getRx'.$i]->rx_link : 'template rx link' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                    <p class="patient-card-box-title mt-15px mb-5px">{{ $patient['getRx'.$i]->rx_name ? $patient['getRx'.$i]->rx_name : 'template rx name' }}</p>
+                                                    <ul class="pl-18px">
+                                                        <li class="exercise-li-muted-font">{{ $patient['getRx'.$i]->frequency ? $patient['getRx'.$i]->frequency : 'template rx frequency' }}</li>
+                                                        <li class="exercise-li-muted-font">{{ $patient['getRx'.$i]->duration ? $patient['getRx'.$i]->duration : 'template rx duration' }}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endfor
+                                @else
+                                    <div class="col-md-12">
+                                        <p class="custom-16-font text-center mt-30px mb-40px"><b>Still, No Exercises assigned for you.</b></p>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="patient-card-box">
-                                            <iframe width="100%" height="196" src="https://www.youtube.com/embed/6BhPhO4ZXNA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                            <p class="patient-card-box-title mt-15px mb-5px">SI Joint Extension</p>
-                                            <ul class="pl-18px" >
-                                                <li class="exercise-li-muted-font">4x week, for 20 minutes</li>
-                                                <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="patient-card-box">
-                                            <iframe width="100%" height="196" src="https://www.youtube.com/embed/jwoTJNgh8BY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                            <p class="patient-card-box-title mt-15px mb-5px">Lumbar Stenosis Stretches</p>
-                                            <ul class="pl-18px">
-                                                <li class="exercise-li-muted-font">4x week, for 20 minutes</li>
-                                                <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                @endif
                             </div>
 
                             <a href="#" class="patient-link-text mt-10">View Previous Care Plans</a>
