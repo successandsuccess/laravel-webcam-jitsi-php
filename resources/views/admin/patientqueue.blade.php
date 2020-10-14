@@ -166,7 +166,7 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <button class="btn btn-default w-100px">MESSAGE</button>
-                        <a href="https://video.patientconnect.io/meetdoctor" target="_blank"><button class="btn btn-primary btn-blue w-100px">START</button></a>
+                        <a href="{{ $currentQueues[0]->getMeetings->meetUrl }}" target="_blank"><button class="btn btn-primary btn-blue w-100px">START</button></a>
                     </div>
                 </div>
                 @else

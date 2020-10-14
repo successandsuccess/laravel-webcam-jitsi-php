@@ -48,11 +48,13 @@ class AdminController extends Controller
         $currentQueues = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
                                         ->where('type', 1)
                                         ->where('completion', 0)
+                                        ->orderby('id', 'desc')
                                         ->get();
 
         $pastQueues = PatientActivity::with('getUser', 'getVideoUploads', 'getMeetings', 'getProvider')
                                         ->where('type', 1)
                                         ->where('completion', 1)
+                                        ->orderby('id', 'desc')
                                         ->get();
 
         if ($request->ajax()) {
