@@ -381,7 +381,10 @@ function handleDisabledSubmit() {
         }
 
 
-        $('#modal-default').modal('show');
+        $("#modal-default").modal({
+            backdrop: 'static',
+            keyboard: false
+        });
 
         // send the order and exercise count to Submit Modal
         document.getElementById('order').innerHTML = order;
