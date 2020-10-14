@@ -210,15 +210,15 @@
                 let newInjury;
                 if ( unspeakableClassName.includes('active') || accidentRadio1.checked || injuryRadio1.checked ) {
                     if ( accidentRadio1.checked ) {
-                            newAccident = 1;
+                            newAccident = 1; // Yes
                     } else {
-                        newAccident = 0;
+                        newAccident = 0; // No
                     }
 
                     if( injuryRadio1.checked ) {
-                        newInjury = 1;
+                        newInjury = 1; // Yes
                     } else {
-                        newInjury = 0;
+                        newInjury = 0; // No
                     }
 
                     let sendData = {
@@ -259,15 +259,15 @@
                 else {
 
                     if ( accidentRadio1.checked ) {
-                            newAccident = 1;
+                            newAccident = 1; // yes
                     } else {
-                        newAccident = 0;
+                        newAccident = 0; // no
                     }
 
                     if( injuryRadio1.checked ) {
-                        newInjury = 1;
+                        newInjury = 1; // yes
                     } else {
-                        newInjury = 0;
+                        newInjury = 0; // no
                     }
                     
                     let sendData = {
