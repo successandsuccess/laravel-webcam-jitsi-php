@@ -44,6 +44,7 @@ Route::prefix('patient')->group(function() {
     Route::get('/careplan/submitfeedback', 'PatientController@careplan_submitfeedback')->name('patient.careplan.submitfeedback');
     Route::post('/careplan/submitfeedback', 'PatientController@careplan_submitfeedback_post')->name('patient.careplan.submitfeedback.post');
     Route::get('/careplan/exercises-overview', 'PatientController@careplan_exercises_overview')->name('patient.careplan.exercises_overview');
+    Route::post('/careplan/exercises-overview/totalexercisefeedback', 'PatientController@careplan_exercises_totalexercisefeedback')->name('patient.careplan.exercises_totalexercisefeedback');
     Route::get('/careplan/exercises-detail', 'PatientController@careplan_exercises_detail')->name('patient.careplan.exercises_detail');
     Route::post('/careplan/exercises-detail/timerecord', 'PatientController@careplan_exercises_detail_timerecord')->name('patient.careplan.exercises_detail.timerecord');
     Route::post('/careplan/exercises-detail/oneexercisefeedback', 'PatientController@careplan_exercises_detail_oneexercisefeedback')->name('patient.careplan.exercises_detail.oneexercisefeedback');

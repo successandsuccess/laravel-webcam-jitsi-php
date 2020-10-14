@@ -15,6 +15,7 @@ use Auth;
 use DateTime;
 use App\SecondBeforeFeedback;
 use App\SecondOneExerciseFeedback;
+use App\SecondTotalExerciseFeedback;
 
 
 class PatientController extends Controller
@@ -292,6 +293,19 @@ class PatientController extends Controller
 
     public function careplan_exercises_review() {
         return view('patient.careplan_exercises_review');
+    }
+
+    public function careplan_exercises_totalexercisefeedback(Request $request)
+    {
+        // dd($request->all());
+        $totalExerciseFeedback = new SecondTotalExerciseFeedback;
+        $totalExerciseFeedback->todaypain = $request->todaypain;
+        $totalExerciseFeedback->completable = $request->completable;
+        $totalExerciseFeedback->difficult_level = $request->difficult_level;
+        $totalExerciseFeedback->user_id = Auth::user()->id;
+        $totalExerciseFeedback->save();
+
+        return 'Success';
     }
 
     public function patientstreamrecord(Request $request) {

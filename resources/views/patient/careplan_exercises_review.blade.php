@@ -152,7 +152,7 @@
                         </div>
 
                         <div class="mb-35px mt-15px">
-                                    <button id="firststepbtn" class="btn patient-btn-text width-150px height-36px patient-disabled-btn" onclick="firstStepSubmit()">Submit</button>
+                                    <button id="firststepbtn" class="btn patient-btn-text width-150px height-36px patient-disabled-btn" onclick="totalCompleteSubmit()">Submit</button>
                         </div>
                 </div>            
             </div>
@@ -184,6 +184,8 @@
 @section('javascript')
 <script>
 
+    // inital values to save the feeback
+    var checkedEmoji = 0;
 
     // emojis
     let nopain = document.getElementById('nopain');
@@ -261,16 +263,77 @@
         }
     });
 
-    function firstStepSubmit() {
+    function totalCompleteSubmit() {
         const classList = document.getElementsByClassName("btn patient-btn-text width-150px height-36px patient-disabled-btn");
         const classLength = classList.length;
         if (classLength == 0) {
             console.log("Element found with the clicked emoji");
-            $("#modal-lastreview").modal({
-                backdrop: 'static',
-                keyboard: false
+            let completable;
+            let difficult_level;
+            if ( completableRadio1.checked ) {
+                completable = 1; // completable Yes.
+            } else {
+                completable = 0; // completable No.
+            }
+
+            if ( levelRadio1.checked ) {
+                difficult_level = 1; // very esay
+            }
+            if ( levelRadio2.checked ) {
+                difficult_level = 2; // easy
+            }
+            if ( levelRadio3.checked ) {
+                difficult_level = 3; // moderate
+            }
+            if ( levelRadio4.checked ) {
+                difficult_level = 4; // difficult
+            }
+            if ( levelRadio5.checked ) {
+                difficult_level = 5; // very difficult
+            }
+
+            // save the total completed feedback 
+            let totalCompleteData = {
+                todaypain : checkedEmoji,
+                completable : completable,
+                difficult_level : difficult_level
+            }
+            console.log(totalCompleteData);
+
+            $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        
+            $.ajax({
+                url: "{{ route('patient.careplan.exercises_totalexercisefeedback') }}",
+                type: 'POST',              
+                data: totalCompleteData,
+                success: function(result)
+                {
+                    if( result == 'Success' ) {
+                        console.log('successfully submitted!');
+                        toastr.success('Total Exercises Feedback was successfully saved.');
+                        $("#modal-lastreview").modal({
+                            backdrop: 'static',
+                            keyboard: false
+                        });
+                    }
+                    else {
+                        console.log('Error Occured In Total Exercises Feedback, Retry or Check Network');
+                        toastr.error('Total Exercises Feedback went wrong. Check network and retry.');
+                    }
+                },
+                error: function(data)
+                {
+                    console.log('error',data);
+                    toastr.error('Final Exercises Feedback went wrong. Check network and retry.');
+                }
             });
-            $("#modal-lastreview").modal('show');
+
+         
+
         } else {
             console.log("No element found with the clicked emoji");
             window.alert('Please choose every options');
@@ -286,6 +349,8 @@
             intense.classList.remove('active');
             unspeakable.classList.remove('active');
 
+            checkedEmoji = 1; // no pain
+
             if ((completableRadio1.checked || completableRadio2.checked ) && (levelRadio1.checked || levelRadio2.checked || levelRadio3.checked || levelRadio4.checked || levelRadio5.checked) ) {
                 document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
                 document.getElementById('firststepbtn').classList.add('blue-btn');
@@ -298,6 +363,8 @@
             moderate.classList.remove('active');
             intense.classList.remove('active');
             unspeakable.classList.remove('active');
+
+            checkedEmoji = 2 // mild
 
             if ((completableRadio1.checked || completableRadio2.checked ) && (levelRadio1.checked || levelRadio2.checked || levelRadio3.checked || levelRadio4.checked || levelRadio5.checked) ) {
                 document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
@@ -312,6 +379,8 @@
             intense.classList.remove('active');
             unspeakable.classList.remove('active');
 
+            checkedEmoji = 3 // moderate
+
             if ((completableRadio1.checked || completableRadio2.checked ) && (levelRadio1.checked || levelRadio2.checked || levelRadio3.checked || levelRadio4.checked || levelRadio5.checked) ) {
                 document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
                 document.getElementById('firststepbtn').classList.add('blue-btn');
@@ -325,6 +394,8 @@
             intense.classList.add('active');
             unspeakable.classList.remove('active');
 
+            checkedEmoji = 4 // intense
+
             if ((completableRadio1.checked || completableRadio2.checked ) && (levelRadio1.checked || levelRadio2.checked || levelRadio3.checked || levelRadio4.checked || levelRadio5.checked) ) {
                 document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
                 document.getElementById('firststepbtn').classList.add('blue-btn');
@@ -337,6 +408,8 @@
             moderate.classList.remove('active');
             intense.classList.remove('active');
             unspeakable.classList.add('active');
+
+            checkedEmoji = 5 // unspeakable
 
             if ((completableRadio1.checked || completableRadio2.checked ) && (levelRadio1.checked || levelRadio2.checked || levelRadio3.checked || levelRadio4.checked || levelRadio5.checked) ) {
                 document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
