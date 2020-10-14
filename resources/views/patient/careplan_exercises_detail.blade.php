@@ -83,12 +83,20 @@
                     </div>
                 </div>
                 <div class="patient-box mt-25px">
-                        <p class="patient-bold-blue-p mb-0px">Exercise One</p>
-                        <h3 class="waiting-light-blue-h3 mt-minus-25px">Upper Back Stretches.</h3>
+                        <p class="patient-bold-blue-p mb-0px">
+                            Exercise 
+                            @if( $order == 1 )
+                                One
+                            @elseif ( $order == 2 )
+                                Two
+                            @elseif ( $order == 3 )
+                                Three
+                            @endif
+                        </p>
+                        <h3 class="waiting-light-blue-h3 mt-minus-25px">{{ $patientDetail? $patientDetail->rx_name: 'template rx name' }}</h3>
 
                         
                         <p class="custom-16-font mt-10 mb-30px">
-                        
                             Please watch the tutorial then perform on your own. Record your time on task or record a video of yourself doing the exercises.
                         </p>
 
@@ -107,7 +115,7 @@
 
                         <p class="patient-bold-blue-p mb-0px">Tutorial</p>
 
-                        <iframe width="100%" height="350" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="100%" height="350" src="{{ $patientDetail? $patientDetail->rx_link: '' }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         
                         <p class="patient-bold-blue-p mb-0px">Your Turn</p>
                         <p class="custom-16-font mt-0px mb-30px">
@@ -116,7 +124,7 @@
 
                         <div class="row mb-30px">
                             <div class="col-md-6">
-                                <a href="{{ route('patient.streamrecord') }}"><button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record video</button></a>
+                                <a href="{{ route('patient.streamrecord', ['order' => $order, 'exercisecount' => $exercisecount]) }}"><button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record video</button></a>
                             </div>
                             <div class="col-md-6">
                                 <button onclick="handleRecordTime()" class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record time</button>
@@ -126,7 +134,7 @@
                         <!-- timer start -->
                         <div class="patient-gray-box mb-20px pt-0" style="display: none" id = "recordTimeBox1">
                             <p class="custom-h3-normal text-center">
-                                Set 1
+                                Set {{ $order? $order: 1 }}
                             </p>
                             <div class="d-flex justify-content-center mt-25px">
                                 <div class="progress-circle">
@@ -139,8 +147,8 @@
                             </div>
                
                             <div class="text-center mt-25px">
-                                <button id="timerstart" onclick="timerHandleStart(1)" class="btn green-btn patient-btn-text width-104px height-36px mt-15px">START</button>
-                                <button id="timerstop" onclick="timerHandleStart(2)" class="btn red-btn patient-btn-text width-104px height-36px mt-15px" style="display:none;">STOP</button>
+                                <button id="timerstart" onclick="timerHandleStart(1, <?php echo $order; ?>, <?php echo $exercisecount; ?>)" class="btn green-btn patient-btn-text width-104px height-36px mt-15px">START</button>
+                                <button id="timerstop" onclick="timerHandleStart(2, <?php echo $order; ?>, <?php echo $exercisecount; ?>)" class="btn red-btn patient-btn-text width-104px height-36px mt-15px" style="display:none;">STOP</button>
                                 <div id="timerfinish" style="display:none;">
                                     <p class="patient-bold-blue-p mb-0 d-flex justify-content-center"><span class="material-icons color-green mt-15px">check_circle_outline</span>&nbsp;&nbsp;&nbsp;SET COMPLETED</p>
                                     <p class="delete-font text-center justify-content-center" style="margin-top: -10px">DELETE & REDO</p>
@@ -172,13 +180,17 @@
                             <br>
                             <span class="blue-color">Enter them here.</span>
                         </p>
+
+                        <!-- save the order and exercise count for Timer function -->
+                        <div id="timerOrder" class="d-none"></div>
+                        <div id="timerExercisecount" class="d-none"></div>
                         
                            
                         
 
                         <div class="mb-30px mt-35px">
                         @if ($recordedVideoId != 0) 
-                            <button class="btn blue-btn patient-btn-text width-104px height-36px" id="show_default_modal">next</button>
+                            <button class="btn blue-btn patient-btn-text width-104px height-36px" onclick="showFeedbackModal(<?php echo $order; ?>, <?php echo $exercisecount; ?>)">next</button>
                         @else 
                             <button id="firststepbtn" onclick="handleDisabledSubmit()" class="btn patient-disabled-btn patient-btn-text width-104px height-36px">next</button>
                         @endif
@@ -207,6 +219,9 @@
                                             <label class="text-center mt-15px" for="emoji">Worse</label>
                                         </div>
                         </div>
+                        <!-- Saving the Completed Exercise Id -->
+                        <div id="order" class="d-none"></div>
+                        <div id="exercisecount" class="d-none"></div>
                     </div>
                     <div class="modal-footer justify-content-center border-none mb-30px">
                         <button id="submitselfdirectedfeedback" onclick="handleSubmit()" type="button" class="btn patient-disabled-btn patient-btn-text width-104px height-36px">Submit</button>
@@ -221,38 +236,46 @@
 
 @section('javascript')
 <script>
-    $(document).ready(function(){
-        $("#show_default_modal").click(function(){
-            $("#modal-default").modal({
-                backdrop: 'static',
-                keyboard: false
-            });
-        });
+// show the feedback modal for one exercises completion
+function showFeedbackModal(order, exercisecount) {
+    console.log('Submit Feedback for Exercise ', order);
+    $("#modal-default").modal({
+        backdrop: 'static',
+        keyboard: false
     });
+
+    document.getElementById('order').innerHTML = order;
+    document.getElementById('exercisecount').innerHTML = exercisecount;
+}
 
 // emojis
 let better = document.getElementById('better');
 let same = document.getElementById('same');
 let worse = document.getElementById('worse');
 
+let checkedEmoji;
+
 function emojiclicked(index) {
         if ( index == 1 ) {
             better.classList.add('active');
             same.classList.remove('active');
             worse.classList.remove('active');
+            checkedEmoji = 1; // better
         }
 
         if (index == 2) {
             better.classList.remove('active');
             same.classList.add('active');
             worse.classList.remove('active');
+            checkedEmoji = 2; // same
         }
 
         if (index == 3) {
             better.classList.remove('active');
             same.classList.remove('active');
             worse.classList.add('active');
-        }
+            checkedEmoji = 3; // worse
+        } 
 
         document.getElementById('submitselfdirectedfeedback').classList.remove('patient-disabled-btn');
         document.getElementById('submitselfdirectedfeedback').classList.add('blue-btn');
@@ -263,7 +286,15 @@ function handleSubmit() {
     const classLength = classList.length;
     if (classLength != 0) {
         console.log("Element found with the clicked emoji");
-        window.location = "/patient/careplan/exercises-review";
+        let completedExerciseOrder = document.getElementById('order').innerHTML;
+        let nextOrder = Number(completedExerciseOrder) + 1;
+        let exercisecount = document.getElementById('exercisecount').innerHTML
+        console.log(completedExerciseOrder, nextOrder ,exercisecount, checkedEmoji);
+        if ( completedExerciseOrder ==  exercisecount) {
+            window.location = "/patient/careplan/exercises-review"; // completed all assigned exercises.
+        } else {
+            window.location = "/patient/careplan/exercises-detail?order=" + nextOrder + "&exercisecount=" + exercisecount; // completed only one exercises. so go to recycle.
+        }
 
     } else {
         console.log("No element found with the clicked emoji");
@@ -272,9 +303,17 @@ function handleSubmit() {
 }
 
 function handleDisabledSubmit() {
+    // get the saved order and exercise count
+    let order = document.getElementById('timerOrder').innerHTML;
+    let exercisecount = document.getElementById('timerExercisecount').innerHTML;
     let temp = document.getElementById('firststepbtn').className;
     if ( temp.includes('blue-btn') ) {
         $('#modal-default').modal('show');
+
+        // send the order and exercise count to Submit Modal
+        document.getElementById('order').innerHTML = order;
+        document.getElementById('exercisecount').innerHTML = exercisecount;
+
     } else {
         window.alert('Firstly Record video.');
     }
@@ -286,21 +325,22 @@ function handleRecordTime() {
     document.getElementById('recordTimeBox1').style.display = 'block';
 }
 
-function timerHandleStart(index) {
-    console.log('timer Started');
+function timerHandleStart(index, order, exercisecount) {
+    console.log('timer Started', index, order, exercisecount);
     let tempHours;
     let tempMinutes;
     let tempSeconds;
     let tempTotal;
     let tempTotalDeg;
+    // handle start timer
     if (index == 1) {
 
          $('.timer').on('second', function(evt, time){
             tempHours = time.original.hours;
             tempMinutes = time.original.minutes;
             tempSeconds = time.original.seconds;
-            tempTotal = tempHours * 3600 + tempMinutes * 60 + tempSeconds;
-            tempTotalDeg = ( tempTotal / (1 * 3600) ) * 360;
+            tempTotal = Number(tempHours) * 3600 + Number(tempMinutes) * 60 + Number(tempSeconds);
+            tempTotalDeg = ( Number(tempTotal) / (1 * 3600) ) * 360;
             tempTotalDeg = tempTotalDeg.toFixed(2) + 'deg';
             // console.log(tempHours, tempMinutes, tempSeconds, tempTotal, tempTotalDeg);
             $('.value-bar').css('transform', `rotate(${tempTotalDeg})`);
@@ -314,13 +354,18 @@ function timerHandleStart(index) {
 
     
     }
-
+    // handle stop timer
     if (index == 2) {
         $('.timer').countimer('stop');
         console.log('finished time', $('.timer').countimer('current'));
         document.getElementById('timerstop').style.display = 'none';
         document.getElementById('timerfinish').style.display = 'initial';
         $('.value-bar').css('display','none');
+
+        // save the finished order and exercisecount
+        document.getElementById('timerOrder').innerHTML = order;
+        document.getElementById('timerExercisecount').innerHTML = exercisecount;
+        // enable the submit button
         document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
         document.getElementById('firststepbtn').classList.add('blue-btn');
     }

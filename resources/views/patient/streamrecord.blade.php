@@ -437,7 +437,7 @@
                     <div class="col-md-6 m-auto d-flex">
                         <a class="navbar-brand text-brand" href="{{ route('patient.index') }}"><img class="width-150px" src="{{ env('APP_LOGO') }}" alt="logo" id="chiroonelogo"></a>
                         &nbsp;&nbsp;&nbsp;
-                        <a class="patient-exit-text d-flex ml-40px" href="{{ route('patient.careplan.exercises_detail') }}" ><i class="material-icons-outlined mt-15px">arrow_back</i>&nbsp;Back</a>
+                        <a class="patient-exit-text d-flex ml-40px" href="{{ route('patient.careplan.exercises_detail', [ 'order' => $order, 'exercisecount' => $exercisecount ]) }}" ><i class="material-icons-outlined mt-15px">arrow_back</i>&nbsp;Back</a>
                     </div>
                     <div class="col-md-6 header-right-section">
                             <!-- Messages Dropdown Menu -->
@@ -501,7 +501,7 @@
                     <div class="modal-footer justify-content-center border-none mb-30px">
                         <a style="cursor:pointer;" class="patient-streamrecord-delete" onclick="handleDelete()">Delete Video & REDO</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <button id="completeExerciseRecording" onclick="handleComplete()" type="button" class="btn blue-btn patient-btn-text width-183px height-36px">Complete Exercise</button>
+                        <button id="completeExerciseRecording" onclick="handleComplete(<?php echo $order;?>, <?php echo $exercisecount; ?>)" type="button" class="btn blue-btn patient-btn-text width-183px height-36px">Complete Exercise</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -662,12 +662,12 @@
                 $('.vjs-duration.vjs-time-control.vjs-control').css('opacity', 0);
         }
 
-        function handleComplete() {
-            upload(videoRecordedData,videoDuration);
+        function handleComplete(order, exercisecount) {
+            upload(videoRecordedData,videoDuration, order, exercisecount);
         }
 
         // upload function definition
-        function upload(blob, duration) {
+        function upload(blob, duration, order, exercisecount) {
                 // this upload handler is served using webpack-dev-server for
                 // this example, see build-config/fragments/dev.js
                 var serverUrl = '/upload';
@@ -675,6 +675,8 @@
                
                 formData.append('file', blob, blob.name);
                 formData.append('duration', duration);
+                formData.append('order', order);
+                formData.append('exercisecount', exercisecount);
 
                 console.log(duration + 'second upload recording ' + blob.name + ' to ' + serverUrl);
 
@@ -696,7 +698,14 @@
                         console.log(result);
                         if( result.status == 200 ) {
                             console.log('Save Db and Upload to Server has been Succeed!');
-                            window.location = '/patient/careplan/exercises-detail?recordedVideoId=' + result.recordedVideoId + '&patientActivityId=' + result.patientActivityId;
+                            window.location = '/patient/careplan/exercises-detail?recordedVideoId=' 
+                            + result.recordedVideoId + 
+                            '&patientActivityId=' 
+                            + result.patientActivityId +
+                            '&order='
+                            + order +
+                            '&exercisecount='
+                            + exercisecount;
                         }
                         else {
                             console.log('Error Occured In upload, Retry or Check Network');

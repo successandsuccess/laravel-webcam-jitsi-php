@@ -92,49 +92,53 @@
                         
                         <div class="patient-exercises-divider"></div>
 
+                        @if( isset($patient->rx_1) || isset($patient->rx_2) || isset($patient->rx_3 ) )
+                            <?php $exercisecount = 0; ?>
+                            @for( $i = 1; $i < 4; $i++ )
+                                @if( isset($patient['getRx'.$i]) )
+                                    <div class="row">
+                                                    <div class="col-md-12">
+                                                        <p class="exercise-blue-small-font mt-15px mb-5px">{{ $patient['getRx'.$i]->rx_name ? $patient['getRx'.$i]->rx_name : 'template rx name' }}</p>
+                                                        <ul class="pl-18px">
+                                                            <li class="exercise-li-muted-font">{{ $patient['getRx'.$i]->frequency ? $patient['getRx'.$i]->frequency : 'template rx frequency' }}</li>
+                                                            <li class="exercise-li-muted-font">{{ $patient['getRx'.$i]->duration ? $patient['getRx'.$i]->duration : 'template rx duration' }}</li>
+                                                        </ul>
+                                                    </div>
+                                    </div>
+
+                                    <div class="patient-exercises-divider"></div>
+                                    <?php $exercisecount++; ?>
+                                @endif
+                            @endfor
+
+                            <div class="mb-20px mt-40px">
+                                    <a href="{{ route('patient.careplan.exercises_detail', [ 'order' => 1, 'exercisecount' => $exercisecount ]) }}"><button id="firststepbtn" class="btn blue-btn patient-btn-text width-150px height-36px">START</button></a>
+                            </div>
+
+                        @else
                         <div class="row">
                                         <div class="col-md-12">
-                                            <p class="exercise-blue-small-font mt-15px mb-5px">Upper Back Stretches</p>
-                                            <ul class="pl-18px">
-                                                <li class="exercise-li-muted-font">4x week, for 20 minutes</li>
-                                                <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                            </ul>
+                                            <p class="custom-16-font text-left mt-30px mb-30px">Still, No Exercises assigned for you.</p>
                                         </div>
                         </div>
-
-                        <div class="patient-exercises-divider"></div>
-
-                        <div class="row">
-                                        <div class="col-md-12">
-                                            <p class="exercise-blue-small-font mt-15px mb-5px">SI Joint Extension</p>
-                                            <ul class="pl-18px" >
-                                                <li class="exercise-li-muted-font">4x week, for 20 minutes</li>
-                                                <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                            </ul>
-                                        </div>
-                        </div>
-
-                        <div class="patient-exercises-divider"></div>
-                        
-                        <div class="row">
-                                        <div class="col-md-12">
-                                        <p class="exercise-blue-small-font mt-15px mb-5px">Lumbar Stenosis Stretches</p>
-                                            <ul class="pl-18px">
-                                                <li class="exercise-li-muted-font">4x week, for 20 minutes</li>
-                                                <li class="exercise-li-muted-font">Continue for 3 weeks</li>
-                                            </ul>
-                                        </div>
-                        </div>
-
                         <div class="patient-exercises-divider"></div>
 
                         <div class="mb-20px mt-40px">
-                                    <a href="{{ route('patient.careplan.exercises_detail') }}"><button id="firststepbtn" class="btn blue-btn patient-btn-text width-150px height-36px">START</button></a>
+                                    <button id="firststepbtn" class="btn patient-disabled-btn patient-btn-text width-150px height-36px" onclick="noExercisesHandle()">START</button></a>
                         </div>
+                        @endif
+                     
+
+                        
                 </div>            
             </div>
         </section>
 @endsection
 
 @section('javascript')
+<script>
+    function noExercisesHandle() {
+        window.alert('Please contact with your provider to receive your exercises.')
+    }
+</script>
 @endsection

@@ -207,13 +207,27 @@ class PatientController extends Controller
     }
 
     public function careplan_exercises_overview() {
-        return view('patient.careplan_exercises_overview');
+        $userId = Auth::user()->id;
+        // dd($userId);
+        $patient = User::with('getRx1', 'getRx2', 'getRx3')->find($userId);
+        // dd($patient);
+        return view('patient.careplan_exercises_overview', compact('patient'));
     }
 
     public function careplan_exercises_detail(Request $request) {
         // dd($request->all());
         $recordedVideoId = 0;
         $patientActivityId = 0;
+        $order = 0;
+        $exercisecount = 0;
+
+        if( isset($request->order) ) {
+            $order = $request->order;
+        }
+
+        if( isset($request->exercisecount) ) {
+            $exercisecount = $request->exercisecount;
+        }
 
         if( isset($request->recordedVideoId) ) {
             $recordedVideoId = $request->recordedVideoId;
@@ -222,23 +236,55 @@ class PatientController extends Controller
         if ( isset($request->patientActivityId)) {
             $patientActivityId = $request->patientActivityId;
         }
-        return view('patient.careplan_exercises_detail', compact('recordedVideoId', 'patientActivityId'));
+
+        $patient = User::with('getRx1', 'getRx2', 'getRx3')->find(Auth::user()->id);
+        $patientDetail = null;
+        if( $order != 0 ) {
+            if( $order == 1 ) {
+                $patientDetail = $patient->getRx1;
+            } else if( $order == 2 ) {
+                $patientDetail = $patient->getRx2;
+            } else {
+                $patientDetail = $patient->getRx3;
+            }
+        }
+        // dd($patientDetail);
+        // dd($recordedVideoId, $patientActivityId, $order, $exercisecount);
+
+        return view('patient.careplan_exercises_detail', compact('recordedVideoId', 'patientActivityId', 'order', 'exercisecount', 'patientDetail'));
     }
 
     public function careplan_exercises_review() {
         return view('patient.careplan_exercises_review');
     }
 
-    public function patientstreamrecord() {
-        return view('patient.streamrecord');
+    public function patientstreamrecord(Request $request) {
+        $order = 0;
+        $exercisecount = 0;
+        if( isset($request->order) ) {
+            $order = $request->order;
+        }
+
+        if( isset($request->exercisecount) ) {
+            $exercisecount = $request->exercisecount;
+        }
+        return view('patient.streamrecord', compact('order', 'exercisecount'));
     }
 
     public function upload(Request $request)
     {
         header('Access-Control-Allow-Origin: *');
         $duration = 0;
+        $order = 0;
+        $exercisecount = 0;
         if ( isset($request->duration) ) {
             $duration = $request->duration;
+        }
+        if ( isset($request->order) ) {
+            $order = $request->order;
+        }
+        if ( isset($request->exercisecount) ) {
+            $exercisecount = $request->exercisecount;
         }
         
         
