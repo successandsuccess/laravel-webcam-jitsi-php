@@ -16,7 +16,8 @@ use DateTime;
 use App\SecondBeforeFeedback;
 use App\SecondOneExerciseFeedback;
 use App\SecondTotalExerciseFeedback;
-
+use Carbon\Carbon;
+use App\Rx;
 
 class PatientController extends Controller
 {
@@ -52,6 +53,15 @@ class PatientController extends Controller
             '02:15 PM',
         ];
 
+        $user_id = Auth::user()->id;
+        $rx_ids = [
+            User::find($user_id)->rx_1,
+            User::find($user_id)->rx_2,
+            User::find($user_id)->rx_3
+        ];
+
+        // dd($user_id,$rx_ids);
+
         // Patient
         $patient = User::with('getRx1', 'getRx2', 'getRx3')->find(Auth::user()->id);
         // dd($patient);
@@ -65,7 +75,165 @@ class PatientController extends Controller
             $timeId = 0;
         }
 
-        return view('patient.getstarted', compact('providerId', 'timeId', 'providers', 'times', 'patient'));
+        // check the progreess of this week
+        $thisweekactivities = PatientActivity::where('user_id' , $user_id)
+            ->where('type', 2) // self - directed sessions
+            ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+            ->where('rx_id', $rx_ids[0])
+            ->where('order', 1)
+            ->get();
+        // count of this week's self directed logs
+        $countOfThisWeek = count($thisweekactivities);
+        // dd($thisweekactivities, $countOfThisWeek);
+        // every day activity checking.
+        $monday = Carbon::now()->startOfWeek();
+        $tuesday = $monday->copy()->addDay();
+        $wednesday = $tuesday->copy()->addDay();
+        $thursday = $wednesday->copy()->addDay();
+        $friday = $thursday->copy()->addDay();
+        $saturday = $friday->copy()->addDay();
+        $sunday = $saturday->copy()->addDay();
+        // dd($monday, $tuesday, $wednesday );
+        $mActivity = PatientActivity::where('user_id' , $user_id)
+                    ->where('type', 2) // self - directed sessions
+                    ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+                    ->where('rx_id', $rx_ids[0])
+                    ->where('order', 1)
+                    ->whereDate('created_at', '=', $monday->toDateString())
+                    ->get();
+        $tActivity = PatientActivity::where('user_id' , $user_id)
+                    ->where('type', 2) // self - directed sessions
+                    ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+                    ->where('rx_id', $rx_ids[0])
+                    ->where('order', 1)
+                    ->whereDate('created_at', '=', $tuesday->toDateString())
+                    ->get();
+        $wActivity = PatientActivity::where('user_id' , $user_id)
+                    ->where('type', 2) // self - directed sessions
+                    ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+                    ->where('rx_id', $rx_ids[0])
+                    ->where('order', 1)
+                    ->whereDate('created_at', '=', $wednesday->toDateString())
+                    ->get();
+        $thActivity = PatientActivity::where('user_id' , $user_id)
+                    ->where('type', 2) // self - directed sessions
+                    ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+                    ->where('rx_id', $rx_ids[0])
+                    ->where('order', 1)
+                    ->whereDate('created_at', '=', $thursday->toDateString())
+                    ->get();
+        $fActivity = PatientActivity::where('user_id' , $user_id)
+                    ->where('type', 2) // self - directed sessions
+                    ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+                    ->where('rx_id', $rx_ids[0])
+                    ->where('order', 1)
+                    ->whereDate('created_at', '=', $friday->toDateString())
+                    ->get();
+        $satActivity = PatientActivity::where('user_id' , $user_id)
+                    ->where('type', 2) // self - directed sessions
+                    ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+                    ->where('rx_id', $rx_ids[0])
+                    ->where('order', 1)
+                    ->whereDate('created_at', '=', $saturday->toDateString())
+                    ->get();
+        $sunActivity = PatientActivity::where('user_id' , $user_id)
+                    ->where('type', 2) // self - directed sessions
+                    ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+                    ->where('rx_id', $rx_ids[0])
+                    ->where('order', 1)
+                    ->whereDate('created_at', '=', $sunday->toDateString())
+                    ->get();
+                    
+        // dd($tActivity, isset($tActivity), count($tActivity), Carbon::now(),$thursday, Carbon::now()->startOfDay() >= $thursday->startOfDay());
+      
+        // check today date
+        if ( count($mActivity) > 0 ) {
+            $mondayStar = 2; // yellow full star
+        } else {
+            if ( Carbon::now()->startOfDay() > $monday->startOfDay() ) {
+                $mondayStar = 1; // grey star
+            } else {
+                $mondayStar = 0; // outlined star
+            }
+        }
+
+        if ( count($tActivity) > 0 ) {
+            $tuesdayStar = 2; // yellow full star
+        } else {
+            if ( Carbon::now()->startOfDay() > $tuesday->startOfDay() ) {
+                $tuesdayStar = 1; // grey star
+            } else {
+                $tuesdayStar = 0; // outlined star
+            }
+        }
+
+        if ( count($wActivity) > 0 ) {
+            $wednesdayStar = 2; // yellow full star
+        } else {
+            if ( Carbon::now()->startOfDay() > $wednesday->startOfDay() ) {
+                $wednesdayStar = 1; // grey star
+            } else {
+                $wednesdayStar = 0; // outlined star
+            }
+        }
+
+        if ( count($thActivity) > 0 ) {
+            $thursdayStar = 2; // yellow full star
+        } else {
+            if ( Carbon::now()->startOfDay() > $thursday->startOfDay() ) {
+                $thursdayStar = 1; // grey star
+            } else {
+                $thursdayStar = 0; // outlined star
+            }
+        }
+
+        if ( count($fActivity) > 0 ) {
+            $fridayStar = 2; // yellow full star
+        } else {
+            if ( Carbon::now()->startOfDay() > $friday->startOfDay() ) {
+                $fridayStar = 1; // grey star
+            } else {
+                $fridayStar = 0; // outlined star
+            }
+        }
+
+        if ( count($satActivity) > 0 ) {
+            $saturdayStar = 2; // yellow full star
+        } else {
+            if ( Carbon::now()->startOfDay() > $saturday->startOfDay() ) {
+                $saturdayStar = 1; // grey star
+            } else {
+                $saturdayStar = 0; // outlined star
+            }
+        }
+
+        if ( count($sunActivity) > 0 ) {
+            $sundayStar = 2; // yellow full star
+        } else {
+            if ( Carbon::now()->startOfDay() > $sunday->startOfDay() ) {
+                $sundayStar = 1; // grey star
+            } else {
+                $sundayStar = 0; // outlined star
+            }
+        }
+
+        // dd($mondayStar, $tuesdayStar,$wednesdayStar, $thursdayStar, $fridayStar, $saturdayStar, $sundayStar);
+
+        return view('patient.getstarted', compact(
+            'providerId', 
+            'timeId', 
+            'providers', 
+            'times', 
+            'patient', 
+            'countOfThisWeek',
+            'mondayStar',
+            'tuesdayStar',
+            'wednesdayStar',
+            'thursdayStar',
+            'fridayStar',
+            'saturdayStar',
+            'sundayStar'
+        ));
     }
 
     public function patientcareplan() {
@@ -274,6 +442,8 @@ class PatientController extends Controller
         $patientActivity->length = $request->duration; // recorded video length
         $patientActivity->completion = 0; // session completion checking to view recordings from provider.
         $patientActivity->user_id = Auth::user()->id; // recorded patient
+        $patientActivity->rx_id = $request->rx_id; // followed exercise id
+        $patientActivity->order = $request->order; // completed exercise order
         $patientActivity->save();
 
         return 'Success';
@@ -311,14 +481,19 @@ class PatientController extends Controller
     public function patientstreamrecord(Request $request) {
         $order = 0;
         $exercisecount = 0;
+        $rx_id = 0;
         if( isset($request->order) ) {
             $order = $request->order;
+            $rx_id = $request->rx_id;
         }
 
         if( isset($request->exercisecount) ) {
             $exercisecount = $request->exercisecount;
         }
-        return view('patient.streamrecord', compact('order', 'exercisecount'));
+
+        $exercise = Rx::find($rx_id);
+        // dd($order,$exercisecount,$rx_id );
+        return view('patient.streamrecord', compact('order', 'exercisecount', 'rx_id', 'exercise'));
     }
 
     public function upload(Request $request)
@@ -327,6 +502,7 @@ class PatientController extends Controller
         $duration = 0;
         $order = 0;
         $exercisecount = 0;
+        $rx_id = 0;
         if ( isset($request->duration) ) {
             $duration = $request->duration;
         }
@@ -336,7 +512,9 @@ class PatientController extends Controller
         if ( isset($request->exercisecount) ) {
             $exercisecount = $request->exercisecount;
         }
-        
+        if ( isset($request->rx_id) ) {
+            $rx_id = $request->rx_id;
+        }
         
         if ( 0 < $_FILES['file']['error'] ) {
             echo 'Error: ' . $_FILES['file']['error'] . '<br>';
@@ -361,6 +539,8 @@ class PatientController extends Controller
             $patientActivity->completion = 0; // session completion checking to view recordings from provider.
             $patientActivity->videouploads_id = $videoUpload->id; // recorded video
             $patientActivity->user_id = Auth::user()->id; // recorded patient
+            $patientActivity->order = $order;
+            $patientActivity->rx_id = $rx_id;
             $patientActivity->save();
 
             // echo 'Success';

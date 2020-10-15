@@ -505,7 +505,7 @@
                     </div>
                     <div class="video-field">
                         <h1 class="patient-bold-blue-p ml-25px">Exercise Tutorials</h1>
-                        <iframe class="margin-t-10" width="100%" height="50%" src="https://www.youtube.com/embed/vuGnzLxRvZM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="margin-t-10" width="100%" height="50%" src="{{ $exercise->rx_link }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
             </div>
             <video id="myVideo" playsinline class="video-js vjs-default-skin"></video>
@@ -525,7 +525,7 @@
                     <div class="modal-footer justify-content-center border-none mb-30px">
                         <a style="cursor:pointer;" class="patient-streamrecord-delete" onclick="handleDelete()">Delete Video & REDO</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <button id="completeExerciseRecording" onclick="handleComplete(<?php echo $order;?>, <?php echo $exercisecount; ?>)" type="button" class="btn blue-btn patient-btn-text width-183px height-36px">Complete Exercise</button>
+                        <button id="completeExerciseRecording" onclick="handleComplete(<?php echo $order;?>, <?php echo $exercisecount; ?>, <?php echo $rx_id; ?>)" type="button" class="btn blue-btn patient-btn-text width-183px height-36px">Complete Exercise</button>
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -686,12 +686,12 @@
                 $('.vjs-duration.vjs-time-control.vjs-control').css('opacity', 0);
         }
 
-        function handleComplete(order, exercisecount) {
-            upload(videoRecordedData,videoDuration, order, exercisecount);
+        function handleComplete(order, exercisecount, rx_id) {
+            upload(videoRecordedData,videoDuration, order, exercisecount, rx_id);
         }
 
         // upload function definition
-        function upload(blob, duration, order, exercisecount) {
+        function upload(blob, duration, order, exercisecount, rx_id) {
                 // this upload handler is served using webpack-dev-server for
                 // this example, see build-config/fragments/dev.js
                 var serverUrl = '/upload';
@@ -701,6 +701,7 @@
                 formData.append('duration', duration);
                 formData.append('order', order);
                 formData.append('exercisecount', exercisecount);
+                formData.append('rx_id', rx_id);
 
                 console.log(duration + 'second upload recording ' + blob.name + ' to ' + serverUrl);
 

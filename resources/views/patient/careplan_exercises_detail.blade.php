@@ -124,7 +124,7 @@
 
                         <div class="row mb-30px">
                             <div class="col-md-6">
-                                <a href="{{ route('patient.streamrecord', ['order' => $order, 'exercisecount' => $exercisecount]) }}"><button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record video</button></a>
+                                <a href="{{ route('patient.streamrecord', [ 'order' => $order, 'exercisecount' => $exercisecount, 'rx_id' => $patientDetail->rx_id ]) }}"><button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record video</button></a>
                             </div>
                             <div class="col-md-6">
                                 <button onclick="handleRecordTime()" class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record time</button>
@@ -258,6 +258,10 @@
 // global values for Recorded time value
 var recordedTime = 0;
 
+// current exercise id
+var rx_id = '<?php echo $patientDetail->rx_id; ?>';
+console.log('current exercise id', rx_id);
+
 // show the feedback modal for one exercises completion
 function showFeedbackModal(order, exercisecount) {
     console.log('Submit Feedback for Exercise ', order);
@@ -371,6 +375,7 @@ function handleDisabledSubmit() {
                 record_type: 2,
                 duration: recordedTime,
                 order : order,
+                rx_id: rx_id
             }
 
             $.ajaxSetup({
@@ -504,19 +509,19 @@ function timerHandleStart(index, order, exercisecount) {
 }
 
 
-    // show exit modal
-    function showExitModal() {
-        console.log('clicked exit modal');
-        $('#modal-exit').modal({
-            backdrop: 'static',
-            keyboard: false
-        })
-    }
-    // handle exit
-    function handleExit() {
-        console.log('exit');
-        window.location = '/patient/getstarted';
-    }
+// show exit modal
+function showExitModal() {
+    console.log('clicked exit modal');
+    $('#modal-exit').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
+}
+// handle exit
+function handleExit() {
+    console.log('exit');
+    window.location = '/patient/getstarted';
+}
 </script>
 
 

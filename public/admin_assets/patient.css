@@ -782,8 +782,24 @@ input.custom-search:-webkit-autofill:active {
     border-bottom: 1px solid gainsboro;
 }
 
+.justify-space-between {
+    justify-content: space-between;
+}
+
 .border-none {
     border: none;
+}
+
+.patient-star-label-font {
+    font-family: brandon-grotesque;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 24px;
+    /* or 150% */
+    text-align: center;
+    letter-spacing: 0.15px;
+    color: #979797;
 }
 
 .pl-30 {

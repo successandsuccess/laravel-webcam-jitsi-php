@@ -8,12 +8,85 @@
                     <div class="row">
                         <div class="col-md-7">
                             <p class="patient-bold-blue-p mb-0 d-flex"><i class="material-icons-outlined mt-15px">trending_up</i>&nbsp;&nbsp;This Week's progress</p>
-                            <p class="custom-16-font mb-0"><b>You're on a roll!</b> You've logged 4 Self Directed sessions this week.</p>
+                            <p class="custom-16-font mb-0"><b>You're on a roll!</b> You've logged {{ $countOfThisWeek }} Self Directed sessions this week.</p>
                             <p class="custom-16-font mb-0">Keep up the good work, consistency is key to recovery.</p>
                         </div>
+
+                        <div class="col-md-1">
+
+                        </div>
                    
-                        <div class="col-md-5 mt-25px text-center">
-                            <img src="{{ asset('admin_assets/dist/img/stars.png') }}" alt="stars">
+                        <div class="col-md-4 mt-35px text-center d-flex justify-space-between">
+                            <div class="d-grid">
+                                @if( $sundayStar == 0 ) 
+                                <img src="{{ asset('admin_assets/dist/img/yellowoutlinedstar.svg') }}" alt="stars">
+                                @elseif ($sundayStar == 1 )
+                                <img src="{{ asset('admin_assets/dist/img/greystar.svg') }}" alt="stars">
+                                @else 
+                                <img src="{{ asset('admin_assets/dist/img/yellowfullstar.svg') }}" alt="stars">
+                                @endif
+                                <span class="patient-star-label-font">S</span>
+                            </div>
+                            <div class="d-grid">
+                                @if( $mondayStar == 0 ) 
+                                <img src="{{ asset('admin_assets/dist/img/yellowoutlinedstar.svg') }}" alt="stars">
+                                @elseif ($mondayStar == 1 )
+                                <img src="{{ asset('admin_assets/dist/img/greystar.svg') }}" alt="stars">
+                                @else 
+                                <img src="{{ asset('admin_assets/dist/img/yellowfullstar.svg') }}" alt="stars">
+                                @endif
+                                <span class="patient-star-label-font">M</span>
+                            </div>
+                            <div class="d-grid">
+                                @if( $tuesdayStar == 0 ) 
+                                <img src="{{ asset('admin_assets/dist/img/yellowoutlinedstar.svg') }}" alt="stars">
+                                @elseif ($tuesdayStar == 1 )
+                                <img src="{{ asset('admin_assets/dist/img/greystar.svg') }}" alt="stars">
+                                @else 
+                                <img src="{{ asset('admin_assets/dist/img/yellowfullstar.svg') }}" alt="stars">
+                                @endif
+                                <span class="patient-star-label-font">T</span>
+                            </div>
+                            <div class="d-grid">
+                                @if( $wednesdayStar == 0 ) 
+                                <img src="{{ asset('admin_assets/dist/img/yellowoutlinedstar.svg') }}" alt="stars">
+                                @elseif ($wednesdayStar == 1 )
+                                <img src="{{ asset('admin_assets/dist/img/greystar.svg') }}" alt="stars">
+                                @else 
+                                <img src="{{ asset('admin_assets/dist/img/yellowfullstar.svg') }}" alt="stars">
+                                @endif
+                                <span class="patient-star-label-font">W</span>
+                            </div>
+                            <div class="d-grid">
+                                @if( $thursdayStar == 0 ) 
+                                <img src="{{ asset('admin_assets/dist/img/yellowoutlinedstar.svg') }}" alt="stars">
+                                @elseif ($thursdayStar == 1 )
+                                <img src="{{ asset('admin_assets/dist/img/greystar.svg') }}" alt="stars">
+                                @else 
+                                <img src="{{ asset('admin_assets/dist/img/yellowfullstar.svg') }}" alt="stars">
+                                @endif
+                                <span class="patient-star-label-font">TH</span>
+                            </div>
+                            <div class="d-grid">
+                                @if( $fridayStar == 0 ) 
+                                <img src="{{ asset('admin_assets/dist/img/yellowoutlinedstar.svg') }}" alt="stars">
+                                @elseif ($fridayStar == 1 )
+                                <img src="{{ asset('admin_assets/dist/img/greystar.svg') }}" alt="stars">
+                                @else 
+                                <img src="{{ asset('admin_assets/dist/img/yellowfullstar.svg') }}" alt="stars">
+                                @endif
+                                <span class="patient-star-label-font">F</span>
+                            </div>
+                            <div class="d-grid">
+                                @if( $saturdayStar == 0 ) 
+                                <img src="{{ asset('admin_assets/dist/img/yellowoutlinedstar.svg') }}" alt="stars">
+                                @elseif ($saturdayStar == 1 )
+                                <img src="{{ asset('admin_assets/dist/img/greystar.svg') }}" alt="stars">
+                                @else 
+                                <img src="{{ asset('admin_assets/dist/img/yellowfullstar.svg') }}" alt="stars">
+                                @endif
+                                <span class="patient-star-label-font">S</span>
+                            </div>
                         </div>
                     </div>
                 </div>
