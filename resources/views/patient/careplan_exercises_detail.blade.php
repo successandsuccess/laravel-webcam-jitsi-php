@@ -138,7 +138,7 @@
                             </p>
                             <div class="d-flex justify-content-center mt-25px">
                                 <div id="progress-circle" class="progress-circle">
-                                    <span class="timer timer-custom-font">00:00:00</span>
+                                    <span class="timer timer-custom-font" id="currenttime">00:00:00</span>
                                     <div class="left-half-clipper">
                                         <div class="first50-bar"></div>
                                         <div class="value-bar"></div>
@@ -151,7 +151,7 @@
                                 <button id="timerstop" onclick="timerHandleStart(2, <?php echo $order; ?>, <?php echo $exercisecount; ?>)" class="btn red-btn patient-btn-text width-104px height-36px mt-15px" style="display:none;">STOP</button>
                                 <div id="timerfinish" style="display:none;">
                                     <p class="patient-bold-blue-p mb-0 d-flex justify-content-center"><span class="material-icons color-green mt-15px">check_circle_outline</span>&nbsp;&nbsp;&nbsp;SET COMPLETED</p>
-                                    <p class="delete-font text-center justify-content-center" style="margin-top: -10px">DELETE & REDO</p>
+                                    <p class="delete-font text-center justify-content-center" style="margin-top: -10px; cursor:pointer;" onclick="deleteRedoTimeRecord()" >DELETE & REDO</p>
                                 </div>
                             </div>
                         </div>
@@ -396,6 +396,27 @@ function handleDisabledSubmit() {
     
 }
 
+function deleteRedoTimeRecord() {
+    console.log('Redo Time Record');
+    recordedTime = 0;
+
+    // disable the submit button
+    if ( document.getElementById('firststepbtn') ) {
+        document.getElementById('firststepbtn').classList.remove('blue-btn');
+        document.getElementById('firststepbtn').classList.add('patient-disabled-btn');
+    }
+
+
+    // init the value of circle progress
+    $('.value-bar').css('transform', `rotate(0deg)`);
+    document.getElementById('progress-circle').classList.remove('over50');
+    document.getElementById('currenttime').innerHTML = '00:00:00';
+    // show the start button
+    document.getElementById('timerstart').style.display = 'initial';
+    document.getElementById('timerfinish').style.display = 'none';
+
+}
+
 function handleRecordTime() {
     console.log('clicked');
     document.getElementById('recordTimeBox1').style.display = 'block';
@@ -451,8 +472,11 @@ function timerHandleStart(index, order, exercisecount) {
         document.getElementById('timerOrder').innerHTML = order;
         document.getElementById('timerExercisecount').innerHTML = exercisecount;
         // enable the submit button
-        document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
-        document.getElementById('firststepbtn').classList.add('blue-btn');
+        if( document.getElementById('firststepbtn') ) {
+            document.getElementById('firststepbtn').classList.remove('patient-disabled-btn');
+            document.getElementById('firststepbtn').classList.add('blue-btn');
+        }
+
     }
     
 }
