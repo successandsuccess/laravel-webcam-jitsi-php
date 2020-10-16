@@ -255,7 +255,13 @@ class PatientController extends Controller
         }
         // dd($averageSessionLength);
 
-        // dd($consecutiveCount);
+        $consecutive_session_streak = $patient->consecutive_days;
+        
+        if ( $consecutive_session_streak == null || $consecutive_session_streak < 0) {
+            $consecutive_session_streak = 0;
+        }
+
+        // dd($consecutive_session_streak);
 
 
         return view('patient.getstarted', compact(
@@ -276,7 +282,8 @@ class PatientController extends Controller
             'recommendedFrequency',
             'totalCompletedSessions',
             'weeklySessionCompleted',
-            'averageSessionLength'
+            'averageSessionLength',
+            'consecutive_session_streak'
         ));
     }
 
@@ -490,6 +497,32 @@ class PatientController extends Controller
         $patientActivity->order = $request->order; // completed exercise order
         $patientActivity->save();
 
+        if ( $request->order == 1 ) {
+                // check if this action is happen in same date or not.
+                $TodayActivities = PatientActivity::where('type', 2)
+                                                ->where('user_id', Auth::user()->id)
+                                                ->where('order', 1)
+                                                ->whereDate('created_at', '=', $patientActivity->created_at->toDateString())
+                                                ->get();
+
+                if( count($TodayActivities) < 2 ) {
+                    // get the before date
+                    $beforeDay = $patientActivity->created_at->subDays(1);
+
+                    // find the record if activity is existed or not in yesterday
+                    $activityCheck = PatientActivity::where('type', 2)->where('user_id', Auth::user()->id)->where('order', 1)->whereDate('created_at', '=', $beforeDay->toDateString())->get();
+                    if ( count($activityCheck) > 0 ) {
+                        $consecutive_day_save = User::find(Auth::user()->id);
+                        $consecutive_day_save->consecutive_days = $consecutive_day_save->consecutive_days + 1;
+                        $consecutive_day_save->save();
+                    } else {
+                        $consecutive_day_save = User::find(Auth::user()->id);
+                        $consecutive_day_save->consecutive_days = 1;
+                        $consecutive_day_save->save();
+                    }
+                }
+        }
+
         return response()->json([
             'status' => 200,
             'recordedTimeId' => $timeRecord->id,
@@ -610,6 +643,35 @@ class PatientController extends Controller
             $patientActivity->order = $order;
             $patientActivity->rx_id = $rx_id;
             $patientActivity->save();
+
+            if ( $order == 1 ) {
+
+                // check if this action is happen in same date or not.
+                $TodayActivities = PatientActivity::where('type', 2)
+                                                    ->where('user_id', Auth::user()->id)
+                                                    ->where('order', 1)
+                                                    ->whereDate('created_at', '=', $patientActivity->created_at->toDateString())
+                                                    ->get();
+
+                if( count($TodayActivities) < 2 ) {
+                    // get the before date
+                    $beforeDay = $patientActivity->created_at->subDays(1);
+                        
+                    // find the record if activity is existed or not in yesterday
+                    $activityCheck = PatientActivity::where('type', 2)->where('user_id', Auth::user()->id)->where('order', 1)->whereDate('created_at', '=', $beforeDay->toDateString())->get();
+                    if ( count($activityCheck) > 0 ) {
+                        $consecutive_day_save = User::find(Auth::user()->id);
+                        $consecutive_day_save->consecutive_days = $consecutive_day_save->consecutive_days + 1;
+                        $consecutive_day_save->save();
+                    } else {
+                        $consecutive_day_save = User::find(Auth::user()->id);
+                        $consecutive_day_save->consecutive_days = 1;
+                        $consecutive_day_save->save();
+                    }
+                }
+
+                
+            }
 
             // echo 'Success';
             return response()->json([

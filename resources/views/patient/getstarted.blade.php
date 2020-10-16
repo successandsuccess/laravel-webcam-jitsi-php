@@ -268,7 +268,7 @@
                                 <div class="col-md-3">
                                     <div class="history-card pl-0 pr-0">
                                         <p class="history-brandon-font">Consecutive session streak</p>
-                                        <h3 class="history-brandon-big-font mb-0">3 days</h3>
+                                        <h3 class="history-brandon-big-font mb-0">{{ $consecutive_session_streak }} days</h3>
                                     </div>
                                 </div>
                             </div>
