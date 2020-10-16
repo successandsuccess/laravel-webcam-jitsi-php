@@ -417,79 +417,23 @@ function handleEnterWaitingRoom() {
 </script>
 <script language = "JavaScript">
          function drawChart() {
+            var calendaChartData = <?php echo json_encode($calendarChartData) ?>;
+            // console.log(calendaChartData);
             // Define the chart to be drawn.
             var data = new google.visualization.DataTable();
             data.addColumn({ type: 'date', id: 'Date' });
             data.addColumn({ type: 'number', id: 'Students' });
-            data.addRows([
-               [ new Date(2020, 3, 13), 50 ],
-               [ new Date(2020, 3, 14), 50 ],
-               [ new Date(2020, 3, 15), 49 ],
-               [ new Date(2020, 3, 16), 48 ],
-               [ new Date(2020, 3, 17), 50 ],
-               [ new Date(2020, 3, 19), 50 ],
-               [ new Date(2020, 3, 20), 50 ],
-               [ new Date(2020, 3, 22), 50 ],
-               [ new Date(2020, 3, 23), 50 ],
-               [ new Date(2020, 3, 24), 50 ],
-               [ new Date(2020, 3, 25), 50 ],
-               [ new Date(2020, 3, 26), 50 ],
-               [ new Date(2020, 3, 27), 50 ],
-               [ new Date(2020, 3, 28), 48 ],
-               [ new Date(2020, 3, 29), 48 ],
-            
-               [ new Date(2020, 4, 1), 50 ],
-               [ new Date(2020, 4, 2), 50 ],
-               [ new Date(2020, 4, 3), 49 ],
-               [ new Date(2020, 4, 4), 48 ],
-               [ new Date(2020, 4, 5), 50 ], 
-               [ new Date(2020, 4, 6), 50 ],
-               [ new Date(2020, 4, 8), 50 ],
-               [ new Date(2020, 4, 9), 49 ],
-               [ new Date(2020, 4, 10), 48 ],
-               [ new Date(2020, 4, 11), 50 ], 
-               [ new Date(2020, 4, 12), 50 ],
-               [ new Date(2020, 4, 13), 50 ],
-               [ new Date(2020, 4, 14), 49 ],
-               [ new Date(2020, 4, 15), 48 ],
-               [ new Date(2020, 4, 16), 50 ], 
-               [ new Date(2020, 4, 17), 50 ], 
-               [ new Date(2020, 4, 18), 50 ],
-               [ new Date(2020, 4, 19), 50 ],
-               [ new Date(2020, 4, 20), 49 ],
-               [ new Date(2020, 4, 21), 48 ],
-               [ new Date(2020, 4, 22), 50 ],
-               [ new Date(2020, 4, 23), 50 ], 
-               [ new Date(2020, 4, 24), 50 ],
-               [ new Date(2020, 4, 25), 50 ],
-               [ new Date(2020, 4, 27), 49 ],
-               [ new Date(2020, 4, 28), 48 ],
-               [ new Date(2020, 4, 29), 50 ],
-            
-               [ new Date(2020, 5, 4), 40 ],
-               [ new Date(2020, 5, 5), 50 ],
-               [ new Date(2020, 5, 10), 48 ],
-               [ new Date(2020, 5, 11), 50 ],
-               [ new Date(2020, 5, 12), 42 ],
-               [ new Date(2020, 5, 13), 45 ],
-               [ new Date(2020, 5, 14), 46 ],
-               [ new Date(2020, 5, 16), 45 ],
-               [ new Date(2020, 5, 17), 40 ],
-               [ new Date(2020, 5, 18), 50 ],
-               [ new Date(2020, 5, 19), 48 ],
-               [ new Date(2020, 5, 20), 50 ],
-               [ new Date(2020, 5, 21), 42 ],
-               [ new Date(2020, 5, 22), 45 ],
-               [ new Date(2020, 5, 23), 46 ],
-               [ new Date(2020, 5, 24), 45 ],
-               [ new Date(2020, 5, 25), 40 ],
-               [ new Date(2020, 5, 26), 50 ],
-               [ new Date(2020, 5, 27), 48 ],
-               [ new Date(2020, 5, 28), 50 ],
-               [ new Date(2020, 5, 29), 42 ],
-               [ new Date(2020, 5, 30), 45 ],
-          
-            ]);
+
+            calendaChartData.forEach(function(row) {
+                data.addRow([new Date(row.date), row.value]);
+            });
+            // data.addRows([
+            //    [ new Date(2020, 5, 26), 3 ],
+            //    [ new Date(2020, 5, 27), 0 ],
+            //    [ new Date(2020, 5, 28), 1 ],
+            //    [ new Date(2020, 5, 29), 2 ],
+            //    [ new Date(2020, 5, 30), 3 ],
+            // ]);
 
             
             // Set chart options
@@ -520,7 +464,8 @@ function handleEnterWaitingRoom() {
                         strokeOpacity: 0.8,
                         strokeWidth: 1
                     }		 
-                }
+                },
+                colorAxis: {minValue: 0, maxValue: 3,  colors: ['#EAEFFC', '#4273e0']},
             };
 
             // Instantiate and draw the chart.

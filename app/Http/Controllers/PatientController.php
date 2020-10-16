@@ -260,8 +260,15 @@ class PatientController extends Controller
         if ( $consecutive_session_streak == null || $consecutive_session_streak < 0) {
             $consecutive_session_streak = 0;
         }
-
         // dd($consecutive_session_streak);
+
+        // draw the session calendar chart.
+        $fromDateNeed = '2020-08-01';
+
+        $calendarChartData = $this->getGoogleCalendarChartData($fromDateNeed);
+
+        // dd($calendarChartData);
+
 
 
         return view('patient.getstarted', compact(
@@ -283,7 +290,8 @@ class PatientController extends Controller
             'totalCompletedSessions',
             'weeklySessionCompleted',
             'averageSessionLength',
-            'consecutive_session_streak'
+            'consecutive_session_streak',
+            'calendarChartData'
         ));
     }
 
@@ -685,6 +693,49 @@ class PatientController extends Controller
 
 
 
+    // calculate the google chart calendar data
+    public function getGoogleCalendarChartData($from) {
+        // Declare two dates 
+        $Date1 = $from; 
+        $Date2 = Carbon::now()->toDateString(); 
+
+        // Declare an empty array 
+        $array = array(); 
+
+        // Use strtotime function 
+        $Variable1 = strtotime($Date1); 
+        $Variable2 = strtotime($Date2); 
+
+        // dd($Variable2);
+
+        // Use for loop to store dates into array 
+        // 86400 sec = 24 hrs = 60*60*24 = 1 day 
+        for ($currentDate = $Variable1; $currentDate <= $Variable2;  $currentDate += (86400)) { 
+            $Store = date('Y-m-d', $currentDate); 
+            $array[] = $Store; 
+        } 
+
+        $calendarChartData = [];
+        // Display the dates in array format 
+        // dd($array);
+        foreach($array as $index => $item) {
+            // dd($item);   
+            $everyActivity = PatientActivity::where('type', 2)->where('user_id', Auth::user()->id)->whereDate('created_at', '=', $item)->get();
+            if ( count($everyActivity) > 0 ) {
+                $everyActivityOrdersArray = [];
+                foreach ( $everyActivity as $single ) {
+                    array_push($everyActivityOrdersArray, (int)($single->order));
+                }
+                // $calendarChartData[$item] = max($everyActivityOrdersArray);
+                array_push($calendarChartData, [ 'date' => $item, 'value' => max($everyActivityOrdersArray) ]);
+            } else {
+                // $calendarChartData[$item] = 0;
+                array_push($calendarChartData, [ 'date' => $item, 'value' => 0 ]);
+            }
+        }
+
+        return $calendarChartData;
+    }
 
 
 
