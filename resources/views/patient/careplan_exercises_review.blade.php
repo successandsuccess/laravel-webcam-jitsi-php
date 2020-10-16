@@ -166,7 +166,7 @@
                         <div class="row justify-content-center">
                             <img class="emoji" src="{{ asset('admin_assets/dist/img/star.png') }}"  alt="single star">
                         </div>
-                        <p class="feedback-black-font">Your program has been submitted. You committed <b>22 minutes</b> to your health,
+                        <p class="feedback-black-font">Your program has been submitted. You committed <b>{{$minuteFormatDuration}} minutes</b> to your health,
                     and added another day to your streak!</p>
                     </div>
                     <div class="modal-footer justify-content-center border-none mb-30px">

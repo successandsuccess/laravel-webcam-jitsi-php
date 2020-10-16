@@ -12,10 +12,17 @@ class SecondOneExerciseFeedback extends Model
         'feeling',
         'user_id',
         'order',
+        'patientactivity_id'
     ];
 
     public function getUser() 
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
+
+    public function getPatientActivity()
+    {
+        return $this->belongsTo('App\PatientActivity', 'patientactivity_id', 'id');
+    }
+
 }

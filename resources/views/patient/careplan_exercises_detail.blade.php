@@ -187,7 +187,7 @@
                         
                         <div class="mb-30px mt-35px">
                         @if ($recordedVideoId != 0) 
-                            <button class="btn blue-btn patient-btn-text width-104px height-36px" onclick="showFeedbackModal(<?php echo $order; ?>, <?php echo $exercisecount; ?>)">next</button>
+                            <button class="btn blue-btn patient-btn-text width-104px height-36px" onclick="showFeedbackModal(<?php echo $order; ?>, <?php echo $exercisecount; ?>, <?php echo $patientActivityId; ?>)">next</button>
                         @else 
                             <button id="firststepbtn" onclick="handleDisabledSubmit()" class="btn patient-disabled-btn patient-btn-text width-104px height-36px">next</button>
                         @endif
@@ -219,6 +219,7 @@
                         <!-- Saving the Completed Exercise Id -->
                         <div id="order" class="d-none"></div>
                         <div id="exercisecount" class="d-none"></div>
+                        <div id="patientActivityId" class="d-none"></div>
                     </div>
                     <div class="modal-footer justify-content-center border-none mb-30px">
                         <button id="submitselfdirectedfeedback" onclick="handleSubmit()" type="button" class="btn patient-disabled-btn patient-btn-text width-104px height-36px">Submit</button>
@@ -263,7 +264,7 @@ var rx_id = '<?php echo $patientDetail->rx_id; ?>';
 console.log('current exercise id', rx_id);
 
 // show the feedback modal for one exercises completion
-function showFeedbackModal(order, exercisecount) {
+function showFeedbackModal(order, exercisecount, patientActivityId) {
     console.log('Submit Feedback for Exercise ', order);
     $("#modal-default").modal({
         backdrop: 'static',
@@ -272,6 +273,7 @@ function showFeedbackModal(order, exercisecount) {
 
     document.getElementById('order').innerHTML = order;
     document.getElementById('exercisecount').innerHTML = exercisecount;
+    document.getElementById('patientActivityId').innerHTML = patientActivityId;
 }
 
 // emojis
@@ -315,13 +317,15 @@ function handleSubmit() {
         let completedExerciseOrder = document.getElementById('order').innerHTML;
         let nextOrder = Number(completedExerciseOrder) + 1;
         let exercisecount = document.getElementById('exercisecount').innerHTML
-        console.log(completedExerciseOrder, nextOrder ,exercisecount, checkedEmoji);
+        let patientActivityId = document.getElementById('patientActivityId').innerHTML;
+        console.log(completedExerciseOrder, nextOrder ,exercisecount, checkedEmoji, patientActivityId);
 
         // save the one exercise completion feedback to secondoneexercisefeedbacks
         let submitData = {
             feeling: checkedEmoji,
             order: completedExerciseOrder,
-            exercisecount: exercisecount
+            exercisecount: exercisecount,
+            patientActivityId: patientActivityId
         }
 
         $.ajaxSetup({
@@ -340,7 +344,7 @@ function handleSubmit() {
                     console.log('successfully submitted!');
                     toastr.success('Submit Feedback was successfully saved.');
                     if ( completedExerciseOrder ==  exercisecount) {
-                        window.location = "/patient/careplan/exercises-review"; // completed all assigned exercises.
+                        window.location = "/patient/careplan/exercises-review?exercisecount=" + exercisecount; // completed all assigned exercises.
                     } else {
                         window.location = "/patient/careplan/exercises-detail?order=" + nextOrder + "&exercisecount=" + exercisecount; // completed only one exercises. so go to recycle.
                     }
@@ -390,14 +394,30 @@ function handleDisabledSubmit() {
                 data: sendData,
                 success: function(result)
                 {
-                    if( result == 'Success' ) {
-                        console.log('successfully submitted!');
-                        toastr.success('Recorded Time was successfully saved.');
-                    }
-                    else {
-                        console.log('Error Occured In Time Record Saving, Retry or Check Network');
-                        toastr.error('Time Record Saving went wrong. Check network and retry.');
-                    }
+                    // if( result == 'Success' ) {
+                    //     console.log('successfully submitted!');
+                    //     toastr.success('Recorded Time was successfully saved.');
+                    // }
+                    // else {
+                    //     console.log('Error Occured In Time Record Saving, Retry or Check Network');
+                    //     toastr.error('Time Record Saving went wrong. Check network and retry.');
+                    // }
+                    if( result.status == 200 ) {
+                            toastr.success('Recorded Time was successfully saved.');
+
+                            $("#modal-default").modal({
+                                backdrop: 'static',
+                                keyboard: false
+                            });
+
+                            // send the order and exercise count and PatientActivityId to Submit Modal
+                            document.getElementById('order').innerHTML = order;
+                            document.getElementById('exercisecount').innerHTML = exercisecount;
+                            document.getElementById('patientActivityId').innerHTML = result.patientActivityId;
+                        }
+                        else {
+                            console.log('Error Occured In upload, Retry or Check Network');
+                        }
                 },
                 error: function(data)
                 {
@@ -408,14 +428,7 @@ function handleDisabledSubmit() {
         }
 
 
-        $("#modal-default").modal({
-            backdrop: 'static',
-            keyboard: false
-        });
 
-        // send the order and exercise count to Submit Modal
-        document.getElementById('order').innerHTML = order;
-        document.getElementById('exercisecount').innerHTML = exercisecount;
 
     } else {
         window.alert('Firstly Record video.');

@@ -143,7 +143,7 @@ class PatientController extends Controller
                     ->where('order', 1)
                     ->whereDate('created_at', '=', $sunday->toDateString())
                     ->get();
-                    
+
         // dd($tActivity, isset($tActivity), count($tActivity), Carbon::now(),$thursday, Carbon::now()->startOfDay() >= $thursday->startOfDay());
       
         // check today date
@@ -446,7 +446,13 @@ class PatientController extends Controller
         $patientActivity->order = $request->order; // completed exercise order
         $patientActivity->save();
 
-        return 'Success';
+        return response()->json([
+            'status' => 200,
+            'recordedTimeId' => $timeRecord->id,
+            'patientActivityId' => $patientActivity->id,
+        ]);
+
+        // return 'Success';
     }
 
     public function careplan_exercises_detail_oneexercisefeedback(Request $request)
@@ -456,13 +462,31 @@ class PatientController extends Controller
         $oneExerciseFeedback->feeling = $request->feeling;
         $oneExerciseFeedback->order = $request->order;
         $oneExerciseFeedback->user_id = Auth::user()->id;
+        $oneExerciseFeedback->patientactivity_id = $request->patientActivityId;
         $oneExerciseFeedback->save();
 
         return 'Success';
     }
 
-    public function careplan_exercises_review() {
-        return view('patient.careplan_exercises_review');
+    public function careplan_exercises_review(Request $request) {
+        // dd($request->exercisecount);
+        $totalDuration = 0;
+        $user_id = Auth::user()->id;
+        $exerciseOne = SecondOneExerciseFeedback::with('getPatientActivity')->where('user_id', $user_id)->where('order', 1)->orderby('id', 'desc')->first();
+        // dd($exerciseOne->getPatientActivity->length);
+        $totalDuration += $exerciseOne->getPatientActivity->length;
+        // dd($totalDuration);
+        $exerciseTwo = SecondOneExerciseFeedback::with('getPatientActivity')->where('user_id', $user_id)->where('order', 2)->orderby('id', 'desc')->first();
+        $totalDuration += $exerciseTwo->getPatientActivity->length;
+        // dd($totalDuration);
+        if ( $request->exercisecount >= 3 ) {
+            $exerciseThree = SecondOneExerciseFeedback::with('getPatientActivity')->where('user_id', $user_id)->where('order', 3)->orderby('id', 'desc')->first();
+            $totalDuration += $exerciseThree->getPatientActivity->length;
+        }
+        // dd($totalDuration);
+        $minuteFormatDuration = round($totalDuration / 60, 2);
+        // dd($minuteFormatDuration);
+        return view('patient.careplan_exercises_review', compact('minuteFormatDuration'));
     }
 
     public function careplan_exercises_totalexercisefeedback(Request $request)
