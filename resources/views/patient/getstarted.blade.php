@@ -163,7 +163,7 @@
                                         Frequency: <b>Daily</b>
                                     </p>
                                     <p class="custom-16-font">
-                                        Estimated Time: <b>30 minutes</b>
+                                        Estimated Time: <b>5 stretches, hold for 30 seconds</b>
                                     </p>
                                 </div>
 
