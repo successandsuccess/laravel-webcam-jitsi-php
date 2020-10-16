@@ -99,6 +99,10 @@ class PatientController extends Controller
         // count of this week's self directed logs
         $countOfThisWeek = count($thisweekactivities);
         // dd($thisweekactivities, $countOfThisWeek);
+
+        // timezone check
+        // dd(Carbon::now());
+
         // every day activity checking.
         $monday = Carbon::now()->startOfWeek();
         $tuesday = $monday->copy()->addDay();
