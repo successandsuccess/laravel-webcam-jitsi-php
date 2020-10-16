@@ -253,7 +253,6 @@ class PatientController extends Controller
         } else {
             $averageSessionLength = 0;
         }
-        
         // dd($averageSessionLength);
 
         // dd($consecutiveCount);
