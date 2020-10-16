@@ -124,10 +124,18 @@
 
                         <div class="row mb-30px">
                             <div class="col-md-6">
-                                <a href="{{ route('patient.streamrecord', [ 'order' => $order, 'exercisecount' => $exercisecount, 'rx_id' => $patientDetail->rx_id ]) }}"><button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record video</button></a>
+                            @if ($recordedVideoId != 0) 
+                                <button disabled class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center" id="record_video" onclick="goToVideoRecord(<?php echo $order; ?>, <?php echo $exercisecount; ?>, <?php echo $patientDetail->rx_id; ?>)">record video</button>
+                            @else
+                                <button class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center" id="record_video" onclick="goToVideoRecord(<?php echo $order; ?>, <?php echo $exercisecount; ?>, <?php echo $patientDetail->rx_id; ?>)">record video</button>
+                            @endif
                             </div>
                             <div class="col-md-6">
-                                <button onclick="handleRecordTime()" class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center">record time</button>
+                            @if ($recordedVideoId != 0) 
+                                <button onclick="handleRecordTime()" class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center" id="record_time" disabled>record time</button>
+                            @else
+                                <button onclick="handleRecordTime()" class="btn btn-outlined patient-outlined-btn-font width-100 height-36px justify-content-center" id="record_time">record time</button>
+                            @endif
                             </div>
                         </div>
 
@@ -158,7 +166,7 @@
                         <!-- timer end -->
 
                         @if ($recordedVideoId != 0) 
-                        <div class="row">
+                        <div class="row" id="recorded_video">
                             <div class="col-md-8">
                                 <div class="recorded-video">
                                     <div class="row">
@@ -166,7 +174,7 @@
                                             <p class="italic-16-font-muted mb-0 d-flex"><span class="material-icons color-green">check_circle_outline</span>&nbsp;&nbsp;&nbsp;Video recording attached</p>
                                         </div>
                                         <div class="col-md-2 d-flex">
-                                            <p class="video-red-remove-font mb-0">Remove</p>
+                                            <p class="video-red-remove-font mb-0 cursor-pointer" onclick="removeRecordedVideo(<?php echo $recordedVideoId; ?>, <?php echo $patientActivityId; ?>, <?php echo $original_consecutive_day; ?>, <?php echo $order; ?>, <?php echo $exercisecount; ?>)">Remove</p>
                                         </div>
                                     </div>
                                 </div>
@@ -394,14 +402,6 @@ function handleDisabledSubmit() {
                 data: sendData,
                 success: function(result)
                 {
-                    // if( result == 'Success' ) {
-                    //     console.log('successfully submitted!');
-                    //     toastr.success('Recorded Time was successfully saved.');
-                    // }
-                    // else {
-                    //     console.log('Error Occured In Time Record Saving, Retry or Check Network');
-                    //     toastr.error('Time Record Saving went wrong. Check network and retry.');
-                    // }
                     if( result.status == 200 ) {
                             toastr.success('Recorded Time was successfully saved.');
 
@@ -460,6 +460,9 @@ function deleteRedoTimeRecord() {
 function handleRecordTime() {
     console.log('clicked');
     document.getElementById('recordTimeBox1').style.display = 'block';
+
+    // make the video record disable when record time 
+    document.getElementById('record_video').disabled = true;
 }
 
 function timerHandleStart(index, order, exercisecount) {
@@ -519,6 +522,58 @@ function timerHandleStart(index, order, exercisecount) {
 
     }
     
+}
+
+// go to video record page
+function goToVideoRecord(order, exercisecount, rx_id) {
+ window.location = '/patient/streamrecord?order=' + order + '&exercisecount=' + exercisecount + '&rx_id=' + rx_id;
+}
+
+// remove recorded video 
+function removeRecordedVideo(recordedVideoId, patientActivityId, original_consecutive_day, order, exercisecount) {
+    console.log(recordedVideoId, patientActivityId, original_consecutive_day, order, exercisecount);
+
+    let deleteData = {
+        recordedVideoId : recordedVideoId,
+        patientActivityId : patientActivityId,
+        original_consecutive_day : original_consecutive_day
+    }
+
+    // delete the recorded datum in db
+    $.ajaxSetup({
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                        
+            $.ajax({
+                url: "{{ route('patient.careplan.exercises_detail.removerecordedvideo') }}",
+                type: 'POST',              
+                data: deleteData,
+                success: function(result)
+                {
+                    if( result.status == 200 ) {
+                            toastr.success('Recorded video was successfully removed.');
+                            document.getElementById('recorded_video').style.display = 'none';
+                            document.getElementById('record_time').disabled = false;
+
+                            window.location = '/patient/careplan/exercises-detail?order=' + order + '&exercisecount=' + exercisecount ;
+
+                        }
+                        else {
+                            toastr.error('Removing recorded video went wrong. Check network and retry');
+                            console.log('Error Occured In upload, Retry or Check Network');
+                        }
+                },
+                error: function(data)
+                {
+                    console.log('error',data);
+                    toastr.error('Removing recorded video went wrong. Check network and retry.');
+                }
+            });
+
+
+
 }
 
 

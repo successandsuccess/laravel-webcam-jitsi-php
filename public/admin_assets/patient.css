@@ -869,6 +869,10 @@ input.custom-search:-webkit-autofill:active {
     color: rgba(0, 0, 0, 0.6);
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .pt-30 {
     padding-top: 30px;
 }

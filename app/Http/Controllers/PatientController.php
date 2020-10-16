@@ -453,6 +453,7 @@ class PatientController extends Controller
         $patientActivityId = 0;
         $order = 0;
         $exercisecount = 0;
+        $original_consecutive_day = null;
 
         if( isset($request->order) ) {
             $order = $request->order;
@@ -470,6 +471,10 @@ class PatientController extends Controller
             $patientActivityId = $request->patientActivityId;
         }
 
+        if ( isset($request->original_consecutive_day) ) {
+            $original_consecutive_day = $request->original_consecutive_day;
+        }
+
         $patient = User::with('getRx1', 'getRx2', 'getRx3')->find(Auth::user()->id);
         $patientDetail = null;
         if( $order != 0 ) {
@@ -482,7 +487,7 @@ class PatientController extends Controller
             }
         }
 
-        return view('patient.careplan_exercises_detail', compact('recordedVideoId', 'patientActivityId', 'order', 'exercisecount', 'patientDetail'));
+        return view('patient.careplan_exercises_detail', compact('recordedVideoId', 'patientActivityId', 'order', 'exercisecount', 'patientDetail', 'original_consecutive_day'));
     }
 
     public function careplan_exercises_detail_timerecord(Request $request)
@@ -538,6 +543,22 @@ class PatientController extends Controller
         ]);
 
         // return 'Success';
+    }
+
+    // delete the recorded video
+    public function careplan_exercises_detail_removerecordedvideo(Request $request)
+    {
+        // dd($request->all());
+        VideoUploads::where('id',$request->recordedVideoId)->delete();
+        PatientActivity::where('id',$request->patientActivityId)->delete();
+        $patient_consecutive_day = User::find(Auth::user()->id);
+        $patient_consecutive_day->consecutive_days = $request->original_consecutive_day;
+        $patient_consecutive_day->save();
+
+        return response()->json([
+            'status' => 200
+        ]);
+
     }
 
     public function careplan_exercises_detail_oneexercisefeedback(Request $request)
@@ -652,6 +673,14 @@ class PatientController extends Controller
             $patientActivity->rx_id = $rx_id;
             $patientActivity->save();
 
+            //when remove the recorded video in detail exercise careplan page, will restore this consecutive day to avoid the change of this value 
+            $original_consecutive_day = User::find(Auth::user()->id)->consecutive_days;
+
+            if ( $original_consecutive_day == null ) {
+                $original_consecutive_day = 0;
+            }
+
+            // process for consecutive days number
             if ( $order == 1 ) {
 
                 // check if this action is happen in same date or not.
@@ -686,6 +715,7 @@ class PatientController extends Controller
                 'status' => 200,
                 'recordedVideoId' => $videoUpload->id,
                 'patientActivityId' => $patientActivity->id,
+                'original_consecutive_day' => $original_consecutive_day
             ]);
 
         }

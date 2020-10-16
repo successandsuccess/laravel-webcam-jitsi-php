@@ -730,7 +730,9 @@
                             '&order='
                             + order +
                             '&exercisecount='
-                            + exercisecount;
+                            + exercisecount +
+                            '&original_consecutive_day='
+                            + result.original_consecutive_day;
                         }
                         else {
                             console.log('Error Occured In upload, Retry or Check Network');
