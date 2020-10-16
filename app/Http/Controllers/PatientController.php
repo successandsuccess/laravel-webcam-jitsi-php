@@ -248,7 +248,12 @@ class PatientController extends Controller
             $totalSessionLength += $session->length; 
         }
         // dd($totalSessionLength, count($totalCompletedSessions), $totalSessionLength / count($totalCompletedSessions));
-        $averageSessionLength = round( ( $totalSessionLength / count($totalCompletedSessions) ) / 60, 1 ); // minute formate
+        if ( count($totalCompletedSessions) != 0 ) {
+            $averageSessionLength = round( ( $totalSessionLength / count($totalCompletedSessions) ) / 60, 1 ); // minute formate
+        } else {
+            $averageSessionLength = 0;
+        }
+        
         // dd($averageSessionLength);
 
         // dd($consecutiveCount);
