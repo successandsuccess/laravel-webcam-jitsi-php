@@ -63,9 +63,21 @@ class PatientController extends Controller
         // dd($user_id,$rx_ids);
 
         // Patient
-        $patient = User::with('getRx1', 'getRx2', 'getRx3')->find(Auth::user()->id);
+        $patient = User::with('getRx1', 'getRx2', 'getRx3', 'getProvider1')->find(Auth::user()->id);
         // dd($patient);
-
+        $recommendedDuration = '30 minutes';
+        $recommendedFrequency = '3x week';
+        for( $i = 1; $i < 4; $i++ ) {
+            if ($patient['getRx'.$i]->frequency == 'Daily') {
+                $recommendedDuration = $patient['getRx'.$i]->duration;
+                $recommendedFrequency = $patient['getRx'.$i]->frequency;
+                break;
+            } else {
+                $recommendedDuration = $patient['getRx'.$i]->duration;
+                $recommendedFrequency = $patient['getRx'.$i]->frequency;
+            }
+        }
+        // dd($recommendedDuration);
         // check if provider and time info existed
         if ($request->input('provider') && $request->input('provider') != '') {
             $providerId = $request->input('provider');
@@ -232,7 +244,9 @@ class PatientController extends Controller
             'thursdayStar',
             'fridayStar',
             'saturdayStar',
-            'sundayStar'
+            'sundayStar',
+            'recommendedDuration',
+            'recommendedFrequency'
         ));
     }
 

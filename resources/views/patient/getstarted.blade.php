@@ -153,17 +153,17 @@
 
                                 <div class="form-group d-grid mb-12px mt-20px">
                                     <p class="custom-16-font">
-                                        Dr. Wang prescribed <b>three exercises</b> <br> for You
+                                        Dr. {{ $patient->getProvider1->name }} prescribed <b>three exercises</b> <br> for You
                                         to perform at home. 
                                     </p>
                                 </div>
 
                                 <div class="form-group d-grid mt-28px">
                                     <p class="custom-16-font mb-0">
-                                        Frequency: <b>Daily</b>
+                                        Frequency: <b>{{ $recommendedFrequency }}</b>
                                     </p>
                                     <p class="custom-16-font">
-                                        Estimated Time: <b>5 stretches, hold for 30 seconds</b>
+                                        Estimated Time: <b>{{ $recommendedDuration }}</b>
                                     </p>
                                 </div>
 
