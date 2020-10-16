@@ -237,6 +237,23 @@ class PatientController extends Controller
 
         // dd($mondayStar, $tuesdayStar,$wednesdayStar, $thursdayStar, $fridayStar, $saturdayStar, $sundayStar);
 
+        // History section
+        $totalCompletedSessions = PatientActivity::where('user_id', $user_id)->where('type', 2)->get();
+        // dd(count($totalCompletedSessions));
+        $weeklySessionCompleted = PatientActivity::where('user_id', $user_id)->where('type', 2)->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
+        // dd($weeklySessionCompleted->count());
+        $totalSessionLength = 0;
+        foreach ( $totalCompletedSessions as $session )
+        {
+            $totalSessionLength += $session->length; 
+        }
+        // dd($totalSessionLength, count($totalCompletedSessions), $totalSessionLength / count($totalCompletedSessions));
+        $averageSessionLength = round( ( $totalSessionLength / count($totalCompletedSessions) ) / 60, 1 ); // minute formate
+        // dd($averageSessionLength);
+
+        // dd($consecutiveCount);
+
+
         return view('patient.getstarted', compact(
             'providerId', 
             'timeId', 
@@ -252,7 +269,10 @@ class PatientController extends Controller
             'saturdayStar',
             'sundayStar',
             'recommendedDuration',
-            'recommendedFrequency'
+            'recommendedFrequency',
+            'totalCompletedSessions',
+            'weeklySessionCompleted',
+            'averageSessionLength'
         ));
     }
 

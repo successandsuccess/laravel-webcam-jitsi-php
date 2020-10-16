@@ -250,19 +250,19 @@
                                 <div class="col-md-3">
                                     <div class="history-card">
                                         <p class="history-brandon-font">Total Sessions completed</p>
-                                        <h3 class="history-brandon-big-font mb-0">14</h3>
+                                        <h3 class="history-brandon-big-font mb-0">{{ $totalCompletedSessions->count() }}</h3>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="history-card">
                                         <p class="history-brandon-font">Weekly Session Completed</p>
-                                        <h3 class="history-brandon-big-font mb-0">3</h3>
+                                        <h3 class="history-brandon-big-font mb-0">{{ $weeklySessionCompleted->count() }}</h3>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="history-card">
                                         <p class="history-brandon-font">Average Session Length</p>
-                                        <h3 class="history-brandon-big-font mb-0">23 min</h3>
+                                        <h3 class="history-brandon-big-font mb-0">{{ $averageSessionLength }} min</h3>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
