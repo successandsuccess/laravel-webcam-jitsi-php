@@ -93,7 +93,7 @@ class PatientController extends Controller
         $thisweekactivities = PatientActivity::where('user_id' , $user_id)
             ->where('type', 2) // self - directed sessions
             ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-            ->where('rx_id', $rx_ids[0])
+            // ->where('rx_id', $rx_ids[0])
             ->where('order', 1)
             ->get();
         // count of this week's self directed logs
@@ -107,58 +107,58 @@ class PatientController extends Controller
         $friday = $thursday->copy()->addDay();
         $saturday = $friday->copy()->addDay();
         $sunday = $saturday->copy()->addDay();
-        // dd($monday, $tuesday, $wednesday );
+        // dd($monday->toDateString(), $tuesday->toDateString(), $wednesday->toDateString(), $thursday->toDateString(), $friday->toDateString(), $saturday->toDateString(), $sunday->toDateString());
         $mActivity = PatientActivity::where('user_id' , $user_id)
                     ->where('type', 2) // self - directed sessions
                     ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-                    ->where('rx_id', $rx_ids[0])
+                    // ->where('rx_id', $rx_ids[0])
                     ->where('order', 1)
                     ->whereDate('created_at', '=', $monday->toDateString())
                     ->get();
         $tActivity = PatientActivity::where('user_id' , $user_id)
                     ->where('type', 2) // self - directed sessions
                     ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-                    ->where('rx_id', $rx_ids[0])
+                    // ->where('rx_id', $rx_ids[0])
                     ->where('order', 1)
                     ->whereDate('created_at', '=', $tuesday->toDateString())
                     ->get();
         $wActivity = PatientActivity::where('user_id' , $user_id)
                     ->where('type', 2) // self - directed sessions
                     ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-                    ->where('rx_id', $rx_ids[0])
+                    // ->where('rx_id', $rx_ids[0])
                     ->where('order', 1)
                     ->whereDate('created_at', '=', $wednesday->toDateString())
                     ->get();
         $thActivity = PatientActivity::where('user_id' , $user_id)
                     ->where('type', 2) // self - directed sessions
                     ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-                    ->where('rx_id', $rx_ids[0])
+                    // ->where('rx_id', $rx_ids[0])
                     ->where('order', 1)
                     ->whereDate('created_at', '=', $thursday->toDateString())
                     ->get();
         $fActivity = PatientActivity::where('user_id' , $user_id)
                     ->where('type', 2) // self - directed sessions
                     ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-                    ->where('rx_id', $rx_ids[0])
+                    // ->where('rx_id', $rx_ids[0])
                     ->where('order', 1)
                     ->whereDate('created_at', '=', $friday->toDateString())
                     ->get();
         $satActivity = PatientActivity::where('user_id' , $user_id)
                     ->where('type', 2) // self - directed sessions
                     ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-                    ->where('rx_id', $rx_ids[0])
+                    // ->where('rx_id', $rx_ids[0])
                     ->where('order', 1)
                     ->whereDate('created_at', '=', $saturday->toDateString())
                     ->get();
         $sunActivity = PatientActivity::where('user_id' , $user_id)
                     ->where('type', 2) // self - directed sessions
                     ->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-                    ->where('rx_id', $rx_ids[0])
+                    // ->where('rx_id', $rx_ids[0])
                     ->where('order', 1)
                     ->whereDate('created_at', '=', $sunday->toDateString())
                     ->get();
 
-        // dd($tActivity, isset($tActivity), count($tActivity), Carbon::now(),$thursday, Carbon::now()->startOfDay() >= $thursday->startOfDay());
+        // dd($mActivity, $tActivity, $wActivity, $thActivity, $fActivity, $satActivity, $sunActivity);
       
         // check today date
         if ( count($mActivity) > 0 ) {
