@@ -68,13 +68,15 @@ class PatientController extends Controller
         $recommendedDuration = '30 minutes';
         $recommendedFrequency = '3x week';
         for( $i = 1; $i < 4; $i++ ) {
-            if ($patient['getRx'.$i]->frequency == 'Daily') {
-                $recommendedDuration = $patient['getRx'.$i]->duration;
-                $recommendedFrequency = $patient['getRx'.$i]->frequency;
-                break;
-            } else {
-                $recommendedDuration = $patient['getRx'.$i]->duration;
-                $recommendedFrequency = $patient['getRx'.$i]->frequency;
+            if ( $patient['getRx'.$i] ) {
+                if ($patient['getRx'.$i]->frequency == 'Daily') {
+                    $recommendedDuration = $patient['getRx'.$i]->duration;
+                    $recommendedFrequency = $patient['getRx'.$i]->frequency;
+                    break;
+                } else {
+                    $recommendedDuration = $patient['getRx'.$i]->duration;
+                    $recommendedFrequency = $patient['getRx'.$i]->frequency;
+                }
             }
         }
         // dd($recommendedDuration);
