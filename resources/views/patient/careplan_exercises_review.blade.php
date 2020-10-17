@@ -63,7 +63,7 @@
 @section('content')
         <section class="pb-50 pt-15px"> 
                 <div class="container max-width-962px">
-                <h1 class="patient-careplan-blue-h1 text-center mt-5px mb-50">Howard' s Care Plan</h1>
+                <h1 class="patient-careplan-blue-h1 text-center mt-5px mb-50">{{ $patient->name }}' s Care Plan</h1>
                 <div class="row mb-50">
                     <div class="col-md-12">
                         <ol class="progressbar">

@@ -296,7 +296,9 @@ class PatientController extends Controller
     }
 
     public function patientcareplan() {
-        return view('patient.careplan');
+        $patient = User::find(Auth::user()->id);
+        // dd($patient);
+        return view('patient.careplan', compact('patient'));
     }
 
     public function patientwaiting(Request $request) {
@@ -487,7 +489,7 @@ class PatientController extends Controller
             }
         }
 
-        return view('patient.careplan_exercises_detail', compact('recordedVideoId', 'patientActivityId', 'order', 'exercisecount', 'patientDetail', 'original_consecutive_day'));
+        return view('patient.careplan_exercises_detail', compact('patient', 'recordedVideoId', 'patientActivityId', 'order', 'exercisecount', 'patientDetail', 'original_consecutive_day'));
     }
 
     public function careplan_exercises_detail_timerecord(Request $request)
@@ -592,7 +594,10 @@ class PatientController extends Controller
         // dd($totalDuration);
         $minuteFormatDuration = round($totalDuration / 60, 2);
         // dd($minuteFormatDuration);
-        return view('patient.careplan_exercises_review', compact('minuteFormatDuration'));
+
+        $patient = User::find($user_id);
+
+        return view('patient.careplan_exercises_review', compact('minuteFormatDuration', 'patient'));
     }
 
     public function careplan_exercises_totalexercisefeedback(Request $request)
