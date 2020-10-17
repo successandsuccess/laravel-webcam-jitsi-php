@@ -264,6 +264,25 @@
 
 @section('javascript')
 <script>
+
+toastr.options = {
+                  "closeButton": false,
+                  "debug": false,
+                  "newestOnTop": false,
+                  "progressBar": false,
+                  "positionClass": "toast-top-right",
+                  "preventDuplicates": false,
+                  "onclick": null,
+                  "showDuration": "10",
+                  "hideDuration": "1000",
+                  "timeOut": "1000",
+                  "extendedTimeOut": "1000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+                }
+                
 // global values for Recorded time value
 var recordedTime = 0;
 
@@ -371,7 +390,8 @@ function handleSubmit() {
 
     } else {
         console.log("No element found with the clicked emoji");
-        window.alert('Please choose one option');
+        // window.alert('Please choose one option');
+        toastr.error('Please choose one option.');
     }
 }
 
@@ -431,7 +451,8 @@ function handleDisabledSubmit() {
 
 
     } else {
-        window.alert('Firstly Record video.');
+        // window.alert('Firstly Record video.');
+        toastr.error('Firstly, reocrd video. And Go to next step.');
     }
     
 }

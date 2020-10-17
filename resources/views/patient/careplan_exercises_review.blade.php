@@ -183,6 +183,24 @@
 @section('javascript')
 <script>
 
+toastr.options = {
+                  "closeButton": false,
+                  "debug": false,
+                  "newestOnTop": false,
+                  "progressBar": false,
+                  "positionClass": "toast-top-right",
+                  "preventDuplicates": false,
+                  "onclick": null,
+                  "showDuration": "10",
+                  "hideDuration": "1000",
+                  "timeOut": "1000",
+                  "extendedTimeOut": "1000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+                }
+
     // inital values to save the feeback
     var checkedEmoji = 0;
 
@@ -335,7 +353,8 @@
 
         } else {
             console.log("No element found with the clicked emoji");
-            window.alert('Please choose every options');
+            // window.alert('Please choose every options');
+            toastr.error('Please choose every options');
         }
     }
 

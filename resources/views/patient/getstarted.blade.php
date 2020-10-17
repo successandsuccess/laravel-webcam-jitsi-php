@@ -294,6 +294,26 @@
 @section('javascript')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
 <script>
+// setting toastr options
+toastr.options = {
+                  "closeButton": false,
+                  "debug": false,
+                  "newestOnTop": false,
+                  "progressBar": false,
+                  "positionClass": "toast-top-right",
+                  "preventDuplicates": false,
+                  "onclick": null,
+                  "showDuration": "10",
+                  "hideDuration": "1000",
+                  "timeOut": "1000",
+                  "extendedTimeOut": "1000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+                }
+
+
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
     type: 'line',
@@ -394,7 +414,8 @@ function handleEnterWaitingRoom() {
     let classLength = classList.length;
 
     if (classLength != 0) {
-        window.alert('Please select Provider and Queue Time');
+        // window.alert('Please select Provider and Queue Time');
+        toastr.error('Please select Provider and Queue Time.')
     }
     else {
         console.log('EnterWaitingRoom Button Clicked');
@@ -403,7 +424,8 @@ function handleEnterWaitingRoom() {
         var provider = $('#provider').val();
         var time = $('#queuetime').val();
         if (provider == 0 || time == 0) {
-            window.alert('Please choose the Provider and the time you want.');
+            // window.alert('Please choose the Provider and the time you want.');
+            toastr.error('Please choose the Provider and the time you want.');
         } else {
             window.location = '/patient/waiting?provider='+provider+'&time='+time;
         }
