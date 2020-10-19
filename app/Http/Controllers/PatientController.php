@@ -106,29 +106,21 @@ class PatientController extends Controller
         $fridayStar = $weeklyStarReviews[4]['fridayStar'];
         $saturdayStar = $weeklyStarReviews[5]['saturdayStar'];
         $sundayStar = $weeklyStarReviews[6]['sundayStar'];
-      
-        // dd($mondayStar, $tuesdayStar,$wednesdayStar, $thursdayStar, $fridayStar, $saturdayStar, $sundayStar);
 
         // History section
         $totalCompletedSessions = PatientActivity::where('user_id', $user_id)->where('type', 2)->get();
-        // dd(count($totalCompletedSessions));
         $weeklySessionCompleted = PatientActivity::where('user_id', $user_id)->where('type', 2)->WhereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->get();
-        // dd($weeklySessionCompleted->count());
         $totalSessionLength = 0;
         foreach ( $totalCompletedSessions as $session )
         {
             $totalSessionLength += $session->length; 
         }
-        // dd($totalSessionLength, count($totalCompletedSessions), $totalSessionLength / count($totalCompletedSessions));
         if ( count($totalCompletedSessions) != 0 ) {
             $averageSessionLength = round( ( $totalSessionLength / count($totalCompletedSessions) ) / 60, 1 ); // minute formate
         } else {
             $averageSessionLength = 0;
         }
-        // dd($averageSessionLength);
-
         $consecutive_session_streak = $patient->consecutive_days;
-        
         if ( $consecutive_session_streak == null || $consecutive_session_streak < 0) {
             $consecutive_session_streak = 0;
         }
