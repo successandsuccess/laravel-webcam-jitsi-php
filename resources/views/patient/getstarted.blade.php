@@ -281,7 +281,7 @@
                             <!-- chart calendar end-->
                             <p class="patient-bold-blue-p">Your Pain Over Time</p>
 
-                            <p class="exercise-blue-small-font mb-35px">09/28/2020 - 10/04/2020 &nbsp;<i class="fas fa-angle-down"></i></p>
+                            <p class="exercise-blue-small-font mb-35px">{{ $thisWeekDate['start'] }} - {{ $thisWeekDate['end'] }} &nbsp;<i class="fas fa-angle-down"></i></p>
                             <canvas id="myChart" height="200" width="900"></canvas>
                         </div>
                     </div>
@@ -313,6 +313,9 @@ toastr.options = {
                   "hideMethod": "fadeOut"
                 }
 
+var painOvertimeChartData = <?php echo json_encode($painOverTimeChartData) ?>;
+
+// console.log(painOvertimeChartData.before[0].pain);
 
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
@@ -320,13 +323,35 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ['','Mon','Tue','Wed','Thur','Fri','Sat','Sun',''],
         datasets: [{ 
-            data: [2,2,2,2,1,2,1,1,1],
-            label: "Patient Record After Session ",
+            // data: [2,2,2,2,1,2,1,1,1],
+            data: [
+                painOvertimeChartData.after[0].pain,
+                painOvertimeChartData.after[0].pain,
+                painOvertimeChartData.after[1].pain,
+                painOvertimeChartData.after[2].pain,
+                painOvertimeChartData.after[3].pain,
+                painOvertimeChartData.after[4].pain,
+                painOvertimeChartData.after[5].pain,
+                painOvertimeChartData.after[6].pain,
+                painOvertimeChartData.after[6].pain
+            ],
+            label: "Patient Record After Session",
             borderColor: "#4681ec", // blue
             backgroundColor: "rgb(70, 129, 236, 0.6)",
             fill: 'start'
         }, { 
-            data: [4,4,3,3,2,2,2,2,2],
+            // data: [4,4,3,3,2,2,2,2,2],
+            data: [
+                painOvertimeChartData.before[0].pain,
+                painOvertimeChartData.before[0].pain,
+                painOvertimeChartData.before[1].pain,
+                painOvertimeChartData.before[2].pain,
+                painOvertimeChartData.before[3].pain,
+                painOvertimeChartData.before[4].pain,
+                painOvertimeChartData.before[5].pain,
+                painOvertimeChartData.before[6].pain,
+                painOvertimeChartData.before[6].pain
+            ],
             label: "Patient Record Before Session",
             borderColor: "#ff9e58", // dark yellow
             backgroundColor: "rgb(255, 158, 88, 0.6)",

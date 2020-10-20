@@ -130,6 +130,15 @@ class PatientController extends Controller
         $fromDateNeed = '2020-08-01';
         $calendarChartData = $this->getGoogleCalendarChartData($fromDateNeed);
 
+        // your pain over time.
+        $painOverTimeChartData = $this->getPainOverTimeChartData($user_id);
+        $thisWeekDate = [
+            'start' => Carbon::parse( Carbon::now()->startOfWeek()->toDateString() )->format('m/d/Y'),
+            'end' => Carbon::parse( Carbon::now()->endOfWeek()->toDateString() )->format('m/d/Y')
+        ];
+
+        // dd($thisWeekDate);
+
         // dd($calendarChartData);
         return view('patient.getstarted', compact(
             'providerId', 
@@ -151,7 +160,9 @@ class PatientController extends Controller
             'weeklySessionCompleted',
             'averageSessionLength',
             'consecutive_session_streak',
-            'calendarChartData'
+            'calendarChartData',
+            'thisWeekDate',
+            'painOverTimeChartData'
         ));
     }
 
@@ -280,6 +291,7 @@ class PatientController extends Controller
             $feedback->totalpain = $request->totalpain;
             $feedback->lastpain = $request->lastpain;
             $feedback->meeting_id = $request->meetingId;
+            $feedback->user_id = Auth::user()->id;
             $feedback->save();
         } 
 
@@ -778,6 +790,203 @@ class PatientController extends Controller
         return $starReviews;
     }
 
+    // get the pain over time data
+    public function getPainOverTimeChartData($user_id) {
+
+        // before
+        $result = [];
+
+        $monday = Carbon::now()->startOfWeek();
+        $tuesday = $monday->copy()->addDay();
+        $wednesday = $tuesday->copy()->addDay();
+        $thursday = $wednesday->copy()->addDay();
+        $friday = $thursday->copy()->addDay();
+        $saturday = $friday->copy()->addDay();
+        $sunday = $saturday->copy()->addDay();
+
+        $oneOnOneFeedbackMonday = FirstFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $monday->toDateString())->get()->last();
+        $oneOnOneFeedbackTuesday = FirstFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $tuesday->toDateString())->get()->last();
+        $oneOnOneFeedbackWednesday = FirstFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $wednesday->toDateString())->get()->last();
+        $oneOnOneFeedbackThursday = FirstFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $thursday->toDateString())->get()->last();
+        $oneOnOneFeedbackFriday = FirstFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $friday->toDateString())->get()->last();
+        $oneOnOneFeedbackSaturday = FirstFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $saturday->toDateString())->get()->last();
+        $oneOnOneFeedbackSunday = FirstFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $sunday->toDateString())->get()->last();
+
+        // dd($oneOnOneFeedbackMonday, $oneOnOneFeedbackTuesday, $oneOnOneFeedbackWednesday);
+
+        // for Self Directed Sessions
+        $selfDirectedFeedbackMonday = SecondBeforeFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $monday->toDateString())->get()->last();
+        $selfDirectedFeedbackTuesday = SecondBeforeFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $tuesday->toDateString())->get()->last();
+        $selfDirectedFeedbackWednesday = SecondBeforeFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $wednesday->toDateString())->get()->last();
+        $selfDirectedFeedbackThursday = SecondBeforeFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $thursday->toDateString())->get()->last();
+        $selfDirectedFeedbackFriday = SecondBeforeFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $friday->toDateString())->get()->last();
+        $selfDirectedFeedbackSaturday = SecondBeforeFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $saturday->toDateString())->get()->last();
+        $selfDirectedFeedbackSunday = SecondBeforeFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $sunday->toDateString())->get()->last();
+
+        // dd($selfDirectedFeedbackMonday,$selfDirectedFeedbackTuesday);
+        if ( $oneOnOneFeedbackMonday != null && $selfDirectedFeedbackMonday != null ) {
+            array_push($result, ['pain' => $selfDirectedFeedbackMonday->todaypain]);
+        } else if ( $oneOnOneFeedbackMonday == null && $selfDirectedFeedbackMonday == null ) {
+            array_push($result, ['pain' => 0]);
+        } else if ($selfDirectedFeedbackMonday == null) {
+            array_push($result, ['pain' => $oneOnOneFeedbackMonday->todaypain]);
+        } else {
+            array_push($result, ['pain' => $selfDirectedFeedbackMonday->todaypain]);
+        }
+
+        if ( $oneOnOneFeedbackTuesday != null && $selfDirectedFeedbackTuesday != null ) {
+            array_push($result, ['pain' => $selfDirectedFeedbackTuesday->todaypain]);
+        } else if ( $oneOnOneFeedbackTuesday == null && $selfDirectedFeedbackTuesday == null ) {
+            array_push($result, ['pain' => 0]);
+        } else if ($selfDirectedFeedbackTuesday == null ) {
+            array_push($result, ['pain' => $oneOnOneFeedbackTuesday->todaypain]);
+        } else {
+            array_push($result, ['pain' => $selfDirectedFeedbackTuesday->todaypain]);
+        }
+
+        if ( $oneOnOneFeedbackWednesday != null && $selfDirectedFeedbackWednesday != null ) {
+            array_push($result, ['pain' => $selfDirectedFeedbackWednesday->todaypain]);
+        } else if ( $oneOnOneFeedbackWednesday == null && $selfDirectedFeedbackWednesday == null ) {
+            array_push($result, ['pain' => 0]);
+        } else if ($selfDirectedFeedbackWednesday == null ) {
+            array_push($result, ['pain' => $oneOnOneFeedbackWednesday->todaypain]);
+        } else {
+            array_push($result, ['pain' => $selfDirectedFeedbackWednesday->todaypain]);
+        }
+
+        if ( $oneOnOneFeedbackThursday != null && $selfDirectedFeedbackThursday != null ) {
+            array_push($result, ['pain' => $selfDirectedFeedbackThursday->todaypain]);
+        } else if ( $oneOnOneFeedbackThursday == null && $selfDirectedFeedbackThursday == null ) {
+            array_push($result, ['pain' => 0]);
+        } else if ($selfDirectedFeedbackThursday == null ) {
+            array_push($result, ['pain' => $oneOnOneFeedbackThursday->todaypain]);
+        } else {
+            array_push($result, ['pain' => $selfDirectedFeedbackThursday->todaypain]);
+        }
+
+        if ( $oneOnOneFeedbackFriday != null && $selfDirectedFeedbackFriday != null ) {
+            array_push($result, ['pain' => $selfDirectedFeedbackFriday->todaypain]);
+        } else if ( $oneOnOneFeedbackFriday == null && $selfDirectedFeedbackFriday == null ) {
+            array_push($result, ['pain' => 0]);
+        } else if ($selfDirectedFeedbackFriday == null ) {
+            array_push($result, ['pain' => $oneOnOneFeedbackFriday->todaypain]);
+        } else {
+            array_push($result, ['pain' => $selfDirectedFeedbackFriday->todaypain]);
+        }
+
+        if ( $oneOnOneFeedbackSaturday != null && $selfDirectedFeedbackSaturday != null ) {
+            array_push($result, ['pain' => $selfDirectedFeedbackSaturday->todaypain]);
+        } else if ( $oneOnOneFeedbackSaturday == null && $selfDirectedFeedbackSaturday == null ) {
+            array_push($result, ['pain' => 0]);
+        } else if ($selfDirectedFeedbackSaturday == null ) {
+            array_push($result, ['pain' => $oneOnOneFeedbackSaturday->todaypain]);
+        } else {
+            array_push($result, ['pain' => $selfDirectedFeedbackSaturday->todaypain]);
+        }
+
+        if ( $oneOnOneFeedbackSunday != null && $selfDirectedFeedbackSunday != null ) {
+            array_push($result, ['pain' => $selfDirectedFeedbackSunday->todaypain]);
+        } else if ( $oneOnOneFeedbackSunday == null && $selfDirectedFeedbackSunday == null ) {
+            array_push($result, ['pain' => 0]);
+        } else if ($selfDirectedFeedbackSunday == null ) {
+            array_push($result, ['pain' => $oneOnOneFeedbackSunday->todaypain]);
+        } else {
+            array_push($result, ['pain' => $selfDirectedFeedbackSunday->todaypain]);
+        }
+
+
+        // dd($result);
+        // after session
+        $afterResult = [];
+        // for Self Directed Sessions
+        $selfDirectedFeedbackMondayAfter = SecondTotalExerciseFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $monday->toDateString())->get()->last();
+        $selfDirectedFeedbackTuesdayAfter = SecondTotalExerciseFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $tuesday->toDateString())->get()->last();
+        $selfDirectedFeedbackWednesdayAfter = SecondTotalExerciseFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $wednesday->toDateString())->get()->last();
+        $selfDirectedFeedbackThursdayAfter = SecondTotalExerciseFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $thursday->toDateString())->get()->last();
+        $selfDirectedFeedbackFridayAfter = SecondTotalExerciseFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $friday->toDateString())->get()->last();
+        $selfDirectedFeedbackSaturdayAfter = SecondTotalExerciseFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $saturday->toDateString())->get()->last();
+        $selfDirectedFeedbackSundayAfter = SecondTotalExerciseFeedback::where('user_id', $user_id)->whereDate('created_at', '=', $sunday->toDateString())->get()->last();
+
+
+        if ( $selfDirectedFeedbackMondayAfter == null ) {
+            array_push($afterResult, ['pain' => 0]);
+        } else {
+            array_push($afterResult, ['pain' => $selfDirectedFeedbackMondayAfter->todaypain]);
+        }
+
+        if ( $selfDirectedFeedbackTuesdayAfter == null ) {
+            array_push($afterResult, ['pain' => 0]);
+        } else {
+            array_push($afterResult, ['pain' => $selfDirectedFeedbackTuesdayAfter->todaypain]);
+        }
+
+
+        if ( $selfDirectedFeedbackWednesdayAfter == null ) {
+            array_push($afterResult, ['pain' => 0]);
+        } else {
+            array_push($afterResult, ['pain' => $selfDirectedFeedbackWednesdayAfter->todaypain]);
+        }
+
+
+        if ( $selfDirectedFeedbackThursdayAfter == null ) {
+            array_push($afterResult, ['pain' => 0]);
+        } else {
+            array_push($afterResult, ['pain' => $selfDirectedFeedbackThursdayAfter->todaypain]);
+        }
+
+
+        if ( $selfDirectedFeedbackFridayAfter == null ) {
+            array_push($afterResult, ['pain' => 0]);
+        } else {
+            array_push($afterResult, ['pain' => $selfDirectedFeedbackFridayAfter->todaypain]);
+        }
+
+
+        if ( $selfDirectedFeedbackSaturdayAfter == null ) {
+            array_push($afterResult, ['pain' => 0]);
+        } else {
+            array_push($afterResult, ['pain' => $selfDirectedFeedbackSaturdayAfter->todaypain]);
+        }
+
+
+        if ( $selfDirectedFeedbackSundayAfter == null ) {
+            array_push($afterResult, ['pain' => 0]);
+        } else {
+            array_push($afterResult, ['pain' => $selfDirectedFeedbackSundayAfter->todaypain]);
+        }
+
+
+        // dd($afterResult);
+        $finalResult = [
+            'before' => $result,
+            'after' => $afterResult
+        ];
+
+        // dd($finalResult['before'][0]['pain']);
+
+        // filter and sort when the case never do exericse in correct day , and when the case didn't submit after exercise feedback
+        // for( $i = 0; $i < 7; $i++ ) {
+        //     if ( $finalResult['before'][$i]['pain'] == 0 ) {
+        //         if ( isset($finalResult['before'][$i - 1]) ) {
+        //             $finalResult['before'][$i]['pain'] = $finalResult['before'][$i - 1]['pain'];
+        //         }
+        //     }
+
+        //     if ( $finalResult['after'][$i]['pain'] == 0 ) {
+        //         if ( isset($finalResult['after'][$i - 1]) ) {
+        //             $finalResult['after'][$i]['pain'] = $finalResult['after'][$i - 1]['pain'];
+        //         }
+        //     }
+
+        //     if ( $finalResult['before'][$i]['pain'] != 0 && $finalResult['after'][$i]['pain'] == 0 ) {
+        //         $finalResult['after'][$i]['pain'] =  $finalResult['before'][$i]['pain'];
+        //     }
+        // }
+
+        // dd($finalResult);
+
+        return $finalResult;
+    }
 
 
 

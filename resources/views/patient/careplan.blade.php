@@ -414,7 +414,7 @@ toastr.options = {
         }
 
         if (index == 5) {
-            checkedEmojiIndex = 4;
+            checkedEmojiIndex = 5;
             nopain.classList.remove('active');
             mild.classList.remove('active');
             moderate.classList.remove('active');
